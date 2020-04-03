@@ -13,7 +13,7 @@ namespace BannerlordTweaks
     {
         static void Postfix(TournamentBehavior __instance)
         {
-            typeof(TournamentBehavior).GetProperty("OverallExpectedDenars").SetValue(__instance, __instance.OverallExpectedDenars + 100);
+            typeof(TournamentBehavior).GetProperty("OverallExpectedDenars").SetValue(__instance, __instance.OverallExpectedDenars + 125);
         }
     }
 }
