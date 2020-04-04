@@ -188,5 +188,19 @@ namespace BannerlordTweaks
         [XmlElement]
         public int CastleMilitiaBarracksAmountLevel3 { get; set; } = 9;
         #endregion
+
+        #region Siege Changes
+        [XmlElement]
+        public bool SiegeConstructionProgressPerDayMultiplierEnabled { get; set; } = true;
+        [XmlElement]
+        public float SiegeConstructionProgressPerDayMultiplier { get; set; } = 0.8f;
+
+        [XmlElement]
+        public bool SiegeCasualtiesTweakEnabled { get; set; } = true;
+        [XmlElement]
+        public float SiegeCollateralDamageCasualties { get; set; } = 1.75f;
+        [XmlElement]
+        public float SiegeDestructionCasualties { get; set; } = 4.5f;
+        #endregion
     }
 }

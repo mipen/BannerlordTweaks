@@ -62,6 +62,7 @@ namespace BannerlordTweaks
             gameStarter.AddModel(new TweakedClanTierModel());
             gameStarter.AddModel(new TweakedSettlementMilitiaModel());
             gameStarter.AddModel(new TweakedSettlementFoodModel());
+            gameStarter.AddModel(new TweakedSiegeEventModel());
         }
     }
 }

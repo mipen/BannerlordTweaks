@@ -114,6 +114,7 @@
     <Compile Include="TweakedCombatXpModel.cs" />
     <Compile Include="TweakedSettlementFoodModel.cs" />
     <Compile Include="TweakedSettlementMilitiaModel.cs" />
+    <Compile Include="TweakedSiegeEventModel.cs" />
     <Compile Include="TweakedWorkshopModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
