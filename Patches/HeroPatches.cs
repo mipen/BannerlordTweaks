@@ -19,7 +19,6 @@ namespace BannerlordTweaks.Patches
             try
             {
                 HeroDeveloper hd = (HeroDeveloper)(typeof(Hero).GetField("_heroDeveloper", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).GetValue(__instance));
-                //MessageBox.Show($"Made it here!\n\ndeveloper exists: {hd != null}");
                 if (hd != null)
                 {
                     double multiplier = GetMultiplier(__instance.GetSkillValue(skill));

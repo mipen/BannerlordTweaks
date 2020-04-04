@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lib\DebugVars.cs" />
     <Compile Include="Lib\ExceptionExtensionMethods.cs" />
     <Compile Include="Lib\Interfaces\ILoadable.cs" />
     <Compile Include="Lib\Loader.cs" />
