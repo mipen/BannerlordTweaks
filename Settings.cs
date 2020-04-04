@@ -93,6 +93,7 @@ namespace BannerlordTweaks
         public bool TroopExperienceBattleMultiplierEnabled { get; set; } = true;
         [XmlElement]
         public float TroopExperienceBattleMultiplier { get; set; } = 8.0f;
+        [XmlElement]
         public bool TroopExperienceSimulationMultiplierEnabled { get; set; } = false;
         [XmlElement]
         public float TroopExperienceSimulationMultiplier { get; set; } = 1.0f;
