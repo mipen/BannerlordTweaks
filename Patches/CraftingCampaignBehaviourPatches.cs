@@ -1,10 +1,6 @@
 ﻿using HarmonyLib;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
@@ -40,7 +36,7 @@ namespace BannerlordTweaks.Patches
 
                     if (curCraftingStamina < Settings.Instance.MaxCraftingStamina && hero.PartyBelongedTo?.CurrentSettlement != null)
                     {
-                        __instance.SetHeroCraftingStamina(hero, Math.Min(400, curCraftingStamina + Settings.Instance.CraftingStaminaGainAmount));
+                        __instance.SetHeroCraftingStamina(hero, Math.Min(Settings.Instance.MaxCraftingStamina, curCraftingStamina + Settings.Instance.CraftingStaminaGainAmount));
                     }
                     //MessageBox.Show($"Hero: {hero.Name}\n\nCrafting Stamina: {__instance.GetHeroCraftingStamina(hero)}");
                 }
