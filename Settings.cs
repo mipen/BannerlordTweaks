@@ -57,7 +57,18 @@ namespace BannerlordTweaks
         public float StewardPartySizeBonus { get; set; } = 0.3f;
         #endregion
 
-        # region Tournament patches
+        #region Perk tweaks
+        [XmlElement]
+        public bool TroopPerkXpMultipliedByStackEnabled { get; set; } = true;
+        [XmlElement]
+        public bool TroopPerkXpAmountTweakEnabled { get; set; } = true;
+        [XmlElement]
+        public int TroopPerkRaiseTheMeekAmount { get; set; } = 120;
+        [XmlElement]
+        public int TroopPerkCombatTipsAmount { get; set; } = 40;
+        #endregion
+
+        #region Tournament patches
         [XmlElement]
         public bool TournamentRenownIncreaseEnabled { get; set; } = true;
         [XmlElement]
