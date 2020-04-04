@@ -63,9 +63,9 @@ namespace BannerlordTweaks
         [XmlElement]
         public bool TroopPerkXpAmountTweakEnabled { get; set; } = true;
         [XmlElement]
-        public int TroopPerkRaiseTheMeekAmount { get; set; } = 120;
+        public int TroopPerkRaiseTheMeekAmount { get; set; } = 60;
         [XmlElement]
-        public int TroopPerkCombatTipsAmount { get; set; } = 40;
+        public int TroopPerkCombatTipsAmount { get; set; } = 20;
         #endregion
 
         #region Tournament patches
