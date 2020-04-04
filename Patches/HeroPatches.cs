@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 
-namespace BannerlordTweaks
+namespace BannerlordTweaks.Patches
 {
     [HarmonyPatch(typeof(Hero), "AddSkillXp")]
     public class AddSkillXpPatch
@@ -33,6 +33,11 @@ namespace BannerlordTweaks
                 MessageBox.Show($"An exception occurred whilst trying to apply the xp multiplier.\n\nException:\n{ex.Message}\n\n{ex.InnerException?.Message}");
             }
             return false;
+        }
+
+        static bool Prepare()
+        {
+            return Settings.Instance.HeroSkillExperienceMultiplierEnabled;
         }
     }
 }

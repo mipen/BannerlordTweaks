@@ -9,15 +9,20 @@ using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 
-namespace BannerlordTweaks
+namespace BannerlordTweaks.Patches
 {
     [HarmonyPatch(typeof(CraftingCampaignBehavior), "GetMaxHeroCraftingStamina")]
     public class GetMaxHeroCraftingStaminaPatch
     {
         static bool Prefix(CraftingCampaignBehavior __instance, ref int __result)
         {
-            __result = 400;
+            __result = Settings.Instance.MaxCraftingStamina;
             return false;
+        }
+
+        static bool Prepare()
+        {
+            return Settings.Instance.CraftingStaminaTweakEnabled;
         }
     }
 
@@ -33,9 +38,9 @@ namespace BannerlordTweaks
                 {
                     int curCraftingStamina = __instance.GetHeroCraftingStamina(hero);
 
-                    if (curCraftingStamina < 400 && hero.PartyBelongedTo?.CurrentSettlement != null)
+                    if (curCraftingStamina < Settings.Instance.MaxCraftingStamina && hero.PartyBelongedTo?.CurrentSettlement != null)
                     {
-                        __instance.SetHeroCraftingStamina(hero, Math.Min(400, curCraftingStamina + 10));
+                        __instance.SetHeroCraftingStamina(hero, Math.Min(400, curCraftingStamina + Settings.Instance.CraftingStaminaGainAmount));
                     }
                     //MessageBox.Show($"Hero: {hero.Name}\n\nCrafting Stamina: {__instance.GetHeroCraftingStamina(hero)}");
                 }
@@ -45,6 +50,11 @@ namespace BannerlordTweaks
                 MessageBox.Show($"An exception happened during the HourlyTick patch:\n\n{ex.Message}\n\n{ex.InnerException?.Message}", "Exception");
             }
             return false;
+        }
+
+        static bool Prepare()
+        {
+            return Settings.Instance.CraftingStaminaTweakEnabled;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 
-namespace BannerlordTweaks
+namespace BannerlordTweaks.Patches
 {
     [HarmonyPatch(typeof(DefaultBattleRewardModel), "CalculateRenownGain")]
     public class DefaultBattleRewardModelPatch
@@ -17,7 +17,7 @@ namespace BannerlordTweaks
             {
                 ExplainedNumber stat;
                 if (party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
-                    stat = new ExplainedNumber((renownValueOfBattle * contributionShare) * 2f, explanation);
+                    stat = new ExplainedNumber((renownValueOfBattle * contributionShare) * Settings.Instance.BattleRenownMultiplier, explanation);
                 else
                     stat = new ExplainedNumber(renownValueOfBattle * contributionShare, explanation);
                 if (party.IsMobile)
@@ -39,6 +39,11 @@ namespace BannerlordTweaks
                 MessageBox.Show($"An error occurred during DefaultBattleRewardModelPatch. Reverting to original behaviour...\n\nException:\n{ex.Message}\n\n{ex.InnerException?.Message}\n\n{ex.InnerException?.InnerException?.Message}");
             }
             return !patched;
+        }
+
+        static bool Prepare()
+        {
+            return Settings.Instance.BattleRenownMultiplierEnabled;
         }
     }
 }

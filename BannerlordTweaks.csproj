@@ -41,6 +41,12 @@
     <Reference Include="SandBox">
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.dll</HintPath>
     </Reference>
+    <Reference Include="SandBox.ViewModelCollection">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.ViewModelCollection.dll</HintPath>
+    </Reference>
+    <Reference Include="StoryMode">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\StoryMode\bin\Win64_Shipping_Client\StoryMode.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -63,6 +69,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.Core.ViewModelCollection.dll</HintPath>
     </Reference>
+    <Reference Include="TaleWorlds.DotNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.DotNet.dll</HintPath>
+    </Reference>
     <Reference Include="TaleWorlds.Engine">
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.Engine.dll</HintPath>
     </Reference>
@@ -81,15 +91,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CraftingCampaignBehaviourPatches.cs" />
-    <Compile Include="CraftingVMPatch.cs" />
-    <Compile Include="DefaultBattleRewardModelPatch.cs" />
-    <Compile Include="DefaultPartySizeLimitModelPatch.cs" />
-    <Compile Include="DefaultTournamentModelPatch.cs" />
-    <Compile Include="HeroPatches.cs" />
+    <Compile Include="Lib\ExceptionExtensionMethods.cs" />
+    <Compile Include="Lib\Interfaces\ILoadable.cs" />
+    <Compile Include="Lib\Loader.cs" />
+    <Compile Include="Patches\ChangeKingdomActionPatch.cs" />
+    <Compile Include="Patches\CraftingCampaignBehaviourPatches.cs" />
+    <Compile Include="Patches\CraftingVMPatch.cs" />
+    <Compile Include="Patches\DefaultBattleRewardModelPatch.cs" />
+    <Compile Include="Patches\DefaultBuildingTypesPatch.cs" />
+    <Compile Include="Patches\DefaultPartySizeLimitModelPatch.cs" />
+    <Compile Include="Patches\DefaultTournamentModelPatch.cs" />
+    <Compile Include="Patches\DefaultTroopCountLimitModelPatch.cs" />
+    <Compile Include="Patches\HeroPatches.cs" />
+    <Compile Include="Patches\KingdomManagementVMPatch.cs" />
+    <Compile Include="Patches\TournamentVMPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="SubModule.cs" />
-    <Compile Include="TournamentBehaviourPatch.cs" />
+    <Compile Include="Patches\TournamentBehaviourPatch.cs" />
+    <Compile Include="TournamentExperienceMissionLogic.cs" />
+    <Compile Include="TweakedClanTierModel.cs" />
+    <Compile Include="TweakedCombatXpModel.cs" />
+    <Compile Include="TweakedSettlementFoodModel.cs" />
+    <Compile Include="TweakedSettlementMilitiaModel.cs" />
+    <Compile Include="TweakedWorkshopModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\BannerlordTweaks\bin\Win64_Shipping_Client\"
+cd "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\"
+start TaleWorlds.MountAndBlade.Launcher.exe</PostBuildEvent>
+  </PropertyGroup>
 </Project>
