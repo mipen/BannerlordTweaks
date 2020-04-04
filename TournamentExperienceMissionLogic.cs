@@ -15,12 +15,13 @@ namespace BannerlordTweaks
             try
             {
                 //Check to see if the affector is a hero
-                if (!affectorAgent.IsHero)
+                if (affectedAgent == null || affectedAgent.Character == null || affectorAgent == null || affectorAgent.Character == null || !affectorAgent.IsHero)
                     return;
 
                 Hero affectorHero = ((CharacterObject)affectorAgent.Character).HeroObject;
                 //If the hero is not the player or in the player's party, don't do anything
-                if (affectorHero == Hero.MainHero || affectorHero.PartyBelongedTo == Hero.MainHero.PartyBelongedTo)
+                if (affectorHero != null && (affectorHero == Hero.MainHero ||
+                    affectorHero.PartyBelongedTo != null && affectorHero.PartyBelongedTo == Hero.MainHero.PartyBelongedTo))
                 {
                     Hero captainHero = null;
                     Hero commanderHero = null;
@@ -34,7 +35,6 @@ namespace BannerlordTweaks
                             commanderHero = Hero.MainHero;
                         }
                     }
-
                     float hitPointRatio = (Math.Min(damage, affectedAgent.HealthLimit) / affectedAgent.HealthLimit) * 0.5f;
                     bool isTeamKill = affectorAgent.Team == affectedAgent.Team;
                     bool isFatal = affectedAgent.Health <= 0;
