@@ -41,6 +41,8 @@ namespace BannerlordTweaks
         public bool IgnoreCraftingStamina { get; set; } = false;
         [XmlElement]
         public float CraftingStaminaGainOutsideSettlementMultiplier { get; set; } = 1f;
+        [XmlElement]
+        public bool PreventSmeltingLockedItems { get; set; } = true;
         #endregion
 
         #region Battle reward patches
