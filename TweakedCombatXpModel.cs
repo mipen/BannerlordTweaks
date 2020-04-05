@@ -13,14 +13,14 @@ namespace BannerlordTweaks
             {
                 base.GetXpFromHit(attackerTroop, attackedTroop, damage, isFatal, isSimulated, out baseXpAmount);
 
-                if (Settings.Instance.TroopExperienceBattleMultiplierEnabled && !attackerTroop.IsHero && !isSimulated)
+                if (Settings.Instance.TroopBattleExperienceMultiplierEnabled && !attackerTroop.IsHero && !isSimulated)
                 {
-                    baseXpAmount = (int)Math.Ceiling((Settings.Instance.TroopExperienceBattleMultiplier * baseXpAmount));
+                    baseXpAmount = (int)Math.Ceiling((Settings.Instance.TroopBattleExperienceMultiplier * baseXpAmount));
                     //MessageBox.Show($"Attacker: {attackerTroop.Name}\nAttacked: {attackedTroop.Name}\nDefault xp: {baseXpAmount / Settings.Instance.TroopExperienceBattleMultiplier}\nMultiplied xp: {baseXpAmount}\nDamage:{damage}");
                 }
-                else if (Settings.Instance.TroopExperienceSimulationMultiplierEnabled && !attackerTroop.IsHero && isSimulated)
+                else if (Settings.Instance.TroopBattleSimulationExperienceMultiplierEnabled && !attackerTroop.IsHero && isSimulated)
                 {
-                    baseXpAmount = (int)Math.Ceiling((Settings.Instance.TroopExperienceSimulationMultiplier * baseXpAmount));
+                    baseXpAmount = (int)Math.Ceiling((Settings.Instance.TroopBattleSimulationExperienceMultiplier * baseXpAmount));
                 }
                 xpAmount = baseXpAmount;
             }
