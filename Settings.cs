@@ -100,9 +100,13 @@ namespace BannerlordTweaks
 
         #region Troop experience multiplier
         [XmlElement]
-        public bool TroopExperienceMultiplierEnabled { get; set; } = true;
+        public bool TroopExperienceBattleMultiplierEnabled { get; set; } = true;
         [XmlElement]
-        public float TroopExperienceMultiplier { get; set; } = 1.5f;
+        public float TroopExperienceBattleMultiplier { get; set; } = 8.0f;
+        [XmlElement]
+        public bool TroopExperienceSimulationMultiplierEnabled { get; set; } = false;
+        [XmlElement]
+        public float TroopExperienceSimulationMultiplier { get; set; } = 1.0f;
         #endregion
 
         #region Workshop tweaks
