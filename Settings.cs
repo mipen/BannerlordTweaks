@@ -104,20 +104,20 @@ namespace BannerlordTweaks
         [XmlElement]
         public float TroopBattleExperienceMultiplier { get; set; } = 3.0f;
         [XmlElement]
-        public bool TroopBattleSimulationExperienceMultiplierEnabled { get; set; } = false;
+        public bool TroopBattleSimulationAdditionalExperienceMultiplierEnabled { get; set; } = false;
         [XmlElement]
-        public float TroopBattleSimulationExperienceMultiplier { get; set; } = 1.0f;
+        public float TroopBattleSimulationAdditionalExperienceMultiplier { get; set; } = 1.0f;
         #endregion
 
         #region Workshop tweaks
         [XmlElement]
-        public bool MaxWorkshopCountTweaksEnabled { get; set; } = true;
+        public bool MaxWorkshopCountTweakEnabled { get; set; } = true;
         [XmlElement]
         public int BaseWorkshopCount { get; set; } = 2;
         [XmlElement]
         public int BonusWorkshopsPerClanTier { get; set; } = 1;
         [XmlElement]
-        public bool WorkshopBuyingCostTweak { get; set; } = false;
+        public bool WorkshopBuyingCostTweakEnabled { get; set; } = false;
         [XmlElement]
         public int WorkshopBaseCost { get; set; } = 10000;
         #endregion

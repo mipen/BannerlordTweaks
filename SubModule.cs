@@ -61,12 +61,18 @@ namespace BannerlordTweaks
         {
             if (gameStarter != null)
             {
-                gameStarter.AddModel(new TweakedCombatXpModel());
-                gameStarter.AddModel(new TweakedWorkshopModel());
-                gameStarter.AddModel(new TweakedClanTierModel());
-                gameStarter.AddModel(new TweakedSettlementMilitiaModel());
-                gameStarter.AddModel(new TweakedSettlementFoodModel());
-                gameStarter.AddModel(new TweakedSiegeEventModel());
+                if (Settings.Instance.TroopBattleExperienceMultiplierEnabled)
+                    gameStarter.AddModel(new TweakedCombatXpModel());
+                if (Settings.Instance.MaxWorkshopCountTweakEnabled || Settings.Instance.WorkshopBuyingCostTweakEnabled)
+                    gameStarter.AddModel(new TweakedWorkshopModel());
+                if (Settings.Instance.CompanionLimitTweakEnabled || Settings.Instance.ClanPartiesLimitTweakEnabled)
+                    gameStarter.AddModel(new TweakedClanTierModel());
+                if (Settings.Instance.SettlementMilitiaBonusEnabled)
+                    gameStarter.AddModel(new TweakedSettlementMilitiaModel());
+                if (Settings.Instance.SettlementFoodBonusEnabled)
+                    gameStarter.AddModel(new TweakedSettlementFoodModel());
+                if (Settings.Instance.SiegeCasualtiesTweakEnabled || Settings.Instance.SiegeConstructionProgressPerDayMultiplierEnabled)
+                    gameStarter.AddModel(new TweakedSiegeEventModel());
             }
         }
     }
