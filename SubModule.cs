@@ -12,7 +12,7 @@ namespace BannerlordTweaks
 {
     public class SubModule : MBSubModuleBase
     {
-        public static readonly string ModuleName = "zBannerlordTweaks";
+        public static readonly string ModuleName = "zzBannerlordTweaks";
 
         protected override void OnSubModuleLoad()
         {
@@ -23,10 +23,11 @@ namespace BannerlordTweaks
 
                 var harmony = new Harmony("mod.bannerlord.mipen");
                 harmony.PatchAll();
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error Initialising mod:\n\n{ex.ToStringFull()}");
+                MessageBox.Show($"Error Initialising Bannerlord Tweaks:\n\n{ex.ToStringFull()}");
             }
         }
 

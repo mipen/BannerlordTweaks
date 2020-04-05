@@ -17,7 +17,6 @@ namespace BannerlordTweaks
                     baseXpAmount = (int)Math.Ceiling((Settings.Instance.TroopExperienceMultiplier * baseXpAmount));
                 //MessageBox.Show($"Attacker: {attackerTroop.Name}\nAttacked: {attackedTroop.Name}\nDefault xp: {baseXpAmount / Settings.Instance.TroopExperienceMultiplier}\nMultiplied xp: {baseXpAmount}\nDamage:{damage}");
                 xpAmount = baseXpAmount;
-                //MessageBox.Show($"Attacker: {attackerTroop.Name}\nAttacked: {attackedTroop.Name}\nExp amount: {xpAmount}");
             }
             else
                 xpAmount = 0;

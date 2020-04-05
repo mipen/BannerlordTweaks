@@ -12,6 +12,8 @@ namespace BannerlordTweaks
 
         [XmlElement("ID")]
         public string ID { get; set; } = instanceID;
+        [XmlElement]
+        public bool DebugMode { get; set; } = true;
 
         public static Settings Instance
         {
@@ -79,6 +81,8 @@ namespace BannerlordTweaks
         #region Hero skill multiplier patch
         [XmlElement]
         public bool HeroSkillExperienceMultiplierEnabled { get; set; } = true;
+        [XmlElement]
+        public float HeroSkillExperienceGeneralMultiplier { get; set; } = -1;
         #endregion
 
         #region Hideout battle troop limit patch
@@ -201,6 +205,15 @@ namespace BannerlordTweaks
         public float SiegeCollateralDamageCasualties { get; set; } = 1.75f;
         [XmlElement]
         public float SiegeDestructionCasualties { get; set; } = 4.5f;
+        #endregion
+
+        #region Clan parties tweak
+        [XmlElement]
+        public bool ClanPartiesLimitTweakEnabled { get; set; } = true;
+        [XmlElement]
+        public int BaseClanPartiesLimit { get; set; } = 0;
+        [XmlElement]
+        public float ClanPartiesBonusPerClanTier { get; set; } = 0.5f;
         #endregion
     }
 }

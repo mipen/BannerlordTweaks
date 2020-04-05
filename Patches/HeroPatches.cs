@@ -11,7 +11,10 @@ namespace BannerlordTweaks.Patches
     {
         private static double GetMultiplier(int skillLevel)
         {
-            return Math.Max(1, 0.0315769 * Math.Pow(skillLevel, 1.020743));
+            if (Settings.Instance.HeroSkillExperienceGeneralMultiplier > 0)
+                return Settings.Instance.HeroSkillExperienceGeneralMultiplier;
+            else
+                return Math.Max(1, 0.0315769 * Math.Pow(skillLevel, 1.020743));
         }
 
         static bool Prefix(Hero __instance, SkillObject skill, int xpAmount)
@@ -24,7 +27,7 @@ namespace BannerlordTweaks.Patches
                     double multiplier = GetMultiplier(__instance.GetSkillValue(skill));
                     int newXpAmount = (int)Math.Ceiling(xpAmount * multiplier);
                     hd.AddSkillXp(skill, newXpAmount);
-                   //MessageBox.Show($"Skill: {skill.Name}\nLevel: {__instance.GetSkillValue(skill)}\nMultiplier: {multiplier}\nOld xp amount: {xpAmount}\nNew xp amount: {newXpAmount}");
+                    //MessageBox.Show($"Skill: {skill.Name}\nLevel: {__instance.GetSkillValue(skill)}\nMultiplier: {multiplier}\nOld xp amount: {xpAmount}\nNew xp amount: {newXpAmount}");
                 }
             }
             catch (Exception ex)

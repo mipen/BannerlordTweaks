@@ -17,7 +17,7 @@ namespace BannerlordTweaks.Patches
                 int num;
                 if (Settings.Instance.LeadershipPartySizeBonusEnabled)
                 {
-                    skill = SkillObject.FindFirst((x) => { return x.Name.ToString() == "Leadership"; });
+                    skill = SkillObject.FindFirst((x) => { return x.StringId == "Leadership"; });
                     num = (int)Math.Ceiling(party.LeaderHero.GetSkillValue(skill) * Settings.Instance.LeadershipPartySizeBonus);
                     __result += num;
                     explanation?.AddLine("Leadership bonus", num);
@@ -25,7 +25,7 @@ namespace BannerlordTweaks.Patches
 
                 if (Settings.Instance.StewardPartySizeBonusEnabled)
                 {
-                    skill = SkillObject.FindFirst((x) => x.Name.ToString() == "Steward");
+                    skill = SkillObject.FindFirst((x) => x.StringId == "Steward");
                     num = (int)Math.Ceiling(party.LeaderHero.GetSkillValue(skill) * Settings.Instance.StewardPartySizeBonus);
                     __result += num;
                     explanation?.AddLine("Steward bonus", num);

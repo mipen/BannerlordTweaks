@@ -14,27 +14,26 @@ namespace BannerlordTweaks
         {
             try
             {
-                //Check to see if the affector is a hero
-                if (affectedAgent == null || affectedAgent.Character == null || affectorAgent == null || affectorAgent.Character == null || !affectorAgent.IsHero)
+                Hero affectorHero;
+
+                if (!IsValidAffected(affectedAgent) || !IsValidAffector(affectorAgent, out affectorHero))
                     return;
 
-                Hero affectorHero = ((CharacterObject)affectorAgent.Character).HeroObject;
-                //If the hero is not the player or in the player's party, don't do anything
-                if (affectorHero != null && (affectorHero == Hero.MainHero ||
-                    affectorHero.PartyBelongedTo != null && affectorHero.PartyBelongedTo == Hero.MainHero.PartyBelongedTo))
+                if (affectorHero != null)
                 {
+                    MessageBox.Show($"Giving experience to {affectorAgent.Character.Name} in tournament.\nAffected:{affectedAgent.Character.Name}");
                     Hero captainHero = null;
                     Hero commanderHero = null;
                     //If the affector is the player's companion, set the commander and captain as the player.
-                    if (affectorHero != Hero.MainHero)
-                    {
-                        CharacterObject leaderCharacter = (CharacterObject)affectorAgent.Team.Leader.Character;
-                        if (leaderCharacter.HeroObject == Hero.MainHero)
-                        {
-                            captainHero = Hero.MainHero;
-                            commanderHero = Hero.MainHero;
-                        }
-                    }
+                    //if (affectorHero != Hero.MainHero)
+                    //{
+                    //    CharacterObject leaderCharacter = (CharacterObject)affectorAgent.Team.Leader.Character;
+                    //    if (leaderCharacter.HeroObject == Hero.MainHero)
+                    //    {
+                    //        captainHero = Hero.MainHero;
+                    //        commanderHero = Hero.MainHero;
+                    //    }
+                    //}
                     float hitPointRatio = (Math.Min(damage, affectedAgent.HealthLimit) / affectedAgent.HealthLimit) * 0.5f;
                     bool isTeamKill = affectorAgent.Team == affectedAgent.Team;
                     bool isFatal = affectedAgent.Health <= 0;
@@ -42,13 +41,39 @@ namespace BannerlordTweaks
                     SkillLevelingManager.OnCombatHit(affectorAgent.Character as CharacterObject, affectedAgent.Character as CharacterObject,
                         captainHero, commanderHero, movementSpeedDamageModifier, shotDifficulty, affectorWeaponKind, hitPointRatio, false, affectorAgent.HasMount,
                         isTeamKill, false, weaponCurrentUsageIndex, damage, isFatal);
-                    //MessageBox.Show($"Did this!\nAffector:{affectorAgent.Character.Name}\nAffected:{affectedAgent.Character.Name}");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred during Tournament experience logic:\n\n{ex.ToStringFull()}");
             }
+        }
+
+        private bool IsValidAffector(Agent affector, out Hero hero)
+        {
+            hero = null;
+
+            if (affector == null) return false;
+            if (affector.Character == null) return false;
+            if (!affector.IsHero) return false;
+
+            hero = ((CharacterObject)affector.Character).HeroObject;
+
+            if (hero == null) return false;
+            if (hero.Clan == null) return false;
+            if (hero != Hero.MainHero || hero.Clan != Clan.PlayerClan) return false;
+            if (hero.MapFaction != Hero.MainHero.MapFaction) return false;
+            if (hero.PartyBelongedTo != Hero.MainHero.PartyBelongedTo) return false;
+            if (hero.IsWanderer) return false;
+
+            return true;
+        }
+
+        private bool IsValidAffected(Agent affected)
+        {
+            if (affected.Character == null) return false;
+
+            return true;
         }
     }
 }
