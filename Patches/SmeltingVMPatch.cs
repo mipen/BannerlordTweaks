@@ -56,10 +56,10 @@ namespace BannerlordTweaks.Patches
                 __instance.CurrentSelectedItem = null;
             }
         }
-        /*
+
         static bool Prepare()
         {
             return Settings.Instance.PreventSmeltingLockedItems;
-        }*/
+        }
     }
 }
