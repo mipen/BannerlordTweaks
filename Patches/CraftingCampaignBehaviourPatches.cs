@@ -34,11 +34,20 @@ namespace BannerlordTweaks.Patches
                 {
                     int curCraftingStamina = __instance.GetHeroCraftingStamina(hero);
 
-                    if (curCraftingStamina < Settings.Instance.MaxCraftingStamina && hero.PartyBelongedTo?.CurrentSettlement != null)
+                    if (curCraftingStamina < Settings.Instance.MaxCraftingStamina)
                     {
-                        __instance.SetHeroCraftingStamina(hero, Math.Min(Settings.Instance.MaxCraftingStamina, curCraftingStamina + Settings.Instance.CraftingStaminaGainAmount));
+                        int staminaGainAmount = Settings.Instance.CraftingStaminaGainAmount;
+
+                        if (Settings.Instance.CraftingStaminaGainOutsideSettlementMultiplier < 1 && hero.PartyBelongedTo?.CurrentSettlement == null)
+                            staminaGainAmount = (int)Math.Ceiling(staminaGainAmount * Settings.Instance.CraftingStaminaGainOutsideSettlementMultiplier);
+
+                        int diff = Settings.Instance.MaxCraftingStamina - curCraftingStamina;
+                        if (diff < staminaGainAmount)
+                            staminaGainAmount = diff;
+
+                        __instance.SetHeroCraftingStamina(hero, Math.Min(Settings.Instance.MaxCraftingStamina, curCraftingStamina + staminaGainAmount));
+                        //MessageBox.Show($"Hero: {hero.Name}\n\nCrafting Stamina: {__instance.GetHeroCraftingStamina(hero)}");
                     }
-                    //MessageBox.Show($"Hero: {hero.Name}\n\nCrafting Stamina: {__instance.GetHeroCraftingStamina(hero)}");
                 }
             }
             catch (Exception ex)

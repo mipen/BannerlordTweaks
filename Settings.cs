@@ -39,6 +39,8 @@ namespace BannerlordTweaks
         public int CraftingStaminaGainAmount { get; set; } = 10;
         [XmlElement]
         public bool IgnoreCraftingStamina { get; set; } = false;
+        [XmlElement]
+        public float CraftingStaminaGainOutsideSettlementMultiplier { get; set; } = 1f;
         #endregion
 
         #region Battle reward patches
@@ -85,11 +87,15 @@ namespace BannerlordTweaks
         public float HeroSkillExperienceGeneralMultiplier { get; set; } = -1;
         #endregion
 
-        #region Hideout battle troop limit patch
+        #region Hideout battle tweaks
         [XmlElement]
         public bool HideoutBattleTroopLimitTweakEnabled { get; set; } = true;
         [XmlElement]
         public int HideoutBattleTroopLimit { get; set; } = 9999;
+        [XmlElement]
+        public bool LoseHideoutBattleOnPlayerDeath { get; set; } = false;
+        [XmlElement]
+        public bool LoseHideoutBattleOnPlayerLoseDuel { get; set; } = false;
         #endregion
 
         #region Troop experience multiplier

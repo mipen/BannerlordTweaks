@@ -3,10 +3,12 @@ using HarmonyLib;
 using SandBox;
 using SandBox.TournamentMissions.Missions;
 using System;
+using System.Reflection;
 using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using System.Linq;
 
 namespace BannerlordTweaks
 {
@@ -23,7 +25,6 @@ namespace BannerlordTweaks
 
                 var harmony = new Harmony("mod.bannerlord.mipen");
                 harmony.PatchAll();
-
             }
             catch (Exception ex)
             {

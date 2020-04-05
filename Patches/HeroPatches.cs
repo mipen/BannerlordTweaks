@@ -11,7 +11,7 @@ namespace BannerlordTweaks.Patches
     {
         private static double GetMultiplier(int skillLevel)
         {
-            if (Settings.Instance.HeroSkillExperienceGeneralMultiplier > 0)
+            if (Settings.Instance.HeroSkillExperienceGeneralMultiplier >= 1)
                 return Settings.Instance.HeroSkillExperienceGeneralMultiplier;
             else
                 return Math.Max(1, 0.0315769 * Math.Pow(skillLevel, 1.020743));

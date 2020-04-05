@@ -104,6 +104,7 @@
     <Compile Include="Patches\DefaultTournamentModelPatch.cs" />
     <Compile Include="Patches\DefaultTroopCountLimitModelPatch.cs" />
     <Compile Include="Patches\HeroPatches.cs" />
+    <Compile Include="Patches\HideoutMissionControllerPatches.cs" />
     <Compile Include="Patches\KingdomManagementVMPatch.cs" />
     <Compile Include="Patches\LordConversationsCampaignBehavior.cs" />
     <Compile Include="Patches\ModulePatch.cs" />

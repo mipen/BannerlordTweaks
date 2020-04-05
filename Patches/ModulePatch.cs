@@ -11,7 +11,7 @@ namespace BannerlordTweaks.Patches
         static void Finalizer(Exception __exception)
         {
             if (__exception != null)
-                MessageBox.Show($"Better crash report provided by Bannerlord Tweaks \n\n{__exception.ToStringFull()}", "Crash Report");
+                MessageBox.Show($"Better crash report provided by Bannerlord Tweaks.\nNB: This does not mean this crash was necessarily caused by Bannerlord Tweaks, it is just allowing you to see what the error was. \n\n{__exception.ToStringFull()}", "Mount and Blade Bannerlord has crashed");
         }
 
         static bool Prepare()
