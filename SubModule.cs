@@ -57,12 +57,15 @@ namespace BannerlordTweaks
 
         private void AddModels(CampaignGameStarter gameStarter)
         {
-            gameStarter.AddModel(new TweakedCombatXpModel());
-            gameStarter.AddModel(new TweakedWorkshopModel());
-            gameStarter.AddModel(new TweakedClanTierModel());
-            gameStarter.AddModel(new TweakedSettlementMilitiaModel());
-            gameStarter.AddModel(new TweakedSettlementFoodModel());
-            gameStarter.AddModel(new TweakedSiegeEventModel());
+            if (gameStarter != null)
+            {
+                gameStarter.AddModel(new TweakedCombatXpModel());
+                gameStarter.AddModel(new TweakedWorkshopModel());
+                gameStarter.AddModel(new TweakedClanTierModel());
+                gameStarter.AddModel(new TweakedSettlementMilitiaModel());
+                gameStarter.AddModel(new TweakedSettlementFoodModel());
+                gameStarter.AddModel(new TweakedSiegeEventModel());
+            }
         }
     }
 }
