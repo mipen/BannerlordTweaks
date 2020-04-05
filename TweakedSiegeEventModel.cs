@@ -17,7 +17,7 @@ namespace BannerlordTweaks
         public override float GetColleteralDamageCasualties(SiegeEngineType siegeEngineType)
         {
             if (Settings.Instance.SiegeCasualtiesTweakEnabled)
-                return base.GetColleteralDamageCasualties(siegeEngineType) * Settings.Instance.SiegeCollateralDamageCasualties;
+                return Settings.Instance.SiegeCollateralDamageCasualties;
             else
                 return base.GetColleteralDamageCasualties(siegeEngineType);
         }
@@ -25,7 +25,7 @@ namespace BannerlordTweaks
         public override float GetDestructionCasualties(SiegeEngineType destroyedSiegeEngine)
         {
             if (Settings.Instance.SiegeCasualtiesTweakEnabled)
-                return base.GetDestructionCasualties(destroyedSiegeEngine) * Settings.Instance.SiegeDestructionCasualties;
+                return Settings.Instance.SiegeDestructionCasualties;
             else
                 return base.GetDestructionCasualties(destroyedSiegeEngine);
         }

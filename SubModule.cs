@@ -26,7 +26,7 @@ namespace BannerlordTweaks
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error patching:\n{ex.Message} \n\n{ex.InnerException?.Message}");
+                MessageBox.Show($"Error Initialising mod:\n\n{ex.ToStringFull()}");
             }
         }
 
