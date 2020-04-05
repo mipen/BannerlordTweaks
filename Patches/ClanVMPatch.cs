@@ -1,9 +1,7 @@
-﻿using HarmonyLib;
+﻿using BannerlordTweaks.Lib;
+using HarmonyLib;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.ViewModelCollection.ClanManagement;
@@ -15,7 +13,7 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(ClanVM),"ExecuteLeaveKingdom")]
     public class ClanVMPatch
     {
-        static bool Prefix()
+        static bool Prefix(ClanVM __instance)
         {
             try
             {
@@ -28,8 +26,8 @@ namespace BannerlordTweaks.Patches
                         () =>
                         {
                             ChangeKingdomAction.ApplyByLeaveKingdomAsMercenaryForNoPayment(Clan.PlayerClan, Clan.PlayerClan.Kingdom);
-                            typeof(ClanVM).GetMethod("ExecuteClose", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
-                            .Invoke(__instance, null);
+                            __instance.ClanIsInAKingdom = (Clan.PlayerClan.Kingdom != null);
+                            __instance.UpdateBannerVisuals();
                         },
                         null));
                     return false;

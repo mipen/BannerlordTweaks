@@ -12,7 +12,7 @@ namespace BannerlordTweaks
 {
     public class SubModule : MBSubModuleBase
     {
-        public static readonly string ModuleName = "BannerlordTweaks";
+        public static readonly string ModuleName = "zBannerlordTweaks";
 
         protected override void OnSubModuleLoad()
         {

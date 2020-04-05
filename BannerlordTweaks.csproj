@@ -96,6 +96,7 @@
     <Compile Include="Lib\Interfaces\ILoadable.cs" />
     <Compile Include="Lib\Loader.cs" />
     <Compile Include="Patches\ChangeKingdomActionPatch.cs" />
+    <Compile Include="Patches\ClanVMPatch.cs" />
     <Compile Include="Patches\CraftingCampaignBehaviourPatches.cs" />
     <Compile Include="Patches\CraftingVMPatch.cs" />
     <Compile Include="Patches\DefaultBattleRewardModelPatch.cs" />
@@ -121,7 +122,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\BannerlordTweaks\bin\Win64_Shipping_Client\"
+    <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zBannerlordTweaks\bin\Win64_Shipping_Client\"
 cd "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\"
 start TaleWorlds.MountAndBlade.Launcher.exe</PostBuildEvent>
   </PropertyGroup>
