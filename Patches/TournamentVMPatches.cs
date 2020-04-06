@@ -1,4 +1,4 @@
-﻿using BannerlordTweaks.Lib;
+﻿using ModLib;
 using HarmonyLib;
 using SandBox.ViewModelCollection.Tournament;
 using System;

@@ -4,7 +4,7 @@ using TaleWorlds.Localization;
 using System.Linq;
 using System.Windows.Forms;
 using System;
-using BannerlordTweaks.Lib;
+using ModLib;
 
 namespace BannerlordTweaks
 {

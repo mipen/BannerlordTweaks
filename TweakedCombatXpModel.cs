@@ -8,7 +8,7 @@ namespace BannerlordTweaks
     {
         public override void GetXpFromHit(CharacterObject attackerTroop, CharacterObject attackedTroop, int damage, bool isFatal, bool isSimulated, out int xpAmount)
         {
-            int baseXpAmount;
+            int baseXpAmount = 0;
             if (attackerTroop != null && attackedTroop != null)
             {
                 base.GetXpFromHit(attackerTroop, attackedTroop, damage, isFatal, isSimulated, out baseXpAmount);
@@ -24,8 +24,7 @@ namespace BannerlordTweaks
                 //MessageBox.Show($"Attacker: {attackerTroop.Name}\nAttacked: {attackedTroop.Name}\nDefault xp: {baseXpAmount / Settings.Instance.TroopExperienceBattleMultiplier}\nMultiplied xp: {baseXpAmount}\nDamage:{damage}");
             }
             else
-                xpAmount = 0;
-
+                xpAmount = baseXpAmount;
         }
     }
 }

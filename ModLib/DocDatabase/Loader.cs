@@ -1,4 +1,5 @@
-﻿using BannerlordTweaks.Lib.Interfaces;
+﻿using ModLib.Debug;
+using ModLib.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +12,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using TaleWorlds.Library;
 
-namespace BannerlordTweaks.Lib
+namespace ModLib
 {
     public static class Loader
     {
@@ -50,7 +51,7 @@ namespace BannerlordTweaks.Lib
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred whilst trying to load files for module: {moduleName}\n\n{ex.ToStringFull()}");
+                ModDebug.ShowError($"An error occurred whilst trying to load files for module: {moduleName}", "Error occurred during loading files", ex);
             }
             return successful;
         }
@@ -100,52 +101,57 @@ namespace BannerlordTweaks.Lib
                 Data.Add(type, new Dictionary<string, ILoadable>());
 
             if (Data[type].ContainsKey(loadable.ID))
-                throw new Exception($"Loader Data already contains the ID key {loadable.ID} for type {loadable.GetType()}");
-
-            Data[type].Add(loadable.ID, loadable);
+            {
+                ModDebug.LogError($"Loader already contains Type: {type.AssemblyQualifiedName} ID: {loadable.ID}, overriting...");
+                Data[type][loadable.ID] = loadable;
+            }
+            else
+                Data[type].Add(loadable.ID, loadable);
         }
 
         private static void LoadFromFile(string filePath)
         {
             using (XmlReader reader = XmlReader.Create(filePath))
             {
-                string typeName = "";
+                string nodeData = "";
                 try
                 {
                     //Find the type name
                     if (reader.MoveToContent() == XmlNodeType.Element)
-                        typeName = reader.Name;
+                        nodeData = reader.Name;
                     //If we couldn't find the type name, throw an exception saying so. If the root node doesn't include the namespace, throw an exception saying so.
-                    if (string.IsNullOrWhiteSpace(typeName))
+                    if (string.IsNullOrWhiteSpace(nodeData))
                         throw new Exception($"Could not find the root node in xml document located at {filePath}");
-                    if (!typeName.Contains('.'))
-                        throw new Exception($"The root node of the xml document located at {filePath} doesn't include a namespace.\nRoot node: {typeName}");
 
-                    //Find the type from the root node name. The root node should be the full name of the type, including the namespace.
-                    Type type = Type.GetType(typeName);
+                    TypeData data = new TypeData(nodeData);
+                    //Find the type from the root node name. The root node should be the full name of the type, including the namespace and the assembly.
 
-                    if (type == null)
-                        throw new Exception($"Unable to find type {typeName}");
+                    if (data.Type == null)
+                        throw new Exception($"Unable to find type {data.FullName}");
 
                     XmlRootAttribute root = new XmlRootAttribute();
-                    root.ElementName = typeName;
+                    root.ElementName = nodeData;
                     root.IsNullable = true;
-                    XmlSerializer serialiser = new XmlSerializer(type, root);
+                    XmlSerializer serialiser = new XmlSerializer(data.Type, root);
                     ILoadable loaded = (ILoadable)serialiser.Deserialize(reader);
                     if (loaded != null)
                         Add(loaded);
                     else
-                        throw new Exception($"Unable to load {typeName} from file.");
+                        throw new Exception($"Unable to load {data.FullName} from file {filePath}.");
                 }
                 catch (Exception ex)
                 {
                     if (ex is ArgumentNullException && ((ArgumentNullException)ex).ParamName == "type")
-                        throw new Exception($"Cannot get a type from type name {typeName}", ex);
-                    throw ex;
+                        throw new Exception($"Cannot get a type from type name {nodeData} in file {filePath}", ex);
+                    throw new Exception($"An error occurred whilst loading file {filePath}", ex);
                 }
             }
         }
 
+        /// <summary>
+        /// Loads all files in the Loadables folder for the given module.
+        /// </summary>
+        /// <param name="moduleName">This is the name of the module to load the files for. This is the name of the module folder.</param>
         private static void LoadAllFiles(string moduleName)
         {
             //Check if the given module name is correct
@@ -180,11 +186,50 @@ namespace BannerlordTweaks.Lib
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    throw new Exception($"An error occurred while Loader was trying to load all files for module {moduleName}", ex);
                 }
             }
             else
-                throw new Exception($@"Module named {moduleName} doesn't contain the Modules\Loadables directory");
+                ModDebug.LogError($@"Tried to load files for mod {moduleName}, but it doesn't contain a ModuleData\Loadables folder");
+        }
+
+        private class TypeData
+        {
+            public string AssemblyName { get; private set; } = "";
+            public string TypeName { get; private set; } = "";
+            public string FullName => $"{TypeName}, {AssemblyName}";
+            public Type Type
+            {
+                get
+                {
+                    return Type.GetType(FullName);
+                }
+            }
+
+            public TypeData(string nodeData)
+            {
+                if (!string.IsNullOrWhiteSpace(nodeData))
+                {
+                    if (!nodeData.Contains("-"))
+                        throw new ArgumentException($"Node data does not contain an assembly string\nNode Data: {nodeData}");
+                    if (!nodeData.Contains("."))
+                        throw new ArgumentException($"Node data does not contain a namespace string\nNode Data: {nodeData}");
+
+                    string[] split = nodeData.Split('-');
+
+                    if (!string.IsNullOrWhiteSpace(split[0]))
+                        AssemblyName = split[0];
+                    else
+                        throw new ArgumentException($"Assembly name in node data was null or empty\nNode Data: {nodeData}");
+
+                    if (!string.IsNullOrWhiteSpace(split[1]))
+                        TypeName = split[1];
+                    else
+                        throw new ArgumentException($"Type name in node data was null or empty\nNode Data: {nodeData}");
+                }
+                else
+                    throw new ArgumentException($"The given node data was invalid.\nNode Data: {nodeData}");
+            }
         }
     }
 }
