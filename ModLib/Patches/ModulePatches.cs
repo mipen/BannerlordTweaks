@@ -10,7 +10,6 @@ namespace ModLib.Patches
     {
         static void Finalizer(Exception __exception)
         {
-            MessageBox.Show("Ticking");
             if (__exception != null)
             {
                 ModDebug.ShowError($"Mount and Blade Bannerlord has encountered an error and needs to close. See the error information below.",
@@ -20,7 +19,7 @@ namespace ModLib.Patches
 
         static bool Prepare()
         {
-            return true;
+            return Settings.Instance.DebugMode;
         }
     }
 }
