@@ -103,6 +103,7 @@
     <Compile Include="Patches\HideoutMissionControllerPatches.cs" />
     <Compile Include="Patches\KingdomManagementVMPatch.cs" />
     <Compile Include="Patches\LordConversationsCampaignBehavior.cs" />
+    <Compile Include="Patches\SmeltingVMPatch.cs" />
     <Compile Include="Patches\TournamentVMPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />

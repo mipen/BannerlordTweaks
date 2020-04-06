@@ -23,7 +23,7 @@ namespace BannerlordTweaks
                 {
                     _instance = Loader.Get<Settings>(instanceID);
                     if (_instance == null)
-                        throw new Exception("Unable to find settings in Loader");
+                        throw new Exception("Unable to find Bannerlord Tweaks settings in Loader");
                 }
 
                 return _instance;

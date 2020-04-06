@@ -1,9 +1,5 @@
 ﻿using ModLib.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace ModLib
@@ -17,7 +13,11 @@ namespace ModLib
             get
             {
                 if (_instance == null)
+                {
                     _instance = Loader.Get<ModLib.Settings>(instanceID);
+                    if (_instance == null)
+                        throw new Exception("Unable to find ModLib settings in Loader");
+                }
                 return _instance;
             }
         }
