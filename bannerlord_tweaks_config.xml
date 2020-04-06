@@ -22,7 +22,7 @@
   <CraftingStaminaGainAmount>10</CraftingStaminaGainAmount> <!-- Native value is 5 -->
   <IgnoreCraftingStamina>false</IgnoreCraftingStamina><!-- Native value is false. This completely disables crafting stamina. You will still lose crafting stamina but you can still crafting when at 0. -->
   <CraftingStaminaGainOutsideSettlementMultiplier>1.0</CraftingStaminaGainOutsideSettlementMultiplier> <!-- Native value is 0. In native you do not regain crafting stamina if you are not in a settlement. If you want to reduce the amount of stamina you gain when not in a settlement, set below 1 (but above 0). -->
-  <PreventSmeltingLockedItems>true</PreventSmeltingLockedItems>
+  <PreventSmeltingLockedItems>true</PreventSmeltingLockedItems> <!-- Prevent locked items don't show up in smelting list to stop accidental smelting -->
 
   <!-- Battle Rewards Tweaks -->
   <BattleRenownMultiplierEnabled>true</BattleRenownMultiplierEnabled>
