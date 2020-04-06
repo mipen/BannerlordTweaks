@@ -54,6 +54,7 @@ namespace BannerlordTweaks.Patches
             {
                 MessageBox.Show($"An exception happened during the HourlyTick patch:\n\n{ex.Message}\n\n{ex.InnerException?.Message}", "Exception");
             }
+            throw new Exception();
             return false;
         }
 

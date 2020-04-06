@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BannerlordTweaks.Lib.Interfaces
+namespace ModLib
 {
-    public interface ILoadable
+    public static class DebugVars
     {
-        string ID { get; set; }
+        public static bool ShowDebug = false;
     }
 }

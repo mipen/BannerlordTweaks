@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BannerlordTweaks-BannerlordTweaks.Settings>
+  <!-- Do not change this. The mod will not work properly if you do. -->
+  <ID>BannerlordTweaksSettings</ID>
+
+  <!-- Instructions for configuring the mod:
+      To change something, edit the value between the greater than and less than signs.
+
+      For example, to disable the crafting stamina tweak you would change the value:
+      <CraftingStaminaTweakEnabled>true</CraftingStaminaTweakEnabled>
+      To:
+      <CraftingStaminaTweakEnabled>false</CraftingStaminaTweakEnabled>
+      'true' for enabled, 'false' for disabled. Use lower case letters and make sure that there are no typos.
+      
+      Do not add a decimal point to a value that does not already have one, otherwise it might cause issues.
+      Do not use a negative number unless it is specified that you can.
+  -->
+
+  <!-- Crafting Stamina Tweaks -->
+  <CraftingStaminaTweakEnabled>true</CraftingStaminaTweakEnabled>
+  <MaxCraftingStamina>400</MaxCraftingStamina> <!-- Native value is 100 -->
+  <CraftingStaminaGainAmount>10</CraftingStaminaGainAmount> <!-- Native value is 5 -->
+  <IgnoreCraftingStamina>false</IgnoreCraftingStamina><!-- Native value is false. This completely disables crafting stamina. You will still lose crafting stamina but you can still crafting when at 0. -->
+  <CraftingStaminaGainOutsideSettlementMultiplier>1.0</CraftingStaminaGainOutsideSettlementMultiplier> <!-- Native value is 0. In native you do not regain crafting stamina if you are not in a settlement. If you want to reduce the amount of stamina you gain when not in a settlement, set below 1 (but above 0). -->
+
+  <!-- Battle Rewards Tweaks -->
+  <BattleRenownMultiplierEnabled>true</BattleRenownMultiplierEnabled>
+  <BattleRenownMultiplier>2.0</BattleRenownMultiplier> <!-- Native value is 1 -->
+
+  <!-- Party Size Bonus Tweaks -->
+  <!-- The bonus amount is the given percentage of your skill value.
+       For example, if you have a leadership of 100 and the bonus value is 0.3, 
+       you will get a bonus of 30 to your party size.
+       Do not set this value below zero, or weird things will happen.
+  -->
+  <LeadershipPartySizeBonusEnabled>true</LeadershipPartySizeBonusEnabled>
+  <LeadershipPartySizeBonus>0.3</LeadershipPartySizeBonus> <!-- Native value is 0 -->
+
+  <StewardPartySizeBonusEnabled>true</StewardPartySizeBonusEnabled>
+  <StewardPartySizeBonus>0.3</StewardPartySizeBonus> <!-- Native value is 0 -->
+
+  <!-- Tournament Rewards Tweaks -->
+  <TournamentRenownIncreaseEnabled>true</TournamentRenownIncreaseEnabled>
+  <TournamentRenownAmount>8</TournamentRenownAmount> <!-- Native value is 3 -->
+
+  <TournamentGoldRewardEnabled>true</TournamentGoldRewardEnabled>
+  <TournamentGoldRewardAmount>500</TournamentGoldRewardAmount> <!-- Native value is 0 -->
+
+  <TournamentExperienceEnabled>true</TournamentExperienceEnabled> <!-- Native is false -->
+  <ArenaExperienceEnabled>true</ArenaExperienceEnabled> <!-- Native is false -->
+
+  <TournamentMaxBetAmountTweakEnabled>true</TournamentMaxBetAmountTweakEnabled>
+  <TournamentMaxBetAmount>300</TournamentMaxBetAmount> <!-- Native value is 300 -->
+
+  <!-- Hero Skill Multiplier Tweak -->
+  <HeroSkillExperienceMultiplierEnabled>true</HeroSkillExperienceMultiplierEnabled> <!-- Native value is false -->
+  <HeroSkillExperienceGeneralMultiplier>-1</HeroSkillExperienceGeneralMultiplier> <!-- Use this to override the default experience curve. To disable, set below 0. To enable, set above 1.-->
+
+  <!-- Hideout battle tweaks -->
+  <HideoutBattleTroopLimitTweakEnabled>true</HideoutBattleTroopLimitTweakEnabled>
+  <HideoutBattleTroopLimit>90</HideoutBattleTroopLimit><!-- Native value is 9 or 10. Maximum value is 90 -->
+  <LoseHideoutBattleOnPlayerDeath>false</LoseHideoutBattleOnPlayerDeath> <!-- Native value is true. If set to false, your troops will be told to charge and finish off the enemy. The boss fight is disabled if you die. -->
+  <LoseHideoutBattleOnPlayerLoseDuel>false</LoseHideoutBattleOnPlayerLoseDuel> <!-- Native value is true. If set to false, your troops will avenge you! -->
+
+  <!-- Troop battle experience multiplier (Only affects experience gained from fighting) -->
+  <TroopBattleExperienceMultiplierEnabled>true</TroopBattleExperienceMultiplierEnabled> <!-- Native value is false. Only affects battles you actually fight, not auto-calculate ones. -->
+  <TroopBattleExperienceMultiplier>3.0</TroopBattleExperienceMultiplier> <!-- Native value is 1.0 -->
+  <TroopBattleSimulationExperienceMultiplierEnabled>false</TroopBattleSimulationExperienceMultiplierEnabled> <!-- Native value is false. Only affects battles that are auto-calculated (Affects ALL auto-calculated battles, including NPC vs NPC ones.)-->
+  <TroopBattleSimulationExperienceMultiplier>1.0</TroopBattleSimulationExperienceMultiplier> <!-- Native value is 1.0. -->
+  
+  <!-- Workshop tweaks -->
+  <MaxWorkshopCountTweakEnabled>true</MaxWorkshopCountTweakEnabled>
+  <BaseWorkshopCount>2</BaseWorkshopCount> <!--Native value is 1 -->
+  <BonusWorkshopsPerClanTier>1</BonusWorkshopsPerClanTier> <!-- Native value is 1 -->
+
+  <WorkshopBuyingCostTweakEnabled>false</WorkshopBuyingCostTweakEnabled> <!-- Native value is false. -->
+  <WorkshopBaseCost>10000</WorkshopBaseCost> <!-- Native value is 10,000. This value is used as a base to calculate the total cost. Reduce to reduce cost of workshops.-->
+
+  <!-- Companion Limit tweak -->
+  <CompanionLimitTweakEnabled>false</CompanionLimitTweakEnabled>
+  <CompanionLimitBonusPerClanTier>1</CompanionLimitBonusPerClanTier> <!-- Native value is 1. This value is multiplied by your clan tier. -->
+  <CompanionBaseLimit>3</CompanionBaseLimit> <!-- Native value is 3 -->
+
+  <!-- Settlement militia bonus tweak -->
+  <!-- This tweak is applied to the militia growth rate of all settlements.
+       It is intended to increase the size of settlement militia's to try and stop
+       factions from being steamrolled. Pair it with the settlement food bonus tweak
+       to stop settlements from starving. Food is used by the game to create a soft cap on militia 
+       and garrison amounts.-->
+  <SettlementMilitiaBonusEnabled>true</SettlementMilitiaBonusEnabled>
+  <CastleMilitiaBonus>4.0</CastleMilitiaBonus> <!-- Native value is 0 -->
+  <TownMilitiaBonus>6.0</TownMilitiaBonus> <!-- Native value is 0 -->
+
+  <!-- This provides a bonus to the spawn rate for elite troops in militias, meaning
+       they have a higher chance to receive elite troops each day instead of ordinary troops. -->
+  <SettlementMilitiaEliteSpawnRateBonusEnabled>true</SettlementMilitiaEliteSpawnRateBonusEnabled>
+  <SettlementEliteMeleeSpawnRateBonus>0.15</SettlementEliteMeleeSpawnRateBonus> <!-- Native value is 0 -->
+  <SettlementEliteRangedSpawnRateBonus>0.1</SettlementEliteRangedSpawnRateBonus> <!-- Native value is 0 -->
+  
+  <!-- Settlement food bonus -->
+  <SettlementFoodBonusEnabled>true</SettlementFoodBonusEnabled>
+  <CastleFoodBonus>2.0</CastleFoodBonus> <!-- Native value is 0 -->
+  <TownFoodBonus>4.0</TownFoodBonus> <!-- Native value is 0 -->
+
+  <!-- Castle buildings bonuses -->
+  <!-- Training Fields -->
+  <CastleTrainingFieldsBonusEnabled>true</CastleTrainingFieldsBonusEnabled>
+  <CastleTrainingFieldsXpAmountLevel1>30</CastleTrainingFieldsXpAmountLevel1> <!-- Native value is 1 -->
+  <CastleTrainingFieldsXpAmountLevel2>70</CastleTrainingFieldsXpAmountLevel2> <!-- Native value is 2 -->
+  <CastleTrainingFieldsXpAmountLevel3>150</CastleTrainingFieldsXpAmountLevel3> <!-- Native value is 3 -->
+  <!-- Granary -->
+  <CastleGranaryBonusEnabled>true</CastleGranaryBonusEnabled>
+  <CastleGranaryStorageAmountLevel1>30</CastleGranaryStorageAmountLevel1> <!-- Native value is 10 -->
+  <CastleGranaryStorageAmountLevel2>45</CastleGranaryStorageAmountLevel2> <!-- Native value is 20 -->
+  <CastleGranaryStorageAmountLevel3>60</CastleGranaryStorageAmountLevel3> <!-- Native value is 30 -->
+  <!-- Gardens -->
+  <CastleGardensBonusEnabled>true</CastleGardensBonusEnabled>
+  <CastleGardensFoodProductionAmountLevel1>3</CastleGardensFoodProductionAmountLevel1> <!-- Native value is 1 -->
+  <CastleGardensFoodProductionAmountLevel2>6</CastleGardensFoodProductionAmountLevel2> <!-- Native value is 2 -->
+  <CastleGardensFoodProductionAmountLevel3>9</CastleGardensFoodProductionAmountLevel3> <!-- Native value is 3 -->
+  <!-- Militia Barracks -->
+  <CastleMilitiaBarracksBonusEnabled>true</CastleMilitiaBarracksBonusEnabled>
+  <CastleMilitiaBarracksAmountLevel1>2</CastleMilitiaBarracksAmountLevel1> <!-- Native value is 1 -->
+  <CastleMilitiaBarracksAmountLevel2>4</CastleMilitiaBarracksAmountLevel2> <!-- Native value is 2 -->
+  <CastleMilitiaBarracksAmountLevel3>8</CastleMilitiaBarracksAmountLevel3> <!-- Native value is 4 -->
+
+  <!-- Siege tweaks -->
+  <SiegeConstructionProgressPerDayMultiplierEnabled>true</SiegeConstructionProgressPerDayMultiplierEnabled>
+  <SiegeConstructionProgressPerDayMultiplier>0.85</SiegeConstructionProgressPerDayMultiplier> <!-- Native value is 1. Set this below 1 to make sieges take longer to set up. Hopefully will help to stop factions being steamrolled. Don't set below 0. -->
+
+  <SiegeCasualtiesTweakEnabled>true</SiegeCasualtiesTweakEnabled>
+  <SiegeCollateralDamageCasualties>1.75</SiegeCollateralDamageCasualties> <!-- Native value is 2. Set lower than native to reduce casualties from sieges. -->
+  <SiegeDestructionCasualties>4.5</SiegeDestructionCasualties> <!-- Native value is 5. Set lower than native to reduce casualties from sieges. -->
+
+  <!-- Clan parties tweak -->
+  <ClanPartiesLimitTweakEnabled>false</ClanPartiesLimitTweakEnabled>
+  <BaseClanPartiesLimit>1</BaseClanPartiesLimit> <!-- Native value is 1 -->
+  <ClanPartiesBonusPerClanTier>0.5</ClanPartiesBonusPerClanTier> <!-- Native has a calculation for this: 1 party for under tier 3, 2 parties for under tier 5, 3 parties for over tier 5. This value is multiplied by you clan tier. A value of 0.5 will give a bonus of 1 party per two clan tier levels, which equates to the same as native.-->
+
+</BannerlordTweaks-BannerlordTweaks.Settings>
