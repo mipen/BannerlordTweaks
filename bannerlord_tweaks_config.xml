@@ -89,8 +89,8 @@
        to stop settlements from starving. Food is used by the game to create a soft cap on militia 
        and garrison amounts.-->
   <SettlementMilitiaBonusEnabled>true</SettlementMilitiaBonusEnabled>
-  <CastleMilitiaBonus>4.0</CastleMilitiaBonus> <!-- Native value is 0 -->
-  <TownMilitiaBonus>6.0</TownMilitiaBonus> <!-- Native value is 0 -->
+  <CastleMilitiaBonus>3.5</CastleMilitiaBonus> <!-- Native value is 0 -->
+  <TownMilitiaBonus>4.0</TownMilitiaBonus> <!-- Native value is 0 -->
 
   <!-- This provides a bonus to the spawn rate for elite troops in militias, meaning
        they have a higher chance to receive elite troops each day instead of ordinary troops. -->
@@ -101,9 +101,9 @@
   <!-- Settlement food bonus -->
   <SettlementFoodBonusEnabled>true</SettlementFoodBonusEnabled>
   <CastleFoodBonus>2.0</CastleFoodBonus> <!-- Native value is 0 -->
-  <TownFoodBonus>4.0</TownFoodBonus> <!-- Native value is 0 -->
-  <SettlementProsperityFoodMalusTweakEnabled>true</SettlementProsperityFoodMalusTweakEnabled> <!-- Native value is false. -->
-  <SettlementProsperityFoodMalusDivisor>100.0</SettlementProsperityFoodMalusDivisor> <!-- Native value is 50. The malus (food loss) due to prosperity is calculated by (settlement prosperity) / (this value). Increasing this value will result in a lower food loss due to prosperity. -->
+  <TownFoodBonus>3.0</TownFoodBonus> <!-- Native value is 0 -->
+  <SettlementProsperityFoodMalusTweakEnabled>false</SettlementProsperityFoodMalusTweakEnabled> <!-- Native value is false. -->
+  <SettlementProsperityFoodMalusDivisor>50</SettlementProsperityFoodMalusDivisor> <!-- Native value is 50. The malus (food loss) due to prosperity is calculated by (settlement prosperity) / (this value). Increasing this value will result in a lower food loss due to prosperity. -->
 
   <!-- Castle buildings bonuses -->
   <!-- Training Fields -->

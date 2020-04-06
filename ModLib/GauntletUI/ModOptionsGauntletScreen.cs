@@ -11,12 +11,34 @@ namespace ModLib.GauntletUI
 {
     internal class ModOptionsGauntletScreen : ScreenBase
     {
+        private GauntletLayer gauntletLayer;
+
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            var gLayer = new GauntletLayer(1);
-            gLayer.LoadMovie("ModOptionsScreen", new ModOptionsViewModel());
-            gLayer.InputRestrictions.SetInputRestrictions();
+            gauntletLayer = new GauntletLayer(1);
+            gauntletLayer.LoadMovie("ModOptionsScreen", new ModOptionsViewModel());
+            gauntletLayer.InputRestrictions.SetInputRestrictions();
+            gauntletLayer.IsFocusLayer = true;
+            AddLayer(gauntletLayer);
+            ScreenManager.TrySetFocus(gauntletLayer);
+        }
+
+        protected override void OnFrameTick(float dt)
+        {
+            base.OnFrameTick(dt);
+            if (gauntletLayer.Input.IsHotKeyReleased("Exit"))
+            {
+                ScreenManager.TrySetFocus(gauntletLayer);
+                ScreenManager.PopScreen();
+            }
+        }
+
+        protected override void OnFinalize()
+        {
+            base.OnFinalize();
+            RemoveLayer(gauntletLayer);
+            gauntletLayer = null;
         }
     }
 }

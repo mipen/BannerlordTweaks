@@ -7,7 +7,30 @@ using TaleWorlds.Library;
 
 namespace ModLib.ViewModels
 {
-    internal class ModOptionsViewModel : ViewModel
+    public class ModOptionsViewModel : ViewModel
     {
+        private string _titleLabel;
+
+        [DataSourceProperty]
+        public string TitleLabel
+        {
+            get=> _titleLabel;
+            set
+            {
+                _titleLabel = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ModOptionsViewModel()
+        {
+            RefreshValues();
+        }
+
+        public override void RefreshValues()
+        {
+            base.RefreshValues();
+            TitleLabel = "Mod Options";
+        }
     }
 }

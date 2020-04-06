@@ -98,14 +98,15 @@
     <Compile Include="ViewModels\ModOptionsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="modlib_config.xml" />
+    <Content Include="GUI\Prefabs\ModOptionsScreen.xml" />
+    <Content Include="ModuleData\Loadables\modlib_config.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\bin\Win64_Shipping_Client\"
-copy "$(ProjectDir)modlib_config.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\ModuleData\Loadables\"
-cd "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\"
-start TaleWorlds.MountAndBlade.Launcher.exe</PostBuildEvent>
+copy "$(ProjectDir)ModuleData\Loadables\modlib_config.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\ModuleData\Loadables\"
+copy "$(ProjectDir)GUI\Prefabs\ModOptionsScreen.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
+</PostBuildEvent>
   </PropertyGroup>
 </Project>
