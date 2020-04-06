@@ -1,5 +1,5 @@
-﻿using BannerlordTweaks.Lib;
-using BannerlordTweaks.Lib.Interfaces;
+﻿using ModLib;
+using ModLib.Interfaces;
 using System;
 using System.Xml.Serialization;
 

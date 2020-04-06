@@ -4,7 +4,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment.Managers;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
-using BannerlordTweaks.Lib;
+using ModLib;
 
 namespace BannerlordTweaks
 {

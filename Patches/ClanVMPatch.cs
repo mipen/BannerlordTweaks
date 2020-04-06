@@ -1,4 +1,4 @@
-﻿using BannerlordTweaks.Lib;
+﻿using ModLib;
 using HarmonyLib;
 using System;
 using System.Windows.Forms;

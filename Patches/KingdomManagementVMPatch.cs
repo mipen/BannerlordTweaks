@@ -10,7 +10,7 @@ using TaleWorlds.Localization;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using System.Windows.Forms;
-using BannerlordTweaks.Lib;
+using ModLib;
 
 namespace BannerlordTweaks.Patches
 {
