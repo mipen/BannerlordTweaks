@@ -5,6 +5,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Localization;
 using ModLib;
+using TaleWorlds.Core;
 
 namespace BannerlordTweaks
 {
@@ -24,6 +25,15 @@ namespace BannerlordTweaks
                         en.Add(Settings.Instance.CastleFoodBonus, new TextObject("Military rations"));
                     else if (town.IsTown)
                         en.Add(Settings.Instance.TownFoodBonus, new TextObject("Citizen food drive"));
+
+                    if (Settings.Instance.SettlementProsperityFoodMalusTweakEnabled && Settings.Instance.SettlementProsperityFoodMalusDivisor != 50)
+                    {
+                        float malus = town.Owner.Settlement.Prosperity / 50f;
+                        en.Add(malus, new TextObject("shouldn't be seen!"));
+                        explanation?.Lines.Remove(explanation.Lines.Last());
+                        malus = -town.Owner.Settlement.Prosperity / Settings.Instance.SettlementProsperityFoodMalusDivisor;
+                        en.Add(malus, GameTexts.FindText("str_prosperity"));
+                    }
 
                     return en.ResultNumber;
                 }

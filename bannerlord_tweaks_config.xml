@@ -54,8 +54,8 @@
   <TournamentMaxBetAmount>300</TournamentMaxBetAmount> <!-- Native value is 300 -->
 
   <!-- Hero Skill Multiplier Tweak -->
-  <HeroSkillExperienceMultiplierEnabled>true</HeroSkillExperienceMultiplierEnabled> <!-- Native value is false -->
-  <HeroSkillExperienceGeneralMultiplier>-1</HeroSkillExperienceGeneralMultiplier> <!-- Use this to override the default experience curve. To disable, set below 0. To enable, set above 1.-->
+  <HeroSkillExperienceMultiplierEnabled>true</HeroSkillExperienceMultiplierEnabled> <!-- Native value is false. Experience multiplier is given by this formula: 0.0315769 * skillLevel^1.020743 with a minimum value of 1. -->
+  <HeroSkillExperienceOverrideMultiplier>-1.0</HeroSkillExperienceOverrideMultiplier> <!-- Use this to override the experience curve added by this mod. Will multiply all experience added by this instead of using my curve function. To disable, set below to -1. To enable, set above 1.-->
 
   <!-- Hideout battle tweaks -->
   <HideoutBattleTroopLimitTweakEnabled>true</HideoutBattleTroopLimitTweakEnabled>
@@ -102,6 +102,8 @@
   <SettlementFoodBonusEnabled>true</SettlementFoodBonusEnabled>
   <CastleFoodBonus>2.0</CastleFoodBonus> <!-- Native value is 0 -->
   <TownFoodBonus>4.0</TownFoodBonus> <!-- Native value is 0 -->
+  <SettlementProsperityFoodMalusTweakEnabled>true</SettlementProsperityFoodMalusTweakEnabled> <!-- Native value is false. -->
+  <SettlementProsperityFoodMalusDivisor>100.0</SettlementProsperityFoodMalusDivisor> <!-- Native value is 50. The malus (food loss) due to prosperity is calculated by (settlement prosperity) / (this value). Increasing this value will result in a lower food loss due to prosperity. -->
 
   <!-- Castle buildings bonuses -->
   <!-- Training Fields -->

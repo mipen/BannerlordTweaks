@@ -1,7 +1,10 @@
 ﻿using HarmonyLib;
 using ModLib.Debug;
+using ModLib.GauntletUI;
 using System;
 using System.Windows.Forms;
+using TaleWorlds.Engine.Screens;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
 namespace ModLib
@@ -14,10 +17,13 @@ namespace ModLib
         {
             try
             {
-                //Loader.Initialise(ModuleName);
-
                 var harmony = new Harmony("mod.modlib.mipen");
                 harmony.PatchAll();
+
+                Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ModOptionsMenu", new TextObject("Mod Options"), 9990, () =>
+                {
+                    ScreenManager.PushScreen(new ModOptionsGauntletScreen());
+                }, false));
             }
             catch (Exception ex)
             {

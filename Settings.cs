@@ -86,7 +86,7 @@ namespace BannerlordTweaks
         [XmlElement]
         public bool HeroSkillExperienceMultiplierEnabled { get; set; } = true;
         [XmlElement]
-        public float HeroSkillExperienceGeneralMultiplier { get; set; } = -1;
+        public float HeroSkillExperienceOverrideMultiplier { get; set; } = -1;
         #endregion
 
         #region Hideout battle tweaks
@@ -165,6 +165,10 @@ namespace BannerlordTweaks
         public float CastleFoodBonus { get; set; } = 2f;
         [XmlElement]
         public float TownFoodBonus { get; set; } = 4f;
+        [XmlElement]
+        public bool SettlementProsperityFoodMalusTweakEnabled { get; set; } = true;
+        [XmlElement]
+        public float SettlementProsperityFoodMalusDivisor { get; set; } = 100;
         #endregion
 
         #region Castle buildings bonuses
