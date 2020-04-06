@@ -13,16 +13,17 @@ namespace BannerlordTweaks.Patches
 	{
 		static bool Prefix(DefaultCharacterDevelopmentModel __instance, int attributeValue, int focusValue, TextObject attributeName, StatExplainer explainer, ref TextObject ____skillFocusText, ref int __result)
 		{
-			if (Settings.Instance.HeroSkillLearningEnabled)
-			{
 				ExplainedNumber explainedNumber = new ExplainedNumber(0f, explainer, null);
 				explainedNumber.Add((float)((attributeValue - 1) * Settings.Instance.HeroSkillLearningAttributeBonus), attributeName);
 				explainedNumber.Add((float)(focusValue * Settings.Instance.HeroSkillLearningFocusPointBonus), ____skillFocusText);
 				explainedNumber.LimitMin(Settings.Instance.HeroSkillLearningMinimum);
 				__result = (int)explainedNumber.ResultNumber;
 				return false;
-			}
-			return true;
+		}
+		static bool Prepare()
+		{
+			return Settings.Instance.HeroSkillLearningEnabled;
 		}
 	}
+
 }

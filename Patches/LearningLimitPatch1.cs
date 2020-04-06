@@ -13,8 +13,6 @@ namespace BannerlordTweaks.Patches
     {
         static bool Prefix(DefaultCharacterDevelopmentModel __instance, Hero hero, SkillObject skill, StatExplainer explainer, ref TextObject ____skillFocusText, ref int __result)
         {
-			if (Settings.Instance.HeroSkillLearningEnabled)
-			{
 				ExplainedNumber explainedNumber = new ExplainedNumber(0f, explainer, null);
 				int attributeValue = hero.GetAttributeValue(skill.CharacterAttributeEnum);
 				int focus = hero.HeroDeveloper.GetFocus(skill);
@@ -23,9 +21,10 @@ namespace BannerlordTweaks.Patches
 				explainedNumber.LimitMin(Settings.Instance.HeroSkillLearningMinimum);
 				__result = (int)explainedNumber.ResultNumber;
 				return false;
-			}
-			return true;
 		}
-
+		static bool Prepare()
+		{
+			return Settings.Instance.HeroSkillLearningEnabled;
+		}
 	}
 }
