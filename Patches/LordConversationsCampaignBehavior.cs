@@ -1,7 +1,6 @@
 ﻿using HarmonyLib;
 using System.Reflection;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Actions;
 
 namespace BannerlordTweaks.Patches
 {
@@ -10,16 +9,12 @@ namespace BannerlordTweaks.Patches
     {
         static MethodBase TargetMethod()
         {
-            return AccessTools.Method("SandBox.LordConversationsCampaignBehavior:conversation_player_leave_faction_accepted_on_consequence");
+            return AccessTools.Method("SandBox.LordConversationsCampaignBehavior:conversation_player_want_to_end_service_as_mercenary_on_condition");
         }
 
-        static bool Prefix()
+        static void Postfix(ref bool __result)
         {
-            if (Clan.PlayerClan.IsUnderMercenaryService)
-                ChangeKingdomAction.ApplyByLeaveKingdomAsMercenaryForNoPayment(Clan.PlayerClan, Clan.PlayerClan.Kingdom, true);
-            else
-                ChangeKingdomAction.ApplyByLeaveKingdom(Hero.MainHero.Clan, true);
-            return false;
+            __result = Hero.MainHero.MapFaction == Hero.OneToOneConversationHero.MapFaction && Hero.OneToOneConversationHero.Clan != Hero.MainHero.Clan && Hero.MainHero.Clan.IsUnderMercenaryService;
         }
     }
 }
