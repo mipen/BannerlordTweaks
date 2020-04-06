@@ -102,6 +102,8 @@
     <Compile Include="Patches\HeroPatches.cs" />
     <Compile Include="Patches\HideoutMissionControllerPatches.cs" />
     <Compile Include="Patches\KingdomManagementVMPatch.cs" />
+    <Compile Include="Patches\LearningLimitPatch1.cs" />
+    <Compile Include="Patches\LearningLimitPatch2.cs" />
     <Compile Include="Patches\LordConversationsCampaignBehavior.cs" />
     <Compile Include="Patches\SmeltingVMPatch.cs" />
     <Compile Include="Patches\TournamentVMPatches.cs" />

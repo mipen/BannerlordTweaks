@@ -89,6 +89,17 @@ namespace BannerlordTweaks
         public float HeroSkillExperienceGeneralMultiplier { get; set; } = -1;
         #endregion
 
+        #region Hero skill Learning Limits
+        [XmlElement]
+        public bool HeroSkillLearningEnabled { get; set; } = false;
+        [XmlElement]
+        public float HeroSkillLearningAttributeBonus { get; set; } = 10.0f;
+        [XmlElement]
+        public float HeroSkillLearningFocusPointBonus { get; set; } = 30.0f;
+        [XmlElement]
+        public float HeroSkillLearningMinimum { get; set; } = 0.0f;
+        #endregion
+
         #region Hideout battle tweaks
         [XmlElement]
         public bool HideoutBattleTroopLimitTweakEnabled { get; set; } = true;
