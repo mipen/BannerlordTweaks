@@ -1,4 +1,4 @@
-﻿using ModLib.ViewModels;
+﻿using ModLib.GUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,18 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.Engine.Screens;
+using TaleWorlds.GauntletUI.Data;
 
-namespace ModLib.GauntletUI
+namespace ModLib.GUI.GauntletUI
 {
     internal class ModOptionsGauntletScreen : ScreenBase
     {
         private GauntletLayer gauntletLayer;
+        private GauntletMovie movie;
 
         protected override void OnInitialize()
         {
             base.OnInitialize();
             gauntletLayer = new GauntletLayer(1);
-            gauntletLayer.LoadMovie("ModOptionsScreen", new ModOptionsViewModel());
+            movie = gauntletLayer.LoadMovie("ModOptionsScreen", new ModOptionsViewModel());
             gauntletLayer.InputRestrictions.SetInputRestrictions();
             gauntletLayer.IsFocusLayer = true;
             AddLayer(gauntletLayer);
@@ -38,6 +40,7 @@ namespace ModLib.GauntletUI
         {
             base.OnFinalize();
             RemoveLayer(gauntletLayer);
+            gauntletLayer.ReleaseMovie(movie);
             gauntletLayer = null;
         }
     }

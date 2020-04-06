@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 using ModLib.Debug;
-using ModLib.GauntletUI;
+using ModLib.GUI.GauntletUI;
 using System;
 using System.Windows.Forms;
 using TaleWorlds.Engine.Screens;

@@ -1,0 +1,30 @@
+﻿<Brushes>
+  <Brush Name="ModSettingsItemBrush" TransitionDuration="0.2">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="SPKingdom\Decision\option" />
+      <BrushLayer Name="Selected" Sprite="SPKingdom\Decision\option_selected" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="0.8"  />
+        <BrushLayer Name="Selected" IsHidden="false" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.0"  />
+        <BrushLayer Name="Selected" IsHidden="false" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" IsHidden="false" />
+        <BrushLayer Name="Selected" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.8" />
+        <BrushLayer Name="Selected" IsHidden="false" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.6" />
+        <BrushLayer Name="Selected" IsHidden="false" />
+      </Style>
+    </Styles>
+  </Brush>
+</Brushes>
