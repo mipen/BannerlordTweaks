@@ -9,7 +9,7 @@ namespace BannerlordTweaks.Patches
     {
         private static void Postfix(MapInfoVM __instance)
         {
-            __instance.TotalFood = MobileParty.MainParty.GetNumDaysForFoodToLast();
+            __instance.TotalFood = MobileParty.MainParty.GetNumDaysForFoodToLast() + 1;
         }
 
         static bool Prepare()
