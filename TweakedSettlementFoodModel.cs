@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Localization;
-using BannerlordTweaks.Lib;
+using ModLib;
 
 namespace BannerlordTweaks
 {
