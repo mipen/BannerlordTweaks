@@ -14,14 +14,15 @@ namespace BannerlordTweaks
 {
     public class SubModule : MBSubModuleBase
     {
-        public static readonly string ModuleName = "zzBannerlordTweaks";
+        public static readonly string ModuleFolderName = "zzBannerlordTweaks";
 
         protected override void OnSubModuleLoad()
         {
             base.OnSubModuleLoad();
             try
             {
-                Loader.Initialise(ModuleName);
+                Loader.Initialise(ModuleFolderName);
+                SettingsDatabase.RegisterSettings(Settings.Instance, Settings.Instance.ModName);
 
                 var harmony = new Harmony("mod.bannerlord.mipen");
                 harmony.PatchAll();
@@ -36,18 +37,18 @@ namespace BannerlordTweaks
         {
             base.OnMissionBehaviourInitialize(mission);
 
-            if (Settings.Instance.TournamentExperienceEnabled && !mission.HasMissionBehaviour<TournamentExperienceMissionLogic>() &&
-                (mission.HasMissionBehaviour<TournamentFightMissionController>() || mission.HasMissionBehaviour<TournamentArcheryMissionController>() ||
-                mission.HasMissionBehaviour<TournamentArcheryMissionController>() || mission.HasMissionBehaviour<TownHorseRaceMissionController>()))
-            {
-                mission.AddMissionBehaviour(new TournamentExperienceMissionLogic());
-            }
+            //if (Settings.Instance.TournamentExperienceEnabled && !mission.HasMissionBehaviour<TournamentExperienceMissionLogic>() &&
+            //    (mission.HasMissionBehaviour<TournamentFightMissionController>() || mission.HasMissionBehaviour<TournamentArcheryMissionController>() ||
+            //    mission.HasMissionBehaviour<TournamentArcheryMissionController>() || mission.HasMissionBehaviour<TownHorseRaceMissionController>()))
+            //{
+            //    mission.AddMissionBehaviour(new TournamentExperienceMissionLogic());
+            //}
 
-            if (Settings.Instance.ArenaExperienceEnabled && !mission.HasMissionBehaviour<TournamentExperienceMissionLogic>() &&
-                mission.HasMissionBehaviour<ArenaPracticeFightMissionController>())
-            {
-                mission.AddMissionBehaviour(new TournamentExperienceMissionLogic());
-            }
+            //if (Settings.Instance.ArenaExperienceEnabled && !mission.HasMissionBehaviour<TournamentExperienceMissionLogic>() &&
+            //    mission.HasMissionBehaviour<ArenaPracticeFightMissionController>())
+            //{
+            //    mission.AddMissionBehaviour(new TournamentExperienceMissionLogic());
+            //}
         }
 
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)

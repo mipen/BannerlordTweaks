@@ -1,13 +1,10 @@
 ﻿<Prefab>
-  <Constants>
-    <Constant Name="Clan.Item.Tuple.Width" BrushLayer="Default" BrushName="Clan.Item.Tuple" BrushValueType="Width" />
-    <Constant Name="Clan.Item.Tuple.Height" BrushLayer="Default" BrushName="Clan.Item.Tuple" BrushValueType="Height" />
-  </Constants>
   <Window>
-    <ButtonWidget HeightSizePolicy="Fixed" WidthSizePolicy="Fixed" SuggestedWidth="!Clan.Item.Tuple.Width" SuggestedHeight="!Clan.Item.Tuple.Height"
-                  Brush="Clan.Item.Tuple" Command.Click="ExecuteSelect" IsSelected="@IsSelected" DoNotPassEventsToChildren="true">
+    <ButtonWidget HeightSizePolicy="Fixed" WidthSizePolicy="StretchToParent" SuggestedHeight="75" Brush="Mod.Setting.Item" Command.Click="ExecuteSelect"
+                  IsSelected="@IsSelected" DoNotPassEventsToChildren="true" ClipContents="true">
       <Children>
-        <TextWidget Text="@ModName" HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent"/>
+        <TextWidget Text="@ModName" HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    MarginLeft="10" Brush="Clan.Tuple.Name.Text"/>
       </Children>
     </ButtonWidget>
   </Window>

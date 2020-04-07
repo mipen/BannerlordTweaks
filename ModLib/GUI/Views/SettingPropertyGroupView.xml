@@ -1,0 +1,22 @@
+﻿<Prefab>
+  <Window>
+    <ListPanel HeightSizePolicy="CoverChildren" WidthSizePolicy="StretchToParent" LayoutImp.LayoutMethod="VerticalBottomToTop" VerticalAlignment="Top"
+               HorizontalAlignment="Left" MarginTop="35">
+      <Children>
+
+        <TextWidget Text="@GroupName" HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="10"/>
+
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"  VerticalAlignment="Top" MarginTop="4" Brush="Kingdom.Divider.White"/>
+
+        <ListPanel DataSource="{SettingProperties}" HeightSizePolicy="CoverChildren" WidthSizePolicy="StretchToParent" MarginLeft="10" MarginRight="10"
+                   LayoutImp.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Left" MarginTop="10">
+          <ItemTemplate>
+            <SettingPropertyView />
+          </ItemTemplate>
+        </ListPanel>
+        
+      </Children>
+    </ListPanel>
+    
+  </Window>
+</Prefab>

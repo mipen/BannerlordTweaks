@@ -47,9 +47,6 @@
   <TournamentGoldRewardEnabled>true</TournamentGoldRewardEnabled>
   <TournamentGoldRewardAmount>500</TournamentGoldRewardAmount> <!-- Native value is 0 -->
 
-  <TournamentExperienceEnabled>true</TournamentExperienceEnabled> <!-- Native is false -->
-  <ArenaExperienceEnabled>true</ArenaExperienceEnabled> <!-- Native is false -->
-
   <TournamentMaxBetAmountTweakEnabled>true</TournamentMaxBetAmountTweakEnabled>
   <TournamentMaxBetAmount>300</TournamentMaxBetAmount> <!-- Native value is 300 -->
 

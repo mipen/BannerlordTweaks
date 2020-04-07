@@ -5,10 +5,12 @@ using System.Xml.Serialization;
 
 namespace BannerlordTweaks
 {
-    public class Settings : ILoadable
+    public class Settings : SettingsBase, ILoadable
     {
         private const string instanceID = "BannerlordTweaksSettings";
         private static Settings _instance = null;
+        public override string ModName => "Bannerlord Tweaks";
+
 
         [XmlElement("ID")]
         public string ID { get; set; } = instanceID;
@@ -73,9 +75,9 @@ namespace BannerlordTweaks
         [XmlElement]
         public int TournamentGoldRewardAmount { get; set; } = 500;
         [XmlElement]
-        public bool TournamentExperienceEnabled { get; set; } = true;
+        public bool TournamentExperienceEnabled { get; set; } = false;
         [XmlElement]
-        public bool ArenaExperienceEnabled { get; set; } = true;
+        public bool ArenaExperienceEnabled { get; set; } = false;
         [XmlElement]
         public bool TournamentMaxBetAmountTweakEnabled { get; set; } = true;
         [XmlElement]
@@ -135,7 +137,7 @@ namespace BannerlordTweaks
 
         #region Kingdom leave relation loss tweak
         [XmlElement]
-        public bool LeaveKingdomRelationLossTweakEnabled { get; set; } = true;
+        public bool LeaveKingdomRelationLossTweakEnabled { get; set; } = false;
         [XmlElement]
         public int LeaveKingdomRelationLossLeaderAmount { get; set; } = 20;
         [XmlElement]

@@ -4,9 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.Engine.Screens;
+using TaleWorlds.GauntletUI;
 using TaleWorlds.GauntletUI.Data;
+using TaleWorlds.InputSystem;
+using TaleWorlds.Library;
+using TaleWorlds.TwoDimension;
 
 namespace ModLib.GUI.GauntletUI
 {
@@ -14,24 +19,26 @@ namespace ModLib.GUI.GauntletUI
     {
         private GauntletLayer gauntletLayer;
         private GauntletMovie movie;
+        private ModSettingsViewModel vm;
 
         protected override void OnInitialize()
         {
             base.OnInitialize();
             gauntletLayer = new GauntletLayer(1);
-            movie = gauntletLayer.LoadMovie("ModOptionsScreen", new ModOptionsViewModel());
-            gauntletLayer.InputRestrictions.SetInputRestrictions();
+            gauntletLayer.InputRestrictions.SetInputRestrictions(true, InputUsageMask.All);
+            gauntletLayer.Input.RegisterHotKeyCategory(HotKeyManager.GetCategory("GenericCampaignPanelsGameKeyCategory"));
             gauntletLayer.IsFocusLayer = true;
-            AddLayer(gauntletLayer);
             ScreenManager.TrySetFocus(gauntletLayer);
+            AddLayer(gauntletLayer);
+            vm = new ModSettingsViewModel();
+            movie = gauntletLayer.LoadMovie("ModOptionsScreen", vm);
         }
 
         protected override void OnFrameTick(float dt)
         {
             base.OnFrameTick(dt);
-            if (gauntletLayer.Input.IsHotKeyReleased("Exit"))
+            if (gauntletLayer.Input.IsHotKeyReleased("Exit") || gauntletLayer.Input.IsGameKeyReleased(34))
             {
-                ScreenManager.TrySetFocus(gauntletLayer);
                 ScreenManager.PopScreen();
             }
         }
@@ -40,8 +47,10 @@ namespace ModLib.GUI.GauntletUI
         {
             base.OnFinalize();
             RemoveLayer(gauntletLayer);
+            vm.ExecuteSelect(null);
             gauntletLayer.ReleaseMovie(movie);
             gauntletLayer = null;
+            vm = null;
         }
     }
 }

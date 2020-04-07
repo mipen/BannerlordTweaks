@@ -10,58 +10,55 @@
   <Window>
     <Widget Id="ModOptionsScreen" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
       <Children>
-        
+
         <Standard.Background/>
 
         <!-- Main screen section -->
-        <Widget Id="MainSection" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="164" MarginRight="10">
+        <ListPanel Id="MainSection" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="164">
           <Children>
-            
+
             <!-- Mods list section on the left-->
             <Widget Id="ModsListSection" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
                     SuggestedWidth="600" HorizontalAlignment="Left" VerticalAlignment="Top" Sprite="CharacterCreation\character_creation_panel"
                     Brush.HorizontalFlip="true">
               <Children>
-                
+
                 <!-- Title -->
                 <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" Brush="TitleBrush" Text="Mods"
-                                HorizontalAlignment="Center" VerticalAlignment="Top" MarginRight="13"/>
-                
-                <!-- Mods Listing Section -->
-                <Widget Id="InnerPanel" HeightSizePolicy="Fixed" WidthSizePolicy="Fixed" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                HorizontalAlignment="Center" VerticalAlignment="Top" MarginRight="13" />
+
+                <!-- Mods Listing Section Inner Panel-->
+                <Widget HeightSizePolicy="Fixed" WidthSizePolicy="Fixed" HorizontalAlignment="Center" VerticalAlignment="Center"
                         SuggestedWidth="495" SuggestedHeight="637" PositionXOffset="-19" PositionYOffset="31">
                   <Children>
-                    
-                    <!-- Scrollable Panel -->
-                    <ScrollablePanel HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent" AutoHideScrollBars="true" MouseScrollAxis="Vertical"
-                                     ClipRect="ClipRect" InnerPanel="ClipRect\ElementsListPanel" VerticalScrollBar="..\ModElementsScrollbar\Scrollbar">
+
+                    <!-- Format for a list is: ScrollPanel -> Widget ClipRect -> ListPanel/Widget InnerPanel -> Items-->
+                    <!-- ScrollablePanel needs: Reference to ClipRect, reference to ElementsList, reference to a scroll bar-->
+                    <!-- Widget ClipRect needs width size policy to be CoverChildren and height size to be StretchToParent -->
+                    <!-- ListPanel/Widget InnerPanel needs LayoutImp.LayoutMethod. Search for LayoutMethod in dnSpy for options. Size policies need to be CoverChildren -->
+                    <!-- ListPanel Items needs ItemTemplate containing the screen to be used for each item. Size policies need to be CoverChildren.
+                         DataSource property must be assigned using the {} braces. Example: DataSource="{DataSourcePropertyName}" -->
+                    <ScrollablePanel Id="ModElementsScrollablePanel" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" AutoHideScrollBars="true" ClipRect="ModsListClipRect" InnerPanel="ModsListClipRect\ModList" VerticalScrollBar="..\ModsScrollbar\Scrollbar" MouseScrollAxis="Vertical">
                       <Children>
-                        
-                        <!-- Clip Rect -->
-                        <Widget Id="ClipRect" HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent" ClipContents="true">
+
+                        <Widget Id="ModsListClipRect" WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent" ClipContents="true" HorizontalAlignment="Left">
                           <Children>
-                            
-                            <ListPanel Id="ElementsListPanel" HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent" LayoutImp.LayoutMethod="VerticalBottomToTop">
-                              <Children>
-                                
-                                <!-- List Panel -->
-                                <ListPanel Id="ModsList" HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent" LayoutImp.LayoutMethod="VerticalTopToBottom"
-                                           DataSource="{ModSettingsList}" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                  <ItemTemplate>
-                                    <ModSettingsItem />
-                                  </ItemTemplate>
-                                  
-                                </ListPanel>
-                                
-                              </Children>
+
+                            <ListPanel Id="ModList" DataSource="{ModSettingsList}" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlightment="Left" LayoutImp.LayoutMethod="VerticalTopToBottom">
+                              <ItemTemplate>
+                                <ModSettingsItem />
+                              </ItemTemplate>
                             </ListPanel>
-                            
+
                           </Children>
                         </Widget>
-                        
+
                       </Children>
                     </ScrollablePanel>
-                    <Standard.VerticalScrollbar Id="ModElementsScrollbar" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="2" MarginLeft="2" MarginBottom="3"/> 
+
+                    <!-- Mod list scroll bar -->
+                    <Standard.VerticalScrollbar Id="ModsScrollbar" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginLeft="2" IsVisible="false"/>
+
                   </Children>
                 </Widget>
 
@@ -69,48 +66,58 @@
                 <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="39"
                            MarginRight="39">
                   <Children>
-                    
+
                     <!-- Cancel button -->
                     <ButtonWidget Id="CancelButton" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!CancelButton.Width" SuggestedHeight="!CancelButton.Height" Brush="Popup.Cancel.Button" Command.Click="ExecuteCancel">
                       <Children>
-                        
+
                         <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Button.Text" Text="@CancelButtonText" />
-                        
+
                       </Children>
                     </ButtonWidget>
 
                     <!--Done Button-->
                     <ButtonWidget Id="DoneButton" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!CancelButton.Width" SuggestedHeight="!CancelButton.Height" Brush="Popup.Done.Button" IsEnabled="@ChangesMade" Command.Click="ExecuteDone">
                       <Children>
-                        
+
                         <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Button.Text" Text="@DoneButtonText" />
                       </Children>
                     </ButtonWidget>
+
+                  </Children>
+                </ListPanel>
+
+              </Children>
+            </Widget>
+
+
+            <!-- Selected Mod Settings Section on the right -->
+            <Widget Id="ModSettingsSection" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" MarginLeft="40" IsVisible="@SomethingSelected"
+                    SuggestedWidth="1270" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="10">
+              <Children>
+                
+                <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" LayoutImp.LayoutMethod="VerticalBottomToTop">
+                  <Children>
+                    <!-- Title -->
+                    <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" Brush="TitleBrush" Text="@SelectedModName"
+                                                    HorizontalAlignment="Center" VerticalAlignment="Top" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"  VerticalAlignment="Top" MarginBottom="10"
+                            MarginTop="6" Brush="Kingdom.Divider.White" MarginLeft="15" MarginRight="15"/>
+
+                   <!-- <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="30" MarginRight="30" MarginLeft="30">
+                      <Children>-->
+                        <SettingsView DataSource="{SelectedMod}" HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent" MarginTop="30" MarginRight="30" MarginLeft="30"/>
+                    <!--  </Children>
+                    </Widget> -->
                     
                   </Children>
                 </ListPanel>
                 
               </Children>
             </Widget>
-            
-            
-            <!-- Selected Mod Settings Section on the right -->
-            <Widget Id="ModSettingsSection" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
-                    SuggestedWidth="1270" HorizontalAlignment="Right" VerticalAlignment="Top">
-              <Children>
-                <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" LayoutImp.LayoutMethod="VerticalBottomToTop">
-                  <Children>
-                    <!-- Title -->
-                    <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" Brush="TitleBrush" Text="@SelectedModName"
-                                                    HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                    <Widget WidthSizePolicy = "StretchToParent"  HeightSizePolicy = "Fixed" SuggestedHeight="2"  VerticalAlignment="Top" MarginBottom="10"
-                            MarginTop="6" Brush="Kingdom.Divider.White" MarginLeft="15" MarginRight="15"/>
-                  </Children>
-                </ListPanel>
-              </Children>
-            </Widget>
+          
           </Children>
-        </Widget>
+        </ListPanel>
 
         <!-- Top Banner -->
         <Standard.TopPanel Parameter.Title="@TitleLabel"/>

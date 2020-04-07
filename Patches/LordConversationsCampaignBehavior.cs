@@ -21,5 +21,10 @@ namespace BannerlordTweaks.Patches
                 ChangeKingdomAction.ApplyByLeaveKingdom(Hero.MainHero.Clan, true);
             return false;
         }
+
+        static bool Prepare()
+        {
+            return false;
+        }
     }
 }

@@ -11,12 +11,15 @@ namespace ModLib
 {
     public class ModLibSubModule : MBSubModuleBase
     {
-        public static string ModuleName { get; } = "zzBannerlordTweaks";
+        public static string ModuleFolderName { get; } = "zzBannerlordTweaks";
 
         protected override void OnSubModuleLoad()
         {
             try
             {
+                //Loader.Initialise(ModuleFolderName);
+                SettingsDatabase.RegisterSettings(Settings.Instance, Settings.Instance.ID);
+
                 var harmony = new Harmony("mod.modlib.mipen");
                 harmony.PatchAll();
 
@@ -31,9 +34,9 @@ namespace ModLib
             }
         }
 
-        private void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
-            MessageBox.Show("event");
+            SettingsDatabase.BuildModSettingsVMs();
         }
     }
 }

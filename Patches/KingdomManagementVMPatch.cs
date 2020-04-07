@@ -43,5 +43,10 @@ namespace BannerlordTweaks.Patches
             }
             return true;
         }
+
+        static bool Prepare()
+        {
+            return false;
+        }
     }
 }

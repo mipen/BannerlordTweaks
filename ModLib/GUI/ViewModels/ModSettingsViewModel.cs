@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 
 namespace ModLib.GUI.ViewModels
 {
-    public class ModOptionsViewModel : ViewModel
+    public class ModSettingsViewModel : ViewModel
     {
         private string _titleLabel;
         private bool _changesMade = false;
@@ -76,15 +77,21 @@ namespace ModLib.GUI.ViewModels
             get => _selectedMod;
             set
             {
-                _selectedMod = value;
-                OnPropertyChanged();
-                OnPropertyChanged("SelectedModName");
+                if (_selectedMod != value)
+                {
+                    _selectedMod = value;
+                    OnPropertyChanged();
+                    OnPropertyChanged("SelectedModName");
+                    OnPropertyChanged("SomethingSelected");
+                }
             }
         }
         [DataSourceProperty]
         public string SelectedModName => SelectedMod == null ? "Mod Name Goes Here" : SelectedMod.ModName;
+        [DataSourceProperty]
+        public bool SomethingSelected => SelectedMod != null;
 
-        public ModOptionsViewModel()
+        public ModSettingsViewModel()
         {
             RefreshValues();
         }
@@ -96,14 +103,22 @@ namespace ModLib.GUI.ViewModels
             DoneButtonText = new TextObject("{=WiNRdfsm}Done", null).ToString();
             CancelButtonText = new TextObject("{=3CpNUnVl}Cancel", null).ToString();
 
-            //DEBUG
-            ChangesMade = true;
-            for (int i = 1; i < 11; i++)
+            ModSettingsList.Clear();
+            foreach (var msvm in SettingsDatabase.ModSettingsVMs)
             {
-                ModSettingsList.Add(new ModSettingsVM($"mod {i}", null));
+                msvm.AddSelectCommand(ExecuteSelect);
+                ModSettingsList.Add(msvm);
             }
-            SelectedMod = ModSettingsList[0];
-            OnPropertyChanged("SelectedModName");
+            OnPropertyChanged("SelectedMod");
+
+            //DEBUG
+            //ChangesMade = true;
+            //for (int i = 1; i < 21; i++)
+            //{
+            //    ModSettingsList.Add(new ModSettingsVM($"mod {i}", null, (x) => { ExecuteSelect(x); }));
+            //}
+            //ExecuteSelect(ModSettingsList[0]);
+            //OnPropertyChanged("SelectedModName");
         }
 
         private void ExecuteCancel()
@@ -112,20 +127,32 @@ namespace ModLib.GUI.ViewModels
             ScreenManager.PopScreen();
         }
 
+        private void OnScroll()
+        {
+            MessageBox.Show("hello");
+        }
+
         private void ExecuteDone()
         {
             //TODO:: Save the changes to file.
-            //ScreenManager.PopScreen();
-            if (SelectedMod != null)
-            {
-                int ind = ModSettingsList.IndexOf(SelectedMod) + 1;
-                if (ind >= ModSettingsList.Count)
-                    ind = 0;
-                SelectedMod = ModSettingsList[ind];
+            ScreenManager.PopScreen();
+        }
 
+        public void ExecuteSelect(ModSettingsVM msvm)
+        {
+            if (SelectedMod != msvm)
+            {
+                if (SelectedMod != null)
+                    SelectedMod.IsSelected = false;
+
+                SelectedMod = msvm;
+
+                if (SelectedMod != null)
+                {
+                    SelectedMod.IsSelected = true;
+                    //TODO:: Update the settings view
+                }
             }
-            else
-                SelectedMod = ModSettingsList[0];
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.Library;
 
@@ -12,10 +13,12 @@ namespace ModLib.GUI.ViewModels
     public class ModSettingsVM : ViewModel
     {
         private bool _isSelected;
+        private Action<ModSettingsVM> _executeSelect;
+        private MBBindingList<SettingPropertyGroup> _settingPropertyGroups;
 
-        public ISettings SettingsInstance { get; private set; }
+        public SettingsBase SettingsInstance { get; private set; }
         [DataSourceProperty]
-        public string ModName { get; set; }
+        public string ModName => SettingsInstance.ModName;
         [DataSourceProperty]
         public bool IsSelected
         {
@@ -26,11 +29,26 @@ namespace ModLib.GUI.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        public ModSettingsVM(string modName, ISettings settingsInstance)
+        [DataSourceProperty]
+        public MBBindingList<SettingPropertyGroup> SettingPropertyGroups
         {
-            ModName = modName;
+            get => _settingPropertyGroups;
+            set
+            {
+                if (_settingPropertyGroups != value)
+                {
+                    _settingPropertyGroups = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public ModSettingsVM(SettingsBase settingsInstance, Action<ModSettingsVM> executeSelect)
+        {
             SettingsInstance = settingsInstance;
+            _executeSelect = executeSelect;
+            SettingPropertyGroups = new MBBindingList<SettingPropertyGroup>();
+            SettingPropertyGroups.AddRange(settingsInstance.GetSettingPropertyGroups());
             RefreshValues();
         }
 
@@ -39,11 +57,17 @@ namespace ModLib.GUI.ViewModels
             base.RefreshValues();
             OnPropertyChanged("IsSelected");
             OnPropertyChanged("ModName");
+            OnPropertyChanged("SettingPropertyGroups");
         }
 
-        private void ExecuteSelected()
+        public void AddSelectCommand(Action<ModSettingsVM> command)
         {
-            IsSelected = !IsSelected;
+            _executeSelect = command;
+        }
+
+        private void ExecuteSelect()
+        {
+            _executeSelect?.Invoke(this);
         }
     }
 }
