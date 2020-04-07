@@ -21,8 +21,6 @@ namespace BannerlordTweaks.Patches
                     troopRosterElement.Character == MBObjectManager.Instance.GetObject<CharacterObject>("veteran_borrowed_troop"))
                 {
                     party_size -= troopRosterElement.Number;
-                    InformationManager.DisplayMessage(new InformationMessage("Found "+ troopRosterElement.Number + " borrowed troops", Color.FromUint(4282569842U)));
-
                 }
             }
             
