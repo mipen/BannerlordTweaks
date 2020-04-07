@@ -59,6 +59,8 @@ namespace BannerlordTweaks
         public bool StewardPartySizeBonusEnabled { get; set; } = true;
         [XmlElement]
         public float StewardPartySizeBonus { get; set; } = 0.3f;
+        [XmlElement]
+        public bool QuestCharactersIgnorePartySize { get; set; } = true;
         #endregion
 
         # region Tournament patches
