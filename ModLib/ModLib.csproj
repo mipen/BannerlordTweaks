@@ -1,18 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup Label="UserMacros">
+  <Import Project="$(SolutionDir)\BannerlordTweaks.props" />
 
-    <!-- Path to Mount and Blade folder -->
-    <MOUNT_AND_BLADE_DIR>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\</MOUNT_AND_BLADE_DIR>
-
-    <!-- Path of Harmony dll (including file) -->
-    <HARMONY_DLL>..\0Harmony.dll</HARMONY_DLL>
-
-    <!-- Path to mod older-->
-    <MOD_FOLDER>$(MOUNT_AND_BLADE_DIR)Modules\zzBannerlordTweaks\</MOD_FOLDER>
-
-  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
