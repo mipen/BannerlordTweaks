@@ -22,7 +22,7 @@ namespace ModLib.Debug
             MessageBox.Show(message, title);
         }
 
-        public static void LogError(string error)
+        public static void LogError(string error, Exception ex = null)
         {
 
         }

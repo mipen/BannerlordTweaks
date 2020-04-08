@@ -192,7 +192,14 @@ namespace ModLib
                         {
                             foreach (var filePath in Directory.GetFiles(subDir, "*.xml"))
                             {
-                                LoadFromFile(filePath);
+                                try
+                                {
+                                    LoadFromFile(filePath);
+                                }
+                                catch(Exception ex)
+                                {
+                                    ModDebug.LogError($"Failed to load file: {filePath} \n\nSkipping..\n\n", ex);
+                                }
                             }
                         }
                     }

@@ -66,7 +66,7 @@ namespace ModLib.GUI.ViewModels
             {
                 if (SettingType == SettingType.Float && _floatValue != value)
                 {
-                    _floatValue = (float)Math.Round((double)value, 1);
+                    _floatValue = (float)Math.Round((double)value, 2, MidpointRounding.ToEven);
                     OnPropertyChanged();
                     OnPropertyChanged("ValueString");
                 }
@@ -97,7 +97,7 @@ namespace ModLib.GUI.ViewModels
             {
                 if ((float)Property.GetValue(SettingsInstance) != value && !initialising)
                 {
-                    URS.Do(new SetValueAction<float>(new Ref(Property, SettingsInstance), (float)Math.Round((double)value, 1, MidpointRounding.ToEven)));
+                    URS.Do(new SetValueAction<float>(new Ref(Property, SettingsInstance), (float)Math.Round((double)value, 2, MidpointRounding.ToEven)));
                 }
             }
         }
@@ -148,7 +148,7 @@ namespace ModLib.GUI.ViewModels
                 if (SettingType == SettingType.Int)
                     return IntValue.ToString();
                 else if (SettingType == SettingType.Float)
-                    return FloatValue.ToString("0.0");
+                    return FloatValue.ToString("0.00");
                 else
                     return "";
             }
