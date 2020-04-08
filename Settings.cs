@@ -359,13 +359,13 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Siege Casualties Tweaks", true)]
         public bool SiegeCasualtiesTweakEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Siege Collateral Damage Casualties", 1f, 3f, "Native value is 2.0. Changes the value used to calculate collateral casualties during the campaign map siege stage.")]
+        [SettingProperty("Siege Collateral Damage Casualties", 1, 3, "Native value is 2.0. Changes the value used to calculate collateral casualties during the campaign map siege stage.")]
         [SettingPropertyGroup("Siege Casualties Tweaks")]
-        public float SiegeCollateralDamageCasualties { get; set; } = 1.75f;
+        public int SiegeCollateralDamageCasualties { get; set; } = 1;
         [XmlElement]
-        [SettingProperty("Siege Destruction Casualties", 3f, 7f, "Native value is 5.0. Changes the value used to calculate desctruction casualties during the campaign map siege stage.")]
+        [SettingProperty("Siege Destruction Casualties", 3, 7, "Native value is 5.0. Changes the value used to calculate desctruction casualties during the campaign map siege stage.")]
         [SettingPropertyGroup("Siege Casualties Tweaks")]
-        public float SiegeDestructionCasualties { get; set; } = 4.5f;
+        public int SiegeDestructionCasualties { get; set; } = 4;
         #endregion
 
         #region Clan parties tweak
