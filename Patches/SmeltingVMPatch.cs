@@ -6,11 +6,12 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.ViewModelCollection.Craft.Smelting;
 using TaleWorlds.Library;
 using System.Windows.Forms;
+using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 
 namespace BannerlordTweaks.Patches
 {
     /*
-     * Prevent locked items don't show up in smelting list to stop accidental smelting
+     * Prevent locked items from showing up in smelting list to stop accidental smelting
      */
     [HarmonyPatch(typeof(SmeltingVM), "RefreshList")]
     public class RefreshListPatch
@@ -60,6 +61,29 @@ namespace BannerlordTweaks.Patches
         static bool Prepare()
         {
             return Settings.Instance.PreventSmeltingLockedItems;
+        }
+    }
+
+    [HarmonyPatch(typeof(SmeltingVM), "RefreshList")]
+    [HarmonyPriority(Priority.VeryLow)]
+    public class RefreshList_RenamePatch
+    {
+        private static void Postfix(SmeltingVM __instance, ItemRoster ____playerItemRoster)
+        {
+            foreach(SmeltingItemVM item in __instance.SmeltableItemList)
+            {
+                int count = SmeltingHelper.GetNewPartsFromSmelting(item.Item).Count();
+                if(count > 0)
+                {
+                    string parts = count == 1 ? "part" : "parts";
+                    item.Name = item.Name + $" ({count} new {parts})";
+                }
+            }
+        }
+
+        static bool Prepare()
+        {
+            return Settings.Instance.AutoLearnSmeltedParts;
         }
     }
 }

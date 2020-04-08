@@ -12,17 +12,28 @@ using TaleWorlds.Library;
 
 namespace BannerlordTweaks.Patches
 {
+    public static class SmeltingHelper
+    {
+        public static IEnumerable<CraftingPiece> GetNewPartsFromSmelting(ItemObject item)
+        {
+            return item.WeaponDesign.UsedPieces.Select(
+                    x => x.CraftingPiece
+                ).Where(
+                    x => x != null &&
+                    x.IsValid &&
+                    !Campaign.Current.GetCampaignBehavior<CraftingCampaignBehavior>().IsOpened(x)
+                );
+        }
+    }
+
     [HarmonyPatch(typeof(CraftingCampaignBehavior), "DoSmelting")]
     public class DoSmeltingPatch
     {
-        private static void Postfix(CraftingCampaignBehavior __instance, Hero hero, ItemObject item, List<CraftingPiece> ____openedParts)
+        private static void Postfix(CraftingCampaignBehavior __instance, ItemObject item)
         {
-            foreach (CraftingPiece piece in item.WeaponDesign.UsedPieces.Select(x => x.CraftingPiece))
+            foreach (CraftingPiece piece in SmeltingHelper.GetNewPartsFromSmelting(item))
             {
-                if (piece != null && piece.IsValid && !__instance.IsOpened(piece))
-                {
-                    typeof(CraftingCampaignBehavior).GetMethod("OpenPart", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { piece });
-                }
+                typeof(CraftingCampaignBehavior).GetMethod("OpenPart", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { piece });
             }
         }
 
