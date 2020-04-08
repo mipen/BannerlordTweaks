@@ -145,7 +145,7 @@ namespace ModLib.GUI.ViewModels
             if (ModSettingsList.Any((x) => x.URS.ChangesMade()))
             {
                 InformationManager.ShowInquiry(new InquiryData("Game Needs to Restart",
-                                "The game needs to be restarted to apply mods settings changes. The game will now close.",
+                                "The game needs to be restarted to apply mods settings changes. The game will now close. Please start it again.",
                                 true, false, new TextObject("{=5Unqsx3N}Confirm").ToString(), null,
                                 () =>
                                 {
@@ -156,6 +156,8 @@ namespace ModLib.GUI.ViewModels
                                     Utilities.QuitGame();
                                 }, null));
             }
+            else
+                ScreenManager.PopScreen();
         }
 
         public void AssignParent(bool remove = false)
