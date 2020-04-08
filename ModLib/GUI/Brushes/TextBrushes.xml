@@ -1,7 +1,7 @@
 ﻿<Brushes>
-  <Brush Name="ModSettings.Hint.Text" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Top">
+  <Brush Name="ModSettings.Hint.Text" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
     <Styles>
-      <Style Name="Default" FontColor="#DDC3A1FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextShadowAngle="60" FontSize="30" />
+      <Style Name="Default" FontColor="#DDC3A1FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextShadowAngle="60" FontSize="28" />
     </Styles>
   </Brush>
   

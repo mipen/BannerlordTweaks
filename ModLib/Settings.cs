@@ -1,5 +1,4 @@
 ﻿using ModLib.Attributes;
-using System;
 using System.Xml.Serialization;
 
 namespace ModLib
@@ -18,7 +17,10 @@ namespace ModLib
                 {
                     _instance = FileDatabase.Get<ModLib.Settings>(instanceID);
                     if (_instance == null)
-                        throw new Exception("Unable to find ModLib settings in Loader");
+                    {
+                        _instance = new Settings();
+                        FileDatabase.SaveToFile(ModLibSubModule.ModuleFolderName, _instance);
+                    }
                 }
                 return _instance;
             }

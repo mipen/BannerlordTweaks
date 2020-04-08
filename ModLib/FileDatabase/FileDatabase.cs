@@ -115,7 +115,7 @@ namespace ModLib
 
             if (Data[type].ContainsKey(loadable.ID))
             {
-                ModDebug.LogError($"Loader already contains Type: {type.AssemblyQualifiedName} ID: {loadable.ID}, overriting...");
+                ModDebug.LogError($"Loader already contains Type: {type.AssemblyQualifiedName} ID: {loadable.ID}, overwriting...");
                 Data[type][loadable.ID] = loadable;
             }
             else

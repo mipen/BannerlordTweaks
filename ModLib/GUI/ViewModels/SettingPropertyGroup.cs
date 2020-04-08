@@ -1,10 +1,4 @@
 ﻿using ModLib.Attributes;
-using ModLib.GUI.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.Library;
 
 namespace ModLib.GUI.ViewModels
@@ -22,7 +16,7 @@ namespace ModLib.GUI.ViewModels
             {
                 if (GlobalToggleSettingProperty != null && !string.IsNullOrWhiteSpace(GlobalToggleSettingProperty.HintText))
                 {
-                    return $"{GlobalToggleSettingProperty.Name}: {GlobalToggleSettingProperty.HintText}";
+                    return $"{GlobalToggleSettingProperty.HintText}";
                 }
                 return "";
             }

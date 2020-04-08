@@ -72,6 +72,11 @@ namespace ModLib
                 throw new Exception($"Property {prop.Property.Name} in {prop.SettingsInstance.GetType().FullName} must have a getter.");
             if (!prop.Property.CanWrite)
                 throw new Exception($"Property {prop.Property.Name} in {prop.SettingsInstance.GetType().FullName} must have a setter.");
+            if (prop.SettingType == SettingType.Int || prop.SettingType == SettingType.Float)
+            {
+                if (prop.MinValue == prop.MaxValue)
+                    throw new Exception($"Property {prop.Property.Name} in {prop.SettingsInstance.GetType().FullName} is a numeric type but the MinValue and MaxValue are the same.");
+            }
         }
     }
 }

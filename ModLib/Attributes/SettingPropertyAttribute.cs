@@ -5,10 +5,10 @@ namespace ModLib.Attributes
     [AttributeUsage(AttributeTargets.Property)]
     public class SettingPropertyAttribute : Attribute
     {
-        public string DisplayName { get; private set; }
-        public float MinValue { get; private set; }
-        public float MaxValue { get; private set; }
-        public string HintText { get; private set; }
+        public string DisplayName { get; private set; } = "";
+        public float MinValue { get; private set; } = 0f;
+        public float MaxValue { get; private set; } = 0f;
+        public string HintText { get; private set; } = "";
 
         public SettingPropertyAttribute(string displayName, float minValue, float maxValue, string hintText = "")
         {

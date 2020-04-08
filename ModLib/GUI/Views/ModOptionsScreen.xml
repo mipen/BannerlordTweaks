@@ -59,7 +59,7 @@
 
                     <!-- Mod list scroll bar -->
                     <Standard.VerticalScrollbar Id="ModsScrollbar" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right"
-                                                VerticalAlignment="Bottom" MarginLeft="2"/>
+                                                VerticalAlignment="Bottom" MarginLeft="2" MarginTop="1" MarginBottom="1"/>
 
                   </Children>
                 </Widget>
@@ -97,18 +97,18 @@
 
             <!-- Selected Mod Settings Section on the right -->
             <Widget Id="ModSettingsSection" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" MarginLeft="40" IsVisible="@SomethingSelected"
-                    SuggestedWidth="1270" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="10">
+                    SuggestedWidth="1270" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="10" MarginBottom="10">
               <Children>
 
                 <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" LayoutImp.LayoutMethod="VerticalBottomToTop">
                   <Children>
                     <!-- Title -->
-                    <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" Brush="ModSettings.Title.Text" Text="@SelectedModName"
-                                    HorizontalAlignment="Center" VerticalAlignment="Top" PositionYOffset="-5"/>
-                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"  VerticalAlignment="Top" MarginBottom="10"
-                            Brush="Divider.White" MarginLeft="15" MarginRight="15"/>
+                    <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="80" Brush="ModSettings.Title.Text" Text="@SelectedModName"
+                                    HorizontalAlignment="Center" VerticalAlignment="Top" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"  VerticalAlignment="Top" Brush="Divider.Yellow"
+                            MarginLeft="15" MarginRight="15"/>
 
-                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="30" MarginRight="30" MarginLeft="30">
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginRight="30" MarginLeft="30">
                       <Children>
 
                         <ScrollablePanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" ClipRect="SettingsClipRect" MarginRight="20"
@@ -132,20 +132,22 @@
                           </Children>
                         </ScrollablePanel>
 
-                        <Standard.VerticalScrollbar Id="SettingsScrollBar" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                        <Standard.VerticalScrollbar Id="SettingsScrollBar" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                                    MarginTop="2"/>
 
                       </Children>
                     </Widget>
 
                     <!-- Setting Hint Information Section -->
-                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="100" VerticalAlignment="Bottom" LayoutImp.LayoutMethod="VerticalBottomToTop">
+                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="100" VerticalAlignment="Bottom"
+                               LayoutImp.LayoutMethod="VerticalBottomToTop" MarginTop="1">
                       <Children>
 
-                        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"  VerticalAlignment="Top" MarginBottom="10"
-                                Brush="Divider.Yellow" MarginLeft="15" MarginRight="15"/>
+                        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"  VerticalAlignment="Top" Brush="Divider.Yellow"
+                                MarginLeft="15" MarginRight="15" MarginBottom="2"/>
 
-                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginBottom="15" Text="@HintText" IsVisible="@IsHintVisible"
-                                    HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="10" MarginRight="10" Brush="ModSettings.Hint.Text"/>
+                        <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Text="@HintText" IsVisible="@IsHintVisible"
+                                    HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="20" MarginRight="10" Brush="ModSettings.Hint.Text"/>
 
                       </Children>
                     </ListPanel>
