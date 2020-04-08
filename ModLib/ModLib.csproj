@@ -98,7 +98,7 @@
   <ItemGroup>
     <Compile Include="Attributes\SettingPropertyAttribute.cs" />
     <Compile Include="Attributes\SettingPropertyGroupAttribute.cs" />
-    <Compile Include="Debug\DebugVars.cs" />
+    <Compile Include="Debugging\DebugVars.cs" />
     <Compile Include="ExtensionMethods\ExceptionExtensionMethods.cs" />
     <Compile Include="ExtensionMethods\IEnumerableExtensions.cs" />
     <Compile Include="ExtensionMethods\MBBindingListExtensions.cs" />
@@ -109,7 +109,7 @@
     <Compile Include="Interfaces\IInitial.cs" />
     <Compile Include="Interfaces\ISerialisableFile.cs" />
     <Compile Include="FileDatabase\FileDatabase.cs" />
-    <Compile Include="Debug\ModDebug.cs" />
+    <Compile Include="Debugging\ModDebug.cs" />
     <Compile Include="Interfaces\ISubFolder.cs" />
     <Compile Include="GUI\Views\ModLibSliderWidget.cs" />
     <Compile Include="Ref.cs" />

@@ -148,13 +148,13 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Hideout Battle Tweaks")]
         public int HideoutBattleTroopLimit { get; set; } = 90;
         [XmlElement]
-        [SettingProperty("Continue Hideout Battle On Player Death", "If enabled, you will not automatically lose the hideout battle if you die. Your troops will charge and the boss duel will be disabled.")]
+        [SettingProperty("Continue Hideout Battle On Player Death", "Native value is false. If enabled, you will not automatically lose the hideout battle if you die. Your troops will charge and the boss duel will be disabled.")]
         [SettingPropertyGroup("Hideout Battle Tweaks")]
-        public bool LoseHideoutBattleOnPlayerDeath { get; set; } = false;
+        public bool ContinueHideoutBattleOnPlayerDeath { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Continue Battle On Losing Duel", "If enabled, you will not lose the battle if you lose the boss duel. Your troops will rush to avenge you and finish everyone off.")]
+        [SettingProperty("Continue Battle On Losing Duel", "Native value is false. If enabled, you will lose the battle if you lose the boss duel. If disabled, your troops will rush to avenge you and finish everyone off.")]
         [SettingPropertyGroup("Hideout Battle Tweaks")]
-        public bool LoseHideoutBattleOnPlayerLoseDuel { get; set; } = false;
+        public bool ContinueHideoutBattleOnPlayerLoseDuel { get; set; } = true;
         #endregion
 
         #region Troop experience multiplier
