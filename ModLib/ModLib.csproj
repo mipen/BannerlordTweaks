@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GUI\Brushes\DividerBrushes.xml" />
+    <Content Include="GUI\Brushes\ResetButtonBrush.xml" />
     <Content Include="GUI\Brushes\TextBrushes.xml" />
     <Content Include="GUI\Brushes\ModSettingsItemBrush.xml" />
     <Content Include="GUI\Views\ModOptionsScreen.xml" />
@@ -151,6 +152,7 @@ copy "$(ProjectDir)GUI\Views\SettingPropertyGroupView.xml" "C:\Program Files (x8
 copy "$(ProjectDir)GUI\Views\SettingPropertyView.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
 copy "$(ProjectDir)GUI\Brushes\DividerBrushes.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Brushes\"
 copy "$(ProjectDir)GUI\Brushes\TextBrushes.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Brushes\"
+copy "$(ProjectDir)GUI\Brushes\ResetButtonBrush.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Brushes\"
 
 </PostBuildEvent>
   </PropertyGroup>

@@ -163,6 +163,7 @@
 
         <!-- Top Banner -->
         <Standard.TopPanel Parameter.Title="@TitleLabel"/>
+        
       </Children>
     </Widget>
   </Window>
