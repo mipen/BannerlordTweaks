@@ -8,19 +8,17 @@ namespace ModLib.Attributes
         public string DisplayName { get; private set; }
         public float MinValue { get; private set; }
         public float MaxValue { get; private set; }
-        public string Tooltip { get; private set; }
-        public string Group { get; private set; }
+        public string HintText { get; private set; }
 
-        public SettingPropertyAttribute(string displayName, float minValue, float maxValue, string tooltip = "", string group = "")
+        public SettingPropertyAttribute(string displayName, float minValue, float maxValue, string hintText = "")
         {
             DisplayName = displayName;
             MinValue = minValue;
             MaxValue = maxValue;
-            Tooltip = tooltip;
-            Group = group;
+            HintText = hintText;
         }
 
-        public SettingPropertyAttribute(string displayName, string tooltip = "", string group = "") : this(displayName, 0f, 0f, tooltip, group)
+        public SettingPropertyAttribute(string displayName, string tooltip = "") : this(displayName, 0f, 0f, tooltip)
         {
 
         }

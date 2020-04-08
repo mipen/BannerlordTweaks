@@ -19,7 +19,7 @@ namespace ModLib.GUI.GauntletUI
     {
         private GauntletLayer gauntletLayer;
         private GauntletMovie movie;
-        private ModSettingsViewModel vm;
+        private ModSettingsScreenVM vm;
 
         protected override void OnInitialize()
         {
@@ -30,7 +30,7 @@ namespace ModLib.GUI.GauntletUI
             gauntletLayer.IsFocusLayer = true;
             ScreenManager.TrySetFocus(gauntletLayer);
             AddLayer(gauntletLayer);
-            vm = new ModSettingsViewModel();
+            vm = new ModSettingsScreenVM();
             movie = gauntletLayer.LoadMovie("ModOptionsScreen", vm);
         }
 
@@ -39,7 +39,7 @@ namespace ModLib.GUI.GauntletUI
             base.OnFrameTick(dt);
             if (gauntletLayer.Input.IsHotKeyReleased("Exit") || gauntletLayer.Input.IsGameKeyReleased(34))
             {
-                ScreenManager.PopScreen();
+                vm.ExecuteCancel();
             }
         }
 
@@ -47,9 +47,11 @@ namespace ModLib.GUI.GauntletUI
         {
             base.OnFinalize();
             RemoveLayer(gauntletLayer);
-            vm.ExecuteSelect(null);
             gauntletLayer.ReleaseMovie(movie);
             gauntletLayer = null;
+            movie = null;
+            vm.ExecuteSelect(null);
+            vm.AssignParent(true);
             vm = null;
         }
     }

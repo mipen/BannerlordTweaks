@@ -1,11 +1,4 @@
-﻿using ModLib.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TaleWorlds.Engine.Screens;
+﻿using System;
 using TaleWorlds.Library;
 
 namespace ModLib.GUI.ViewModels
@@ -13,10 +6,13 @@ namespace ModLib.GUI.ViewModels
     public class ModSettingsVM : ViewModel
     {
         private bool _isSelected;
-        private Action<ModSettingsVM> _executeSelect;
+        private Action<ModSettingsVM> _executeSelect = null;
         private MBBindingList<SettingPropertyGroup> _settingPropertyGroups;
+        public ModSettingsScreenVM Parent { get; private set; } = null;
 
         public SettingsBase SettingsInstance { get; private set; }
+        public UndoRedoStack URS { get; } = new UndoRedoStack();
+
         [DataSourceProperty]
         public string ModName => SettingsInstance.ModName;
         [DataSourceProperty]
@@ -43,18 +39,24 @@ namespace ModLib.GUI.ViewModels
             }
         }
 
-        public ModSettingsVM(SettingsBase settingsInstance, Action<ModSettingsVM> executeSelect)
+        public ModSettingsVM(SettingsBase settingsInstance)
         {
             SettingsInstance = settingsInstance;
-            _executeSelect = executeSelect;
+
             SettingPropertyGroups = new MBBindingList<SettingPropertyGroup>();
             SettingPropertyGroups.AddRange(settingsInstance.GetSettingPropertyGroups());
+
+            foreach (var settingGroup in SettingPropertyGroups)
+                settingGroup.AssignUndoRedoStack(URS);
+
             RefreshValues();
         }
 
         public override void RefreshValues()
         {
             base.RefreshValues();
+            foreach (var group in SettingPropertyGroups)
+                group.RefreshValues();
             OnPropertyChanged("IsSelected");
             OnPropertyChanged("ModName");
             OnPropertyChanged("SettingPropertyGroups");
@@ -65,9 +67,17 @@ namespace ModLib.GUI.ViewModels
             _executeSelect = command;
         }
 
+        public void SetParent(ModSettingsScreenVM parent)
+        {
+            Parent = parent;
+            foreach (var group in SettingPropertyGroups)
+                group.SetParent(Parent);
+        }
+
         private void ExecuteSelect()
         {
             _executeSelect?.Invoke(this);
         }
+
     }
 }

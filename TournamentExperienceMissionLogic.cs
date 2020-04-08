@@ -40,7 +40,7 @@ namespace BannerlordTweaks
                     //MessageBox.Show($"Giving experience to {affectorAgent.Character.Name} in tournament.\nAffected:{affectedAgent.Character.Name}\nCaptain: {captainHero?.Name?.ToString()}");
 
                     SkillLevelingManager.OnCombatHit(affectorAgent.Character as CharacterObject, affectedAgent.Character as CharacterObject,
-                        captainHero, commanderHero, movementSpeedDamageModifier, shotDifficulty, affectorWeaponKind, hitPointRatio, false, affectorAgent.HasMount,
+                        captainHero, commanderHero, movementSpeedDamageModifier, shotDifficulty, affectorWeaponKind, hitPointRatio, CombatXpModel.MissionTypeEnum.Tournament, affectorAgent.HasMount,
                         isTeamKill, false, weaponCurrentUsageIndex, damage, isFatal);
                 }
             }

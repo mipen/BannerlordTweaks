@@ -1,14 +1,10 @@
-﻿using ModLib;
-using HarmonyLib;
-using SandBox;
-using SandBox.TournamentMissions.Missions;
+﻿using HarmonyLib;
+using ModLib;
 using System;
-using System.Reflection;
 using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
-using System.Linq;
 
 namespace BannerlordTweaks
 {
@@ -21,7 +17,7 @@ namespace BannerlordTweaks
             base.OnSubModuleLoad();
             try
             {
-                Loader.Initialise(ModuleFolderName);
+                FileDatabase.Initialise(ModuleFolderName);
                 SettingsDatabase.RegisterSettings(Settings.Instance, Settings.Instance.ModName);
 
                 var harmony = new Harmony("mod.bannerlord.mipen");

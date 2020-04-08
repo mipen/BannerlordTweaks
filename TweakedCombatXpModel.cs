@@ -6,18 +6,18 @@ namespace BannerlordTweaks
 {
     public class TweakedCombatXpModel : StoryModeCombatXpModel
     {
-        public override void GetXpFromHit(CharacterObject attackerTroop, CharacterObject attackedTroop, int damage, bool isFatal, bool isSimulated, out int xpAmount)
+        public override void GetXpFromHit(CharacterObject attackerTroop, CharacterObject attackedTroop, int damage, bool isFatal, MissionTypeEnum missionType, out int xpAmount)
         {
             int baseXpAmount = 0;
             if (attackerTroop != null && attackedTroop != null)
             {
-                base.GetXpFromHit(attackerTroop, attackedTroop, damage, isFatal, isSimulated, out baseXpAmount);
+                base.GetXpFromHit(attackerTroop, attackedTroop, damage, isFatal, missionType, out baseXpAmount);
 
                 if (!attackerTroop.IsHero)
                 {
-                    if (Settings.Instance.TroopBattleExperienceMultiplierEnabled && !isSimulated)
+                    if (Settings.Instance.TroopBattleExperienceMultiplierEnabled && missionType == MissionTypeEnum.Battle)
                         baseXpAmount = (int)Math.Ceiling(Settings.Instance.TroopBattleExperienceMultiplier * baseXpAmount);
-                    else if (Settings.Instance.TroopBattleSimulationExperienceMultiplierEnabled && isSimulated)
+                    else if (Settings.Instance.TroopBattleSimulationExperienceMultiplierEnabled && missionType == MissionTypeEnum.SimulationBattle)
                         baseXpAmount = (int)Math.Ceiling(Settings.Instance.TroopBattleSimulationExperienceMultiplier * baseXpAmount);
                 }
                 xpAmount = baseXpAmount;

@@ -4,9 +4,6 @@ using ModLib.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ModLib
 {
@@ -44,7 +41,7 @@ namespace ModLib
             }
         }
 
-        public static SettingsBase GetSettings(string uniqueID)
+        public static ISerialisableFile GetSettings(string uniqueID)
         {
             if (AllSettingsDict.ContainsKey(uniqueID))
             {
@@ -61,7 +58,7 @@ namespace ModLib
                 _modSettingsVMs = new List<ModSettingsVM>();
                 foreach (var settings in AllSettings)
                 {
-                    ModSettingsVM msvm = new ModSettingsVM(settings, null);
+                    ModSettingsVM msvm = new ModSettingsVM(settings);
                     _modSettingsVMs.Add(msvm);
                 }
                 _modSettingsVMs.Sort((x, y) => y.ModName.CompareTo(x.ModName));

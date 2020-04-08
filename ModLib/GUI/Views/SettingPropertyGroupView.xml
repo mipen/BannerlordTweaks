@@ -1,10 +1,33 @@
 ﻿<Prefab>
   <Window>
     <ListPanel HeightSizePolicy="CoverChildren" WidthSizePolicy="StretchToParent" LayoutImp.LayoutMethod="VerticalBottomToTop" VerticalAlignment="Top"
-               HorizontalAlignment="Left" MarginTop="35">
+               HorizontalAlignment="Left" UpdateChildrenStates="true">
       <Children>
 
-        <TextWidget Text="@GroupName" HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="10"/>
+        <Widget HeightSizePolicy="Fixed" SuggestedHeight="42" WidthSizePolicy="StretchToParent" VerticalAlignment="Top"  MarginTop="20">
+          <Children>
+            <!-- Group Name -->
+            <RichTextWidget Text="@GroupNameDisplay" HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" HorizontalAlignment="Left"
+                            VerticalAlignment="Center" MarginLeft="10" Brush="ModSettings.Group.Text"/>
+            <!-- Enable toggle -->
+            <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" HorizontalAlignment="Right"
+                    IsVisible="@HasGlobalToggle" UpdateChildrenStates="true" MarginRight="10">
+              <Children>
+                <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="40" SuggestedHeight="40"
+                              Brush="SPOptions.Checkbox.Empty.Button" ButtonType="Toggle" IsSelected="@GlobalToggle"
+                              ToggleIndicator="ToggleIndicator" UpdateChildrenStates="true">
+                  <Children>
+                    <ImageWidget Id="ToggleIndicator" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="SPOptions.Checkbox.Full.Button" />
+                  </Children>
+                </ButtonWidget>
+              </Children>
+            </Widget>
+
+            <HintWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="OnHover" Command.HoverEnd="OnHoverEnd"/>
+
+
+          </Children>
+        </Widget>
 
         <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"  VerticalAlignment="Top" MarginTop="4" Brush="Kingdom.Divider.White"/>
 
@@ -14,9 +37,9 @@
             <SettingPropertyView />
           </ItemTemplate>
         </ListPanel>
-        
+
       </Children>
     </ListPanel>
-    
+
   </Window>
 </Prefab>

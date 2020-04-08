@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows.Forms;
+using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 
 namespace ModLib.GUI.ViewModels
 {
-    public class ModSettingsViewModel : ViewModel
+    public class ModSettingsScreenVM : ViewModel
     {
         private string _titleLabel;
-        private bool _changesMade = false;
         private string _cancelButtonText;
         private string _doneButtonText;
         private ModSettingsVM _selectedMod;
         private MBBindingList<ModSettingsVM> _modSettingsList = new MBBindingList<ModSettingsVM>();
+        private string _hintText;
 
         [DataSourceProperty]
         public string TitleLabel
@@ -32,11 +30,9 @@ namespace ModLib.GUI.ViewModels
         [DataSourceProperty]
         public bool ChangesMade
         {
-            get => _changesMade;
-            set
+            get
             {
-                _changesMade = value;
-                OnPropertyChanged();
+                return ModSettingsList.Any((x) => x.URS.ChangesMade());
             }
         }
         [DataSourceProperty]
@@ -90,8 +86,23 @@ namespace ModLib.GUI.ViewModels
         public string SelectedModName => SelectedMod == null ? "Mod Name Goes Here" : SelectedMod.ModName;
         [DataSourceProperty]
         public bool SomethingSelected => SelectedMod != null;
+        [DataSourceProperty]
+        public string HintText
+        {
+            get => _hintText;
+            set
+            {
+                if (_hintText != value)
+                {
+                    _hintText = value;
+                    OnPropertyChanged();
+                    OnPropertyChanged("IsHintVisible");
+                }
+            }
+        }
+        public bool IsHintVisible => !string.IsNullOrWhiteSpace(HintText);
 
-        public ModSettingsViewModel()
+        public ModSettingsScreenVM()
         {
             RefreshValues();
         }
@@ -108,34 +119,49 @@ namespace ModLib.GUI.ViewModels
             {
                 msvm.AddSelectCommand(ExecuteSelect);
                 ModSettingsList.Add(msvm);
+                msvm.SetParent(this);
+                msvm.RefreshValues();
             }
             OnPropertyChanged("SelectedMod");
-
-            //DEBUG
-            //ChangesMade = true;
-            //for (int i = 1; i < 21; i++)
-            //{
-            //    ModSettingsList.Add(new ModSettingsVM($"mod {i}", null, (x) => { ExecuteSelect(x); }));
-            //}
-            //ExecuteSelect(ModSettingsList[0]);
-            //OnPropertyChanged("SelectedModName");
         }
 
-        private void ExecuteCancel()
+        public bool ExecuteCancel()
         {
-            //TODO:: Revert any changes
+            //Revert any changes
             ScreenManager.PopScreen();
-        }
-
-        private void OnScroll()
-        {
-            MessageBox.Show("hello");
+            foreach (var msvm in ModSettingsList)
+            {
+                msvm.URS.UndoAll();
+                msvm.URS.ClearStack();
+            }
+            AssignParent(true);
+            ExecuteSelect(null);
+            return true;
         }
 
         private void ExecuteDone()
         {
-            //TODO:: Save the changes to file.
-            ScreenManager.PopScreen();
+            //Save the changes to file.
+            if (ModSettingsList.Any((x) => x.URS.ChangesMade()))
+            {
+                InformationManager.ShowInquiry(new InquiryData("Game Needs to Restart",
+                                "The game needs to be restarted to apply mods settings changes. The game will now close.",
+                                true, false, new TextObject("{=5Unqsx3N}Confirm").ToString(), null,
+                                () =>
+                                {
+                                    ModSettingsList.Where((x) => x.URS.ChangesMade())
+                                    .Do((x) => FileDatabase.SaveToFile(x.SettingsInstance.ModuleFolderName, x.SettingsInstance))
+                                    .Do((x) => x.URS.ClearStack());
+
+                                    Utilities.QuitGame();
+                                }, null));
+            }
+        }
+
+        public void AssignParent(bool remove = false)
+        {
+            foreach (var msvm in ModSettingsList)
+                msvm.SetParent(remove ? null : this);
         }
 
         public void ExecuteSelect(ModSettingsVM msvm)

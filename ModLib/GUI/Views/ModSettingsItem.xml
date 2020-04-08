@@ -3,9 +3,10 @@
     <ButtonWidget HeightSizePolicy="Fixed" WidthSizePolicy="StretchToParent" SuggestedHeight="75" Brush="Mod.Setting.Item" Command.Click="ExecuteSelect"
                   IsSelected="@IsSelected" DoNotPassEventsToChildren="true" ClipContents="true">
       <Children>
-        <TextWidget Text="@ModName" HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Center"
-                    MarginLeft="10" Brush="Clan.Tuple.Name.Text"/>
+        <RichTextWidget Text="@ModName" HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    MarginLeft="10" Brush="Mod.Settings.Item.Name"/>
       </Children>
+                      <!--Brush="Clan.Tuple.Name.Text"-->
     </ButtonWidget>
   </Window>
 </Prefab>

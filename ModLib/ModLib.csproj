@@ -97,26 +97,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\SettingPropertyAttribute.cs" />
+    <Compile Include="Attributes\SettingPropertyGroupAttribute.cs" />
     <Compile Include="Debug\DebugVars.cs" />
     <Compile Include="ExtensionMethods\ExceptionExtensionMethods.cs" />
+    <Compile Include="ExtensionMethods\IEnumerableExtensions.cs" />
     <Compile Include="ExtensionMethods\MBBindingListExtensions.cs" />
+    <Compile Include="ExtensionMethods\StackExtension.cs" />
     <Compile Include="GUI\GauntletUI\ModOptionsGauntletScreen.cs" />
     <Compile Include="GUI\ViewModels\ModSettingsVM.cs" />
-    <Compile Include="Interfaces\ILoadable.cs" />
-    <Compile Include="DocDatabase\Loader.cs" />
+    <Compile Include="Interfaces\IAction.cs" />
+    <Compile Include="Interfaces\IInitial.cs" />
+    <Compile Include="Interfaces\ISerialisableFile.cs" />
+    <Compile Include="FileDatabase\FileDatabase.cs" />
     <Compile Include="Debug\ModDebug.cs" />
-    <Compile Include="SettingProperty.cs" />
-    <Compile Include="SettingPropertyGroup.cs" />
-    <Compile Include="SettingsBase.cs" />
-    <Compile Include="SettingsDatabase.cs" />
+    <Compile Include="Interfaces\ISubFolder.cs" />
+    <Compile Include="GUI\Views\ModLibSliderWidget.cs" />
+    <Compile Include="Ref.cs" />
+    <Compile Include="GUI\ViewModels\SettingProperty.cs" />
+    <Compile Include="GUI\ViewModels\SettingPropertyGroup.cs" />
+    <Compile Include="FileDatabase\SettingsBase.cs" />
+    <Compile Include="FileDatabase\SettingsDatabase.cs" />
     <Compile Include="Patches\ModulePatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ModLibSubModule.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="GUI\ViewModels\ModSettingsViewModel.cs" />
-    <Compile Include="SettingType.cs" />
+    <Compile Include="GUI\ViewModels\ModSettingsScreenVM.cs" />
+    <Compile Include="FileDatabase\SettingType.cs" />
+    <Compile Include="SetValueAction.cs" />
+    <Compile Include="UndoRedoStack.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GUI\Brushes\DividerBrushes.xml" />
+    <Content Include="GUI\Brushes\TextBrushes.xml" />
     <Content Include="GUI\Brushes\ModSettingsItemBrush.xml" />
     <Content Include="GUI\Views\ModOptionsScreen.xml" />
     <Content Include="GUI\Views\ModSettingsItem.xml" />
@@ -131,13 +143,15 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\bin\Win64_Shipping_Client\"
-copy "$(ProjectDir)ModuleData\Loadables\modlib_config.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\ModuleData\Loadables\"
 copy "$(ProjectDir)GUI\Views\ModOptionsScreen.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
 copy "$(ProjectDir)GUI\Views\ModSettingsItem.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
 copy "$(ProjectDir)GUI\Brushes\ModSettingsItemBrush.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Brushes\"
 copy "$(ProjectDir)GUI\Views\SettingsView.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
 copy "$(ProjectDir)GUI\Views\SettingPropertyGroupView.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
 copy "$(ProjectDir)GUI\Views\SettingPropertyView.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
+copy "$(ProjectDir)GUI\Brushes\DividerBrushes.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Brushes\"
+copy "$(ProjectDir)GUI\Brushes\TextBrushes.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Brushes\"
+
 </PostBuildEvent>
   </PropertyGroup>
 </Project>
