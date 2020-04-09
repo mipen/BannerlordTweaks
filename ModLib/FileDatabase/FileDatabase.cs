@@ -124,6 +124,13 @@ namespace ModLib
 
         private static void LoadFromFile(string filePath)
         {
+            //DEBUG:: People can't read and aren't deleting the old mod installation. Need to manually delete the old config file for a couple updates.
+            string modulefolder = Directory.GetParent(filePath).Parent.Parent.Name;
+            if (Path.GetFileName(filePath) == "config.xml" && modulefolder == "zzBannerlordTweaks")
+            {
+                File.Delete(filePath);
+                return;
+            }
             using (XmlReader reader = XmlReader.Create(filePath))
             {
                 string nodeData = "";
@@ -196,7 +203,7 @@ namespace ModLib
                                 {
                                     LoadFromFile(filePath);
                                 }
-                                catch(Exception ex)
+                                catch (Exception ex)
                                 {
                                     ModDebug.LogError($"Failed to load file: {filePath} \n\nSkipping..\n\n", ex);
                                 }
