@@ -129,11 +129,11 @@ namespace BannerlordTweaks
 
         #region Hero skill multiplier patch
         [XmlElement]
-        [SettingProperty("Enable Hero Skill Experience Tweak", "Applies a multiplier to the amount of experience received based on the skill level of the skill that the experience has been gained for.")]
+        [SettingProperty("Enable Hero Skill Experience Tweak", "Applies a multiplier to the amount of experience received based on the skill level of the skill that the experience has been gained for. The multiplier is calculated using this function: 0.0315769 * skillLevel^1.020743 with a minumum output of 1.")]
         [SettingPropertyGroup("Hero Skill Experience Tweak", true)]
         public bool HeroSkillExperienceMultiplierEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Hero Skill Experience Override Multiplier", -1f, 15f, "Overrides the mod's default experience multiplier with the flat multiplier that you set. Set to -1 to disable.")]
+        [SettingProperty("Hero Skill Experience Override Multiplier", -1f, 15f, "Overrides the mod's default experience multiplier with the flat multiplier that you set. Set to -1 to disable the override and use the mod's curve multiplier.")]
         [SettingPropertyGroup("Hero Skill Experience Tweak")]
         public float HeroSkillExperienceOverrideMultiplier { get; set; } = -1;
         #endregion
