@@ -97,7 +97,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Party Size Bonus", true)]
         public bool PartySizeTweakEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Enable Leaderhip Bonus", "Applies a bonus equal to the set percentage of your leadership skill to your party size.")]
+        [SettingProperty("Enable Leadership Bonus", "Applies a bonus equal to the set percentage of your leadership skill to your party size.")]
         [SettingPropertyGroup("Party Size Bonus")]
         public bool LeadershipPartySizeBonusEnabled { get; set; } = true;
         [XmlElement]
