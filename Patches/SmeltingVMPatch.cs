@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using HarmonyLib;
+using ModLib;
+using System.Collections.Generic;
 using System.Linq;
-using HarmonyLib;
-using TaleWorlds.Core;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.ViewModelCollection.Craft.Smelting;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
-using System.Windows.Forms;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 
 namespace BannerlordTweaks.Patches
 {

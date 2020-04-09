@@ -1,31 +1,15 @@
 ﻿using HarmonyLib;
+using ModLib;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 
 namespace BannerlordTweaks.Patches
 {
-    public static class SmeltingHelper
-    {
-        public static IEnumerable<CraftingPiece> GetNewPartsFromSmelting(ItemObject item)
-        {
-            return item.WeaponDesign.UsedPieces.Select(
-                    x => x.CraftingPiece
-                ).Where(
-                    x => x != null &&
-                    x.IsValid &&
-                    !Campaign.Current.GetCampaignBehavior<CraftingCampaignBehavior>().IsOpened(x)
-                );
-        }
-    }
-
     [HarmonyPatch(typeof(CraftingCampaignBehavior), "DoSmelting")]
     public class DoSmeltingPatch
     {

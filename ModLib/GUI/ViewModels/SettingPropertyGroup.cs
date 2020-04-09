@@ -5,7 +5,7 @@ namespace ModLib.GUI.ViewModels
 {
     public class SettingPropertyGroup : ViewModel
     {
-        public const string DefaultGroupName = "Ungrouped";
+        public const string DefaultGroupName = "Misc";
         public SettingProperty GroupToggleSettingProperty { get; private set; } = null;
         public SettingPropertyGroupAttribute Attribute { get; private set; }
         public UndoRedoStack URS { get; private set; }

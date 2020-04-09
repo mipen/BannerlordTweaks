@@ -6,8 +6,6 @@ namespace BannerlordTweaks
 {
     public class Settings : SettingsBase
     {
-        //[SettingProperty("","")
-        //[SettingPropertyGroup("")
         private const string instanceID = "BannerlordTweaksSettings";
         private static Settings _instance = null;
         public override string ModName => "Bannerlord Tweaks";
@@ -33,6 +31,9 @@ namespace BannerlordTweaks
                 return _instance;
             }
         }
+
+        //[SettingProperty("","")
+        //[SettingPropertyGroup("")
 
         #region Miscellaneous
         [XmlElement]
@@ -66,12 +67,12 @@ namespace BannerlordTweaks
 
         #region Smelting patches
         [XmlElement]
-        [SettingProperty("Prevent Smelting Locked Items", "Native value is false. Prevent locked items from showing up in smelting list to stop accidental smelting.")]
+        [SettingProperty("Prevent Smelting Locked Items", "Native value is false. Prevent items that you have locked in your inventory from showing up in the smelting list to prevent accidental smelting.")]
         [SettingPropertyGroup("Smelting Tweaks")]
         public bool PreventSmeltingLockedItems { get; set; } = true;
 
         [XmlElement]
-        [SettingProperty("Learn Smelted Parts", "Native value is false. Automatically acquire the parts of smelted items.")]
+        [SettingProperty("Enable Learning Parts From Smelted Items", "Native value is false. Learn the parts of items that you smelt to use in creating your own weapons.")]
         [SettingPropertyGroup("Smelting Tweaks")]
         public bool AutoLearnSmeltedParts { get; set; } = true;
         #endregion

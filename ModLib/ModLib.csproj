@@ -124,6 +124,7 @@
     <Compile Include="GUI\ViewModels\ModSettingsScreenVM.cs" />
     <Compile Include="FileDatabase\SettingType.cs" />
     <Compile Include="SetValueAction.cs" />
+    <Compile Include="SmeltingHelper.cs" />
     <Compile Include="UndoRedoStack.cs" />
   </ItemGroup>
   <ItemGroup>

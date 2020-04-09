@@ -2,6 +2,8 @@
 
 ajvr:
 -Ignore quest troops in party morale calculation.
+-Learn weapon parts from weapons you smelt down.
+-Stop locked weapons in your inventory from showing in the smelting menu.
 
 OctaviusMods:
--Comparison Colours Fix
+-Item Comparison Colours Fix
