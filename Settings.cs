@@ -93,6 +93,8 @@ namespace BannerlordTweaks
         [SettingProperty("Steward Percentage Bonus", 0f, 1f, "Applies a bonus equal to the set percentage of your leadership skill to your party size.")]
         [SettingPropertyGroup("Party Size Bonus")]
         public float StewardPartySizeBonus { get; set; } = 0.3f;
+        [XmlElement]
+        public bool QuestCharactersIgnorePartySize { get; set; } = true;
         #endregion
 
         # region Tournament patches
