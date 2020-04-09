@@ -20,11 +20,9 @@ namespace BannerlordTweaks
                     else if (Settings.Instance.TroopBattleSimulationExperienceMultiplierEnabled && missionType == MissionTypeEnum.SimulationBattle)
                         baseXpAmount = (int)Math.Ceiling(Settings.Instance.TroopBattleSimulationExperienceMultiplier * baseXpAmount);
                 }
-                xpAmount = baseXpAmount;
                 //MessageBox.Show($"Attacker: {attackerTroop.Name}\nAttacked: {attackedTroop.Name}\nDefault xp: {baseXpAmount / Settings.Instance.TroopExperienceBattleMultiplier}\nMultiplied xp: {baseXpAmount}\nDamage:{damage}");
             }
-            else
-                xpAmount = baseXpAmount;
+            xpAmount = baseXpAmount;
         }
     }
 }
