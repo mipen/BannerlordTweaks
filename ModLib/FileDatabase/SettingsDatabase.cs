@@ -1,4 +1,4 @@
-﻿using ModLib.Debug;
+﻿using ModLib.Debugging;
 using ModLib.GUI.ViewModels;
 using ModLib.Interfaces;
 using System;

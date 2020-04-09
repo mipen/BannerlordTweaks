@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Windows.Forms;
 
-namespace ModLib.Debug
+namespace ModLib.Debugging
 {
     public static class ModDebug
     {

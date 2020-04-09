@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using ModLib.Debugging;
 
 namespace BannerlordTweaks.Patches
 {
@@ -32,7 +33,7 @@ namespace BannerlordTweaks.Patches
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An exception occurred whilst trying to apply the xp multiplier.\n\nException:\n{ex.Message}\n\n{ex.InnerException?.Message}");
+                ModDebug.ShowError($"An exception occurred whilst trying to apply the hero xp multiplier.", "", ex);
             }
             return false;
         }

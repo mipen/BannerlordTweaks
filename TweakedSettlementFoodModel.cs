@@ -6,7 +6,7 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Localization;
 using ModLib;
 using TaleWorlds.Core;
-using ModLib.Debug;
+using ModLib.Debugging;
 
 namespace BannerlordTweaks
 {

@@ -1,5 +1,5 @@
 ﻿using HarmonyLib;
-using ModLib.Debug;
+using ModLib.Debugging;
 using System;
 using System.Windows.Forms;
 using TaleWorlds.MountAndBlade;

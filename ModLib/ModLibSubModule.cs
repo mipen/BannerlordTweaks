@@ -1,5 +1,5 @@
 ﻿using HarmonyLib;
-using ModLib.Debug;
+using ModLib.Debugging;
 using ModLib.GUI.GauntletUI;
 using System;
 using TaleWorlds.Engine.Screens;
