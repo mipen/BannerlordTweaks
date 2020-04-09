@@ -35,7 +35,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.LeadershipPartySizeBonusEnabled || Settings.Instance.StewardPartySizeBonusEnabled;
+            return Settings.Instance.PartySizeTweakEnabled;
         }
     }
 }

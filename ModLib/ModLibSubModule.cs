@@ -1,23 +1,31 @@
 ﻿using HarmonyLib;
-using ModLib.Debug;
+using ModLib.Debugging;
+using ModLib.GUI.GauntletUI;
 using System;
-using System.Windows.Forms;
+using TaleWorlds.Engine.Screens;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
 namespace ModLib
 {
     public class ModLibSubModule : MBSubModuleBase
     {
-        public static string ModuleName { get; } = "zzBannerlordTweaks";
+        public static string ModuleFolderName { get; } = "zzBannerlordTweaks";
 
         protected override void OnSubModuleLoad()
         {
             try
             {
-                //Loader.Initialise(ModuleName);
+                //Loader.Initialise(ModuleFolderName);
+                SettingsDatabase.RegisterSettings(Settings.Instance, Settings.Instance.ID);
 
                 var harmony = new Harmony("mod.modlib.mipen");
                 harmony.PatchAll();
+
+                Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ModOptionsMenu", new TextObject("Mod Options"), 9990, () =>
+                {
+                    ScreenManager.PushScreen(new ModOptionsGauntletScreen());
+                }, false));
             }
             catch (Exception ex)
             {
@@ -25,9 +33,9 @@ namespace ModLib
             }
         }
 
-        private void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
-            MessageBox.Show("event");
+            SettingsDatabase.BuildModSettingsVMs();
         }
     }
 }

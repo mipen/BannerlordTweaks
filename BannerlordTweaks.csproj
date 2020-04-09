@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\Desktop\net472\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\Documents\Dev\net472\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="SandBox">
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.dll</HintPath>
@@ -91,20 +91,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Patches\ClanVMPatch.cs" />
+    <Compile Include="Patches\ColorComparisonPatch.cs" />
     <Compile Include="Patches\CraftingCampaignBehaviourPatches.cs" />
     <Compile Include="Patches\CraftingVMPatch.cs" />
     <Compile Include="Patches\DefaultBattleRewardModelPatch.cs" />
     <Compile Include="Patches\DefaultBuildingTypesPatch.cs" />
+    <Compile Include="Patches\DefaultPartyMoraleModelPatch.cs" />
     <Compile Include="Patches\DefaultPartySizeLimitModelPatch.cs" />
     <Compile Include="Patches\DefaultTournamentModelPatch.cs" />
     <Compile Include="Patches\DefaultTroopCountLimitModelPatch.cs" />
     <Compile Include="Patches\HeroPatches.cs" />
     <Compile Include="Patches\HideoutMissionControllerPatches.cs" />
-    <Compile Include="Patches\KingdomManagementVMPatch.cs" />
-    <Compile Include="Patches\LordConversationsCampaignBehavior.cs" />
-    <Compile Include="Patches\MapInfoVMPatch.cs" />
-    <Compile Include="Patches\ModulePatch.cs" />
     <Compile Include="Patches\SmeltingVMPatch.cs" />
     <Compile Include="Patches\TournamentVMPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,13 +123,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bannerlord_tweaks_config.xml" />
+    <Content Include="Contributions.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\bin\Win64_Shipping_Client\"
-copy "$(ProjectDir)bannerlord_tweaks_config.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\ModuleData\Loadables\"
-cd "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\"
-start TaleWorlds.MountAndBlade.Launcher.exe</PostBuildEvent>
+
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

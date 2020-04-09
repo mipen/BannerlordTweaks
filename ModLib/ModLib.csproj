@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\Desktop\net472\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\..\Documents\Dev\net472\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,6 +64,20 @@
     <Reference Include="TaleWorlds.Engine">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.Engine.dll</HintPath>
     </Reference>
+    <Reference Include="TaleWorlds.Engine.GauntletUI">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.Engine.GauntletUI.dll</HintPath>
+    </Reference>
+    <Reference Include="TaleWorlds.GauntletUI, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.GauntletUI.dll</HintPath>
+    </Reference>
+    <Reference Include="TaleWorlds.GauntletUI.Data">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.GauntletUI.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="TaleWorlds.GauntletUI.PrefabSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.GauntletUI.PrefabSystem.dll</HintPath>
+    </Reference>
     <Reference Include="TaleWorlds.InputSystem">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.InputSystem.dll</HintPath>
     </Reference>
@@ -76,31 +90,71 @@
     <Reference Include="TaleWorlds.MountAndBlade">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.dll</HintPath>
     </Reference>
+    <Reference Include="TaleWorlds.TwoDimension, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.TwoDimension.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Debug\DebugVars.cs" />
+    <Compile Include="Attributes\SettingPropertyAttribute.cs" />
+    <Compile Include="Attributes\SettingPropertyGroupAttribute.cs" />
+    <Compile Include="Debugging\DebugVars.cs" />
     <Compile Include="ExtensionMethods\ExceptionExtensionMethods.cs" />
-    <Compile Include="Interfaces\ILoadable.cs" />
-    <Compile Include="Interfaces\ISettings.cs" />
-    <Compile Include="DocDatabase\Loader.cs" />
-    <Compile Include="Debug\ModDebug.cs" />
+    <Compile Include="ExtensionMethods\IEnumerableExtensions.cs" />
+    <Compile Include="ExtensionMethods\MBBindingListExtensions.cs" />
+    <Compile Include="ExtensionMethods\StackExtension.cs" />
+    <Compile Include="GUI\GauntletUI\ModOptionsGauntletScreen.cs" />
+    <Compile Include="GUI\ViewModels\ModSettingsVM.cs" />
+    <Compile Include="Interfaces\IAction.cs" />
+    <Compile Include="Interfaces\IInitial.cs" />
+    <Compile Include="Interfaces\ISerialisableFile.cs" />
+    <Compile Include="FileDatabase\FileDatabase.cs" />
+    <Compile Include="Debugging\ModDebug.cs" />
+    <Compile Include="Interfaces\ISubFolder.cs" />
+    <Compile Include="GUI\Views\ModLibSliderWidget.cs" />
+    <Compile Include="Ref.cs" />
+    <Compile Include="GUI\ViewModels\SettingProperty.cs" />
+    <Compile Include="GUI\ViewModels\SettingPropertyGroup.cs" />
+    <Compile Include="FileDatabase\SettingsBase.cs" />
+    <Compile Include="FileDatabase\SettingsDatabase.cs" />
     <Compile Include="Patches\ModulePatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ModLibSubModule.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="GUI\ViewModels\ModSettingsScreenVM.cs" />
+    <Compile Include="FileDatabase\SettingType.cs" />
+    <Compile Include="SetValueAction.cs" />
+    <Compile Include="SmeltingHelper.cs" />
+    <Compile Include="UndoRedoStack.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="modlib_config.xml" />
+    <Content Include="GUI\Brushes\DividerBrushes.xml" />
+    <Content Include="GUI\Brushes\ResetButtonBrush.xml" />
+    <Content Include="GUI\Brushes\TextBrushes.xml" />
+    <Content Include="GUI\Brushes\ModSettingsItemBrush.xml" />
+    <Content Include="GUI\Views\ModOptionsScreen.xml" />
+    <Content Include="GUI\Views\ModSettingsItem.xml" />
+    <Content Include="GUI\Views\SettingPropertyGroupView.xml" />
+    <Content Include="GUI\Views\SettingPropertyView.xml" />
+    <Content Include="GUI\Views\SettingsView.xml" />
+    <Content Include="ModuleData\Loadables\modlib_config.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GauntletUI\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="GUI\Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\bin\Win64_Shipping_Client\"
-copy "$(ProjectDir)modlib_config.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\ModuleData\Loadables\"
-cd "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\"
-start TaleWorlds.MountAndBlade.Launcher.exe</PostBuildEvent>
+copy "$(ProjectDir)GUI\Views\ModOptionsScreen.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
+copy "$(ProjectDir)GUI\Views\ModSettingsItem.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
+copy "$(ProjectDir)GUI\Brushes\ModSettingsItemBrush.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Brushes\"
+copy "$(ProjectDir)GUI\Views\SettingsView.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
+copy "$(ProjectDir)GUI\Views\SettingPropertyGroupView.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
+copy "$(ProjectDir)GUI\Views\SettingPropertyView.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Prefabs\"
+copy "$(ProjectDir)GUI\Brushes\DividerBrushes.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Brushes\"
+copy "$(ProjectDir)GUI\Brushes\TextBrushes.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Brushes\"
+copy "$(ProjectDir)GUI\Brushes\ResetButtonBrush.xml" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\zzBannerlordTweaks\GUI\Brushes\"
+
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

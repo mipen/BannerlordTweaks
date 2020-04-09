@@ -5,6 +5,8 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Localization;
 using ModLib;
+using TaleWorlds.Core;
+using ModLib.Debugging;
 
 namespace BannerlordTweaks
 {
@@ -15,23 +17,29 @@ namespace BannerlordTweaks
             float baseVal = base.CalculateTownFoodStocksChange(town, explanation);
             if (Settings.Instance.SettlementFoodBonusEnabled)
             {
-                try
+                ExplainedNumber en = new ExplainedNumber(baseVal, explanation);
+                explanation?.Lines.Remove(explanation.Lines.Last());
+
+                if (town.IsCastle)
+                    en.Add(Settings.Instance.CastleFoodBonus, new TextObject("Military rations"));
+                else if (town.IsTown)
+                    en.Add(Settings.Instance.TownFoodBonus, new TextObject("Citizen food drive"));
+
+                if (Settings.Instance.SettlementProsperityFoodMalusTweakEnabled && Settings.Instance.SettlementProsperityFoodMalusDivisor != 50)
                 {
-                    ExplainedNumber en = new ExplainedNumber(baseVal, explanation);
+                    float malus = town.Owner.Settlement.Prosperity / 50f;
+                    en.Add(malus, new TextObject("shouldn't be seen!"));
                     explanation?.Lines.Remove(explanation.Lines.Last());
 
-                    if (town.IsCastle)
-                        en.Add(Settings.Instance.CastleFoodBonus, new TextObject("Military rations"));
-                    else if (town.IsTown)
-                        en.Add(Settings.Instance.TownFoodBonus, new TextObject("Citizen food drive"));
+                    TextObject prosperityTextObj = GameTexts.FindText("str_prosperity", null);
+                    var line = explanation?.Lines.Where((x) => !string.IsNullOrWhiteSpace(x.Name) && x.Name == prosperityTextObj.ToString()).FirstOrDefault();
+                    if (line != null) explanation?.Lines.Remove(line);
 
-                    return en.ResultNumber;
+                    malus = -town.Owner.Settlement.Prosperity / Settings.Instance.SettlementProsperityFoodMalusDivisor;
+                    en.Add(malus, prosperityTextObj);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred in TweakedSettlementFoodModel: {ex.ToStringFull()}");
-                    return baseVal;
-                }
+
+                return en.ResultNumber;
             }
             else
                 return baseVal;

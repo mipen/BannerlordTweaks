@@ -34,7 +34,7 @@ namespace BannerlordTweaks.Patches
                         //If the player died during the boss fight
                         if (____hideoutMissionState == 5 || ____hideoutMissionState == 6)
                         {
-                            if (!Settings.Instance.LoseHideoutBattleOnPlayerLoseDuel)
+                            if (Settings.Instance.ContinueHideoutBattleOnPlayerLoseDuel)
                             {
                                 if (!notified)
                                 {
@@ -58,7 +58,8 @@ namespace BannerlordTweaks.Patches
                         }
                         else
                         {
-                            if (!Settings.Instance.LoseHideoutBattleOnPlayerDeath && !dueled)
+                            //The player died during the initial battle phase
+                            if (Settings.Instance.ContinueHideoutBattleOnPlayerDeath && !dueled)
                             {
                                 if (!notified)
                                 {
@@ -84,7 +85,7 @@ namespace BannerlordTweaks.Patches
         static bool Prepare()
         {
             //Patch if it is set to not lose on player death
-            return !Settings.Instance.LoseHideoutBattleOnPlayerDeath;
+            return Settings.Instance.ContinueHideoutBattleOnPlayerDeath || Settings.Instance.ContinueHideoutBattleOnPlayerLoseDuel;
         }
 
         private static bool HasTroopsRemaining(HideoutMissionController controller, BattleSideEnum side)
@@ -193,7 +194,7 @@ namespace BannerlordTweaks.Patches
         static bool Prepare()
         {
             //Patch if it is set to not lose on player death
-            return !Settings.Instance.LoseHideoutBattleOnPlayerDeath;
+            return Settings.Instance.ContinueHideoutBattleOnPlayerDeath || Settings.Instance.ContinueHideoutBattleOnPlayerLoseDuel;
         }
     }
 }

@@ -1,23 +1,19 @@
-﻿using ModLib.Debug;
+﻿using ModLib.Debugging;
 using ModLib.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 using TaleWorlds.Library;
 
 namespace ModLib
 {
-    public static class Loader
+    public static class FileDatabase
     {
         private static readonly string LoadablesFolderName = "Loadables";
-        public static Dictionary<Type, Dictionary<string, ILoadable>> Data { get; } = new Dictionary<Type, Dictionary<string, ILoadable>>();
+        public static Dictionary<Type, Dictionary<string, ISerialisableFile>> Data { get; } = new Dictionary<Type, Dictionary<string, ISerialisableFile>>();
 
         /// <summary>
         /// Returns the ILoadable of type T with the given ID.
@@ -25,7 +21,7 @@ namespace ModLib
         /// <typeparam name="T">Type of object to retrieve</typeparam>
         /// <param name="id">ID of object to retrieve</param>
         /// <returns></returns>
-        public static T Get<T>(string id) where T : ILoadable
+        public static T Get<T>(string id) where T : ISerialisableFile
         {
             //First check if the dictionary contains the key
             if (!Data.ContainsKey(typeof(T)))
@@ -56,40 +52,57 @@ namespace ModLib
             return successful;
         }
 
-        public static void CreateFile<T>(string moduleName, string subFolder = "") where T : ILoadable
+        /// <summary>
+        /// Saves the given instance to file.
+        /// </summary>
+        /// <typeparam name="T">Type of the instance to save to file.</typeparam>
+        /// <param name="moduleName">The folder name of the module to save to.</param>
+        /// <param name="sf">Instance of the object to save to file.</param>
+        public static bool SaveToFile(string moduleName, ISerialisableFile sf)
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(sf.ID))
+                    throw new Exception($"FileDatabase tried to save an object of type {sf.GetType().FullName} but the ID value was null.");
+                if (string.IsNullOrWhiteSpace(moduleName))
+                    throw new Exception($"FileDatabase tried to save an object of type {sf.GetType().FullName} with ID {sf.ID} but the module folder name given was null or empty.");
+
                 string path = Path.Combine(BasePath.Name, "Modules", moduleName);
                 if (!Directory.Exists(path))
-                    throw new Exception($"Cannot find the module named {moduleName}");
+                    throw new Exception($"FireDatabase cannot find the module named {moduleName}");
                 path = Path.Combine(path, "ModuleData", LoadablesFolderName);
-                if (!string.IsNullOrWhiteSpace(subFolder))
-                    path = Path.Combine(path, subFolder);
+                if (sf is ISubFolder)
+                {
+                    ISubFolder subFolder = sf as ISubFolder;
+                    if (!string.IsNullOrWhiteSpace(subFolder.SubFolder))
+                        path = Path.Combine(path, subFolder.SubFolder);
+                }
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
 
-                path = Path.Combine(path, $"{typeof(T).Name}.xml");
+                path = Path.Combine(path, $@"{sf.GetType().Name}.{sf.ID}.xml");
 
                 if (File.Exists(path))
                     File.Delete(path);
 
-                using (XmlWriter writer = XmlWriter.Create(path))
+                using (XmlWriter writer = XmlWriter.Create(path, new XmlWriterSettings() { Indent = true, OmitXmlDeclaration = true }))
                 {
                     XmlRootAttribute rootNode = new XmlRootAttribute();
-                    rootNode.ElementName = typeof(T).FullName;
-                    var serializer = new XmlSerializer(typeof(T), rootNode);
-                    ILoadable obj = (ILoadable)Activator.CreateInstance(typeof(T));
-                    serializer.Serialize(writer, obj);
+                    rootNode.ElementName = $"{sf.GetType().Assembly.GetName().Name}-{sf.GetType().FullName}";
+                    XmlSerializerNamespaces xmlns = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
+                    var serializer = new XmlSerializer(sf.GetType(), rootNode);
+                    serializer.Serialize(writer, sf, xmlns);
                 }
+                return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Cannot create the file for {typeof(T).Name} for module {moduleName}:\n\n{ex.ToStringFull()}");
+                ModDebug.ShowError($"Cannot create the file for type {sf.GetType().FullName} with ID {sf.ID} for module {moduleName}:", "Error saving to file", ex);
+                return false;
             }
         }
 
-        private static void Add(ILoadable loadable)
+        private static void Add(ISerialisableFile loadable)
         {
             if (loadable == null)
                 throw new ArgumentNullException("Tried to add something to the Loader Data dictionary that was null");
@@ -98,11 +111,11 @@ namespace ModLib
 
             Type type = loadable.GetType();
             if (!Data.ContainsKey(type))
-                Data.Add(type, new Dictionary<string, ILoadable>());
+                Data.Add(type, new Dictionary<string, ISerialisableFile>());
 
             if (Data[type].ContainsKey(loadable.ID))
             {
-                ModDebug.LogError($"Loader already contains Type: {type.AssemblyQualifiedName} ID: {loadable.ID}, overriting...");
+                ModDebug.LogError($"Loader already contains Type: {type.AssemblyQualifiedName} ID: {loadable.ID}, overwriting...");
                 Data[type][loadable.ID] = loadable;
             }
             else
@@ -133,7 +146,7 @@ namespace ModLib
                     root.ElementName = nodeData;
                     root.IsNullable = true;
                     XmlSerializer serialiser = new XmlSerializer(data.Type, root);
-                    ILoadable loaded = (ILoadable)serialiser.Deserialize(reader);
+                    ISerialisableFile loaded = (ISerialisableFile)serialiser.Deserialize(reader);
                     if (loaded != null)
                         Add(loaded);
                     else
@@ -179,14 +192,21 @@ namespace ModLib
                         {
                             foreach (var filePath in Directory.GetFiles(subDir, "*.xml"))
                             {
-                                LoadFromFile(filePath);
+                                try
+                                {
+                                    LoadFromFile(filePath);
+                                }
+                                catch(Exception ex)
+                                {
+                                    ModDebug.LogError($"Failed to load file: {filePath} \n\nSkipping..\n\n", ex);
+                                }
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"An error occurred while Loader was trying to load all files for module {moduleName}", ex);
+                    throw new Exception($"An error occurred while FileDatabase was trying to load all files for module {moduleName}", ex);
                 }
             }
             else

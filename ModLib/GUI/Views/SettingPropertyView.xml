@@ -1,0 +1,94 @@
+﻿<Prefab>
+  <Window>
+    <Widget HeightSizePolicy="Fixed" SuggestedHeight="60" WidthSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Left"
+                 IsVisible="@IsSettingVisible" IsEnabled="@IsEnabled" UpdateChildrenStates="true">
+      <Children>
+
+        <ListPanel HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Left">
+          <Children>
+
+            <!-- Property Name Section -->
+            <Widget HeightSizePolicy="StretchToParent" WidthSizePolicy="Fixed" HorizontalAlignment="Left" SuggestedWidth="500">
+              <Children>
+                <RichTextWidget Text="@Name" HeightSizePolicy="StretchToParent" WidthSizePolicy="CoverChildren" HorizontalAlignment="Right" IsEnabled="@IsEnabled"
+                                Brush="ModSettings.Setting.Text"/>
+              </Children>
+            </Widget>
+
+            <!-- Controls Section-->
+            <Widget HeightSizePolicy="StretchToParent" WidthSizePolicy="Fixed" VerticalAlignment="Top" HorizontalAlignment="Left" MarginLeft="90" SuggestedWidth="360">
+              <Children>
+
+                <!-- Boolean switch widget -->
+                <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" HorizontalAlignment="Center"
+                        IsVisible="@IsBoolVisible" UpdateChildrenStates="true"  IsEnabled="@IsEnabled">
+                  <Children>
+                    <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="40" SuggestedHeight="40"
+                                  Brush="SPOptions.Checkbox.Empty.Button" ButtonType="Toggle" IsSelected="@BoolValue"
+                                  ToggleIndicator="ToggleIndicator" UpdateChildrenStates="true" IsEnabled="@IsEnabled">
+                      <Children>
+                        <ImageWidget Id="ToggleIndicator" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="SPOptions.Checkbox.Full.Button"
+                                     IsEnabled="@IsEnabled"/>
+                      </Children>
+                    </ButtonWidget>
+                  </Children>
+                </Widget>
+
+                <!-- Float Slider -->
+                <ModLibSliderWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="338" SuggestedHeight="42" VerticalAlignment="Center"
+                              DoNotUpdateHandleSize="true" Filler="Filler" Handle="SliderHandle" IsDiscrete="false" MaxValueFloat="@MaxValue" FinalisedFloatValue="@FinalisedFloatValue"
+                              MinValueFloat="@MinValue" ValueFloat="@FloatValue" IsEnabled="@IsEnabled" IsVisible="@IsFloatVisible" HorizontalAlignment="Center">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="362" SuggestedHeight="38" HorizontalAlignment="Center"
+                            VerticalAlignment="Center" Sprite="SPOptions\standart_slider_canvas" IsEnabled="false" />
+                    <Widget Id="Filler" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="345" SuggestedHeight="35"
+                            VerticalAlignment="Center" ClipContents="true" Sprite="SPOptions\standart_slider_fill" >
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="345" SuggestedHeight="35" HorizontalAlignment="Left"
+                                VerticalAlignment="Center" Sprite="SPOptions\standart_slider_fill"/>
+                      </Children>
+                    </Widget>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="400" SuggestedHeight="65" HorizontalAlignment="Center"
+                            VerticalAlignment="Center" Sprite="SPOptions\standart_slider_frame" IsEnabled="false" />
+                    <Widget Id="SliderHandle" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="14" SuggestedHeight="38"
+                            HorizontalAlignment="Left" VerticalAlignment="Center" Brush="SPOptions.Slider.Handle" />
+                  </Children>
+                </ModLibSliderWidget>
+
+                <!-- Int Slider -->
+                <ModLibSliderWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="338" SuggestedHeight="42" VerticalAlignment="Center"
+                              DoNotUpdateHandleSize="true" Filler="Filler" Handle="SliderHandle" IsDiscrete="false" MaxValueFloat="@MaxValue" FinalisedIntValue="@FinalisedIntValue"
+                              MinValueFloat="@MinValue" ValueInt="@IntValue" IsEnabled="@IsEnabled" IsVisible="@IsIntVisible" HorizontalAlignment="Center">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="362" SuggestedHeight="38" HorizontalAlignment="Center"
+                            VerticalAlignment="Center" Sprite="SPOptions\standart_slider_canvas" IsEnabled="false" />
+                    <Widget Id="Filler" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="345" SuggestedHeight="35"
+                            VerticalAlignment="Center" Sprite="SPOptions\standart_slider_fill" ClipContents="true">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="345" SuggestedHeight="35" HorizontalAlignment="Left"
+                                VerticalAlignment="Center" Sprite="SPOptions\standart_slider_fill" />
+                      </Children>
+                    </Widget>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="400" SuggestedHeight="65" HorizontalAlignment="Center"
+                            VerticalAlignment="Center" Sprite="SPOptions\standart_slider_frame" IsEnabled="false" />
+                    <Widget Id="SliderHandle" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="14" SuggestedHeight="38"
+                            HorizontalAlignment="Left" VerticalAlignment="Center" Brush="SPOptions.Slider.Handle" />
+                  </Children>
+                </ModLibSliderWidget>
+
+
+              </Children>
+            </Widget>
+            <!--Brush="SPOptions.Slider.Value.Text"-->
+            <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="60"
+                            IsEnabled="@IsEnabled" Text="@ValueString" VerticalAlignment="Center" Brush="ModSettings.Setting.Text"/>
+
+          </Children>
+        </ListPanel>
+
+        <HintWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="OnHover" Command.HoverEnd="OnHoverEnd"/>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

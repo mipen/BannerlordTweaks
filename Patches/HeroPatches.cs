@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
+using ModLib.Debugging;
 using System;
-using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 
@@ -11,8 +11,8 @@ namespace BannerlordTweaks.Patches
     {
         private static double GetMultiplier(int skillLevel)
         {
-            if (Settings.Instance.HeroSkillExperienceGeneralMultiplier >= 1)
-                return Settings.Instance.HeroSkillExperienceGeneralMultiplier;
+            if (Settings.Instance.HeroSkillExperienceOverrideMultiplierEnabled)
+                return Settings.Instance.HeroSkillExperienceOverrideMultiplier;
             else
                 return Math.Max(1, 0.0315769 * Math.Pow(skillLevel, 1.020743));
         }
@@ -32,7 +32,7 @@ namespace BannerlordTweaks.Patches
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An exception occurred whilst trying to apply the xp multiplier.\n\nException:\n{ex.Message}\n\n{ex.InnerException?.Message}");
+                ModDebug.ShowError($"An exception occurred whilst trying to apply the hero xp multiplier.", "", ex);
             }
             return false;
         }
