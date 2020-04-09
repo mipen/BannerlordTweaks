@@ -406,5 +406,12 @@ namespace BannerlordTweaks
         public float ClanPartiesBonusPerClanTier { get; set; } = 0.5f;
         #endregion
 
+        #region
+        [XmlElement]
+        [SettingProperty("Prevent declaring war on self", "Prevents a crash in native Bannerlord caused by a quest forcing you to declare war on yourself.")]
+        [SettingPropertyGroup("Crash Fixes")]
+        public bool FixNoDeclareWarOnSelf { get; set; } = true;
+        #endregion
+
     }
 }
