@@ -38,7 +38,10 @@ namespace BannerlordTweaks
         #region Miscellaneous
         [XmlElement]
         [SettingProperty("Disable Quest Troops Affecting Morale", "When enabled, quest troops such as \"Borrowed Troop\" in your party are ignored when party morale is calculated.")]
-        public bool QuestCharactersIgnorePartySize { get; set; } = true;
+        public bool QuestCharactersIgnorePartySize { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Show Number of Days of Food","Changes the number showing how much food you have to instead show how many days' worth of food you have. (Bottom right of campaign map UI).")]
+        public bool ShowFoodDaysRemaining { get; set; } = false;
 
         #endregion
 
@@ -403,10 +406,5 @@ namespace BannerlordTweaks
         public float ClanPartiesBonusPerClanTier { get; set; } = 0.5f;
         #endregion
 
-        #region Map UI tweak
-        [XmlElement]
-        public bool ShowFoodDaysRemaining { get; set; } = true;
-
-        #endregion
     }
 }

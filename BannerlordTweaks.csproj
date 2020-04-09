@@ -102,6 +102,7 @@
     <Compile Include="Patches\DefaultTroopCountLimitModelPatch.cs" />
     <Compile Include="Patches\HeroPatches.cs" />
     <Compile Include="Patches\HideoutMissionControllerPatches.cs" />
+    <Compile Include="Patches\MapInfoVMPatch.cs" />
     <Compile Include="Patches\SmeltingVMPatch.cs" />
     <Compile Include="Patches\TournamentVMPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
