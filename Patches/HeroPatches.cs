@@ -24,10 +24,14 @@ namespace BannerlordTweaks.Patches
                 HeroDeveloper hd = (HeroDeveloper)(typeof(Hero).GetField("_heroDeveloper", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).GetValue(__instance));
                 if (hd != null)
                 {
-                    double multiplier = GetMultiplier(__instance.GetSkillValue(skill));
-                    int newXpAmount = (int)Math.Ceiling(xpAmount * multiplier);
-                    hd.AddSkillXp(skill, newXpAmount);
-                    //MessageBox.Show($"Skill: {skill.Name}\nLevel: {__instance.GetSkillValue(skill)}\nMultiplier: {multiplier}\nOld xp amount: {xpAmount}\nNew xp amount: {newXpAmount}");
+                    if (xpAmount > 0)
+                    {
+                        double multiplier = GetMultiplier(__instance.GetSkillValue(skill));
+                        int newXpAmount = (int)Math.Ceiling(xpAmount * multiplier);
+                        hd.AddSkillXp(skill, newXpAmount);
+                    }
+                    else
+                        hd.AddSkillXp(skill, xpAmount);
                 }
             }
             catch (Exception ex)

@@ -1,11 +1,11 @@
-﻿using StoryMode.GameModels;
-using System;
+﻿using System;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.Library;
 
 namespace BannerlordTweaks
 {
-    public class TweakedCombatXpModel : StoryModeCombatXpModel
+    public class TweakedCombatXpModel : DefaultCombatXpModel
     {
         public override void GetXpFromHit(CharacterObject attackerTroop, CharacterObject attackedTroop, int damage, bool isFatal, MissionTypeEnum missionType, out int xpAmount)
         {
