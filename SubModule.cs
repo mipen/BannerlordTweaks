@@ -58,7 +58,7 @@ namespace BannerlordTweaks
         {
             if (gameStarter != null)
             {
-                if (Settings.Instance.TroopBattleExperienceMultiplierEnabled)
+                if (Settings.Instance.TroopBattleExperienceMultiplierEnabled || Settings.Instance.ArenaHeroExperienceMultiplierEnabled || Settings.Instance.TournamentHeroExperienceMultiplierEnabled)
                     gameStarter.AddModel(new TweakedCombatXpModel());
                 if (Settings.Instance.MaxWorkshopCountTweakEnabled || Settings.Instance.WorkshopBuyingCostTweakEnabled)
                     gameStarter.AddModel(new TweakedWorkshopModel());

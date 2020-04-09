@@ -11,10 +11,10 @@
                             VerticalAlignment="Center" MarginLeft="10" Brush="ModSettings.Group.Text"/>
             <!-- Enable toggle -->
             <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" HorizontalAlignment="Right"
-                    IsVisible="@HasGlobalToggle" UpdateChildrenStates="true" MarginRight="10">
+                    IsVisible="@HasGroupToggle" UpdateChildrenStates="true" MarginRight="10">
               <Children>
                 <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="40" SuggestedHeight="40"
-                              Brush="SPOptions.Checkbox.Empty.Button" ButtonType="Toggle" IsSelected="@GlobalToggle"
+                              Brush="SPOptions.Checkbox.Empty.Button" ButtonType="Toggle" IsSelected="@GroupToggle"
                               ToggleIndicator="ToggleIndicator" UpdateChildrenStates="true">
                   <Children>
                     <ImageWidget Id="ToggleIndicator" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="SPOptions.Checkbox.Full.Button" />

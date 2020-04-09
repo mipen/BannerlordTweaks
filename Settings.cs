@@ -40,7 +40,7 @@ namespace BannerlordTweaks
         [SettingProperty("Disable Quest Troops Affecting Morale", "When enabled, quest troops such as \"Borrowed Troop\" in your party are ignored when party morale is calculated.")]
         public bool QuestCharactersIgnorePartySize { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Show Number of Days of Food","Changes the number showing how much food you have to instead show how many days' worth of food you have. (Bottom right of campaign map UI).")]
+        [SettingProperty("Show Number of Days of Food", "Changes the number showing how much food you have to instead show how many days' worth of food you have. (Bottom right of campaign map UI).")]
         public bool ShowFoodDaysRemaining { get; set; } = false;
 
         #endregion
@@ -70,12 +70,12 @@ namespace BannerlordTweaks
 
         #region Smelting patches
         [XmlElement]
-        [SettingProperty("Prevent Smelting Locked Items", "Native value is false. Prevent items that you have locked in your inventory from showing up in the smelting list to prevent accidental smelting.")]
+        [SettingProperty("Hide Locked Weapons in Smelting Menu", "Native value is false. Prevent weapons that you have locked in your inventory from showing up in the smelting list to prevent accidental smelting.")]
         [SettingPropertyGroup("Smelting Tweaks")]
         public bool PreventSmeltingLockedItems { get; set; } = true;
 
         [XmlElement]
-        [SettingProperty("Enable Learning Parts From Smelted Items", "Native value is false. Learn the parts of items that you smelt to use in creating your own weapons.")]
+        [SettingProperty("Enable Unlocking Parts From Smelted Weapons", "Native value is false. Unlock the parts that a weapon is made of when you smelt it.")]
         [SettingPropertyGroup("Smelting Tweaks")]
         public bool AutoLearnSmeltedParts { get; set; } = true;
         #endregion
@@ -141,9 +141,21 @@ namespace BannerlordTweaks
         public int TournamentMaxBetAmount { get; set; } = 500;
 
         [XmlElement]
-        public bool TournamentExperienceEnabled { get; set; } = false;
+        [SettingProperty("Enable Tournament Hero Experience Multiplier Override", "Overrides the native multiplier value for experience gain in tournaments for hero characters.")]
+        [SettingPropertyGroup("Tournament Tweaks")]
+        public bool TournamentHeroExperienceMultiplierEnabled { get; set; } = false;
         [XmlElement]
-        public bool ArenaExperienceEnabled { get; set; } = false;
+        [SettingProperty("Tournament Hero Experience Multiplier", 0.25f, 1f, "Native value is 0.25. Sets the multiplier applied to experience gained in tournaments by hero characters.")]
+        [SettingPropertyGroup("Tournament Tweaks")]
+        public float TournamentHeroExperienceMultiplier { get; set; } = 0.25f;
+        [XmlElement]
+        [SettingProperty("Enable Arena Hero Experience Multiplier Override", "Overrides the native multiplier value for experience gain in arena fights for hero characters.")]
+        [SettingPropertyGroup("Tournament Tweaks")]
+        public bool ArenaHeroExperienceMultiplierEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Arena Hero Experience Multiplier", 0.07f, 1f, "Native value is 0.06. Overrides the native multiplier for experience gain in arena fights for hero characters.")]
+        [SettingPropertyGroup("Tournament Tweaks")]
+        public float ArenaHeroExperienceMultiplier { get; set; } = 0.07f;
         #endregion
 
         #region Hero skill multiplier patch
@@ -190,13 +202,13 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Troop Battle Experience Tweaks")]
         public float TroopBattleExperienceMultiplier { get; set; } = 3.0f;
         [XmlElement]
-        [SettingProperty("Enable Troop Battle Simulation Experience Multiplier", "In native, auto-calculated battles give an 8x multiplier to troop experience. If enabled, this multiplier is applied on top of that bonus. This is applied to ALL NPC fights on the campaign map.")]
+        [SettingProperty("Enable Troop Battle Simulation Experience Multiplier", "This changes the default experience bonus that is applied to simulated battles. This is applied to ALL NPC fights on the campaign map.")]
         [SettingPropertyGroup("Troop Battle Experience Tweaks")]
         public bool TroopBattleSimulationExperienceMultiplierEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Troop Battle Simulation Experience Multiplier", 0.5f, 3f, "In native, auto-calculated battles give an 8x multiplier to troop experience. If enabled, this multiplier is applied on top of that bonus. This is applied to ALL NPC fights on the campaign map.")]
+        [SettingProperty("Troop Battle Simulation Experience Multiplier", 8f, 32f, "Native value is 8.0. In native, auto-calculated battles give an 8x multiplier to troop experience. Set this value to change the multiplier used. Cannot be under 8 as the game uses this for balance. This is applied to all simulated fights on the campaign map.")]
         [SettingPropertyGroup("Troop Battle Experience Tweaks")]
-        public float TroopBattleSimulationExperienceMultiplier { get; set; } = 1.0f;
+        public float TroopBattleSimulationExperienceMultiplier { get; set; } = 8.0f;
         #endregion
 
         #region Workshop tweaks
@@ -395,7 +407,7 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Enable Clan Parties Tweak", "Changes the base number of parties you can field and the bonus gained per clan tier.")]
         [SettingPropertyGroup("Clan Parties Tweak", true)]
-        public bool ClanPartiesLimitTweakEnabled { get; set; } = true;
+        public bool ClanPartiesLimitTweakEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Base Clan Parties Limit", 1, 10, "Native value is 1. This is the base number of parties you can field.")]
         [SettingPropertyGroup("Clan Parties Tweak")]
