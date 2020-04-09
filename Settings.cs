@@ -62,10 +62,18 @@ namespace BannerlordTweaks
         [SettingProperty("Crafting Stamina Gain Outside Settlement Multiplier", 0f, 1f, "Native value is 0.0. In native, you do not gain crafting stamina if you are not resting inside a settlement.")]
         [SettingPropertyGroup("Crafting Stamina Tweaks")]
         public float CraftingStaminaGainOutsideSettlementMultiplier { get; set; } = 1f;
+        #endregion
+
+        #region Smelting patches
         [XmlElement]
-        [SettingProperty("Prevent Smelting Locked Items", "Native value is false. Prevent locked items don't show up in smelting list to stop accidental smelting.")]
-        [SettingPropertyGroup("Crafting Stamina Tweaks")]
+        [SettingProperty("Prevent Smelting Locked Items", "Native value is false. Prevent locked items from showing up in smelting list to stop accidental smelting.")]
+        [SettingPropertyGroup("Smelting Tweaks")]
         public bool PreventSmeltingLockedItems { get; set; } = true;
+
+        [XmlElement]
+        [SettingProperty("Learn Smelted Parts", "Native value is false. Automatically acquire the parts of smelted items.")]
+        [SettingPropertyGroup("Smelting Tweaks")]
+        public bool AutoLearnSmeltedParts { get; set; } = true;
         #endregion
 
         #region Battle reward patches
