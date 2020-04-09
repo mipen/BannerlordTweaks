@@ -1,11 +1,8 @@
-﻿using BannerlordTweaks.Lib;
-using HarmonyLib;
+﻿using HarmonyLib;
 using System;
-using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.Localization;
 
 namespace BannerlordTweaks.Patches
