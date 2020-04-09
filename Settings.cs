@@ -34,6 +34,13 @@ namespace BannerlordTweaks
             }
         }
 
+        #region Miscellaneous
+        [XmlElement]
+        [SettingProperty("Disable Quest Troops Affecting Morale", "When enabled, quest troops such as \"Borrowed Troop\" in your party are ignored when party morale is calculated.")]
+        public bool QuestCharactersIgnorePartySize { get; set; } = true;
+
+        #endregion
+
         #region Crafting stamina Settings
         [XmlElement]
         [SettingProperty("Crafting Stamina Tweaks", "Enables tweaks which affect crafting stamina.")]
@@ -93,8 +100,6 @@ namespace BannerlordTweaks
         [SettingProperty("Steward Percentage Bonus", 0f, 1f, "Applies a bonus equal to the set percentage of your leadership skill to your party size.")]
         [SettingPropertyGroup("Party Size Bonus")]
         public float StewardPartySizeBonus { get; set; } = 0.3f;
-        [XmlElement]
-        public bool QuestCharactersIgnorePartySize { get; set; } = true;
         #endregion
 
         # region Tournament patches
