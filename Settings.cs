@@ -402,5 +402,11 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Clan Parties Tweak")]
         public float ClanPartiesBonusPerClanTier { get; set; } = 0.5f;
         #endregion
+
+        #region Map UI tweak
+        [XmlElement]
+        public bool ShowFoodDaysRemaining { get; set; } = true;
+
+        #endregion
     }
 }
