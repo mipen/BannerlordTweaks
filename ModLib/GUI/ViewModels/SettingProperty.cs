@@ -38,7 +38,7 @@ namespace ModLib.GUI.ViewModels
             {
                 if (Group == null)
                     return true;
-                return Group.GlobalToggle;
+                return Group.GroupToggle;
             }
         }
         [DataSourceProperty]
@@ -48,7 +48,7 @@ namespace ModLib.GUI.ViewModels
             {
                 if (Group != null && GroupAttribute != null && GroupAttribute.IsMainToggle)
                     return false;
-                else if (!Group.GlobalToggle)
+                else if (!Group.GroupToggle)
                     return false;
                 else
                     return true;

@@ -6,7 +6,7 @@ namespace ModLib.GUI.ViewModels
     public class SettingPropertyGroup : ViewModel
     {
         public const string DefaultGroupName = "Ungrouped";
-        public SettingProperty GlobalToggleSettingProperty { get; private set; } = null;
+        public SettingProperty GroupToggleSettingProperty { get; private set; } = null;
         public SettingPropertyGroupAttribute Attribute { get; private set; }
         public UndoRedoStack URS { get; private set; }
         public ModSettingsScreenVM Parent { get; private set; }
@@ -14,9 +14,9 @@ namespace ModLib.GUI.ViewModels
         {
             get
             {
-                if (GlobalToggleSettingProperty != null && !string.IsNullOrWhiteSpace(GlobalToggleSettingProperty.HintText))
+                if (GroupToggleSettingProperty != null && !string.IsNullOrWhiteSpace(GroupToggleSettingProperty.HintText))
                 {
-                    return $"{GlobalToggleSettingProperty.HintText}";
+                    return $"{GroupToggleSettingProperty.HintText}";
                 }
                 return "";
             }
@@ -29,27 +29,27 @@ namespace ModLib.GUI.ViewModels
         {
             get
             {
-                string addition = GlobalToggle ? "" : "(Disabled)";
+                string addition = GroupToggle ? "" : "(Disabled)";
                 return $"{Attribute.GroupName} {addition}";
             }
         }
         [DataSourceProperty]
         public MBBindingList<SettingProperty> SettingProperties { get; } = new MBBindingList<SettingProperty>();
         [DataSourceProperty]
-        public bool GlobalToggle
+        public bool GroupToggle
         {
             get
             {
-                if (GlobalToggleSettingProperty != null)
-                    return GlobalToggleSettingProperty.BoolValue;
+                if (GroupToggleSettingProperty != null)
+                    return GroupToggleSettingProperty.BoolValue;
                 else
                     return true;
             }
             set
             {
-                if (GlobalToggleSettingProperty != null && GlobalToggleSettingProperty.BoolValue != value)
+                if (GroupToggleSettingProperty != null && GroupToggleSettingProperty.BoolValue != value)
                 {
-                    GlobalToggleSettingProperty.BoolValue = value;
+                    GroupToggleSettingProperty.BoolValue = value;
                     OnPropertyChanged();
                     foreach (var propSetting in SettingProperties)
                     {
@@ -61,7 +61,7 @@ namespace ModLib.GUI.ViewModels
             }
         }
         [DataSourceProperty]
-        public bool HasGlobalToggle => GlobalToggleSettingProperty != null;
+        public bool HasGroupToggle => GroupToggleSettingProperty != null;
 
         public SettingPropertyGroup(SettingPropertyGroupAttribute attribute)
         {
@@ -85,7 +85,7 @@ namespace ModLib.GUI.ViewModels
             if (sp.GroupAttribute.IsMainToggle)
             {
                 Attribute = sp.GroupAttribute;
-                GlobalToggleSettingProperty = sp;
+                GroupToggleSettingProperty = sp;
             }
         }
 
