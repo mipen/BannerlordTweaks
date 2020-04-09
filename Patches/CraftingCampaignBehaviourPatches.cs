@@ -13,16 +13,20 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(CraftingCampaignBehavior), "DoSmelting")]
     public class DoSmeltingPatch
     {
-        private static void Postfix(CraftingCampaignBehavior __instance, ItemObject item)
+        private static MethodInfo methodInfo;
+
+        static void Postfix(CraftingCampaignBehavior __instance, ItemObject item)
         {
             foreach (CraftingPiece piece in SmeltingHelper.GetNewPartsFromSmelting(item))
             {
-                typeof(CraftingCampaignBehavior).GetMethod("OpenPart", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { piece });
+                methodInfo.Invoke(__instance, new object[] { piece });
             }
         }
 
         static bool Prepare()
         {
+            if (Settings.Instance.AutoLearnSmeltedParts)
+                methodInfo = typeof(CraftingCampaignBehavior).GetMethod("OpenPart", BindingFlags.NonPublic | BindingFlags.Instance);
             return Settings.Instance.AutoLearnSmeltedParts;
         }
     }
@@ -45,40 +49,36 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(CraftingCampaignBehavior), "HourlyTick")]
     public class HourlyTickPatch
     {
+        private static FieldInfo recordsInfo;
+
         static bool Prefix(CraftingCampaignBehavior __instance)
         {
-            try
+            IDictionary records = (IDictionary)recordsInfo.GetValue(__instance);
+            foreach (Hero hero in records.Keys)
             {
-                IDictionary records = (IDictionary)(typeof(CraftingCampaignBehavior).GetField("_heroCraftingRecords", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).GetValue(__instance));
-                foreach (Hero hero in records.Keys)
+                int curCraftingStamina = __instance.GetHeroCraftingStamina(hero);
+
+                if (curCraftingStamina < Settings.Instance.MaxCraftingStamina)
                 {
-                    int curCraftingStamina = __instance.GetHeroCraftingStamina(hero);
+                    int staminaGainAmount = Settings.Instance.CraftingStaminaGainAmount;
 
-                    if (curCraftingStamina < Settings.Instance.MaxCraftingStamina)
-                    {
-                        int staminaGainAmount = Settings.Instance.CraftingStaminaGainAmount;
+                    if (Settings.Instance.CraftingStaminaGainOutsideSettlementMultiplier < 1 && hero.PartyBelongedTo?.CurrentSettlement == null)
+                        staminaGainAmount = (int)Math.Ceiling(staminaGainAmount * Settings.Instance.CraftingStaminaGainOutsideSettlementMultiplier);
 
-                        if (Settings.Instance.CraftingStaminaGainOutsideSettlementMultiplier < 1 && hero.PartyBelongedTo?.CurrentSettlement == null)
-                            staminaGainAmount = (int)Math.Ceiling(staminaGainAmount * Settings.Instance.CraftingStaminaGainOutsideSettlementMultiplier);
+                    int diff = Settings.Instance.MaxCraftingStamina - curCraftingStamina;
+                    if (diff < staminaGainAmount)
+                        staminaGainAmount = diff;
 
-                        int diff = Settings.Instance.MaxCraftingStamina - curCraftingStamina;
-                        if (diff < staminaGainAmount)
-                            staminaGainAmount = diff;
-
-                        __instance.SetHeroCraftingStamina(hero, Math.Min(Settings.Instance.MaxCraftingStamina, curCraftingStamina + staminaGainAmount));
-                        //MessageBox.Show($"Hero: {hero.Name}\n\nCrafting Stamina: {__instance.GetHeroCraftingStamina(hero)}");
-                    }
+                    __instance.SetHeroCraftingStamina(hero, Math.Min(Settings.Instance.MaxCraftingStamina, curCraftingStamina + staminaGainAmount));
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An exception happened during the HourlyTick patch:\n\n{ex.Message}\n\n{ex.InnerException?.Message}", "Exception");
             }
             return false;
         }
 
         static bool Prepare()
         {
+            if (Settings.Instance.CraftingStaminaTweakEnabled)
+                recordsInfo = typeof(CraftingCampaignBehavior).GetField("_heroCraftingRecords", BindingFlags.Instance | BindingFlags.NonPublic);
             return Settings.Instance.CraftingStaminaTweakEnabled;
         }
     }
