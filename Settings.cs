@@ -376,7 +376,7 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Base Clan Parties Limit", 1, 10, "Native value is 1. This is the base number of parties you can field.")]
         [SettingPropertyGroup("Clan Parties Tweak")]
-        public int BaseClanPartiesLimit { get; set; } = 0;
+        public int BaseClanPartiesLimit { get; set; } = 2;
         [XmlElement]
         [SettingProperty("Clan Parties Bonus Per Clan Tier", 0.0f, 3f, "Native has a calculation for this: 1 party for under tier 3, 2 parties for under tier 5, 3 parties for over tier 5. This setting is multiplied by your clan tier. A value of 0.5 will equate to 1 extra party per 2 clan tiers, which eqautes to the same as native.")]
         [SettingPropertyGroup("Clan Parties Tweak")]
