@@ -58,7 +58,7 @@ namespace ModLib
         /// <typeparam name="T">Type of the instance to save to file.</typeparam>
         /// <param name="moduleName">The folder name of the module to save to.</param>
         /// <param name="sf">Instance of the object to save to file.</param>
-        public static bool SaveToFile(string moduleName, ISerialisableFile sf)
+        public static bool SaveToFile(string moduleName, ISerialisableFile sf, Location location = Location.Modules)
         {
             try
             {
@@ -67,16 +67,21 @@ namespace ModLib
                 if (string.IsNullOrWhiteSpace(moduleName))
                     throw new Exception($"FileDatabase tried to save an object of type {sf.GetType().FullName} with ID {sf.ID} but the module folder name given was null or empty.");
 
-                string path = Path.Combine(BasePath.Name, "Modules", moduleName);
+                string path = GetPathForModule(moduleName, location);
+
                 if (!Directory.Exists(path))
-                    throw new Exception($"FireDatabase cannot find the module named {moduleName}");
-                path = Path.Combine(path, "ModuleData", LoadablesFolderName);
+                    throw new Exception($"FileDatabase cannot find the module named {moduleName}");
+
+                if (location == Location.Modules)
+                    path = Path.Combine(path, "ModuleData", LoadablesFolderName);
+
                 if (sf is ISubFolder)
                 {
                     ISubFolder subFolder = sf as ISubFolder;
                     if (!string.IsNullOrWhiteSpace(subFolder.SubFolder))
                         path = Path.Combine(path, subFolder.SubFolder);
                 }
+
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
 
@@ -169,13 +174,14 @@ namespace ModLib
         }
 
         /// <summary>
-        /// Loads all files in the Loadables folder for the given module.
+        /// Loads all files in the Loadables folder for the given module and from the Documents folder for the given module.
         /// </summary>
         /// <param name="moduleName">This is the name of the module to load the files for. This is the name of the module folder.</param>
         private static void LoadAllFiles(string moduleName)
         {
+            #region Loadables Folder
             //Check if the given module name is correct
-            string modulePath = Path.Combine(BasePath.Name, "Modules", moduleName);
+            string modulePath = GetPathForModule(moduleName, Location.Modules);
             if (!Directory.Exists(modulePath))
                 throw new Exception($"Cannot find module named {moduleName}");
             //Check the module's ModuleData folder for the Loadables folder.
@@ -217,7 +223,36 @@ namespace ModLib
                 }
             }
             else
-                ModDebug.LogError($@"Tried to load files for mod {moduleName}, but it doesn't contain a ModuleData\Loadables folder");
+                Directory.CreateDirectory(moduleLoadablesPath);
+            #endregion
+            #region Documents Folder
+            //TODO::
+            string modConfigsPath = GetPathForModule(moduleName, Location.Configs);
+            if (Directory.Exists(modConfigsPath))
+            {
+                foreach (string filePath in Directory.GetFiles(modConfigsPath))
+                {
+                    try
+                    {
+                        LoadFromFile(filePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModDebug.LogError($"Failed to load file: {filePath}\n\n Skipping...", ex);
+                    }
+                }
+            }
+            else
+                Directory.CreateDirectory(modConfigsPath);
+            #endregion
+        }
+
+        private static string GetPathForModule(string moduleName, Location location)
+        {
+            if (location == Location.Modules)
+                return System.IO.Path.Combine(BasePath.Name, "Modules", moduleName);
+            else
+                return System.IO.Path.Combine(TaleWorlds.Engine.Utilities.GetConfigsPath(), moduleName);
         }
 
         private class TypeData
@@ -257,6 +292,12 @@ namespace ModLib
                 else
                     throw new ArgumentException($"The given node data was invalid.\nNode Data: {nodeData}");
             }
+        }
+
+        public enum Location
+        {
+            Modules,
+            Configs
         }
     }
 }

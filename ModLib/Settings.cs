@@ -7,7 +7,7 @@ namespace ModLib
     {
         public override string ModName => "ModLib";
         public override string ModuleFolderName => ModLibSubModule.ModuleFolderName;
-        private const string instanceID = "ModLibSettings";
+        private const string instanceID = "ModLibSettings2";
         private static Settings _instance = null;
         public static Settings Instance
         {
@@ -19,7 +19,7 @@ namespace ModLib
                     if (_instance == null)
                     {
                         _instance = new Settings();
-                        FileDatabase.SaveToFile(ModLibSubModule.ModuleFolderName, _instance);
+                        SettingsDatabase.SaveSettings(_instance);
                     }
                 }
                 return _instance;

@@ -51,6 +51,11 @@ namespace ModLib
                 return null;
         }
 
+        public static void SaveSettings(SettingsBase settingsInstance)
+        {
+            FileDatabase.SaveToFile(settingsInstance.ModuleFolderName, settingsInstance, FileDatabase.Location.Configs);
+        }
+
         public static void BuildModSettingsVMs()
         {
             try
