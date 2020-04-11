@@ -82,13 +82,19 @@ namespace BannerlordTweaks
 
         #region Battle reward patches
         [XmlElement]
-        [SettingProperty("Battle Renown Tweak", "Applies the set multiplier to renown gain from battles (applies to the player only).")]
-        [SettingPropertyGroup("Battle Renown Tweak", true)]
-        public bool BattleRenownMultiplierEnabled { get; set; } = true;
+        [SettingProperty("Battle Reward Tweaks", "Applies the set multiplier to renown and influence gain from battles (applies to the player only).")]
+        [SettingPropertyGroup("Battle Reward Tweaks", true)]
+        public bool BattleRewardTweaksEnabled { get; set; } = true;
+
         [XmlElement]
         [SettingProperty("Battle Renown Multiplier", 1f, 5f, "Native value is 1.0. The amount of renown you receive from a battle is multiplied by this value.")]
-        [SettingPropertyGroup("Battle Renown Tweak")]
+        [SettingPropertyGroup("Battle Reward Tweaks")]
         public float BattleRenownMultiplier { get; set; } = 2f;
+
+        [XmlElement]
+        [SettingProperty("Battle Influence Multiplier", 1f, 5f, "Native value is 1.0. The amount of influence you receive from a battle is multiplied by this value.")]
+        [SettingPropertyGroup("Battle Reward Tweaks")]
+        public float BattleInfluenceMultiplier { get; set; } = 2f;
         #endregion
 
         #region Party size patches

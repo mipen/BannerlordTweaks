@@ -36,14 +36,45 @@ namespace BannerlordTweaks.Patches
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred during DefaultBattleRewardModelPatch. Reverting to original behaviour...\n\nException:\n{ex.Message}\n\n{ex.InnerException?.Message}\n\n{ex.InnerException?.InnerException?.Message}");
+                MessageBox.Show($"An error occurred during DefaultBattleRewardModelRenownPatch. Reverting to original behaviour...\n\nException:\n{ex.Message}\n\n{ex.InnerException?.Message}\n\n{ex.InnerException?.InnerException?.Message}");
             }
             return !patched;
         }
 
         static bool Prepare()
         {
-            return Settings.Instance.BattleRenownMultiplierEnabled;
+            return Settings.Instance.BattleRewardTweaksEnabled;
+        }
+    }
+
+    [HarmonyPatch(typeof(DefaultBattleRewardModel), "CalculateInfluenceGain")]
+    public class DefaultBattleRewardModelInfluencePatch
+    {
+        static bool Prefix(PartyBase party, float influenceValueOfBattle, float contributionShare, StatExplainer explanation, ref float __result)
+        {
+            bool patched = false;
+            try
+            {
+                ExplainedNumber stat;
+                if (party != null)
+                    stat = new ExplainedNumber(party.MapFaction.IsKingdomFaction ? (influenceValueOfBattle * contributionShare * Settings.Instance.BattleInfluenceMultiplier) : 0f, explanation, null);
+                else
+                    stat = new ExplainedNumber(party.MapFaction.IsKingdomFaction ? (influenceValueOfBattle * contributionShare) : 0f, explanation, null);
+
+                __result = stat.ResultNumber;
+                patched = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during DefaultBattleRewardModelInfluencePatch. Reverting to original behavior... \n\nException:\n{ex.Message}\n\n{ex.InnerException?.Message}\n\n{ex.InnerException?.Message}");
+            }
+
+            return !patched;
+        }
+
+        static bool Prepare()
+        {
+            return Settings.Instance.BattleRewardTweaksEnabled;
         }
     }
 }
