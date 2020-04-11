@@ -16,7 +16,7 @@ namespace BannerlordTweaks.Patches
             try
             {
                 ExplainedNumber stat;
-                if (party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
+                if (Settings.Instance.BattleRewardApplyToAI || (party.LeaderHero != null && party.LeaderHero == Hero.MainHero))
                     stat = new ExplainedNumber((renownValueOfBattle * contributionShare) * Settings.Instance.BattleRenownMultiplier, explanation);
                 else
                     stat = new ExplainedNumber(renownValueOfBattle * contributionShare, explanation);
@@ -56,7 +56,7 @@ namespace BannerlordTweaks.Patches
             try
             {
                 ExplainedNumber stat;
-                if (party != null)
+                if (Settings.Instance.BattleRewardApplyToAI || (party.LeaderHero != null && party.LeaderHero == Hero.MainHero))
                     stat = new ExplainedNumber(party.MapFaction.IsKingdomFaction ? (influenceValueOfBattle * contributionShare * Settings.Instance.BattleInfluenceMultiplier) : 0f, explanation, null);
                 else
                     stat = new ExplainedNumber(party.MapFaction.IsKingdomFaction ? (influenceValueOfBattle * contributionShare) : 0f, explanation, null);
