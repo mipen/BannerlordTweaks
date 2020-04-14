@@ -121,12 +121,6 @@
     <Compile Include="TweakedWorkshopModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="ModLib\ModLib.csproj">
-      <Project>{002dc1e4-aef3-4080-8e71-a8c23d05c0b7}</Project>
-      <Name>ModLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Contributions.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
