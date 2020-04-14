@@ -7,6 +7,9 @@
 
     <!-- Path to mod folder-->
     <MOD_FOLDER>$(MOUNT_AND_BLADE_DIR)Modules\zzBannerlordTweaks\</MOD_FOLDER>
+	
+	<!-- Path to ModLib assembly-->
+	<MODLIB_PATH>C:\Users\Liam\source\repos\ModLib\bin\Debug\ModLib.dll</MODLIB_PATH>
 
   </PropertyGroup>
 </Project>

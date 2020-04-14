@@ -6,7 +6,7 @@ namespace BannerlordTweaks
 {
     public class Settings : SettingsBase
     {
-        private const string instanceID = "BannerlordTweaksSettings2";
+        private const string instanceID = "BannerlordTweaksSettings";
         private static Settings _instance = null;
         public override string ModName => "Bannerlord Tweaks";
         public override string ModuleFolderName => ModLibSubModule.ModuleFolderName;

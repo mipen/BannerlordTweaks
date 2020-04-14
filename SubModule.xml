@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Module>
+	<Name value="Bannerlord Tweaks"/>
+	<Id value="zzBannerlordTweaks"/>
+	<Version value="v1.1.3"/>
+	<DefaultModule value="false"/>
+	<SingleplayerModule value="true"/>
+	<MultiplayerModule value="false"/>
+  	<Official value="false"/>
+	<DependedModules>
+		<DependedModule Id="Native"/>
+		<DependedModule Id="SandBoxCore"/>
+		<DependedModule Id="Sandbox"/>
+		<DependedModule Id="CustomBattle"/>
+		<DependedModule Id="StoryMode"/>
+		<DependedModule Id="ModLib"/>
+	</DependedModules>
+	<SubModules>
+		<SubModule>
+			<Name value="BannerlordTweaks"/>
+			<DLLName value="BannerlordTweaks.dll"/>
+			<SubModuleClassType value="BannerlordTweaks.SubModule"/>
+			<Tags>
+				<Tag key="DedicatedServerType" value="none" />
+				<Tag key="IsNoRenderModeElement" value="false" />
+			</Tags>
+		</SubModule>
+	</SubModules>
+</Module>
