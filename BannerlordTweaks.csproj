@@ -38,6 +38,10 @@
     <Reference Include="0Harmony">
       <HintPath>..\..\..\Documents\Dev\net472\0Harmony.dll</HintPath>
     </Reference>
+    <Reference Include="ModLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ModLib\bin\Debug\ModLib.dll</HintPath>
+    </Reference>
     <Reference Include="SandBox">
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.dll</HintPath>
     </Reference>
@@ -116,12 +120,6 @@
     <Compile Include="TweakedSettlementMilitiaModel.cs" />
     <Compile Include="TweakedSiegeEventModel.cs" />
     <Compile Include="TweakedWorkshopModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="ModLib\ModLib.csproj">
-      <Project>{002dc1e4-aef3-4080-8e71-a8c23d05c0b7}</Project>
-      <Name>ModLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Contributions.txt" />
