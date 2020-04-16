@@ -1,12 +1,10 @@
-﻿using System;
+﻿using ModLib;
+using System;
 using System.Linq;
-using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
-using TaleWorlds.Localization;
-using ModLib;
 using TaleWorlds.Core;
-using ModLib.Debugging;
+using TaleWorlds.Localization;
 
 namespace BannerlordTweaks
 {
@@ -14,6 +12,7 @@ namespace BannerlordTweaks
     {
         public override float CalculateTownFoodStocksChange(Town town, StatExplainer explanation = null)
         {
+            if (town == null) throw new ArgumentNullException(nameof(town));
             float baseVal = base.CalculateTownFoodStocksChange(town, explanation);
             if (Settings.Instance.SettlementFoodBonusEnabled)
             {

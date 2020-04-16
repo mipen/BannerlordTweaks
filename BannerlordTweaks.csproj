@@ -36,9 +36,9 @@
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-  <Reference Include="ModLib">
-  <HintPath>$(MODLIB_PATH)</HintPath>
-  </Reference>
+    <Reference Include="ModLib">
+      <HintPath>$(MODLIB_PATH)</HintPath>
+    </Reference>
     <Reference Include="SandBox">
       <HintPath>$(MOUNT_AND_BLADE_DIR)Modules\SandBox\bin\Win64_Shipping_Client\SandBox.dll</HintPath>
     </Reference>
@@ -91,11 +91,14 @@
       <HintPath>$(MOUNT_AND_BLADE_DIR)bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.dll</HintPath>
     </Reference>
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Lib.Harmony" Version="2.0.0.9" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
+      <Version>2.9.6</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
-
   <ItemGroup>
     <Compile Include="Patches\ColorComparisonPatch.cs" />
     <Compile Include="Patches\CraftingCampaignBehaviourPatches.cs" />
@@ -125,7 +128,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Contributions.txt" />
-	<Content Include="SubModule.xml" />
+    <Content Include="SubModule.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">

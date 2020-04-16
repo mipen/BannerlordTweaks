@@ -12,6 +12,7 @@ namespace BannerlordTweaks
     {
         public override float CalculateMilitiaChange(Settlement settlement, StatExplainer explanation = null)
         {
+            if (settlement == null) throw new ArgumentNullException(nameof(settlement));
             float baseVal = base.CalculateMilitiaChange(settlement, explanation);
             ExplainedNumber en = new ExplainedNumber(0f, explanation);
             en.Add(baseVal);
@@ -35,8 +36,7 @@ namespace BannerlordTweaks
 
         public override void CalculateMilitiaSpawnRate(Settlement settlement, out float meleeTroopRate, out float rangedTroopRate, out float meleeEliteTroopRate, out float rangedEliteTroopRate)
         {
-            float _meleeEliteTroopRate, _rangedEliteTroopRate;
-            base.CalculateMilitiaSpawnRate(settlement, out meleeTroopRate, out rangedTroopRate, out _meleeEliteTroopRate, out _rangedEliteTroopRate);
+            base.CalculateMilitiaSpawnRate(settlement, out meleeTroopRate, out rangedTroopRate, out float _meleeEliteTroopRate, out float _rangedEliteTroopRate);
 
             if (Settings.Instance.SettlementMilitiaEliteSpawnRateBonusEnabled)
             {

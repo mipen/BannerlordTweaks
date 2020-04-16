@@ -9,6 +9,11 @@ namespace BannerlordTweaks
     {
         public override void GetXpFromHit(CharacterObject attackerTroop, CharacterObject attackedTroop, int damage, bool isFatal, MissionTypeEnum missionType, out int xpAmount)
         {
+            if (attackerTroop == null || attackedTroop == null)
+            {
+                xpAmount = 0;
+                return;
+            }
             int num = attackerTroop.MaxHitPoints();
             xpAmount = MBMath.Round(0.4f * ((attackedTroop.GetPower() + 0.5f) * (float)(Math.Min(damage, num) + (isFatal ? num : 0))));
             //There are three things to do here: Tournament Experience, Arena Experience, Troop Experience.

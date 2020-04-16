@@ -20,22 +20,22 @@ namespace BannerlordTweaks.Patches
             // This appears to be how the game works out if an item is locked
             // From TaleWorlds.CampaignSystem.ViewModelCollection.SPInventoryVM.InitializeInventory()
             IEnumerable<ItemRosterElement> locks = Campaign.Current.GetCampaignBehavior<TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.IInventoryLockTracker>().GetLocks();
-            ItemRosterElement[] locked_items = (locks != null) ? locks.ToArray<ItemRosterElement>() : null;
+            ItemRosterElement[] locked_items = locks?.ToArray<ItemRosterElement>();
 
             bool isLocked(ItemRosterElement test_item)
             {
-                return locked_items != null && locked_items.Count(delegate (ItemRosterElement x)
+                return locked_items != null && locked_items.Any(delegate (ItemRosterElement x)
                 {
                     ItemObject lock_item = x.EquipmentElement.Item;
                     if (lock_item.StringId == test_item.EquipmentElement.Item.StringId)
                     {
                         ItemModifier itemModifier = x.EquipmentElement.ItemModifier;
-                        string a = (itemModifier != null) ? itemModifier.StringId : null;
+                        string a = itemModifier?.StringId;
                         ItemModifier itemModifier2 = test_item.EquipmentElement.ItemModifier;
-                        return a == ((itemModifier2 != null) ? itemModifier2.StringId : null);
+                        return a == (itemModifier2?.StringId);
                     }
                     return false;
-                }) > 0;
+                });
             }
             MBBindingList<SmeltingItemVM> filteredList = new MBBindingList<SmeltingItemVM>();
 
@@ -65,17 +65,17 @@ namespace BannerlordTweaks.Patches
 
     [HarmonyPatch(typeof(SmeltingVM), "RefreshList")]
     [HarmonyPriority(Priority.VeryLow)]
-    public class RefreshList_RenamePatch
+    public class RefreshListRenamePatch
     {
         private static void Postfix(SmeltingVM __instance, ItemRoster ____playerItemRoster)
         {
-            foreach(SmeltingItemVM item in __instance.SmeltableItemList)
+            foreach (SmeltingItemVM item in __instance.SmeltableItemList)
             {
                 int count = SmeltingHelper.GetNewPartsFromSmelting(item.Item).Count();
-                if(count > 0)
+                if (count > 0)
                 {
                     string parts = count == 1 ? "part" : "parts";
-                    item.Name = item.Name + $" ({count} new {parts})";
+                    item.Name = $"{item.Name} ({count} new {parts})";
                 }
             }
         }

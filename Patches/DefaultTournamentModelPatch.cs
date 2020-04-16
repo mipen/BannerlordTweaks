@@ -7,7 +7,7 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(DefaultTournamentModel), "GetRenownReward")]
     public class DefaultTournamentModelPatch
     {
-        static bool Prefix(Hero winner, ref int __result)
+        static bool Prefix(ref int __result)
         {
             __result = Settings.Instance.TournamentRenownAmount;
             return false;

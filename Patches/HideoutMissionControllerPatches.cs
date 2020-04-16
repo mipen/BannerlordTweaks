@@ -17,9 +17,9 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(HideoutMissionController), "IsSideDepleted")]
     public class IsSideDepletedPatch
     {
-        public static bool notified = false;
-        public static bool yelled = false;
-        public static bool dueled = false;
+        public static bool Notified { get; set; } = false;
+        public static bool Yelled { get; set; } = false;
+        public static bool Dueled { get; set; } = false;
 
         static void Postfix(HideoutMissionController __instance, ref bool __result, BattleSideEnum side, ref int ____hideoutMissionState, Team ____enemyTeam)
         {
@@ -28,7 +28,6 @@ namespace BannerlordTweaks.Patches
             {
                 if (HasTroopsRemaining(__instance, side))
                 {
-                    bool initial = __result;
                     if (PlayerIsDead())
                     {
                         //If the player died during the boss fight
@@ -36,7 +35,7 @@ namespace BannerlordTweaks.Patches
                         {
                             if (Settings.Instance.ContinueHideoutBattleOnPlayerLoseDuel)
                             {
-                                if (!notified)
+                                if (!Notified)
                                 {
                                     //Tell troops to charge on both sides
                                     SetTeamsHostile(__instance, ____enemyTeam);
@@ -46,8 +45,8 @@ namespace BannerlordTweaks.Patches
                                     TrySetFormationsCharge(__instance, BattleSideEnum.Attacker);
                                     TrySetFormationsCharge(__instance, BattleSideEnum.Defender);
                                     InformationManager.DisplayMessage(new InformationMessage("You have lost the duel! Your men are avenging your defeat!"));
-                                    notified = true;
-                                    dueled = true;
+                                    Notified = true;
+                                    Dueled = true;
                                 }
 
                                 if (____hideoutMissionState != 6)
@@ -59,15 +58,15 @@ namespace BannerlordTweaks.Patches
                         else
                         {
                             //The player died during the initial battle phase
-                            if (Settings.Instance.ContinueHideoutBattleOnPlayerDeath && !dueled)
+                            if (Settings.Instance.ContinueHideoutBattleOnPlayerDeath && !Dueled)
                             {
-                                if (!notified)
+                                if (!Notified)
                                 {
                                     //The player is dead, but has troops remaining. We need to tell all remaining troops to charge, then report side is not depleted.
                                     TrySetFormationsCharge(__instance, BattleSideEnum.Attacker);
                                     MakeAgentsYell(__instance, BattleSideEnum.Attacker);
                                     InformationManager.DisplayMessage(new InformationMessage("You have fallen in the attack. Your troops are charging to avenge you!"));
-                                    notified = true;
+                                    Notified = true;
                                 }
 
                                 //Disable the boss fight
@@ -186,9 +185,9 @@ namespace BannerlordTweaks.Patches
     {
         static void Postfix()
         {
-            IsSideDepletedPatch.notified = false;
-            IsSideDepletedPatch.yelled = false;
-            IsSideDepletedPatch.dueled = false;
+            IsSideDepletedPatch.Notified = false;
+            IsSideDepletedPatch.Yelled = false;
+            IsSideDepletedPatch.Dueled = false;
         }
 
         static bool Prepare()

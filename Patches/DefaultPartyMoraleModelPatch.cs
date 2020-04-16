@@ -11,6 +11,7 @@ namespace BannerlordTweaks.Patches
     {
         static public int GetPartySize(MobileParty party)
         {
+            if (party == null) throw new ArgumentNullException(nameof(party));
             int party_size = party.Party.NumberOfAllMembers;
 
             foreach (TroopRosterElement troopRosterElement in party.MemberRoster)
