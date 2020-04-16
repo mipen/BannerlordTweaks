@@ -18,7 +18,9 @@ namespace BannerlordTweaks
             try
             {
                 FileDatabase.Initialise(ModuleFolderName);
-                SettingsDatabase.RegisterSettings(Settings.Instance, Settings.Instance.ModName);
+                Settings settings = FileDatabase.Get<Settings>(Settings.InstanceID);
+                if (settings == null) settings = new Settings();
+                SettingsDatabase.RegisterSettings(settings);
 
                 var harmony = new Harmony("mod.bannerlord.mipen");
                 harmony.PatchAll();

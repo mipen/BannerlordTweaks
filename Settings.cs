@@ -6,29 +6,18 @@ namespace BannerlordTweaks
 {
     public class Settings : SettingsBase
     {
-        private const string instanceID = "BannerlordTweaksSettings";
-        private static Settings _instance = null;
+        public const string InstanceID = "BannerlordTweaksSettings";
         public override string ModName => "Bannerlord Tweaks";
-        public override string ModuleFolderName => ModLibSubModule.ModuleFolderName;
+        public override string ModuleFolderName => SubModule.ModuleFolderName;
 
         [XmlElement]
-        public override string ID { get; set; } = instanceID;
+        public override string ID { get; set; } = InstanceID;
 
         public static Settings Instance
         {
             get
             {
-                if (_instance == null)
-                {
-                    _instance = FileDatabase.Get<Settings>(instanceID);
-                    if (_instance == null)
-                    {
-                        _instance = new Settings();
-                        SettingsDatabase.SaveSettings(_instance);
-                    }
-                }
-
-                return _instance;
+                return (Settings)SettingsDatabase.GetSettings(InstanceID);
             }
         }
 
