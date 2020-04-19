@@ -19,19 +19,19 @@ namespace BannerlordTweaks.Patches
         {
             // This appears to be how the game works out if an item is locked
             // From TaleWorlds.CampaignSystem.ViewModelCollection.SPInventoryVM.InitializeInventory()
-            IEnumerable<ItemRosterElement> locks = Campaign.Current.GetCampaignBehavior<TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.IInventoryLockTracker>().GetLocks();
-            ItemRosterElement[] locked_items = locks?.ToArray<ItemRosterElement>();
+            IEnumerable<EquipmentElement> locks = Campaign.Current.GetCampaignBehavior<TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.IInventoryLockTracker>().GetLocks();
+            EquipmentElement[] locked_items = locks?.ToArray<EquipmentElement>();
 
-            bool isLocked(ItemRosterElement test_item)
+            bool isLocked(EquipmentElement test_item)
             {
-                return locked_items != null && locked_items.Any(delegate (ItemRosterElement x)
+                return locked_items != null && locked_items.Any(delegate (EquipmentElement x)
                 {
-                    ItemObject lock_item = x.EquipmentElement.Item;
-                    if (lock_item.StringId == test_item.EquipmentElement.Item.StringId)
+                    ItemObject lock_item = x.Item;
+                    if (lock_item.StringId == test_item.Item.StringId)
                     {
-                        ItemModifier itemModifier = x.EquipmentElement.ItemModifier;
+                        ItemModifier itemModifier = x.ItemModifier;
                         string a = itemModifier?.StringId;
-                        ItemModifier itemModifier2 = test_item.EquipmentElement.ItemModifier;
+                        ItemModifier itemModifier2 = test_item.ItemModifier;
                         return a == (itemModifier2?.StringId);
                     }
                     return false;
@@ -42,7 +42,7 @@ namespace BannerlordTweaks.Patches
             foreach (SmeltingItemVM sItem in __instance.SmeltableItemList)
             {
                 if (!____playerItemRoster.Any(rItem =>
-                    sItem.Item == rItem.EquipmentElement.Item && isLocked(rItem)
+                    sItem.Item == rItem.EquipmentElement.Item && isLocked(rItem.EquipmentElement)
                 ))
                 {
                     filteredList.Add(sItem);
