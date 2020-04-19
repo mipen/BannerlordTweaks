@@ -148,17 +148,17 @@ namespace BannerlordTweaks
         #endregion
 
         #region Hero skill multiplier patch
-        [XmlElement]
-        [SettingProperty("Enable Hero Skill Experience Tweak", "Applies a multiplier to the amount of experience received based on the skill level of the skill that the experience has been gained for. The multiplier is calculated using this function: 0.0315769 * skillLevel^1.020743 with a minumum output of 1.")]
-        [SettingPropertyGroup("Hero Skill Experience Tweak", true)]
-        public bool HeroSkillExperienceMultiplierEnabled { get; set; } = true;
-        [XmlElement]
-        [SettingProperty("Enable Flat Experience Multiplier Override", "If enabled, overrides the mod's experience curve multiplier calculation and replaces it with the override multiplier. This means that experience will be multiplied by the same value, independant of the skill level.")]
-        [SettingPropertyGroup("Hero Skill Experience Tweak")]
+        // [XmlElement]
+        // [SettingProperty("Enable Hero Skill Experience Tweak", "Applies a multiplier to the amount of experience received based on the skill level of the skill that the experience has been gained for. The multiplier is calculated using this function: 0.0315769 * skillLevel^1.020743 with a minumum output of 1.")]
+        //  [SettingPropertyGroup("Hero Skill Experience Tweak", true)]
+        public bool HeroSkillExperienceMultiplierEnabled { get; set; } = false;
+        // [XmlElement]
+        // [SettingProperty("Enable Flat Experience Multiplier Override", "If enabled, overrides the mod's experience curve multiplier calculation and replaces it with the override multiplier. This means that experience will be multiplied by the same value, independant of the skill level.")]
+        // [SettingPropertyGroup("Hero Skill Experience Tweak")]
         public bool HeroSkillExperienceOverrideMultiplierEnabled { get; set; } = false;
-        [XmlElement]
-        [SettingProperty("Hero Skill Experience Override Multiplier", 1f, 15f, "Overrides the mod's default experience multiplier with the flat multiplier that you set. All experience you receive will be multiplied by this value instead.")]
-        [SettingPropertyGroup("Hero Skill Experience Tweak")]
+        //[XmlElement]
+        //[SettingProperty("Hero Skill Experience Override Multiplier", 1f, 15f, "Overrides the mod's default experience multiplier with the flat multiplier that you set. All experience you receive will be multiplied by this value instead.")]
+        //[SettingPropertyGroup("Hero Skill Experience Tweak")]
         public float HeroSkillExperienceOverrideMultiplier { get; set; } = 1f;
         #endregion
 
@@ -182,21 +182,21 @@ namespace BannerlordTweaks
         #endregion
 
         #region Troop experience multiplier
-        [XmlElement]
-        [SettingProperty("Enable Troop Battle Experience Multiplier", "Multiplies the amount of experience that ALL troops receive during battles (Note: Only troops, not heroes).")]
-        [SettingPropertyGroup("Troop Battle Experience Tweaks", true)]
-        public bool TroopBattleExperienceMultiplierEnabled { get; set; } = true;
-        [XmlElement]
-        [SettingProperty("Troop Battle Experience Modifier", 1f, 6f, "Multiplies the amount of experience that ALL troops receive during fought battles (Note: Only troops, not heroes. Does not apply to simulated battles.).")]
-        [SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        //[XmlElement]
+        //[SettingProperty("Enable Troop Battle Experience Multiplier", "Multiplies the amount of experience that ALL troops receive during battles (Note: Only troops, not heroes).")]
+        //[SettingPropertyGroup("Troop Battle Experience Tweaks", true)]
+        public bool TroopBattleExperienceMultiplierEnabled { get; set; } = false;
+        //[XmlElement]
+        //[SettingProperty("Troop Battle Experience Modifier", 1f, 6f, "Multiplies the amount of experience that ALL troops receive during fought battles (Note: Only troops, not heroes. Does not apply to simulated battles.).")]
+        //[SettingPropertyGroup("Troop Battle Experience Tweaks")]
         public float TroopBattleExperienceMultiplier { get; set; } = 3.0f;
-        [XmlElement]
-        [SettingProperty("Enable Troop Battle Simulation Experience Multiplier", "This changes the default experience bonus that is applied to simulated battles. This is applied to ALL NPC fights on the campaign map.")]
-        [SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        //[XmlElement]
+        //[SettingProperty("Enable Troop Battle Simulation Experience Multiplier", "This changes the default experience bonus that is applied to simulated battles. This is applied to ALL NPC fights on the campaign map.")]
+        //[SettingPropertyGroup("Troop Battle Experience Tweaks")]
         public bool TroopBattleSimulationExperienceMultiplierEnabled { get; set; } = false;
-        [XmlElement]
-        [SettingProperty("Troop Battle Simulation Experience Multiplier", 8f, 32f, "Native value is 8.0. In native, auto-calculated battles give an 8x multiplier to troop experience. Set this value to change the multiplier used. Cannot be under 8 as the game uses this for balance. This is applied to all simulated fights on the campaign map.")]
-        [SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        //[XmlElement]
+        //[SettingProperty("Troop Battle Simulation Experience Multiplier", 8f, 32f, "Native value is 8.0. In native, auto-calculated battles give an 8x multiplier to troop experience. Set this value to change the multiplier used. Cannot be under 8 as the game uses this for balance. This is applied to all simulated fights on the campaign map.")]
+        //[SettingPropertyGroup("Troop Battle Experience Tweaks")]
         public float TroopBattleSimulationExperienceMultiplier { get; set; } = 8.0f;
         #endregion
 
@@ -236,15 +236,6 @@ namespace BannerlordTweaks
         [SettingProperty("Companion Limit Bonus Per Clan Tier", 0, 5, "Native value is 1. Sets the bonus to companion limit per clan tier. This value is multiplied by your clan tier.")]
         [SettingPropertyGroup("Companion Limit Tweak")]
         public int CompanionLimitBonusPerClanTier { get; set; } = 3;
-        #endregion
-
-        #region Kingdom leave relation loss tweak
-        [XmlElement]
-        public bool LeaveKingdomRelationLossTweakEnabled { get; set; } = false;
-        [XmlElement]
-        public int LeaveKingdomRelationLossLeaderAmount { get; set; } = 20;
-        [XmlElement]
-        public int LeaveKingdomRelationLossVassalAmount { get; set; } = 5;
         #endregion
 
         #region Settlement militia bonus tweak
