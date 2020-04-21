@@ -15,24 +15,24 @@ namespace BannerlordTweaks.Patches
             bool patched = false;
             try
             {
-                ExplainedNumber stat;
                 if (party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
-                    stat = new ExplainedNumber((renownValueOfBattle * contributionShare) * Settings.Instance.BattleRenownMultiplier, explanation);
-                else
-                    stat = new ExplainedNumber(renownValueOfBattle * contributionShare, explanation);
-                if (party.IsMobile)
                 {
-                    if (party.MobileParty.HasPerk(DefaultPerks.TwoHanded.Notorious))
+                    ExplainedNumber stat;
+                    stat = new ExplainedNumber((renownValueOfBattle * contributionShare) * Settings.Instance.BattleRenownMultiplier, explanation);
+                    if (party.IsMobile)
                     {
-                        PerkHelper.AddPerkBonusForParty(DefaultPerks.TwoHanded.Notorious, party.MobileParty, ref stat);
+                        if (party.MobileParty.HasPerk(DefaultPerks.TwoHanded.Notorious))
+                        {
+                            PerkHelper.AddPerkBonusForParty(DefaultPerks.TwoHanded.Notorious, party.MobileParty, ref stat);
+                        }
+                        if (party.MobileParty.HasPerk(DefaultPerks.Charm.ShowYourScars))
+                        {
+                            PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, ref stat);
+                        }
                     }
-                    if (party.MobileParty.HasPerk(DefaultPerks.Charm.ShowYourScars))
-                    {
-                        PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, ref stat);
-                    }
+                    __result = stat.ResultNumber;
+                    patched = true;
                 }
-                __result = stat.ResultNumber;
-                patched = true;
             }
             catch (Exception ex)
             {
