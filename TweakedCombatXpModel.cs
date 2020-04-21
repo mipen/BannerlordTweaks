@@ -38,10 +38,6 @@ namespace BannerlordTweaks
             {
                 if (Settings.Instance.TroopBattleSimulationExperienceMultiplierEnabled && missionType == MissionTypeEnum.SimulationBattle)
                     xpAmount = (int)Math.Round(xpAmount * Settings.Instance.TroopBattleSimulationExperienceMultiplier);
-                else if (missionType == MissionTypeEnum.SimulationBattle)
-                {
-                    xpAmount *= 8;
-                }
                 else if (Settings.Instance.TroopBattleExperienceMultiplierEnabled && missionType == MissionTypeEnum.Battle)
                     xpAmount = (int)Math.Round(xpAmount * Settings.Instance.TroopBattleExperienceMultiplier);
             }

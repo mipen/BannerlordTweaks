@@ -182,22 +182,22 @@ namespace BannerlordTweaks
         #endregion
 
         #region Troop experience multiplier
-        //[XmlElement]
-        //[SettingProperty("Enable Troop Battle Experience Multiplier", "Multiplies the amount of experience that ALL troops receive during battles (Note: Only troops, not heroes).")]
-        //[SettingPropertyGroup("Troop Battle Experience Tweaks", true)]
+        [XmlElement]
+        [SettingProperty("Enable Troop Battle Experience Multiplier", "Multiplies the amount of experience that ALL troops receive during battles (Note: Only troops, not heroes).")]
+        [SettingPropertyGroup("Troop Battle Experience Tweaks", true)]
         public bool TroopBattleExperienceMultiplierEnabled { get; set; } = false;
-        //[XmlElement]
-        //[SettingProperty("Troop Battle Experience Modifier", 1f, 6f, "Multiplies the amount of experience that ALL troops receive during fought battles (Note: Only troops, not heroes. Does not apply to simulated battles.).")]
-        //[SettingPropertyGroup("Troop Battle Experience Tweaks")]
-        public float TroopBattleExperienceMultiplier { get; set; } = 3.0f;
-        //[XmlElement]
-        //[SettingProperty("Enable Troop Battle Simulation Experience Multiplier", "This changes the default experience bonus that is applied to simulated battles. This is applied to ALL NPC fights on the campaign map.")]
-        //[SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        [XmlElement]
+        [SettingProperty("Troop Battle Experience Modifier", 1f, 6f, 0f, 100f, "Native value is 1.0. Multiplies the amount of experience that ALL troops receive during fought battles (Note: Only troops, not heroes. Does not apply to simulated battles.).")]
+        [SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        public float TroopBattleExperienceMultiplier { get; set; } = 1.0f;
+        [XmlElement]
+        [SettingProperty("Enable Troop Battle Simulation Experience Multiplier", "Provides a multiplier to experience gained from simulated battles. This is applied to all fights (including NPC fights) on the campaign map.")]
+        [SettingPropertyGroup("Troop Battle Experience Tweaks")]
         public bool TroopBattleSimulationExperienceMultiplierEnabled { get; set; } = false;
-        //[XmlElement]
-        //[SettingProperty("Troop Battle Simulation Experience Multiplier", 8f, 32f, "Native value is 8.0. In native, auto-calculated battles give an 8x multiplier to troop experience. Set this value to change the multiplier used. Cannot be under 8 as the game uses this for balance. This is applied to all simulated fights on the campaign map.")]
-        //[SettingPropertyGroup("Troop Battle Experience Tweaks")]
-        public float TroopBattleSimulationExperienceMultiplier { get; set; } = 8.0f;
+        [XmlElement]
+        [SettingProperty("Troop Battle Simulation Experience Multiplier", 0.5f, 8f, 0f, 100f, "Native value is 1.0. Provides a multiplier to experience gained from simulated battles. This is applied to all simulated fights on the campaign map.")]
+        [SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        public float TroopBattleSimulationExperienceMultiplier { get; set; } = 1.0f;
         #endregion
 
         #region Workshop tweaks
