@@ -148,18 +148,18 @@ namespace BannerlordTweaks
         #endregion
 
         #region Hero skill multiplier patch
-        // [XmlElement]
-        // [SettingProperty("Enable Hero Skill Experience Tweak", "Applies a multiplier to the amount of experience received based on the skill level of the skill that the experience has been gained for. The multiplier is calculated using this function: 0.0315769 * skillLevel^1.020743 with a minumum output of 1.")]
-        //  [SettingPropertyGroup("Hero Skill Experience Tweak", true)]
+        [XmlElement]
+        [SettingProperty("Enable Hero Skill Experience Multiplier", "Applies a multiplier to the amount of experience recieved for skills. Affects the player only.")]
+        [SettingPropertyGroup("Hero Skill Experience Multiplier", true)]
         public bool HeroSkillExperienceMultiplierEnabled { get; set; } = false;
         // [XmlElement]
         // [SettingProperty("Enable Flat Experience Multiplier Override", "If enabled, overrides the mod's experience curve multiplier calculation and replaces it with the override multiplier. This means that experience will be multiplied by the same value, independant of the skill level.")]
         // [SettingPropertyGroup("Hero Skill Experience Tweak")]
-        public bool HeroSkillExperienceOverrideMultiplierEnabled { get; set; } = false;
-        //[XmlElement]
-        //[SettingProperty("Hero Skill Experience Override Multiplier", 1f, 15f, "Overrides the mod's default experience multiplier with the flat multiplier that you set. All experience you receive will be multiplied by this value instead.")]
-        //[SettingPropertyGroup("Hero Skill Experience Tweak")]
-        public float HeroSkillExperienceOverrideMultiplier { get; set; } = 1f;
+        //public bool HeroSkillExperienceOverrideMultiplierEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Hero Skill Experience Multiplier", 1f, 5f, "Applies a multiplier to the amount of experience recieved for skills. Affects the player only.")]
+        [SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        public float HeroSkillExperienceMultiplier { get; set; } = 1f;
         #endregion
 
         #region Hideout battle tweaks
