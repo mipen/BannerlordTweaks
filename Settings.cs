@@ -40,11 +40,11 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Crafting Stamina Tweaks", true)]
         public bool CraftingStaminaTweakEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Max Crafting Stamina", 100, 1000, "Native value is 400. Sets the maximum crafting stamina value.")]
+        [SettingProperty("Max Crafting Stamina", 100, 1000, 10, 10000, "Native value is 400. Sets the maximum crafting stamina value.")]
         [SettingPropertyGroup("Crafting Stamina Tweaks")]
         public int MaxCraftingStamina { get; set; } = 400;
         [XmlElement]
-        [SettingProperty("Crafting Stamina Gain", 0, 100, "Native value is 5. You gain this amount of crafting stamina per hour.")]
+        [SettingProperty("Crafting Stamina Gain", 0, 100, 1, 1000, "Native value is 5. You gain this amount of crafting stamina per hour.")]
         [SettingPropertyGroup("Crafting Stamina Tweaks")]
         public int CraftingStaminaGainAmount { get; set; } = 10;
         [XmlElement]
@@ -75,7 +75,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Battle Renown Tweak", true)]
         public bool BattleRenownMultiplierEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Battle Renown Multiplier", 1f, 5f, "Native value is 1.0. The amount of renown you receive from a battle is multiplied by this value.")]
+        [SettingProperty("Battle Renown Multiplier", 1f, 5f, 1f, 20f, "Native value is 1.0. The amount of renown you receive from a battle is multiplied by this value.")]
         [SettingPropertyGroup("Battle Renown Tweak")]
         public float BattleRenownMultiplier { get; set; } = 2f;
         #endregion
@@ -90,7 +90,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Party Size Bonus")]
         public bool LeadershipPartySizeBonusEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Leadership Percentage Bonus", 0f, 1f, "Applies a bonus equal to the set percentage of your leadership skill to your party size.")]
+        [SettingProperty("Leadership Percentage Bonus", 0f, 1f, 0f, 10f, "Applies a bonus equal to the set percentage of your leadership skill to your party size.")]
         [SettingPropertyGroup("Party Size Bonus")]
         public float LeadershipPartySizeBonus { get; set; } = 0.3f;
         [XmlElement]
@@ -98,7 +98,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Party Size Bonus")]
         public bool StewardPartySizeBonusEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Steward Percentage Bonus", 0f, 1f, "Applies a bonus equal to the set percentage of your leadership skill to your party size.")]
+        [SettingProperty("Steward Percentage Bonus", 0f, 1f, 0f, 10f, "Applies a bonus equal to the set percentage of your leadership skill to your party size.")]
         [SettingPropertyGroup("Party Size Bonus")]
         public float StewardPartySizeBonus { get; set; } = 0.3f;
         #endregion
@@ -109,7 +109,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Tournament Tweaks")]
         public bool TournamentRenownIncreaseEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Tournament Renown Reward", 1, 20, "Native value is 3. Increases the amount of renown awarded when you win a tournament.")]
+        [SettingProperty("Tournament Renown Reward", 1, 20, 1, 10000, "Native value is 3. Increases the amount of renown awarded when you win a tournament.")]
         [SettingPropertyGroup("Tournament Tweaks")]
         public int TournamentRenownAmount { get; set; } = 8;
         [XmlElement]
@@ -117,7 +117,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Tournament Tweaks")]
         public bool TournamentGoldRewardEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Tournament Gold Reward", 150, 1000, "Native value is 0. Adds the set amount of gold to the rewards when you win a tournament.")]
+        [SettingProperty("Tournament Gold Reward", 150, 1000, 0, 10000, "Native value is 0. Adds the set amount of gold to the rewards when you win a tournament.")]
         [SettingPropertyGroup("Tournament Tweaks")]
         public int TournamentGoldRewardAmount { get; set; } = 500;
         [XmlElement]
@@ -125,7 +125,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Tournament Tweaks")]
         public bool TournamentMaxBetAmountTweakEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Tournament Maximum Bet Amount", 150, 2000, "Native value is 150. Sets the maximum amount of gold that you can bet per round in tournaments.")]
+        [SettingProperty("Tournament Maximum Bet Amount", 150, 2000, 1, 10000, "Native value is 150. Sets the maximum amount of gold that you can bet per round in tournaments.")]
         [SettingPropertyGroup("Tournament Tweaks")]
         public int TournamentMaxBetAmount { get; set; } = 500;
 
@@ -206,11 +206,11 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Workshop Tweaks")]
         public bool MaxWorkshopCountTweakEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Base Workshop Limit", 0, 10, "Native value is 1. Sets the base maximum number of workshops you can have.")]
+        [SettingProperty("Base Workshop Limit", 0, 10, 0, 100, "Native value is 1. Sets the base maximum number of workshops you can have.")]
         [SettingPropertyGroup("Workshop Tweaks")]
         public int BaseWorkshopCount { get; set; } = 2;
         [XmlElement]
-        [SettingProperty("Bonus Workshops Per Clan Tier", 0, 3, "Sets the base maximum number of workshops you can have and the limit increase gained per clan tier.")]
+        [SettingProperty("Bonus Workshops Per Clan Tier", 0, 3, 0, 20, "Sets the base maximum number of workshops you can have and the limit increase gained per clan tier.")]
         [SettingPropertyGroup("Workshop Tweaks")]
         public int BonusWorkshopsPerClanTier { get; set; } = 1;
         [XmlElement]
@@ -229,11 +229,11 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Companion Limit Tweak", true)]
         public bool CompanionLimitTweakEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Base Companion Limit", 1, 10, "Native value is 3. Sets the base companion limit.")]
+        [SettingProperty("Base Companion Limit", 1, 10, 1, 100, "Native value is 3. Sets the base companion limit.")]
         [SettingPropertyGroup("Companion Limit Tweak")]
         public int CompanionBaseLimit { get; set; } = 3;
         [XmlElement]
-        [SettingProperty("Companion Limit Bonus Per Clan Tier", 0, 5, "Native value is 1. Sets the bonus to companion limit per clan tier. This value is multiplied by your clan tier.")]
+        [SettingProperty("Companion Limit Bonus Per Clan Tier", 0, 5, 0, 50, "Native value is 1. Sets the bonus to companion limit per clan tier. This value is multiplied by your clan tier.")]
         [SettingPropertyGroup("Companion Limit Tweak")]
         public int CompanionLimitBonusPerClanTier { get; set; } = 3;
         #endregion
@@ -244,11 +244,11 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Settlement Militia Bonus", true)]
         public bool SettlementMilitiaBonusEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Castle Militia Growth Bonus", 0f, 5f, "Native value is 0. Grants a bonus to militia growth in castles.")]
+        [SettingProperty("Castle Militia Growth Bonus", 0f, 5f, 0f, 100f, "Native value is 0. Grants a bonus to militia growth in castles.")]
         [SettingPropertyGroup("Settlement Militia Bonus")]
         public float CastleMilitiaBonus { get; set; } = 1.25f;
         [XmlElement]
-        [SettingProperty("Town Militia Growth Bonus", 0f, 5f, "Native value is 0. Grants a bonus to militia growth in towns.")]
+        [SettingProperty("Town Militia Growth Bonus", 0f, 5f, 0f, 100f, "Native value is 0. Grants a bonus to militia growth in towns.")]
         [SettingPropertyGroup("Settlement Militia Bonus")]
         public float TownMilitiaBonus { get; set; } = 2.5f;
 
@@ -272,19 +272,19 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Settlement Food Bonus", true)]
         public bool SettlementFoodBonusEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Castle Food Bonus", 0f, 10f, "Native value is 0. Provides a bonus to food production in castles.")]
+        [SettingProperty("Castle Food Bonus", 0f, 10f, 0f, 100f, "Native value is 0. Provides a bonus to food production in castles.")]
         [SettingPropertyGroup("Settlement Food Bonus")]
         public float CastleFoodBonus { get; set; } = 2f;
         [XmlElement]
-        [SettingProperty("Town Food Bonus", 0f, 10f, "Native value is 0. Provides a bonus to food production in towns.")]
+        [SettingProperty("Town Food Bonus", 0f, 10f, 0f, 100f, "Native value is 0. Provides a bonus to food production in towns.")]
         [SettingPropertyGroup("Settlement Food Bonus")]
         public float TownFoodBonus { get; set; } = 4f;
         [XmlElement]
-        [SettingProperty("Enable Prosperity Food Malus Tweak", "Allows you to adjust the malus to food production received from settlement prosperity.")]
+        [SettingProperty("Enable Food Loss From Prosperity Tweak", "Allows you to adjust the loss to food production received from settlement prosperity.")]
         [SettingPropertyGroup("Settlement Food Bonus")]
         public bool SettlementProsperityFoodMalusTweakEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Prosperity Malus Divisor", 50f, 400f, "Native value is 50. The prosperity of the settlement is divided by this value to calculate the malus. Increase this value to decrease the malus.")]
+        [SettingProperty("Prosperity Food Loss Divisor", 50f, 400f, 50f, 10000f, "Native value is 50. The prosperity of the settlement is divided by this value to calculate the loss. Increasing this value will decrease the amount of food lost.")]
         [SettingPropertyGroup("Settlement Food Bonus")]
         public float SettlementProsperityFoodMalusDivisor { get; set; } = 100;
         #endregion
@@ -295,15 +295,15 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Castle Training Fields Tweak", true)]
         public bool CastleTrainingFieldsBonusEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Castle Training Fields Level 1 Experience", 1, 150, "Native value is 1. Changes the amount of experience the training fields provides at level 1.")]
+        [SettingProperty("Castle Training Fields Level 1 Experience", 1, 150, 1, 1000, "Native value is 1. Changes the amount of experience the training fields provides at level 1.")]
         [SettingPropertyGroup("Castle Training Fields Tweak")]
         public int CastleTrainingFieldsXpAmountLevel1 { get; set; } = 30;
         [XmlElement]
-        [SettingProperty("Castle Training Fields Level 2 Experience", 2, 200, "Native value is 2. Changes the amount of experience the training fields provides at level 2.")]
+        [SettingProperty("Castle Training Fields Level 2 Experience", 2, 200, 2, 1000, "Native value is 2. Changes the amount of experience the training fields provides at level 2.")]
         [SettingPropertyGroup("Castle Training Fields Tweak")]
         public int CastleTrainingFieldsXpAmountLevel2 { get; set; } = 70;
         [XmlElement]
-        [SettingProperty("Castle Training Fields Level 3 Experience", 3, 250, "Native value is 3. Changes the amount of experience the training fields provides at level 3.")]
+        [SettingProperty("Castle Training Fields Level 3 Experience", 3, 250, 3, 1000, "Native value is 3. Changes the amount of experience the training fields provides at level 3.")]
         [SettingPropertyGroup("Castle Training Fields Tweak")]
         public int CastleTrainingFieldsXpAmountLevel3 { get; set; } = 150;
 
@@ -312,15 +312,15 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Castle Granary Tweak", true)]
         public bool CastleGranaryBonusEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Castle Granary Food Storage Level 1", 10, 90, "Native value is 10. Changes the amount of food storage the castle granary provides at level 1.")]
+        [SettingProperty("Castle Granary Food Storage Level 1", 10, 90, 10, 1000, "Native value is 10. Changes the amount of food storage the castle granary provides at level 1.")]
         [SettingPropertyGroup("Castle Granary Tweak")]
         public int CastleGranaryStorageAmountLevel1 { get; set; } = 30;
         [XmlElement]
-        [SettingProperty("Castle Granary Food Storage Level 2", 20, 180, "Native value is 20. Changes the amount of food storage the castle granary provides at level 2.")]
+        [SettingProperty("Castle Granary Food Storage Level 2", 20, 180, 20, 1000, "Native value is 20. Changes the amount of food storage the castle granary provides at level 2.")]
         [SettingPropertyGroup("Castle Granary Tweak")]
         public int CastleGranaryStorageAmountLevel2 { get; set; } = 45;
         [XmlElement]
-        [SettingProperty("Castle Granary Food Storage Level 3", 30, 270, "Native value is 30. Changes the amount of food storage the castle granary provides at level 3.")]
+        [SettingProperty("Castle Granary Food Storage Level 3", 30, 270, 30, 1000, "Native value is 30. Changes the amount of food storage the castle granary provides at level 3.")]
         [SettingPropertyGroup("Castle Granary Tweak")]
         public int CastleGranaryStorageAmountLevel3 { get; set; } = 60;
 
@@ -329,15 +329,15 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Castle Gardens Tweak", true)]
         public bool CastleGardensBonusEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Castle Garden Food Production Level 1", 1, 10, "Native value is 1. Changes the amount of food the castle gardens produce at level 1.")]
+        [SettingProperty("Castle Garden Food Production Level 1", 1, 10, 1, 1000, "Native value is 1. Changes the amount of food the castle gardens produce at level 1.")]
         [SettingPropertyGroup("Castle Gardens Tweak")]
         public int CastleGardensFoodProductionAmountLevel1 { get; set; } = 3;
         [XmlElement]
-        [SettingProperty("Castle Garden Food Production Level 2", 2, 20, "Native value is 2. Changes the amount of food the castle gardens produce at level 2.")]
+        [SettingProperty("Castle Garden Food Production Level 2", 2, 20, 2, 1000, "Native value is 2. Changes the amount of food the castle gardens produce at level 2.")]
         [SettingPropertyGroup("Castle Gardens Tweak")]
         public int CastleGardensFoodProductionAmountLevel2 { get; set; } = 6;
         [XmlElement]
-        [SettingProperty("Castle Garden Food Production Level 3", 3, 30, "Native value is 3. Changes the amount of food the castle gardens produce at level 3.")]
+        [SettingProperty("Castle Garden Food Production Level 3", 3, 30, 3, 1000, "Native value is 3. Changes the amount of food the castle gardens produce at level 3.")]
         [SettingPropertyGroup("Castle Gardens Tweak")]
         public int CastleGardensFoodProductionAmountLevel3 { get; set; } = 9;
 
@@ -346,15 +346,15 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Castle Militia Barracks Tweak", true)]
         public bool CastleMilitiaBarracksBonusEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Castle Militia Barracks Production Level 1", 1, 10, "Native value is 1. Changes the militia production that the castle militia barracks provides at level 1.")]
+        [SettingProperty("Castle Militia Barracks Production Level 1", 1, 10, 1, 1000, "Native value is 1. Changes the militia production that the castle militia barracks provides at level 1.")]
         [SettingPropertyGroup("Castle Militia Barracks Tweak")]
         public int CastleMilitiaBarracksAmountLevel1 { get; set; } = 2;
         [XmlElement]
-        [SettingProperty("Castle Militia Barracks Production Level 2", 1, 14, "Native value is 2. Changes the militia production that the castle militia barracks provides at level 2.")]
+        [SettingProperty("Castle Militia Barracks Production Level 2", 1, 14, 1, 1000, "Native value is 2. Changes the militia production that the castle militia barracks provides at level 2.")]
         [SettingPropertyGroup("Castle Militia Barracks Tweak")]
         public int CastleMilitiaBarracksAmountLevel2 { get; set; } = 4;
         [XmlElement]
-        [SettingProperty("Castle Militia Barracks Production Level 3", 1, 16, "Native value is 4. Changes the militia production that the castle militia barracks provides at level 3.")]
+        [SettingProperty("Castle Militia Barracks Production Level 3", 1, 16, 1, 1000, "Native value is 4. Changes the militia production that the castle militia barracks provides at level 3.")]
         [SettingPropertyGroup("Castle Militia Barracks Tweak")]
         public int CastleMilitiaBarracksAmountLevel3 { get; set; } = 8;
         #endregion
@@ -389,11 +389,11 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Clan Parties Tweak", true)]
         public bool ClanPartiesLimitTweakEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Base Clan Parties Limit", 1, 10, "Native value is 1. This is the base number of parties you can field.")]
+        [SettingProperty("Base Clan Parties Limit", 1, 10, 1, 100, "Native value is 1. This is the base number of parties you can field.")]
         [SettingPropertyGroup("Clan Parties Tweak")]
         public int BaseClanPartiesLimit { get; set; } = 2;
         [XmlElement]
-        [SettingProperty("Clan Parties Bonus Per Clan Tier", 0.0f, 3f, "Native has a calculation for this: 1 party for under tier 3, 2 parties for under tier 5, 3 parties for over tier 5. This setting is multiplied by your clan tier. A value of 0.5 will equate to 1 extra party per 2 clan tiers, which eqautes to the same as native.")]
+        [SettingProperty("Clan Parties Bonus Per Clan Tier", 0.0f, 3f, 0f, 100f, "Native has a calculation for this: 1 party for under tier 3, 2 parties for under tier 5, 3 parties for over tier 5. This setting is multiplied by your clan tier. A value of 0.5 will equate to 1 extra party per 2 clan tiers, which eqautes to the same as native.")]
         [SettingPropertyGroup("Clan Parties Tweak")]
         public float ClanPartiesBonusPerClanTier { get; set; } = 0.5f;
         #endregion
