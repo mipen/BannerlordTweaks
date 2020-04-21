@@ -12,7 +12,7 @@ namespace BannerlordTweaks.Patches
         static public int GetPartySize(MobileParty party)
         {
             if (party == null) throw new ArgumentNullException(nameof(party));
-            int party_size = party.Party.NumberOfAllMembers;
+            int partySize = party.Party.NumberOfAllMembers;
 
             foreach (TroopRosterElement troopRosterElement in party.MemberRoster)
             {
@@ -22,11 +22,11 @@ namespace BannerlordTweaks.Patches
                     troopRosterElement.Character == MBObjectManager.Instance.GetObject<CharacterObject>("borrowed_troop") ||
                     troopRosterElement.Character == MBObjectManager.Instance.GetObject<CharacterObject>("veteran_borrowed_troop"))
                 {
-                    party_size -= troopRosterElement.Number;
+                    partySize -= troopRosterElement.Number;
                 }
             }
 
-            return party_size;
+            return partySize;
         }
     }
     [HarmonyPatch(typeof(DefaultPartyMoraleModel), "GetPartySizeMoraleEffect")]
