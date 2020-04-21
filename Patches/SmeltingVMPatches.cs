@@ -10,7 +10,7 @@ using TaleWorlds.Library;
 namespace BannerlordTweaks.Patches
 {
     /*
-     * Prevent locked items from showing up in smelting list to stop accidental smelting
+     * Prevent locked items from showing up in the smelting list to stop accidental smelting
      */
     [HarmonyPatch(typeof(SmeltingVM), "RefreshList")]
     public class RefreshListPatch
