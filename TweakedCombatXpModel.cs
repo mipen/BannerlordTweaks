@@ -22,14 +22,14 @@ namespace BannerlordTweaks
                 if (missionType == MissionTypeEnum.Tournament)
                 {
                     if (Settings.Instance.TournamentHeroExperienceMultiplierEnabled)
-                        xpAmount = (int)Math.Round(Settings.Instance.TournamentHeroExperienceMultiplier * (float)xpAmount);
+                        xpAmount = (int)MathF.Round(Settings.Instance.TournamentHeroExperienceMultiplier * (float)xpAmount);
                     else
                         xpAmount = MathF.Round((float)xpAmount * 0.25f);
                 }
                 else if (missionType == MissionTypeEnum.PracticeFight)
                 {
                     if (Settings.Instance.ArenaHeroExperienceMultiplierEnabled)
-                        xpAmount = (int)Math.Round(Settings.Instance.ArenaHeroExperienceMultiplier * (float)xpAmount);
+                        xpAmount = (int)MathF.Round(Settings.Instance.ArenaHeroExperienceMultiplier * (float)xpAmount);
                     else
                         xpAmount = MathF.Round((float)xpAmount * 0.0625f);
                 }
@@ -37,9 +37,9 @@ namespace BannerlordTweaks
             else if ((missionType == MissionTypeEnum.Battle || missionType == MissionTypeEnum.SimulationBattle))
             {
                 if (Settings.Instance.TroopBattleSimulationExperienceMultiplierEnabled && missionType == MissionTypeEnum.SimulationBattle)
-                    xpAmount = (int)Math.Round(xpAmount * Settings.Instance.TroopBattleSimulationExperienceMultiplier);
+                    xpAmount = (int)MathF.Round(xpAmount * Settings.Instance.TroopBattleSimulationExperienceMultiplier);
                 else if (Settings.Instance.TroopBattleExperienceMultiplierEnabled && missionType == MissionTypeEnum.Battle)
-                    xpAmount = (int)Math.Round(xpAmount * Settings.Instance.TroopBattleExperienceMultiplier);
+                    xpAmount = (int)MathF.Round(xpAmount * Settings.Instance.TroopBattleExperienceMultiplier);
             }
         }
     }
