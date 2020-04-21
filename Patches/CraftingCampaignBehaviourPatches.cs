@@ -13,21 +13,30 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(CraftingCampaignBehavior), "DoSmelting")]
     public class DoSmeltingPatch
     {
-        private static MethodInfo methodInfo;
+        private static MethodInfo openPartMethodInfo;
 
         static void Postfix(CraftingCampaignBehavior __instance, ItemObject item)
         {
+            if (item == null) return;
+            if (__instance == null) throw new ArgumentNullException(nameof(__instance), $"Tried to run postfix for {nameof(CraftingCampaignBehavior)}.DoSmelting but the instance was null.");
+            if (openPartMethodInfo == null) GetMethodInfo();
             foreach (CraftingPiece piece in SmeltingHelper.GetNewPartsFromSmelting(item))
             {
-                methodInfo.Invoke(__instance, new object[] { piece });
+                if (piece != null && piece.Name != null)
+                    openPartMethodInfo.Invoke(__instance, new object[] { piece });
             }
         }
 
         static bool Prepare()
         {
             if (Settings.Instance.AutoLearnSmeltedParts)
-                methodInfo = typeof(CraftingCampaignBehavior).GetMethod("OpenPart", BindingFlags.NonPublic | BindingFlags.Instance);
+                GetMethodInfo();
             return Settings.Instance.AutoLearnSmeltedParts;
+        }
+
+        private static void GetMethodInfo()
+        {
+            openPartMethodInfo = typeof(CraftingCampaignBehavior).GetMethod("OpenPart", BindingFlags.NonPublic | BindingFlags.Instance);
         }
     }
 
@@ -53,7 +62,11 @@ namespace BannerlordTweaks.Patches
 
         static bool Prefix(CraftingCampaignBehavior __instance)
         {
+            if (recordsInfo == null)
+                GetRecordsInfo();
+            //Get the list of hero records
             IDictionary records = (IDictionary)recordsInfo.GetValue(__instance);
+
             foreach (Hero hero in records.Keys)
             {
                 int curCraftingStamina = __instance.GetHeroCraftingStamina(hero);
@@ -78,8 +91,13 @@ namespace BannerlordTweaks.Patches
         static bool Prepare()
         {
             if (Settings.Instance.CraftingStaminaTweakEnabled)
-                recordsInfo = typeof(CraftingCampaignBehavior).GetField("_heroCraftingRecords", BindingFlags.Instance | BindingFlags.NonPublic);
+                GetRecordsInfo();
             return Settings.Instance.CraftingStaminaTweakEnabled;
+        }
+
+        private static void GetRecordsInfo()
+        {
+            recordsInfo = typeof(CraftingCampaignBehavior).GetField("_heroCraftingRecords", BindingFlags.Instance | BindingFlags.NonPublic);
         }
     }
 }
