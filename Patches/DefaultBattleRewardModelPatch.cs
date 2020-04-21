@@ -19,6 +19,7 @@ namespace BannerlordTweaks.Patches
                 {
                     ExplainedNumber stat;
                     stat = new ExplainedNumber((renownValueOfBattle * contributionShare) * Settings.Instance.BattleRenownMultiplier, explanation);
+
                     if (party.IsMobile)
                     {
                         if (party.MobileParty.HasPerk(DefaultPerks.TwoHanded.Notorious))

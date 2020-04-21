@@ -10,10 +10,11 @@ namespace BannerlordTweaks.Patches
     {
         static void Postfix(BuildingType ____buildingCastleTrainingFields, BuildingType ____buildingCastleGranary, BuildingType ____buildingCastleGardens, BuildingType ____buildingCastleMilitiaBarracks)
         {
+            //Castle
             #region Training Fields
             if (Settings.Instance.CastleTrainingFieldsBonusEnabled)
             {
-                ____buildingCastleTrainingFields.Initialize(new TextObject("{=BkTiRPT4}Training Fields"),
+                ____buildingCastleTrainingFields?.Initialize(new TextObject("{=BkTiRPT4}Training Fields"),
                     new TextObject("{=otWlERkc}A field for military drills that increase the daily experience gain of all garrisoned units."),
                     new int[3]
                     {
@@ -38,7 +39,7 @@ namespace BannerlordTweaks.Patches
             #region Granary
             if (Settings.Instance.CastleGranaryBonusEnabled)
             {
-                ____buildingCastleGranary.Initialize(new TextObject("{=PstO2f5I}Granary"), new TextObject("{=iazij7fO}Keeps stockpiles of food so that the settlement has more food supply. Increases the local food supply."), new int[3]
+                ____buildingCastleGranary?.Initialize(new TextObject("{=PstO2f5I}Granary"), new TextObject("{=iazij7fO}Keeps stockpiles of food so that the settlement has more food supply. Increases the local food supply."), new int[3]
                     {
                         39,
                         65,
@@ -61,7 +62,7 @@ namespace BannerlordTweaks.Patches
             #region Gardens
             if (Settings.Instance.CastleGardensBonusEnabled)
             {
-                ____buildingCastleGardens.Initialize(new TextObject("{=yT6XN4Mr}Gardens"),
+                ____buildingCastleGardens?.Initialize(new TextObject("{=yT6XN4Mr}Gardens"),
                     new TextObject("{=ZCLVOXgM}Castles contained fruit trees, bakeries, chicken coups to be used in emergencies. While it is not enough for a full contingency of troops any small amount of fresh foods are a big help while in the sieges."),
                     new int[3]
                     {
@@ -85,7 +86,7 @@ namespace BannerlordTweaks.Patches
             #region Militia Barracks
             if (Settings.Instance.CastleMilitiaBarracksBonusEnabled)
             {
-                ____buildingCastleMilitiaBarracks.Initialize(new TextObject("{=l91xAgmU}Militia Barracks"),
+                ____buildingCastleMilitiaBarracks?.Initialize(new TextObject("{=l91xAgmU}Militia Barracks"),
                     new TextObject("{=YRrx8bAK}Provides battle training for citizens and recruit them into militia, each level increases daily militia recruitment."),
                     new int[3]
                     {
@@ -106,6 +107,9 @@ namespace BannerlordTweaks.Patches
                     });
             }
             #endregion
+
+            //Towns
+
         }
 
         static bool Prepare()
