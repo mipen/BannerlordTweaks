@@ -3,7 +3,6 @@ using ModLib.Debugging;
 using System;
 using System.Reflection;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.ViewModelCollection.ClanManagement;
 using TaleWorlds.Core;
 
 namespace BannerlordTweaks.Patches
