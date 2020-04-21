@@ -14,15 +14,17 @@ namespace BannerlordTweaks.Patches
             if (party == null) throw new ArgumentNullException(nameof(party));
             int partySize = party.Party.NumberOfAllMembers;
 
-            foreach (TroopRosterElement troopRosterElement in party.MemberRoster)
+            if (party.MemberRoster != null)
             {
-                if (
-                    (troopRosterElement.Character.Culture.Villager != null &&
-                    troopRosterElement.Character == MBObjectManager.Instance.GetObject<CharacterObject>(troopRosterElement.Character.Culture.Villager.StringId)) ||
-                    troopRosterElement.Character == MBObjectManager.Instance.GetObject<CharacterObject>("borrowed_troop") ||
-                    troopRosterElement.Character == MBObjectManager.Instance.GetObject<CharacterObject>("veteran_borrowed_troop"))
+                foreach (TroopRosterElement troopRosterElement in party.MemberRoster)
                 {
-                    partySize -= troopRosterElement.Number;
+                    if (troopRosterElement.Character != null && troopRosterElement.Character.Culture != null && troopRosterElement.Character.Culture.Villager != null &&
+                        (troopRosterElement.Character == MBObjectManager.Instance.GetObject<CharacterObject>(troopRosterElement.Character.Culture.Villager.StringId)) ||
+                        troopRosterElement.Character == MBObjectManager.Instance.GetObject<CharacterObject>("borrowed_troop") ||
+                        troopRosterElement.Character == MBObjectManager.Instance.GetObject<CharacterObject>("veteran_borrowed_troop"))
+                    {
+                        partySize -= troopRosterElement.Number;
+                    }
                 }
             }
 
@@ -34,12 +36,16 @@ namespace BannerlordTweaks.Patches
     {
         static bool Prefix(MobileParty party, ref ExplainedNumber result, TextObject ____partySizeMoraleText)
         {
-            int num = QuestPartySizeHelper.GetPartySize(party) - party.Party.PartySizeLimit;
-            if (num > 0)
+            if (party != null && party.Party != null && party.Party.LeaderHero != null && party.Party.LeaderHero == Hero.MainHero)
             {
-                result.Add(-1f * (float)Math.Sqrt((double)num), ____partySizeMoraleText);
+                int num = QuestPartySizeHelper.GetPartySize(party) - party.Party.PartySizeLimit;
+                if (num > 0)
+                {
+                    result.Add(-1f * (float)Math.Sqrt((double)num), ____partySizeMoraleText);
+                }
+                return false;
             }
-            return false;
+            return true;
         }
 
         static bool Prepare()
@@ -53,9 +59,14 @@ namespace BannerlordTweaks.Patches
     {
         static bool Prefix(MobileParty mobileParty, ref int __result)
         {
-            int partySizeLimit = mobileParty.Party.PartySizeLimit;
-            __result = MBRandom.RoundRandomized(((float)QuestPartySizeHelper.GetPartySize(mobileParty) - mobileParty.PaymentRatio * (float)partySizeLimit) * 0.2f);
-            return false;
+            if (mobileParty != null && mobileParty.Party != null && mobileParty.Party.LeaderHero != null && mobileParty.Party.LeaderHero == Hero.MainHero)
+            {
+                int partySizeLimit = mobileParty.Party.PartySizeLimit;
+                __result = MBRandom.RoundRandomized(((float)QuestPartySizeHelper.GetPartySize(mobileParty) - mobileParty.PaymentRatio * (float)partySizeLimit) * 0.2f);
+                return false;
+            }
+            else
+                return true;
         }
 
         static bool Prepare()
