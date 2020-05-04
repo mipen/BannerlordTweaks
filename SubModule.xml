@@ -13,7 +13,6 @@
 		<DependedModule Id="Sandbox"/>
 		<DependedModule Id="CustomBattle"/>
 		<DependedModule Id="StoryMode"/>
-		<DependedModule Id="ModLib"/>
 	</DependedModules>
 	<SubModules>
 		<SubModule>
