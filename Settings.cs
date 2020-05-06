@@ -1,5 +1,5 @@
-﻿using ModLib;
-using ModLib.Attributes;
+﻿using ModLib.Definitions.Attributes;
+using ModLib.Definitions;
 using System.Xml.Serialization;
 
 namespace BannerlordTweaks
@@ -17,7 +17,7 @@ namespace BannerlordTweaks
         {
             get
             {
-                return (Settings)SettingsDatabase.GetSettings(InstanceID);
+                return (Settings)SettingsDatabase.GetSettings<Settings>();
             }
         }
 

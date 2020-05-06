@@ -10,6 +10,9 @@
 	
 	<!-- Path to ModLib assembly-->
 	<MODLIB_PATH>C:\Users\Liam\source\repos\ModLib\bin\Debug\ModLib.dll</MODLIB_PATH>
+	
+	<!-- Path to ModLib definitions assembly-->
+	<MODLIB_DEFINITIONS_PATH>C:\Users\Liam\source\repos\ModLib\ModLib.Definitions\bin\Debug\ModLib.Definitions.dll</MODLIB_DEFINITIONS_PATH>
 
   </PropertyGroup>
 </Project>
