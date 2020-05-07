@@ -7,7 +7,7 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 
 namespace BannerlordTweaks
 {
-    public class TweakedDefaultCharacterDevelopmentModel : DefaultCharacterDevelopmentModel
+    public class TweakedCharacterDevelopmentModel : DefaultCharacterDevelopmentModel
     {
         public override int LevelsPerAttributePoint => Settings.Instance.AttributeFocusPointTweakEnabled
             ? Settings.Instance.AttributePointRequiredLevel

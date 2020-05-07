@@ -55,7 +55,7 @@ namespace BannerlordTweaks
                         Settings.Instance.TwinsProbabilityTweakEnabled)
                     gameStarter.AddModel(new TweakedPregnancyModel());
                 if (Settings.Instance.AttributeFocusPointTweakEnabled)
-                    gameStarter.AddModel(new TweakedDefaultCharacterDevelopmentModel());
+                    gameStarter.AddModel(new TweakedCharacterDevelopmentModel());
             }
         }
     }
