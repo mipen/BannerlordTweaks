@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="Patches\CraftingCampaignBehaviourPatches.cs" />
     <Compile Include="Patches\CraftingVMPatch.cs" />
+    <Compile Include="Patches\DefaultAgeModelPatch.cs" />
     <Compile Include="Patches\DefaultBattleRewardModelPatch.cs" />
     <Compile Include="Patches\DefaultBuildingTypesPatch.cs" />
     <Compile Include="Patches\DefaultPartyMoraleModelPatches.cs" />

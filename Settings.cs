@@ -431,6 +431,69 @@ namespace BannerlordTweaks
         [SettingProperty("Probability to deliver twins", -1.0f, 1.0f, "Native value is 0.03. Determines the chance of giving birth to twins.")]
         [SettingPropertyGroup("Pregnancy Tweaks/Twins Probability Tweak")]
         public float TwinsProbability { get; set; } = 0.03f;
+        [XmlElement]
+        [SettingProperty("Enable Character Fertility Probability Tweak", "Allows for adjusting for the probability to get pregnant, this will apply to everyone. By enabling this, we can use Min/Max Pregnancy Age")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public bool CharacterFertilityProbabilityTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Character Fertility Probability", 0f, 1.0f, "Native value is 0.95. Determines the chance of getting pregnant")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public float CharacterFertilityProbability { get; set; } = 0.95f;
+        [XmlElement]
+        [SettingProperty("Enable Daily Chance Pregnancy Tweak", "Enabling this will completely override the daily pregnancy check. All settings below will be applied!")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public bool DailyChancePregnancyTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Enable Player Character Fertility", "Is the player character (you) fertile? Native: true")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public bool PlayerCharacterFertileEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Min Pregnancy Age", 0, 999, "Minimum Age the Hero can get pregnant. Native: 18")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public int MinPregnancyAge { get; set; } = 18;
+        [XmlElement]
+        [SettingProperty("Max Pregnancy Age", 0, 999, "Maximum Age the Hero can get pregnant. Native: 45")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public int MaxPregnancyAge { get; set; } = 45;
+        [XmlElement]
+        [SettingProperty("Enable Max Children Tweak", "Allows to set the maximum number of children that you can get")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public bool MaxChildrenTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Max Children", 0, 999, "Maximum number of children anyone can have. Default: 5")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public int MaxChildren { get; set; } = 5;
+        #endregion
+
+        #region Age Patches Tweak
+        [XmlElement]
+        [SettingProperty("Enable Age Tweaks", "Enables the tweaking of character age behaviour")]
+        [SettingPropertyGroup("Age Tweaks", true)]
+        public bool DefaultAgeTweakEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Become Infant Age", 0, 125, "Native: 3")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int BecomeInfantAge { get; set; } = 3;
+        [XmlElement]
+        [SettingProperty("Become Child Age", 0, 125, "Native: 6")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int BecomeChildAge { get; set; } = 6;
+        [XmlElement]
+        [SettingProperty("Become Teenager Age", 0, 125, "Native: 14")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int BecomeTeenagerAge { get; set; } = 14;
+        [XmlElement]
+        [SettingProperty("Hero Comes Of Age", 0, 100, "Native: 18")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int HeroComesOfAge { get; set; } = 18;
+        [XmlElement]
+        [SettingProperty("Become Old Age", 0, 125, "Native: 47")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int BecomeOldAge { get; set; } = 47;
+        [XmlElement]
+        [SettingProperty("Max Age", 0, 125, "Native: 125")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int MaxAge { get; set; } = 125;
         #endregion
     }
 }
