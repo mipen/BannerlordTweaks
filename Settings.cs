@@ -77,7 +77,7 @@ namespace BannerlordTweaks
 
         [XmlElement]
         [SettingProperty("Battle Renown Multiplier", 1f, 5f, 1f, 20f, "Native value is 1.0. The amount of renown you receive from a battle is multiplied by this value.")]
-        [SettingPropertyGroup("Battle Renown Tweak")]
+        [SettingPropertyGroup("Battle Reward Tweaks")]
         public float BattleRenownMultiplier { get; set; } = 2f;
         [XmlElement]
         [SettingProperty("Battle Influence Multiplier", 0.1f, 5f, "Native value is 1.0. The amount of influence you receive from a battle is multiplied by this value.")]
