@@ -12,15 +12,11 @@ namespace BannerlordTweaks
     {
         public static readonly string ModuleFolderName = "zzBannerlordTweaks";
 
-        protected override void OnSubModuleLoad()
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
-            base.OnSubModuleLoad();
             try
             {
                 FileDatabase.Initialise(ModuleFolderName);
-                Settings settings = FileDatabase.Get<Settings>(Settings.InstanceID);
-                if (settings == null) settings = new Settings();
-                SettingsDatabase.RegisterSettings(settings);
 
                 var harmony = new Harmony("mod.bannerlord.mipen");
                 harmony.PatchAll();
@@ -29,24 +25,6 @@ namespace BannerlordTweaks
             {
                 MessageBox.Show($"Error Initialising Bannerlord Tweaks:\n\n{ex.ToStringFull()}");
             }
-        }
-
-        public override void OnMissionBehaviourInitialize(Mission mission)
-        {
-            base.OnMissionBehaviourInitialize(mission);
-
-            //if (Settings.Instance.TournamentExperienceEnabled && !mission.HasMissionBehaviour<TournamentExperienceMissionLogic>() &&
-            //    (mission.HasMissionBehaviour<TournamentFightMissionController>() || mission.HasMissionBehaviour<TournamentArcheryMissionController>() ||
-            //    mission.HasMissionBehaviour<TournamentArcheryMissionController>() || mission.HasMissionBehaviour<TownHorseRaceMissionController>()))
-            //{
-            //    mission.AddMissionBehaviour(new TournamentExperienceMissionLogic());
-            //}
-
-            //if (Settings.Instance.ArenaExperienceEnabled && !mission.HasMissionBehaviour<TournamentExperienceMissionLogic>() &&
-            //    mission.HasMissionBehaviour<ArenaPracticeFightMissionController>())
-            //{
-            //    mission.AddMissionBehaviour(new TournamentExperienceMissionLogic());
-            //}
         }
 
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
