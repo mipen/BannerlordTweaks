@@ -398,5 +398,39 @@ namespace BannerlordTweaks
         public float ClanPartiesBonusPerClanTier { get; set; } = 0.5f;
         #endregion
 
+        #region Pregnancy tweak
+        [XmlElement]
+        [SettingProperty("Disable Stillbirths", "Disables the chance of children dying when born.")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public bool NoStillbirthsTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Disable Maternal Mortality", "Disables the chance of mothers dying when giving birth.")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public bool NoMaternalMortalityTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Enable Pregnancy Duration Tweak", "Allows for adjusting the duration for a pregnancy.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Duration Tweak", true)]
+        public bool PregnancyDurationTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Pregnancy Duration", 1, 96, "Native value is 36 days.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Duration Tweak")]
+        public int PregnancyDuration { get; set; } = 36;
+        [XmlElement]
+        [SettingProperty("Enable Gender Ratio Tweak", "Allows for adjusting the gender ratio of births.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Female Offspring Probability Tweak", true)]
+        public bool FemaleOffspringProbabilityTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Probability for female children", -1.0f, 1.0f, "Native value is 0.51. Set to -1 to disable female births.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Female Offspring Probability Tweak")]
+        public float FemaleOffspringProbability { get; set; } = 0.51f;
+        [XmlElement]
+        [SettingProperty("Enable Twins Probability Tweak", "Allows for adjusting the chance of giving birth to twins.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Twins Probability Tweak", true)]
+        public bool TwinsProbabilityTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Probability to deliver twins", -1.0f, 1.0f, "Native value is 0.03. Determines the chance of giving birth to twins.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Twins Probability Tweak")]
+        public float TwinsProbability { get; set; } = 0.03f;
+        #endregion
     }
 }
