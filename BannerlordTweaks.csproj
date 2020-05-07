@@ -112,7 +112,6 @@
     <Compile Include="Patches\CraftingVMPatch.cs" />
     <Compile Include="Patches\DefaultBattleRewardModelPatch.cs" />
     <Compile Include="Patches\DefaultBuildingTypesPatch.cs" />
-    <Compile Include="Patches\DefaultCharacterDevelopmentModelPatch.cs" />
     <Compile Include="Patches\DefaultPartyMoraleModelPatches.cs" />
     <Compile Include="Patches\DefaultPartySizeLimitModelPatch.cs" />
     <Compile Include="Patches\DefaultTournamentModelPatch.cs" />
@@ -126,6 +125,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="SubModule.cs" />
     <Compile Include="Patches\TournamentBehaviourPatch.cs" />
+    <Compile Include="TweakDefaultCharacterDevelopmentModel.cs" />
     <Compile Include="TweakedClanTierModel.cs" />
     <Compile Include="TweakedCombatXpModel.cs" />
     <Compile Include="TweakedPregnancyModel.cs" />
