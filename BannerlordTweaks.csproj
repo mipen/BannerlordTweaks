@@ -125,6 +125,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="SubModule.cs" />
     <Compile Include="Patches\TournamentBehaviourPatch.cs" />
+    <Compile Include="TweakedCharacterDevelopmentModel.cs" />
     <Compile Include="TweakedClanTierModel.cs" />
     <Compile Include="TweakedCombatXpModel.cs" />
     <Compile Include="TweakedPregnancyModel.cs" />
