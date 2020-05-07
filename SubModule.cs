@@ -56,7 +56,8 @@ namespace BannerlordTweaks
                     gameStarter.AddModel(new TweakedPregnancyModel());
                 if (Settings.Instance.AgeTweaksEnabled)
                     gameStarter.AddModel(new TweakedAgeModel());
-
+                if (Settings.Instance.AttributeFocusPointTweakEnabled)
+                    gameStarter.AddModel(new TweakedCharacterDevelopmentModel());
             }
         }
     }

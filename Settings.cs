@@ -71,13 +71,21 @@ namespace BannerlordTweaks
 
         #region Battle reward patches
         [XmlElement]
-        [SettingProperty("Battle Renown Tweak", "Applies the set multiplier to renown gain from battles (applies to the player only).")]
-        [SettingPropertyGroup("Battle Renown Tweak", true)]
-        public bool BattleRenownMultiplierEnabled { get; set; } = true;
+        [SettingProperty("Battle Reward Tweaks", "Applies the set multiplier to renown and influence gain from battles (applies to the player only).")]
+        [SettingPropertyGroup("Battle Reward Tweaks", true)]
+        public bool BattleRewardTweaksEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Battle Renown Multiplier", 1f, 5f, 1f, 20f, "Native value is 1.0. The amount of renown you receive from a battle is multiplied by this value.")]
-        [SettingPropertyGroup("Battle Renown Tweak")]
+        [SettingPropertyGroup("Battle Reward Tweaks")]
         public float BattleRenownMultiplier { get; set; } = 2f;
+        [XmlElement]
+        [SettingProperty("Battle Influence Multiplier", 0.1f, 5f, "Native value is 1.0. The amount of influence you receive from a battle is multiplied by this value.")]
+        [SettingPropertyGroup("Battle Reward Tweaks")]
+        public float BattleInfluenceMultiplier { get; set; } = 1f;
+        [XmlElement]
+        [SettingProperty("Apply To AI", "Applies the same multipliers to AI parties.")]
+        [SettingPropertyGroup("Battle Reward Tweaks")]
+        public bool BattleRewardApplyToAI { get; set; } = true;
         #endregion
 
         #region Party size patches
@@ -494,6 +502,23 @@ namespace BannerlordTweaks
         [SettingProperty("Max Age", 0, 125, "Native: 125")]
         [SettingPropertyGroup("Age Tweaks")]
         public int MaxAge { get; set; } = 125;
+        #endregion
+
+        #region Attribute Focus Point Tweaks
+        [XmlElement]
+        [SettingProperty("Enable Attribute-Focus Point Tweaks", "Changes the values used to calculate how many Attribute and Focus points player gain.")]
+        [SettingPropertyGroup("Attribute-Focus Points Tweaks", true)]
+        public bool AttributeFocusPointTweakEnabled { get; set; } = true;
+
+        [XmlElement]
+        [SettingProperty("Levels To Gain For Attribute Points", 1, 5, "Native value is 4. Howmany levels do you have to gain to be able to receive attribute points")]
+        [SettingPropertyGroup("Attribute-Focus Points Tweaks")]
+        public int AttributePointRequiredLevel { get; set; } = 4;
+
+        [XmlElement]
+        [SettingProperty("Focus Point Per Level", 1, 5, "Native value is 1. This is the amount of focus points earned per level.")]
+        [SettingPropertyGroup("Attribute-Focus Points Tweaks")]
+        public int FocusPointsPerLevel { get; set; } = 1;
         #endregion
     }
 }
