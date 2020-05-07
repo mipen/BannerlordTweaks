@@ -432,5 +432,20 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Pregnancy Tweaks/Twins Probability Tweak")]
         public float TwinsProbability { get; set; } = 0.03f;
         #endregion
+
+        #region Caravan Patches 
+        [XmlElement]
+        [SettingProperty("Enable Caravan Tweak", "Enables the tweaking of Caravans")]
+        [SettingPropertyGroup("Caravan Tweaks", true)]
+        public bool CaravanTweakEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Enable Player Caravan Party Size Tweak", "Applies a configured value to your caravan party size")]
+        [SettingPropertyGroup("Caravan Tweaks", false)]
+        public bool PlayerCaravanPartySizeTweakEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Player Caravan Party Size", 30, 100, "Native: 30")]
+        [SettingPropertyGroup("Caravan Tweaks")]
+        public int PlayerCaravanPartySize { get; set; } = 30;
+        #endregion
     }
 }
