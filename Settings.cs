@@ -433,7 +433,7 @@ namespace BannerlordTweaks
         public float TwinsProbability { get; set; } = 0.03f;
         [XmlElement]
         [SettingProperty("Enable Character Fertility Probability Tweak", "Allows for adjusting for the probability to get pregnant, this will apply to everyone. By enabling this, we can use Min/Max Pregnancy Age")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Fertility Probability Tweak")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Fertility Probability Tweak", true)]
         public bool CharacterFertilityProbabilityTweakEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Character Fertility Probability", 0f, 1.0f, "Native value is 0.95. Determines the chance of getting pregnant")]
@@ -441,7 +441,7 @@ namespace BannerlordTweaks
         public float CharacterFertilityProbability { get; set; } = 0.95f;
         [XmlElement]
         [SettingProperty("Enable Daily Chance Pregnancy Tweak", "Enabling this will completely override the daily pregnancy check. All settings below will be applied!")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak", true)]
         public bool DailyChancePregnancyTweakEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Enable Player Character Fertility", "Is the player character (you) fertile? Native: true")]
