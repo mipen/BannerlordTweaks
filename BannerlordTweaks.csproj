@@ -122,7 +122,6 @@
     <Compile Include="TweakedSettlementFoodModel.cs" />
     <Compile Include="TweakedSettlementMilitiaModel.cs" />
     <Compile Include="TweakedSiegeEventModel.cs" />
-    <Compile Include="TweakedPregnancyModel.cs" />
     <Compile Include="TweakedWorkshopModel.cs" />
   </ItemGroup>
   <ItemGroup>
