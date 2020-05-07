@@ -432,7 +432,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Pregnancy Tweaks/Twins Probability Tweak")]
         public float TwinsProbability { get; set; } = 0.03f;
         [XmlElement]
-        [SettingProperty("Enable Character Fertility Probability Tweak", "Allows for adjusting for the probability to get pregnant, this will apply to everyone. By enabling this, we can use Min/Max Pregnancy Age")]
+        [SettingProperty("Enable Character Fertility Probability Tweak", "Allows for adjusting for the probability to get pregnant, this will apply to everyone.")]
         [SettingPropertyGroup("Pregnancy Tweaks/Fertility Probability Tweak", true)]
         public bool CharacterFertilityProbabilityTweakEnabled { get; set; } = false;
         [XmlElement]
