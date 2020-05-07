@@ -54,6 +54,9 @@ namespace BannerlordTweaks
                         Settings.Instance.PregnancyDurationTweakEnabled || Settings.Instance.FemaleOffspringProbabilityTweakEnabled ||
                         Settings.Instance.TwinsProbabilityTweakEnabled)
                     gameStarter.AddModel(new TweakedPregnancyModel());
+                if (Settings.Instance.DefaultAgeTweakEnabled)
+                    gameStarter.AddModel(new TweakedDefaultAgeModel());
+
             }
         }
     }
