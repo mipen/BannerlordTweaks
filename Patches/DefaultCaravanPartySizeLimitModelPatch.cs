@@ -22,7 +22,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.CaravanTweakEnabled && Settings.Instance.PlayerCaravanPartySizeTweakEnabled;
+            return Settings.Instance.PlayerCaravanPartySizeTweakEnabled;
         }
     }
 }
