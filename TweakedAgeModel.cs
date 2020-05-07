@@ -2,7 +2,7 @@
 
 namespace BannerlordTweaks
 {
-    public class TweakedDefaultAgeModel : DefaultAgeModel
+    public class TweakedAgeModel : DefaultAgeModel
     {
         public override int BecomeInfantAge => Settings.Instance.DefaultAgeTweakEnabled
             ? Settings.Instance.BecomeInfantAge

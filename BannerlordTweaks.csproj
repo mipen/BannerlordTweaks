@@ -127,7 +127,7 @@
     <Compile Include="Patches\TournamentBehaviourPatch.cs" />
     <Compile Include="TweakedClanTierModel.cs" />
     <Compile Include="TweakedCombatXpModel.cs" />
-    <Compile Include="TweakedDefaultAgeModel.cs" />
+    <Compile Include="TweakedAgeModel.cs" />
     <Compile Include="TweakedPregnancyModel.cs" />
     <Compile Include="TweakedSettlementFoodModel.cs" />
     <Compile Include="TweakedSettlementMilitiaModel.cs" />
