@@ -465,11 +465,11 @@ namespace BannerlordTweaks
         public int MaxChildren { get; set; } = 5;
         #endregion
 
-        #region Age Patches Tweak
+        #region Age tweak
         [XmlElement]
         [SettingProperty("Enable Age Tweaks", "Enables the tweaking of character age behaviour")]
         [SettingPropertyGroup("Age Tweaks", true)]
-        public bool DefaultAgeTweakEnabled { get; set; } = true;
+        public bool AgeTweaksEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Become Infant Age", 0, 125, "Native: 3")]
         [SettingPropertyGroup("Age Tweaks")]
