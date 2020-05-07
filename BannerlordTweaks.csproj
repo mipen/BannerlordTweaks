@@ -114,6 +114,7 @@
     <Compile Include="Patches\DefaultBuildingTypesPatch.cs" />
     <Compile Include="Patches\DefaultPartyMoraleModelPatches.cs" />
     <Compile Include="Patches\DefaultPartySizeLimitModelPatch.cs" />
+    <Compile Include="Patches\DefaultCaravanPartySizeLimitModelPatch.cs" />
     <Compile Include="Patches\DefaultTournamentModelPatch.cs" />
     <Compile Include="Patches\DefaultTroopCountLimitModelPatch.cs" />
     <Compile Include="Patches\HeroPatches.cs" />
