@@ -74,7 +74,6 @@ namespace BannerlordTweaks
         [SettingProperty("Battle Reward Tweaks", "Applies the set multiplier to renown and influence gain from battles (applies to the player only).")]
         [SettingPropertyGroup("Battle Reward Tweaks", true)]
         public bool BattleRewardTweaksEnabled { get; set; } = true;
-
         [XmlElement]
         [SettingProperty("Battle Renown Multiplier", 1f, 5f, 1f, 20f, "Native value is 1.0. The amount of renown you receive from a battle is multiplied by this value.")]
         [SettingPropertyGroup("Battle Reward Tweaks")]
@@ -82,7 +81,7 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Battle Influence Multiplier", 0.1f, 5f, "Native value is 1.0. The amount of influence you receive from a battle is multiplied by this value.")]
         [SettingPropertyGroup("Battle Reward Tweaks")]
-        public float BattleInfluenceMultiplier { get; set; } = 1f;
+        public float BattleInfluenceMultiplier { get; set; } = 1f;
         [XmlElement]
         [SettingProperty("Apply To AI", "Applies the same multipliers to AI parties.")]
         [SettingPropertyGroup("Battle Reward Tweaks")]
