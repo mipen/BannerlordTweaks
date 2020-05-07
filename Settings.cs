@@ -432,5 +432,22 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Pregnancy Tweaks/Twins Probability Tweak")]
         public float TwinsProbability { get; set; } = 0.03f;
         #endregion
+
+        #region Attribute Focus Point Tweaks
+        [XmlElement]
+        [SettingProperty("Enable Attribute-Focus Point Tweaks", "Changes the values used to calculate how many Attribute and Focus points player gain.")]
+        [SettingPropertyGroup("Attribute-Focus Points Tweaks", true)]
+        public bool AttributeFocusPointTweakEnabled { get; set; } = true;
+
+        [XmlElement]
+        [SettingProperty("Required Level For Attribute Point", 1, 5, "Native value is 4. This is the required level to gain an attribute point")]
+        [SettingPropertyGroup("Attribute-Focus Points Tweaks")]
+        public int AttributePointRequiredLevel { get; set; } = 4;
+
+        [XmlElement]
+        [SettingProperty("Focus Point Per Level", 1, 5, "Native value is 1. This is the amount of focus points earned per level.")]
+        [SettingPropertyGroup("Attribute-Focus Points Tweaks")]
+        public int FocusPointsPerLevel { get; set; } = 1;
+        #endregion
     }
 }
