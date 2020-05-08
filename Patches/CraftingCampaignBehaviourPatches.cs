@@ -3,7 +3,6 @@ using ModLib;
 using System;
 using System.Collections;
 using System.Reflection;
-using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.Core;
@@ -15,8 +14,9 @@ namespace BannerlordTweaks.Patches
     {
         private static MethodInfo openPartMethodInfo;
 
-        static void Postfix(CraftingCampaignBehavior __instance, ItemObject item)
+        static void Postfix(CraftingCampaignBehavior __instance, EquipmentElement equipmentElement)
         {
+            ItemObject item = equipmentElement.Item;
             if (item == null) return;
             if (__instance == null) throw new ArgumentNullException(nameof(__instance), $"Tried to run postfix for {nameof(CraftingCampaignBehavior)}.DoSmelting but the instance was null.");
             if (openPartMethodInfo == null) GetMethodInfo();

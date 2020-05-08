@@ -1,5 +1,5 @@
-﻿using ModLib;
-using ModLib.Attributes;
+﻿using ModLib.Definitions.Attributes;
+using ModLib.Definitions;
 using System.Xml.Serialization;
 
 namespace BannerlordTweaks
@@ -17,7 +17,7 @@ namespace BannerlordTweaks
         {
             get
             {
-                return (Settings)SettingsDatabase.GetSettings(InstanceID);
+                return (Settings)SettingsDatabase.GetSettings<Settings>();
             }
         }
 
@@ -71,13 +71,21 @@ namespace BannerlordTweaks
 
         #region Battle reward patches
         [XmlElement]
-        [SettingProperty("Battle Renown Tweak", "Applies the set multiplier to renown gain from battles (applies to the player only).")]
-        [SettingPropertyGroup("Battle Renown Tweak", true)]
-        public bool BattleRenownMultiplierEnabled { get; set; } = true;
+        [SettingProperty("Battle Reward Tweaks", "Applies the set multiplier to renown and influence gain from battles (applies to the player only).")]
+        [SettingPropertyGroup("Battle Reward Tweaks", true)]
+        public bool BattleRewardTweaksEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Battle Renown Multiplier", 1f, 5f, 1f, 20f, "Native value is 1.0. The amount of renown you receive from a battle is multiplied by this value.")]
-        [SettingPropertyGroup("Battle Renown Tweak")]
+        [SettingPropertyGroup("Battle Reward Tweaks")]
         public float BattleRenownMultiplier { get; set; } = 2f;
+        [XmlElement]
+        [SettingProperty("Battle Influence Multiplier", 0.1f, 5f, "Native value is 1.0. The amount of influence you receive from a battle is multiplied by this value.")]
+        [SettingPropertyGroup("Battle Reward Tweaks")]
+        public float BattleInfluenceMultiplier { get; set; } = 1f;
+        [XmlElement]
+        [SettingProperty("Apply To AI", "Applies the same multipliers to AI parties.")]
+        [SettingPropertyGroup("Battle Reward Tweaks")]
+        public bool BattleRewardApplyToAI { get; set; } = true;
         #endregion
 
         #region Party size patches
@@ -106,44 +114,44 @@ namespace BannerlordTweaks
         # region Tournament patches
         [XmlElement]
         [SettingProperty("Enable Tournament Renown Tweak", "Sets the amount of renown awarded when you win a tournament.")]
-        [SettingPropertyGroup("Tournament Tweaks")]
+        [SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak", true)]
         public bool TournamentRenownIncreaseEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Tournament Renown Reward", 1, 20, 1, 10000, "Native value is 3. Increases the amount of renown awarded when you win a tournament.")]
-        [SettingPropertyGroup("Tournament Tweaks")]
+        [SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak")]
         public int TournamentRenownAmount { get; set; } = 8;
         [XmlElement]
         [SettingProperty("Enable Tournament Gold Reward Tweak", "Adds the set amount of gold to the rewards when you win a tournament.")]
-        [SettingPropertyGroup("Tournament Tweaks")]
+        [SettingPropertyGroup("Tournament Tweaks/Gold Reward Tweak", true)]
         public bool TournamentGoldRewardEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Tournament Gold Reward", 150, 1000, 0, 10000, "Native value is 0. Adds the set amount of gold to the rewards when you win a tournament.")]
-        [SettingPropertyGroup("Tournament Tweaks")]
+        [SettingPropertyGroup("Tournament Tweaks/Gold Reward Tweak")]
         public int TournamentGoldRewardAmount { get; set; } = 500;
         [XmlElement]
         [SettingProperty("Enable Tournament Max Bet Tweak", "Sets the maximum amount of gold that you can bet per round in tournaments.")]
-        [SettingPropertyGroup("Tournament Tweaks")]
+        [SettingPropertyGroup("Tournament Tweaks/Maximum Bet Amount Tweak", true)]
         public bool TournamentMaxBetAmountTweakEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Tournament Maximum Bet Amount", 150, 2000, 1, 10000, "Native value is 150. Sets the maximum amount of gold that you can bet per round in tournaments.")]
-        [SettingPropertyGroup("Tournament Tweaks")]
+        [SettingPropertyGroup("Tournament Tweaks/Maximum Bet Amount Tweak")]
         public int TournamentMaxBetAmount { get; set; } = 500;
 
         [XmlElement]
         [SettingProperty("Enable Tournament Hero Experience Multiplier Override", "Overrides the native multiplier value for experience gain in tournaments for hero characters.")]
-        [SettingPropertyGroup("Tournament Tweaks")]
+        [SettingPropertyGroup("Tournament Tweaks/Tournament Hero Experience Multiplier", true)]
         public bool TournamentHeroExperienceMultiplierEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Tournament Hero Experience Multiplier", 0.25f, 1f, "Native value is 0.25. Sets the multiplier applied to experience gained in tournaments by hero characters.")]
-        [SettingPropertyGroup("Tournament Tweaks")]
+        [SettingPropertyGroup("Tournament Tweaks/Tournament Hero Experience Multiplier")]
         public float TournamentHeroExperienceMultiplier { get; set; } = 0.25f;
         [XmlElement]
         [SettingProperty("Enable Arena Hero Experience Multiplier Override", "Overrides the native multiplier value for experience gain in arena fights for hero characters.")]
-        [SettingPropertyGroup("Tournament Tweaks")]
+        [SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier", true)]
         public bool ArenaHeroExperienceMultiplierEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Arena Hero Experience Multiplier", 0.07f, 1f, "Native value is 0.06. Overrides the native multiplier for experience gain in arena fights for hero characters.")]
-        [SettingPropertyGroup("Tournament Tweaks")]
+        [SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier")]
         public float ArenaHeroExperienceMultiplier { get; set; } = 0.07f;
         #endregion
 
@@ -398,5 +406,130 @@ namespace BannerlordTweaks
         public float ClanPartiesBonusPerClanTier { get; set; } = 0.5f;
         #endregion
 
+        #region Pregnancy tweak
+        [XmlElement]
+        [SettingProperty("Disable Stillbirths", "Disables the chance of children dying when born.")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public bool NoStillbirthsTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Disable Maternal Mortality", "Disables the chance of mothers dying when giving birth.")]
+        [SettingPropertyGroup("Pregnancy Tweaks")]
+        public bool NoMaternalMortalityTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Enable Pregnancy Duration Tweak", "Allows for adjusting the duration for a pregnancy.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Duration Tweak", true)]
+        public bool PregnancyDurationTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Pregnancy Duration", 1, 96, "Native value is 36 days.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Duration Tweak")]
+        public int PregnancyDuration { get; set; } = 36;
+        [XmlElement]
+        [SettingProperty("Enable Gender Ratio Tweak", "Allows for adjusting the gender ratio of births.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Female Offspring Probability Tweak", true)]
+        public bool FemaleOffspringProbabilityTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Probability for female children", -1.0f, 1.0f, "Native value is 0.51. Set to -1 to disable female births.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Female Offspring Probability Tweak")]
+        public float FemaleOffspringProbability { get; set; } = 0.51f;
+        [XmlElement]
+        [SettingProperty("Enable Twins Probability Tweak", "Allows for adjusting the chance of giving birth to twins.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Twins Probability Tweak", true)]
+        public bool TwinsProbabilityTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Probability to deliver twins", -1.0f, 1.0f, "Native value is 0.03. Determines the chance of giving birth to twins.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Twins Probability Tweak")]
+        public float TwinsProbability { get; set; } = 0.03f;
+        [XmlElement]
+        [SettingProperty("Enable Character Fertility Probability Tweak", "Allows for adjusting for the probability to get pregnant, this will apply to everyone.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Fertility Probability Tweak", true)]
+        public bool CharacterFertilityProbabilityTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Character Fertility Probability", 0f, 1.0f, "Native value is 0.95. Determines the chance of getting pregnant")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Fertility Probability Tweak")]
+        public float CharacterFertilityProbability { get; set; } = 0.95f;
+        [XmlElement]
+        [SettingProperty("Enable Daily Chance Pregnancy Tweak", "Enabling this will completely override the daily pregnancy check. All settings below will be applied!")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak", true)]
+        public bool DailyChancePregnancyTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Enable Player Character Fertility", "Is the player character (you) fertile? Native: true")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        public bool PlayerCharacterFertileEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Min Pregnancy Age", 0, 999, "Minimum Age the Hero can get pregnant. Native: 18")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        public int MinPregnancyAge { get; set; } = 18;
+        [XmlElement]
+        [SettingProperty("Max Pregnancy Age", 0, 999, "Maximum Age the Hero can get pregnant. Native: 45")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        public int MaxPregnancyAge { get; set; } = 45;
+        [XmlElement]
+        [SettingProperty("Enable Max Children Tweak", "Allows to set the maximum number of children that you can get")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        public bool MaxChildrenTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Max Children", 0, 999, "Maximum number of children anyone can have. Default: 5")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        public int MaxChildren { get; set; } = 5;
+        #endregion
+
+        #region Age tweak
+        [XmlElement]
+        [SettingProperty("Enable Age Tweaks", "Enables the tweaking of character age behaviour")]
+        [SettingPropertyGroup("Age Tweaks", true)]
+        public bool AgeTweaksEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Become Infant Age", 0, 125, "Native: 3")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int BecomeInfantAge { get; set; } = 3;
+        [XmlElement]
+        [SettingProperty("Become Child Age", 0, 125, "Native: 6")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int BecomeChildAge { get; set; } = 6;
+        [XmlElement]
+        [SettingProperty("Become Teenager Age", 0, 125, "Native: 14")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int BecomeTeenagerAge { get; set; } = 14;
+        [XmlElement]
+        [SettingProperty("Hero Comes Of Age", 0, 100, "Native: 18")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int HeroComesOfAge { get; set; } = 18;
+        [XmlElement]
+        [SettingProperty("Become Old Age", 0, 125, "Native: 47")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int BecomeOldAge { get; set; } = 47;
+        [XmlElement]
+        [SettingProperty("Max Age", 0, 125, "Native: 125")]
+        [SettingPropertyGroup("Age Tweaks")]
+        public int MaxAge { get; set; } = 125;
+        #endregion
+
+        #region Attribute Focus Point Tweaks
+        [XmlElement]
+        [SettingProperty("Enable Attribute-Focus Point Tweaks", "Changes the values used to calculate how many Attribute and Focus points player gain.")]
+        [SettingPropertyGroup("Attribute-Focus Points Tweaks", true)]
+        public bool AttributeFocusPointTweakEnabled { get; set; } = true;
+
+        [XmlElement]
+        [SettingProperty("Levels To Gain For Attribute Points", 1, 5, "Native value is 4. Howmany levels do you have to gain to be able to receive attribute points")]
+        [SettingPropertyGroup("Attribute-Focus Points Tweaks")]
+        public int AttributePointRequiredLevel { get; set; } = 4;
+
+        [XmlElement]
+        [SettingProperty("Focus Point Per Level", 1, 5, "Native value is 1. This is the amount of focus points earned per level.")]
+        [SettingPropertyGroup("Attribute-Focus Points Tweaks")]
+        public int FocusPointsPerLevel { get; set; } = 1;
+        #endregion
+
+        #region Caravan Patches 
+        [XmlElement]
+        [SettingProperty("Enable Player Caravan Party Size Tweak", "Applies a configured value to your caravan party size")]
+        [SettingPropertyGroup("Caravan Tweaks/Player Caravan Party Size Tweak", true)]
+        public bool PlayerCaravanPartySizeTweakEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Player Caravan Party Size", 30, 100, "Native: 30")]
+        [SettingPropertyGroup("Caravan Tweaks/Player Caravan Party Size Tweak")]
+        public int PlayerCaravanPartySize { get; set; } = 30;
+        #endregion
     }
 }
