@@ -1,5 +1,5 @@
-﻿using ModLib.Definitions.Attributes;
-using ModLib.Definitions;
+﻿using ModLib;
+using ModLib.Attributes;
 using System.Xml.Serialization;
 
 namespace BannerlordTweaks
@@ -17,7 +17,7 @@ namespace BannerlordTweaks
         {
             get
             {
-                return (Settings)SettingsDatabase.GetSettings<Settings>();
+                return (Settings)SettingsDatabase.GetSettings(InstanceID);
             }
         }
 
@@ -114,44 +114,44 @@ namespace BannerlordTweaks
         # region Tournament patches
         [XmlElement]
         [SettingProperty("Enable Tournament Renown Tweak", "Sets the amount of renown awarded when you win a tournament.")]
-        [SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak", true)]
+        [SettingPropertyGroup("Tournament Tweaks")]
         public bool TournamentRenownIncreaseEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Tournament Renown Reward", 1, 20, 1, 10000, "Native value is 3. Increases the amount of renown awarded when you win a tournament.")]
-        [SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak")]
+        [SettingPropertyGroup("Tournament Tweaks")]
         public int TournamentRenownAmount { get; set; } = 8;
         [XmlElement]
         [SettingProperty("Enable Tournament Gold Reward Tweak", "Adds the set amount of gold to the rewards when you win a tournament.")]
-        [SettingPropertyGroup("Tournament Tweaks/Gold Reward Tweak", true)]
+        [SettingPropertyGroup("Tournament Tweaks")]
         public bool TournamentGoldRewardEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Tournament Gold Reward", 150, 1000, 0, 10000, "Native value is 0. Adds the set amount of gold to the rewards when you win a tournament.")]
-        [SettingPropertyGroup("Tournament Tweaks/Gold Reward Tweak")]
+        [SettingPropertyGroup("Tournament Tweaks")]
         public int TournamentGoldRewardAmount { get; set; } = 500;
         [XmlElement]
         [SettingProperty("Enable Tournament Max Bet Tweak", "Sets the maximum amount of gold that you can bet per round in tournaments.")]
-        [SettingPropertyGroup("Tournament Tweaks/Maximum Bet Amount Tweak", true)]
+        [SettingPropertyGroup("Tournament Tweaks")]
         public bool TournamentMaxBetAmountTweakEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Tournament Maximum Bet Amount", 150, 2000, 1, 10000, "Native value is 150. Sets the maximum amount of gold that you can bet per round in tournaments.")]
-        [SettingPropertyGroup("Tournament Tweaks/Maximum Bet Amount Tweak")]
+        [SettingPropertyGroup("Tournament Tweaks")]
         public int TournamentMaxBetAmount { get; set; } = 500;
 
         [XmlElement]
         [SettingProperty("Enable Tournament Hero Experience Multiplier Override", "Overrides the native multiplier value for experience gain in tournaments for hero characters.")]
-        [SettingPropertyGroup("Tournament Tweaks/Tournament Hero Experience Multiplier", true)]
+        [SettingPropertyGroup("Tournament Tweaks")]
         public bool TournamentHeroExperienceMultiplierEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Tournament Hero Experience Multiplier", 0.25f, 1f, "Native value is 0.25. Sets the multiplier applied to experience gained in tournaments by hero characters.")]
-        [SettingPropertyGroup("Tournament Tweaks/Tournament Hero Experience Multiplier")]
+        [SettingPropertyGroup("Tournament Tweaks")]
         public float TournamentHeroExperienceMultiplier { get; set; } = 0.25f;
         [XmlElement]
         [SettingProperty("Enable Arena Hero Experience Multiplier Override", "Overrides the native multiplier value for experience gain in arena fights for hero characters.")]
-        [SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier", true)]
+        [SettingPropertyGroup("Tournament Tweaks")]
         public bool ArenaHeroExperienceMultiplierEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Arena Hero Experience Multiplier", 0.07f, 1f, "Native value is 0.06. Overrides the native multiplier for experience gain in arena fights for hero characters.")]
-        [SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier")]
+        [SettingPropertyGroup("Tournament Tweaks")]
         public float ArenaHeroExperienceMultiplier { get; set; } = 0.07f;
         #endregion
 
