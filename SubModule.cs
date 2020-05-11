@@ -23,6 +23,7 @@ namespace BannerlordTweaks
 
                 var harmony = new Harmony("mod.bannerlord.mipen");
                 harmony.PatchAll();
+
             }
             catch (Exception ex)
             {
@@ -76,11 +77,12 @@ namespace BannerlordTweaks
                         MessageBox.Show(sb.ToString(), "Configuration Error in Bannerlord Tweaks");
                     }
                     else
-                        gameStarter.AddModel(new TweakedAgeModel());
+                        gameStarter.AddModel(model);
                 }
-                if (Settings.Instance.AttributeFocusPointTweakEnabled)
-                    gameStarter.AddModel(new TweakedCharacterDevelopmentModel());
             }
+            if (Settings.Instance.AttributeFocusPointTweakEnabled)
+                gameStarter.AddModel(new TweakedCharacterDevelopmentModel());
         }
     }
 }
+
