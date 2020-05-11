@@ -475,7 +475,7 @@ namespace BannerlordTweaks
 
         #region Age tweak
         [XmlElement]
-        [SettingProperty("Enable Age Tweaks", "Enables the tweaking of character age behaviour")]
+        [SettingProperty("Enable Age Tweaks", "Enables the tweaking of character age behaviour.")]
         [SettingPropertyGroup("Age Tweaks", true)]
         public bool AgeTweaksEnabled { get; set; } = false;
         [XmlElement]
