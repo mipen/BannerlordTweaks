@@ -300,70 +300,70 @@ namespace BannerlordTweaks
         #region Castle buildings bonuses
         [XmlElement]
         [SettingProperty("Enable Castle Training Fields Tweak", "Changes the amount of experience the training fields provides for each level.")]
-        [SettingPropertyGroup("Castle Training Fields Tweak", true)]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Training Fields Tweak", true)]
         public bool CastleTrainingFieldsBonusEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Castle Training Fields Level 1 Experience", 1, 150, 1, 1000, "Native value is 1. Changes the amount of experience the training fields provides at level 1.")]
-        [SettingPropertyGroup("Castle Training Fields Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Training Fields Tweak")]
         public int CastleTrainingFieldsXpAmountLevel1 { get; set; } = 30;
         [XmlElement]
         [SettingProperty("Castle Training Fields Level 2 Experience", 2, 200, 2, 1000, "Native value is 2. Changes the amount of experience the training fields provides at level 2.")]
-        [SettingPropertyGroup("Castle Training Fields Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Training Fields Tweak")]
         public int CastleTrainingFieldsXpAmountLevel2 { get; set; } = 70;
         [XmlElement]
         [SettingProperty("Castle Training Fields Level 3 Experience", 3, 250, 3, 1000, "Native value is 3. Changes the amount of experience the training fields provides at level 3.")]
-        [SettingPropertyGroup("Castle Training Fields Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Training Fields Tweak")]
         public int CastleTrainingFieldsXpAmountLevel3 { get; set; } = 150;
 
         [XmlElement]
         [SettingProperty("Enable Castle Granary Tweak", "Changes the amount of food storage the castle granary provides per level.")]
-        [SettingPropertyGroup("Castle Granary Tweak", true)]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Granary Tweak", true)]
         public bool CastleGranaryBonusEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Castle Granary Food Storage Level 1", 10, 90, 10, 1000, "Native value is 10. Changes the amount of food storage the castle granary provides at level 1.")]
-        [SettingPropertyGroup("Castle Granary Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Granary Tweak")]
         public int CastleGranaryStorageAmountLevel1 { get; set; } = 30;
         [XmlElement]
         [SettingProperty("Castle Granary Food Storage Level 2", 20, 180, 20, 1000, "Native value is 20. Changes the amount of food storage the castle granary provides at level 2.")]
-        [SettingPropertyGroup("Castle Granary Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Granary Tweak")]
         public int CastleGranaryStorageAmountLevel2 { get; set; } = 45;
         [XmlElement]
         [SettingProperty("Castle Granary Food Storage Level 3", 30, 270, 30, 1000, "Native value is 30. Changes the amount of food storage the castle granary provides at level 3.")]
-        [SettingPropertyGroup("Castle Granary Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Granary Tweak")]
         public int CastleGranaryStorageAmountLevel3 { get; set; } = 60;
 
         [XmlElement]
         [SettingProperty("Enable Castle Gardens Tweak", "Changes the amount of food the castle gardens produce per level.")]
-        [SettingPropertyGroup("Castle Gardens Tweak", true)]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Gardens Tweak", true)]
         public bool CastleGardensBonusEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Castle Garden Food Production Level 1", 1, 10, 1, 1000, "Native value is 1. Changes the amount of food the castle gardens produce at level 1.")]
-        [SettingPropertyGroup("Castle Gardens Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Gardens Tweak")]
         public int CastleGardensFoodProductionAmountLevel1 { get; set; } = 3;
         [XmlElement]
         [SettingProperty("Castle Garden Food Production Level 2", 2, 20, 2, 1000, "Native value is 2. Changes the amount of food the castle gardens produce at level 2.")]
-        [SettingPropertyGroup("Castle Gardens Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Gardens Tweak")]
         public int CastleGardensFoodProductionAmountLevel2 { get; set; } = 6;
         [XmlElement]
         [SettingProperty("Castle Garden Food Production Level 3", 3, 30, 3, 1000, "Native value is 3. Changes the amount of food the castle gardens produce at level 3.")]
-        [SettingPropertyGroup("Castle Gardens Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Gardens Tweak")]
         public int CastleGardensFoodProductionAmountLevel3 { get; set; } = 9;
 
         [XmlElement]
         [SettingProperty("Enable Castle Militia Barracks Tweak", "Changes the militia production that the castle militia barracks provides per level.")]
-        [SettingPropertyGroup("Castle Militia Barracks Tweak", true)]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Militia Barracks Tweak", true)]
         public bool CastleMilitiaBarracksBonusEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Castle Militia Barracks Production Level 1", 1, 10, 1, 1000, "Native value is 1. Changes the militia production that the castle militia barracks provides at level 1.")]
-        [SettingPropertyGroup("Castle Militia Barracks Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
         public int CastleMilitiaBarracksAmountLevel1 { get; set; } = 2;
         [XmlElement]
         [SettingProperty("Castle Militia Barracks Production Level 2", 1, 14, 1, 1000, "Native value is 2. Changes the militia production that the castle militia barracks provides at level 2.")]
-        [SettingPropertyGroup("Castle Militia Barracks Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
         public int CastleMilitiaBarracksAmountLevel2 { get; set; } = 4;
         [XmlElement]
         [SettingProperty("Castle Militia Barracks Production Level 3", 1, 16, 1, 1000, "Native value is 4. Changes the militia production that the castle militia barracks provides at level 3.")]
-        [SettingPropertyGroup("Castle Militia Barracks Tweak")]
+        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
         public int CastleMilitiaBarracksAmountLevel3 { get; set; } = 8;
         #endregion
 
@@ -475,43 +475,43 @@ namespace BannerlordTweaks
 
         #region Age tweak
         [XmlElement]
-        [SettingProperty("Enable Age Tweaks", "Enables the tweaking of character age behaviour")]
+        [SettingProperty("Enable Age Tweaks", "Enables the tweaking of character age behaviour.")]
         [SettingPropertyGroup("Age Tweaks", true)]
-        public bool AgeTweaksEnabled { get; set; } = true;
+        public bool AgeTweaksEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Become Infant Age", 0, 125, "Native: 3")]
+        [SettingProperty("Become Infant Age", 0, 125, "Native: 3. Must be less than Become Child Age.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int BecomeInfantAge { get; set; } = 3;
         [XmlElement]
-        [SettingProperty("Become Child Age", 0, 125, "Native: 6")]
+        [SettingProperty("Become Child Age", 0, 125, "Native: 6. Must be less than Become Teenager Age.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int BecomeChildAge { get; set; } = 6;
         [XmlElement]
-        [SettingProperty("Become Teenager Age", 0, 125, "Native: 14")]
+        [SettingProperty("Become Teenager Age", 0, 125, "Native: 14. Must be less than Hero Comes Of Age.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int BecomeTeenagerAge { get; set; } = 14;
         [XmlElement]
-        [SettingProperty("Hero Comes Of Age", 0, 100, "Native: 18")]
+        [SettingProperty("Hero Comes Of Age", 0, 100, "Native: 18. Must be less than Become Old Age.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int HeroComesOfAge { get; set; } = 18;
         [XmlElement]
-        [SettingProperty("Become Old Age", 0, 125, "Native: 47")]
+        [SettingProperty("Become Old Age", 0, 125, "Native: 47. Must be less than Max Age.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int BecomeOldAge { get; set; } = 47;
         [XmlElement]
-        [SettingProperty("Max Age", 0, 125, "Native: 125")]
+        [SettingProperty("Max Age", 0, 125, "Native: 125.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int MaxAge { get; set; } = 125;
         #endregion
 
         #region Attribute Focus Point Tweaks
         [XmlElement]
-        [SettingProperty("Enable Attribute-Focus Point Tweaks", "Changes the values used to calculate how many Attribute and Focus points player gain.")]
+        [SettingProperty("Enable Attribute-Focus Point Tweaks", "Changes the values used to calculate how many Attribute and Focus points Heroes gain.")]
         [SettingPropertyGroup("Attribute-Focus Points Tweaks", true)]
-        public bool AttributeFocusPointTweakEnabled { get; set; } = true;
+        public bool AttributeFocusPointTweakEnabled { get; set; } = false;
 
         [XmlElement]
-        [SettingProperty("Levels To Gain For Attribute Points", 1, 5, "Native value is 4. Howmany levels do you have to gain to be able to receive attribute points")]
+        [SettingProperty("Levels To Gain For Attribute Points", 1, 5, "Native value is 4. How many levels you need to gain to receive an attribute point.")]
         [SettingPropertyGroup("Attribute-Focus Points Tweaks")]
         public int AttributePointRequiredLevel { get; set; } = 4;
 
@@ -524,11 +524,11 @@ namespace BannerlordTweaks
         #region Caravan Patches 
         [XmlElement]
         [SettingProperty("Enable Player Caravan Party Size Tweak", "Applies a configured value to your caravan party size")]
-        [SettingPropertyGroup("Caravan Tweaks/Player Caravan Party Size Tweak", true)]
-        public bool PlayerCaravanPartySizeTweakEnabled { get; set; } = true;
+        [SettingPropertyGroup("Player Caravan Party Size Tweak", true)]
+        public bool PlayerCaravanPartySizeTweakEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Player Caravan Party Size", 30, 100, "Native: 30")]
-        [SettingPropertyGroup("Caravan Tweaks/Player Caravan Party Size Tweak")]
+        [SettingPropertyGroup("Player Caravan Party Size Tweak")]
         public int PlayerCaravanPartySize { get; set; } = 30;
         #endregion
     }
