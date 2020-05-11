@@ -479,27 +479,27 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Age Tweaks", true)]
         public bool AgeTweaksEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Become Infant Age", 0, 125, "Native: 3")]
+        [SettingProperty("Become Infant Age", 0, 125, "Native: 3. Must be less than Become Child Age.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int BecomeInfantAge { get; set; } = 3;
         [XmlElement]
-        [SettingProperty("Become Child Age", 0, 125, "Native: 6")]
+        [SettingProperty("Become Child Age", 0, 125, "Native: 6. Must be less than Become Teenager Age.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int BecomeChildAge { get; set; } = 6;
         [XmlElement]
-        [SettingProperty("Become Teenager Age", 0, 125, "Native: 14")]
+        [SettingProperty("Become Teenager Age", 0, 125, "Native: 14. Must be less than Hero Comes Of Age.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int BecomeTeenagerAge { get; set; } = 14;
         [XmlElement]
-        [SettingProperty("Hero Comes Of Age", 0, 100, "Native: 18")]
+        [SettingProperty("Hero Comes Of Age", 0, 100, "Native: 18. Must be less than Become Old Age.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int HeroComesOfAge { get; set; } = 18;
         [XmlElement]
-        [SettingProperty("Become Old Age", 0, 125, "Native: 47")]
+        [SettingProperty("Become Old Age", 0, 125, "Native: 47. Must be less than Max Age.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int BecomeOldAge { get; set; } = 47;
         [XmlElement]
-        [SettingProperty("Max Age", 0, 125, "Native: 125")]
+        [SettingProperty("Max Age", 0, 125, "Native: 125.")]
         [SettingPropertyGroup("Age Tweaks")]
         public int MaxAge { get; set; } = 125;
         #endregion
@@ -511,7 +511,7 @@ namespace BannerlordTweaks
         public bool AttributeFocusPointTweakEnabled { get; set; } = false;
 
         [XmlElement]
-        [SettingProperty("Levels To Gain For Attribute Points", 1, 5, "Native value is 4. How many levels do you have to gain to be able to receive attribute points")]
+        [SettingProperty("Levels To Gain For Attribute Points", 1, 5, "Native value is 4. How many levels you need to gain to receive an attribute point.")]
         [SettingPropertyGroup("Attribute-Focus Points Tweaks")]
         public int AttributePointRequiredLevel { get; set; } = 4;
 
@@ -524,11 +524,11 @@ namespace BannerlordTweaks
         #region Caravan Patches 
         [XmlElement]
         [SettingProperty("Enable Player Caravan Party Size Tweak", "Applies a configured value to your caravan party size")]
-        [SettingPropertyGroup("Caravan Tweaks/Player Caravan Party Size Tweak", true)]
-        public bool PlayerCaravanPartySizeTweakEnabled { get; set; } = true;
+        [SettingPropertyGroup("Player Caravan Party Size Tweak", true)]
+        public bool PlayerCaravanPartySizeTweakEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Player Caravan Party Size", 30, 100, "Native: 30")]
-        [SettingPropertyGroup("Caravan Tweaks/Player Caravan Party Size Tweak")]
+        [SettingPropertyGroup("Player Caravan Party Size Tweak")]
         public int PlayerCaravanPartySize { get; set; } = 30;
         #endregion
     }
