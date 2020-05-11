@@ -11,6 +11,10 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(CharacterDevelopmentCampaignBehaivor), "DistributeUnspentFocusPoints")]
     public class CharacterDevelopmentCampaignBehaivorPatch
     {
+        /*
+         * This is a fix for a native bug where the weight function causes MBRandom.ChooseWeight to return null, which means
+         * that there is no skillObject passed to HeroDeveloper.AddFocus
+         */
         static bool Prefix(Hero hero)
         {
             List<SkillObject> list = (from x in SkillObject.All
@@ -22,16 +26,13 @@ namespace BannerlordTweaks.Patches
             while (hero.HeroDeveloper.UnspentFocusPoints > 0 && list.Any<SkillObject>())
             {
                 IEnumerable<SkillObject> candidates = list;
-                weightFunction = (SkillObject skill) => (float)(hero.GetSkillValue(skill) + 20 - 20 * hero.HeroDeveloper.GetFocus(skill));
+                weightFunction = (SkillObject skill) => Math.Max(1f, (float)(hero.GetSkillValue(skill) + 20 - 20 * hero.HeroDeveloper.GetFocus(skill)));
 
                 SkillObject skillObject = MBRandom.ChooseWeighted<SkillObject>(candidates, weightFunction);
 
-                if (skillObject != null)
-                    hero.HeroDeveloper.AddFocus(skillObject, 1, true);
-                else
-                    list.Remove(skillObject);
+                hero.HeroDeveloper.AddFocus(skillObject, 1, true);
 
-                if (skillObject != null && hero.HeroDeveloper.GetFocus(skillObject) == 5)
+                if (hero.HeroDeveloper.GetFocus(skillObject) == 5)
                 {
                     list.Remove(skillObject);
                 }
