@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Helpers;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
@@ -33,6 +34,7 @@ namespace BannerlordTweaks
 
         public override float GetDailyChanceOfPregnancyForHero(Hero hero)
         {
+            if (hero == null) throw new ArgumentNullException(nameof(hero));
             if (!Settings.Instance.DailyChancePregnancyTweakEnabled)
                 return base.GetDailyChanceOfPregnancyForHero(hero);
 

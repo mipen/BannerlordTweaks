@@ -511,7 +511,7 @@ namespace BannerlordTweaks
         public bool AttributeFocusPointTweakEnabled { get; set; } = false;
 
         [XmlElement]
-        [SettingProperty("Levels To Gain For Attribute Points", 1, 5, "Native value is 4. Howmany levels do you have to gain to be able to receive attribute points")]
+        [SettingProperty("Levels To Gain For Attribute Points", 1, 5, "Native value is 4. How many levels do you have to gain to be able to receive attribute points")]
         [SettingPropertyGroup("Attribute-Focus Points Tweaks")]
         public int AttributePointRequiredLevel { get; set; } = 4;
 
