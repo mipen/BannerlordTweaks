@@ -516,7 +516,7 @@ namespace BannerlordTweaks
         public int AttributePointRequiredLevel { get; set; } = 4;
 
         [XmlElement]
-        [SettingProperty("Focus Point Per Level", 1, 2, "Native value is 1. This is the amount of focus points earned per level.")]
+        [SettingProperty("Focus Point Per Level", 1, 5, "Native value is 1. This is the amount of focus points earned per level.")]
         [SettingPropertyGroup("Attribute-Focus Points Tweaks")]
         public int FocusPointsPerLevel { get; set; } = 1;
         #endregion
