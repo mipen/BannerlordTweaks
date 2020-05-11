@@ -477,7 +477,7 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Enable Age Tweaks", "Enables the tweaking of character age behaviour")]
         [SettingPropertyGroup("Age Tweaks", true)]
-        public bool AgeTweaksEnabled { get; set; } = true;
+        public bool AgeTweaksEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Become Infant Age", 0, 125, "Native: 3")]
         [SettingPropertyGroup("Age Tweaks")]
@@ -508,7 +508,7 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Enable Attribute-Focus Point Tweaks", "Changes the values used to calculate how many Attribute and Focus points player gain.")]
         [SettingPropertyGroup("Attribute-Focus Points Tweaks", true)]
-        public bool AttributeFocusPointTweakEnabled { get; set; } = true;
+        public bool AttributeFocusPointTweakEnabled { get; set; } = false;
 
         [XmlElement]
         [SettingProperty("Levels To Gain For Attribute Points", 1, 5, "Native value is 4. Howmany levels do you have to gain to be able to receive attribute points")]
