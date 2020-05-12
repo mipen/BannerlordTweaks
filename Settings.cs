@@ -531,5 +531,36 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Player Caravan Party Size Tweak")]
         public int PlayerCaravanPartySize { get; set; } = 30;
         #endregion
+
+        #region Difficulty Settings
+        [XmlElement]
+        [SettingProperty("Enable Difficulty Tweaks", "Allows you to change the difficulty settings")]
+        [SettingPropertyGroup("Difficulty Tweaks", true)]
+        public bool DifficultyTweaksEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Damage to Player Tweak", "Allows you to change the damage player gets.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Player Tweak", true)]
+        public bool DamageToPlayerTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Damage to Player Tweak Multiplier", 0.1f, 5.0f, "Native values are: Very Easy: 0.3, Easy: 0.67, Realistic: 1. This value will be used to calculate the damage player gets.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Player Tweak")]
+        public float DamageToPlayerMultiplier { get; set; } = 1.0f;
+        [XmlElement]
+        [SettingProperty("Damage to Friends Tweak", "Allows you to change the damage player friends get.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Friends Tweak", true)]
+        public bool DamageToFriendsTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Damage to Friends Tweak Multiplier", 0.1f, 5.0f, "Native values are: Very Easy: 0.3, Easy: 0.67, Realistic: 1. This value will be used to calculate the damage friends get.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Friends Tweak")]
+        public float DamageToFriendsMultiplier { get; set; } = 1.0f;
+        [XmlElement]
+        [SettingProperty("Damage to Troops Tweak", "Allows you to change the damage player troops get.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Troops Tweak", true)]
+        public bool DamageToTroopsTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Damage to Troops Tweak Multiplier", 0.1f, 5.0f, "Native values are: Very Easy: 0.3, Easy: 0.67, Realistic: 1. This value will be used to calculate the damage player troops get.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Troops Tweak")]
+        public float DamageToTroopsMultiplier { get; set; } = 1.0f;
+        #endregion
     }
 }
