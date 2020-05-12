@@ -16,7 +16,17 @@ namespace BannerlordTweaks
 
         public override float GetPlayerTroopsReceivedDamageMultiplier()
         {
-            return Settings.Instance.DamageToTroopsTweakEnabled ? Settings.Instance.DamageToTroopsMultiplier: base.GetPlayerTroopsReceivedDamageMultiplier();
+            return Settings.Instance.DamageToTroopsTweakEnabled ? Settings.Instance.DamageToTroopsMultiplier : base.GetPlayerTroopsReceivedDamageMultiplier();
+        }
+
+        public override float GetCombatAIDifficultyMultiplier()
+        {
+            return Settings.Instance.CombatAIDifficultyTweakEnabled ? Settings.Instance.CombatAIDifficultyMultiplier : base.GetCombatAIDifficultyMultiplier();
+        }
+
+        public override float GetPlayerMapMovementSpeedBonusMultiplier()
+        {
+            return Settings.Instance.PlayerMapMovementSpeedBonusTweakEnabled ? Settings.Instance.PlayerMapMovementSpeedBonusMultiplier : base.GetPlayerMapMovementSpeedBonusMultiplier();
         }
     }
 }
