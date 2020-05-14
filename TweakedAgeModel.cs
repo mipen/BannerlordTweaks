@@ -16,15 +16,15 @@ namespace BannerlordTweaks
         public override int BecomeTeenagerAge => Settings.Instance.AgeTweaksEnabled
             ? Settings.Instance.BecomeTeenagerAge
             : base.BecomeTeenagerAge;
-        
+
         public override int HeroComesOfAge => Settings.Instance.AgeTweaksEnabled
             ? Settings.Instance.HeroComesOfAge
-            : base.HeroComesOfAge; 
-        
+            : base.HeroComesOfAge;
+
         public override int BecomeOldAge => Settings.Instance.AgeTweaksEnabled
             ? Settings.Instance.BecomeOldAge
             : base.BecomeOldAge;
-        
+
         public override int MaxAge => Settings.Instance.AgeTweaksEnabled
             ? Settings.Instance.MaxAge
             : base.MaxAge;

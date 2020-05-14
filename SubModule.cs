@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Encyclopedia;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
@@ -24,6 +23,7 @@ namespace BannerlordTweaks
 
                 var harmony = new Harmony("mod.bannerlord.mipen");
                 harmony.PatchAll();
+
             }
             catch (Exception ex)
             {
@@ -97,3 +97,4 @@ namespace BannerlordTweaks
         }
     }
 }
+
