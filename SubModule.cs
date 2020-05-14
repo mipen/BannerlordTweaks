@@ -89,6 +89,7 @@ namespace BannerlordTweaks
             if (Campaign.Current != null && Settings.Instance.PrisonerImprisonmentTweakEnabled)
             {
                 PrisonerImprisonmentTweak.Apply(Campaign.Current);
+                DailyTroopExperienceTweak.Apply(Campaign.Current);
             }
             return base.DoLoading(game);
         }

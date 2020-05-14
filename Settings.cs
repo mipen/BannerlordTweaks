@@ -21,8 +21,8 @@ namespace BannerlordTweaks
             }
         }
 
-        //[SettingProperty("","")
-        //[SettingPropertyGroup("")
+        //[SettingProperty("","")]
+        //[SettingPropertyGroup("")]
 
         #region Miscellaneous
         [XmlElement]
@@ -617,6 +617,24 @@ namespace BannerlordTweaks
         [SettingProperty("Minimum Days of Imprisonment", 0, 180, "The minimum number of days a lord will remain imprisoned before they can attempt to escape.")]
         [SettingPropertyGroup("Prisoner Imprisonment Period Tweak")]
         public int MinimumDaysOfImprisonment { get; set; } = 10;
+        #endregion
+
+        #region Daily Troop Experience Tweak
+        [SettingProperty("Enable Daily Troop Experience Gain", "Gives troops in a party an amount of experience each day based upon the leader's Leadership skill. By default only applies to the player.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak", true)]
+        public bool DailyTroopExperienceTweakEnabled { get; set; } = false;
+        [SettingProperty("Percentage of Leadership", 0.01f, 2f, "The percentage of the leader's Leadership skill to be given as experience to their troops.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public float LeadershipPercentageForDailyExperienceGain { get; set; } = 0.5f;
+        [SettingProperty("Apply to Player's Clan Members", "Applies the daily troop experience gain to members of the player's clan also.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public bool DailyTroopExperienceApplyToPlayerClanMembers { get; set; } = false;
+        [SettingProperty("Apply to all NPC Lords", "Applies the daily troop experience gain to all NPC lords.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public bool DailyTroopExperienceApplyToAllNPC { get; set; } = false;
+        [SettingProperty("Display Message", "Displays a message showing the amount of experience granted.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public bool DisplayMessageDailyExperienceGain { get; set; } = false;
         #endregion
     }
 }
