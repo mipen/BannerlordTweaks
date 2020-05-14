@@ -635,6 +635,9 @@ namespace BannerlordTweaks
         [SettingProperty("Display Message", "Displays a message showing the amount of experience granted.")]
         [SettingPropertyGroup("Daily Troop Experience Tweak")]
         public bool DisplayMessageDailyExperienceGain { get; set; } = false;
+        [SettingProperty("Required Leadership Level", 1, 200, "The Leadership level required to start giving experience to troops.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public int DailyTroopExperienceRequiredLeadershipLevel { get; set; } = 30;
         #endregion
     }
 }

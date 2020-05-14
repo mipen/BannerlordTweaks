@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 
@@ -22,18 +23,21 @@ namespace BannerlordTweaks
                     Settings.Instance.DailyTroopExperienceApplyToPlayerClanMembers && party.LeaderHero.Clan == Clan.PlayerClan)
                 {
                     int experienceAmount = ExperienceAmount(party.LeaderHero);
-                    foreach (var troop in party.MemberRoster.Troops)
+                    if (experienceAmount > 0)
                     {
-                        party.MemberRoster.AddXpToTroop(experienceAmount, troop);
-                    }
+                        foreach (var troop in party.MemberRoster.Troops)
+                        {
+                            party.MemberRoster.AddXpToTroop(experienceAmount, troop);
+                        }
 
-                    if (Settings.Instance.DisplayMessageDailyExperienceGain)
-                    {
-                        string troops = count == 1 ? "soldier" : "troops";
-                        //Debug
-                        //InformationManager.DisplayMessage(new InformationMessage($"Granted {experienceAmount} experience to {count} {troops}."));
-                        if (party.LeaderHero == Hero.MainHero)
-                            InformationManager.DisplayMessage(new InformationMessage($"Granted {experienceAmount} experience to {count} {troops}."));
+                        if (Settings.Instance.DisplayMessageDailyExperienceGain)
+                        {
+                            string troops = count == 1 ? "soldier" : "troops";
+                            //Debug
+                            //InformationManager.DisplayMessage(new InformationMessage($"{party.LeaderHero.Name}'s party granted {experienceAmount} experience to {count} {troops}."));
+                            if (party.LeaderHero == Hero.MainHero)
+                                InformationManager.DisplayMessage(new InformationMessage($"Granted {experienceAmount} experience to {count} {troops}."));
+                        }
                     }
                 }
             }
@@ -41,7 +45,10 @@ namespace BannerlordTweaks
 
         private static int ExperienceAmount(Hero h)
         {
-            return Convert.ToInt32(Settings.Instance.LeadershipPercentageForDailyExperienceGain * h.GetSkillValue(DefaultSkills.Leadership));
+            int leadership = h.GetSkillValue(DefaultSkills.Leadership);
+            if (leadership >= Settings.Instance.DailyTroopExperienceRequiredLeadershipLevel)
+                return (int)(Settings.Instance.LeadershipPercentageForDailyExperienceGain * leadership);
+            return 0;
         }
     }
 }
