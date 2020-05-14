@@ -31,7 +31,9 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Show Number of Days of Food", "Changes the number showing how much food you have to instead show how many days' worth of food you have. (Bottom right of campaign map UI).")]
         public bool ShowFoodDaysRemaining { get; set; } = false;
-
+        [XmlElement]
+        [SettingProperty("All Two-Handed Weapons Slice Through", "Allows all two-handed weapon types to slice through and hit multiple people.")]
+        public bool TwoHandedWeaponsSliceThroughEnabled { get; set; } = false;
         #endregion
 
         #region Crafting stamina Settings
