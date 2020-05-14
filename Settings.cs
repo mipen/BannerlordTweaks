@@ -506,7 +506,7 @@ namespace BannerlordTweaks
 
         #region Attribute Focus Point Tweaks
         [XmlElement]
-        [SettingProperty("Enable Attribute-Focus Point Tweaks", "Changes the values used to calculate how many Attribute and Focus points player gain.")]
+        [SettingProperty("Enable Attribute-Focus Point Tweaks", "Changes the values used to calculate how many Attribute and Focus points Heroes gain.")]
         [SettingPropertyGroup("Attribute-Focus Points Tweaks", true)]
         public bool AttributeFocusPointTweakEnabled { get; set; } = false;
 
@@ -530,6 +530,21 @@ namespace BannerlordTweaks
         [SettingProperty("Player Caravan Party Size", 30, 100, "Native: 30")]
         [SettingPropertyGroup("Player Caravan Party Size Tweak")]
         public int PlayerCaravanPartySize { get; set; } = 30;
+        #endregion
+
+        #region Prisoner Tweaks
+        [XmlElement]
+        [SettingProperty("Enable Prisoner Imprisonment Period Tweak", "Tweaks the amount of time that lord stay imprisoned.")]
+        [SettingPropertyGroup("Prisoner Imprisonment Period Tweak", true)]
+        public bool PrisonerImprisonmentTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Player Prisoners Only", "Whether the tweak should be applied only to prisoners held by the player or to NPC lords as well.")]
+        [SettingPropertyGroup("Prisoner Imprisonment Period Tweak")]
+        public bool PrisonerImprisonmentPlayerOnly { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Minimum Days of Imprisonment", 0, 180, "The minimum number of days a lord will remain imprisoned before they can attempt to escape.")]
+        [SettingPropertyGroup("Prisoner Imprisonment Period Tweak")]
+        public int MinimumDaysOfImprisonment { get; set; } = 10;
         #endregion
     }
 }

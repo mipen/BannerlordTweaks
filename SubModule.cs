@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Encyclopedia;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
@@ -77,11 +78,19 @@ namespace BannerlordTweaks
                         MessageBox.Show(sb.ToString(), "Configuration Error in Bannerlord Tweaks");
                     }
                     else
-                        gameStarter.AddModel(model);
-                }
+                        gameStarter.AddModel(new TweakedAgeModel());
             }
             if (Settings.Instance.AttributeFocusPointTweakEnabled)
                 gameStarter.AddModel(new TweakedCharacterDevelopmentModel());
+        }
+
+        public override bool DoLoading(Game game)
+        {
+            if (Campaign.Current != null && Settings.Instance.PrisonerImprisonmentTweakEnabled)
+            {
+                PrisonerImprisonmentTweak.Apply(Campaign.Current);
+            }
+            return base.DoLoading(game);
         }
     }
 }
