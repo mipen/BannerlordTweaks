@@ -135,6 +135,7 @@
     <Compile Include="TweakedSiegeEventModel.cs" />
     <Compile Include="TweakedWorkshopModel.cs" />
 	<Compile Include="PrisonerImprisonmentTweak.cs"/>
+	<Compile Include="Patches\WeaponComponentDataPatch.cs"/>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Contributions.txt" />
