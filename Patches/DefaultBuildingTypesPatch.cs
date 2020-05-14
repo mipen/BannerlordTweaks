@@ -137,7 +137,7 @@ namespace BannerlordTweaks.Patches
             }
             #endregion
             #region Granary
-            if (Settings.Instance.TOwnGranaryBonusEnabled)
+            if (Settings.Instance.TownGranaryBonusEnabled)
             {
                 ____buildingCastleGranary?.Initialize(new TextObject("{=PstO2f5I}Granary"),
                     new TextObject("{=aK23T43P}Keeps stockpiles of food so that the settlement has more food supply. Each level increases the local food supply."),
