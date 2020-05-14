@@ -24,6 +24,7 @@ namespace BannerlordTweaks
 
                 var harmony = new Harmony("mod.bannerlord.mipen");
                 harmony.PatchAll();
+
             }
             catch (Exception ex)
             {
@@ -78,10 +79,9 @@ namespace BannerlordTweaks
                     }
                     else
                         gameStarter.AddModel(new TweakedAgeModel());
-                }
-                if (Settings.Instance.AttributeFocusPointTweakEnabled)
-                    gameStarter.AddModel(new TweakedCharacterDevelopmentModel());
             }
+            if (Settings.Instance.AttributeFocusPointTweakEnabled)
+                gameStarter.AddModel(new TweakedCharacterDevelopmentModel());
         }
 
         public override bool DoLoading(Game game)
@@ -94,3 +94,4 @@ namespace BannerlordTweaks
         }
     }
 }
+

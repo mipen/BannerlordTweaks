@@ -105,8 +105,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Patches\CharacterDevelopmentCampaignBehaivorPatch.cs" />
-	<Compile Include="Patches\CraftingCampaignBehaviourPatches.cs" />
+    <Compile Include="Patches\CraftingCampaignBehaviourPatches.cs" />
     <Compile Include="Patches\CraftingVMPatch.cs" />
     <Compile Include="Patches\DefaultBattleRewardModelPatch.cs" />
     <Compile Include="Patches\DefaultBuildingTypesPatch.cs" />
