@@ -1,10 +1,5 @@
-﻿using Helpers;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 
@@ -44,7 +39,7 @@ namespace BannerlordTweaks
             }
         }
 
-        private int ExperienceAmount(Hero h)
+        private static int ExperienceAmount(Hero h)
         {
             return Convert.ToInt32(Settings.Instance.LeadershipPercentageForDailyExperienceGain * h.GetSkillValue(DefaultSkills.Leadership));
         }

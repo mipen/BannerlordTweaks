@@ -524,7 +524,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks", true)]
         public bool DailyChancePregnancyTweakEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Player is Infertile", "Native: false. If set to true, the player will not be able to have children.")]
+        [SettingProperty("Player is Fertile", "Native: true. If set to false, the player will not be able to have children.")]
         [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks")]
         public bool PlayerCharacterFertileEnabled { get; set; } = true;
         [XmlElement]
