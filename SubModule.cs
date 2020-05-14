@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Encyclopedia;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
@@ -79,9 +78,10 @@ namespace BannerlordTweaks
                     }
                     else
                         gameStarter.AddModel(new TweakedAgeModel());
+                }
+                if (Settings.Instance.AttributeFocusPointTweakEnabled)
+                    gameStarter.AddModel(new TweakedCharacterDevelopmentModel());
             }
-            if (Settings.Instance.AttributeFocusPointTweakEnabled)
-                gameStarter.AddModel(new TweakedCharacterDevelopmentModel());
         }
 
         public override bool DoLoading(Game game)

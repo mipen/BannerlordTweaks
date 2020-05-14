@@ -134,6 +134,7 @@
     <Compile Include="TweakedSettlementMilitiaModel.cs" />
     <Compile Include="TweakedSiegeEventModel.cs" />
     <Compile Include="TweakedWorkshopModel.cs" />
+	<Compile Include="PrisonerImprisonmentTweak.cs"/>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Contributions.txt" />
