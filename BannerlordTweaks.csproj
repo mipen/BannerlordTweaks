@@ -105,6 +105,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DailyTroopExperienceTweak.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Patches\CharacterDevelopmentCampaignBehaivorPatch.cs" />
     <Compile Include="Patches\CraftingCampaignBehaviourPatches.cs" />
@@ -134,8 +135,8 @@
     <Compile Include="TweakedSettlementMilitiaModel.cs" />
     <Compile Include="TweakedSiegeEventModel.cs" />
     <Compile Include="TweakedWorkshopModel.cs" />
-	<Compile Include="PrisonerImprisonmentTweak.cs"/>
-	<Compile Include="Patches\WeaponComponentDataPatch.cs"/>
+	  <Compile Include="PrisonerImprisonmentTweak.cs"/>
+	  <Compile Include="Patches\WeaponComponentDataPatch.cs"/>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Contributions.txt" />

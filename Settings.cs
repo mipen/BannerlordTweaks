@@ -21,8 +21,8 @@ namespace BannerlordTweaks
             }
         }
 
-        //[SettingProperty("","")
-        //[SettingPropertyGroup("")
+        //[SettingProperty("","")]
+        //[SettingPropertyGroup("")]
 
         #region Miscellaneous
         [XmlElement]
@@ -202,11 +202,11 @@ namespace BannerlordTweaks
         public float TroopBattleExperienceMultiplier { get; set; } = 1.0f;
         [XmlElement]
         [SettingProperty("Enable Troop Battle Simulation Experience Multiplier", "Provides a multiplier to experience gained from simulated battles. This is applied to all fights (including NPC fights) on the campaign map.")]
-        [SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        [SettingPropertyGroup("Troop Battle Experience Tweaks/Simulation Experience Tweak", true)]
         public bool TroopBattleSimulationExperienceMultiplierEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Troop Battle Simulation Experience Multiplier", 0.5f, 8f, 0f, 100f, "Native value is 1.0. Provides a multiplier to experience gained from simulated battles. This is applied to all simulated fights on the campaign map.")]
-        [SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        [SettingPropertyGroup("Troop Battle Experience Tweaks/Simulation Experience Tweak")]
         public float TroopBattleSimulationExperienceMultiplier { get; set; } = 1.0f;
         #endregion
 
@@ -520,28 +520,28 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Pregnancy Tweaks/Fertility Probability Tweak")]
         public float CharacterFertilityProbability { get; set; } = 0.95f;
         [XmlElement]
-        [SettingProperty("Enable Daily Chance Pregnancy Tweak", "Enabling this will completely override the daily pregnancy check. All settings below will be applied!")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak", true)]
+        [SettingProperty("Enable Pregnancy Chance Tweaks", "Enabling this will completely override the daily pregnancy check. All settings below will be applied!")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks", true)]
         public bool DailyChancePregnancyTweakEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Enable Player Character Fertility", "Is the player character (you) fertile? Native: true")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        [SettingProperty("Player is Infertile", "Native: false. If set to true, the player will not be able to have children.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks")]
         public bool PlayerCharacterFertileEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Min Pregnancy Age", 0, 999, "Minimum Age the Hero can get pregnant. Native: 18")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        [SettingProperty("Min Pregnancy Age", 0, 999, "Native: 18. Minimum age that someone can get pregnant.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks")]
         public int MinPregnancyAge { get; set; } = 18;
         [XmlElement]
-        [SettingProperty("Max Pregnancy Age", 0, 999, "Maximum Age the Hero can get pregnant. Native: 45")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        [SettingProperty("Max Pregnancy Age", 0, 999, "Native: 45. Maximum age that someone can get pregnant.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks")]
         public int MaxPregnancyAge { get; set; } = 45;
         [XmlElement]
-        [SettingProperty("Enable Max Children Tweak", "Allows to set the maximum number of children that you can get")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        [SettingProperty("Enable Max Children Tweak", "Native: false. Sets the maximum number of children that someone can have.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Max Children Tweak", true)]
         public bool MaxChildrenTweakEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Max Children", 0, 999, "Maximum number of children anyone can have. Default: 5")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        [SettingProperty("Max Children", 0, 999, "Default: 5. Maximum number of children that someone can have.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Max Children Tweak")]
         public int MaxChildren { get; set; } = 5;
         #endregion
 
@@ -606,17 +606,35 @@ namespace BannerlordTweaks
 
         #region Prisoner Tweaks
         [XmlElement]
-        [SettingProperty("Enable Prisoner Imprisonment Period Tweak", "Tweaks the amount of time that lord stay imprisoned.")]
-        [SettingPropertyGroup("Prisoner Imprisonment Period Tweak", true)]
+        [SettingProperty("Enable Imprisonment Period Tweak", "Adds a minimum amount of time before lords can attempt to escape imprisonment.")]
+        [SettingPropertyGroup("Imprisonment Period Tweak", true)]
         public bool PrisonerImprisonmentTweakEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Player Prisoners Only", "Whether the tweak should be applied only to prisoners held by the player or to NPC lords as well.")]
-        [SettingPropertyGroup("Prisoner Imprisonment Period Tweak")]
+        [SettingProperty("Player Prisoners Only", "Whether the tweak should be applied only to prisoners held by the player.")]
+        [SettingPropertyGroup("Imprisonment Period Tweak")]
         public bool PrisonerImprisonmentPlayerOnly { get; set; } = true;
         [XmlElement]
         [SettingProperty("Minimum Days of Imprisonment", 0, 180, "The minimum number of days a lord will remain imprisoned before they can attempt to escape.")]
-        [SettingPropertyGroup("Prisoner Imprisonment Period Tweak")]
+        [SettingPropertyGroup("Imprisonment Period Tweak")]
         public int MinimumDaysOfImprisonment { get; set; } = 10;
+        #endregion
+
+        #region Daily Troop Experience Tweak
+        [SettingProperty("Enable Daily Troop Experience Gain", "Gives troops in a party an amount of experience each day based upon the leader's Leadership skill. By default only applies to the player.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak", true)]
+        public bool DailyTroopExperienceTweakEnabled { get; set; } = false;
+        [SettingProperty("Percentage of Leadership", 0.01f, 2f, "The percentage of the leader's Leadership skill to be given as experience to their troops.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public float LeadershipPercentageForDailyExperienceGain { get; set; } = 0.5f;
+        [SettingProperty("Apply to Player's Clan Members", "Applies the daily troop experience gain to members of the player's clan also.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public bool DailyTroopExperienceApplyToPlayerClanMembers { get; set; } = false;
+        [SettingProperty("Apply to all NPC Lords", "Applies the daily troop experience gain to all NPC lords.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public bool DailyTroopExperienceApplyToAllNPC { get; set; } = false;
+        [SettingProperty("Display Message", "Displays a message showing the amount of experience granted.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public bool DisplayMessageDailyExperienceGain { get; set; } = false;
         #endregion
     }
 }
