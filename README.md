@@ -12,5 +12,5 @@ An up-to-date description can be found on the [nexusmods page](https://www.nexus
 * Building Tweaks for Towns
 * All Two-Handed Weapons Slice Through People
 * Manage companions' skills when they are not in your party.
-
+* Difficulty Options Tweaks
 
