@@ -34,6 +34,9 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("All Two-Handed Weapons Slice Through", "Allows all two-handed weapon types to slice through and hit multiple people.")]
         public bool TwoHandedWeaponsSliceThroughEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Enable Remote Companion Skill Management","Allows you to manage your companions' skills when they are not in your party.")]
+        public bool RemoteCompanionSkillManagementEnabled { get; set; } = true;
         #endregion
 
         #region Crafting stamina Settings
