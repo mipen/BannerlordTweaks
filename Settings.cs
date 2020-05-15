@@ -524,7 +524,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks", true)]
         public bool DailyChancePregnancyTweakEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Player is Infertile", "Native: false. If set to true, the player will not be able to have children.")]
+        [SettingProperty("Player is Fertile", "Native: true. If set to false, the player will not be able to have children.")]
         [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks")]
         public bool PlayerCharacterFertileEnabled { get; set; } = true;
         [XmlElement]
@@ -635,6 +635,9 @@ namespace BannerlordTweaks
         [SettingProperty("Display Message", "Displays a message showing the amount of experience granted.")]
         [SettingPropertyGroup("Daily Troop Experience Tweak")]
         public bool DisplayMessageDailyExperienceGain { get; set; } = false;
+        [SettingProperty("Required Leadership Level", 1, 200, "The Leadership level required to start giving experience to troops.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public int DailyTroopExperienceRequiredLeadershipLevel { get; set; } = 30;
         #endregion
     }
 }
