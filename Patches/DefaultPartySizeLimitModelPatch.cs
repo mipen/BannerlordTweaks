@@ -13,7 +13,6 @@ namespace BannerlordTweaks.Patches
         {
             if (party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
             {
-                SkillObject skill;
                 int num;
                 if (Settings.Instance.LeadershipPartySizeBonusEnabled)
                 {
