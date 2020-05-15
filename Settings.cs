@@ -32,10 +32,7 @@ namespace BannerlordTweaks
         [SettingProperty("Show Number of Days of Food", "Changes the number showing how much food you have to instead show how many days' worth of food you have. (Bottom right of campaign map UI).")]
         public bool ShowFoodDaysRemaining { get; set; } = false;
         [XmlElement]
-        [SettingProperty("All Two-Handed Weapons Slice Through", "Allows all two-handed weapon types to slice through and hit multiple people.")]
-        public bool TwoHandedWeaponsSliceThroughEnabled { get; set; } = false;
-        [XmlElement]
-        [SettingProperty("Enable Remote Companion Skill Management","Allows you to manage your companions' skills when they are not in your party.")]
+        [SettingProperty("Enable Remote Companion Skill Management", "Allows you to manage your companions' skills when they are not in your party.")]
         public bool RemoteCompanionSkillManagementEnabled { get; set; } = true;
         #endregion
 
@@ -642,7 +639,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Daily Troop Experience Tweak")]
         public int DailyTroopExperienceRequiredLeadershipLevel { get; set; } = 30;
         #endregion
-        
+
         #region Difficulty Settings
         [XmlElement]
         [SettingProperty("Enable Difficulty Tweaks", "Allows you to change the difficulty settings. These override the options in the game's settings menu.")]
@@ -688,6 +685,17 @@ namespace BannerlordTweaks
         [SettingProperty("Player Map Movement Tweak Multiplier", 0.0f, 1.0f, "Native values: Very Easy: 0.1, Easy: 0.05, Realistic: 0. This value is used to calculate player's map movement speed.")]
         [SettingPropertyGroup("Difficulty Tweaks/Player Map Movement Speed Bonus Tweak")]
         public float PlayerMapMovementSpeedBonusMultiplier { get; set; } = 0.0f;
+        #endregion
+
+        #region Weapon Cut Through Tweaks
+        [XmlElement]
+        [SettingProperty("All Two-Handed Weapons Cut Through", "Allows all two-handed weapon types to cut through and hit multiple people.")]
+        [SettingPropertyGroup("Weapon Cut Through Tweaks")]
+        public bool TwoHandedWeaponsSliceThroughEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("All One-Handed Weapons Cut Through", "Allows all single-handed weapon types to cut through and hit multiple people.")]
+        [SettingPropertyGroup("Weapon Cut Through Tweaks")]
+        public bool SingleHandedWeaponsSliceThroughEnabled { get; set; } = false;
         #endregion
     }
 }
