@@ -26,10 +26,6 @@ namespace BannerlordTweaks.Patches
 
                 if (party.IsMobile)
                 {
-                    if (party.MobileParty.HasPerk(DefaultPerks.TwoHanded.Notorious))
-                    {
-                        PerkHelper.AddPerkBonusForParty(DefaultPerks.TwoHanded.Notorious, party.MobileParty, ref stat);
-                    }
                     if (party.MobileParty.HasPerk(DefaultPerks.Charm.ShowYourScars))
                     {
                         PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, ref stat);

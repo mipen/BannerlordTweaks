@@ -17,16 +17,14 @@ namespace BannerlordTweaks.Patches
                 int num;
                 if (Settings.Instance.LeadershipPartySizeBonusEnabled)
                 {
-                    skill = SkillObject.FindFirst((x) => { return x.StringId == "Leadership"; });
-                    num = (int)Math.Ceiling(party.LeaderHero.GetSkillValue(skill) * Settings.Instance.LeadershipPartySizeBonus);
+                    num = (int)Math.Ceiling(party.LeaderHero.GetSkillValue(DefaultSkills.Leadership) * Settings.Instance.LeadershipPartySizeBonus);
                     __result += num;
                     explanation?.AddLine("Leadership bonus", num);
                 }
 
                 if (Settings.Instance.StewardPartySizeBonusEnabled)
                 {
-                    skill = SkillObject.FindFirst((x) => x.StringId == "Steward");
-                    num = (int)Math.Ceiling(party.LeaderHero.GetSkillValue(skill) * Settings.Instance.StewardPartySizeBonus);
+                    num = (int)Math.Ceiling(party.LeaderHero.GetSkillValue(DefaultSkills.Steward) * Settings.Instance.StewardPartySizeBonus);
                     __result += num;
                     explanation?.AddLine("Steward bonus", num);
                 }
