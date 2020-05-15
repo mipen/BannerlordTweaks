@@ -9,7 +9,7 @@ namespace BannerlordTweaks.Patches
         static void Postfix(ref bool __result, WeaponComponentData __instance)
         {
             __result = (__instance.WeaponClass == WeaponClass.TwoHandedAxe || __instance.WeaponClass == WeaponClass.TwoHandedMace ||
-                __instance.WeaponClass == WeaponClass.TwoHandedPolearm || __instance.WeaponClass == WeaponClass.TwoHandedSword);
+                __instance.WeaponClass == WeaponClass.TwoHandedPolearm || __instance.WeaponClass == WeaponClass.TwoHandedSword || __instance.WeaponClass==WeaponClass.OneHandedSword);
         }
 
         static bool Prepare()
