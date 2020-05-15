@@ -639,5 +639,52 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Daily Troop Experience Tweak")]
         public int DailyTroopExperienceRequiredLeadershipLevel { get; set; } = 30;
         #endregion
+        
+        #region Difficulty Settings
+        [XmlElement]
+        [SettingProperty("Enable Difficulty Tweaks", "Allows you to change the difficulty settings")]
+        [SettingPropertyGroup("Difficulty Tweaks", true)]
+        public bool DifficultyTweaksEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Enable Damage to Player Tweak", "Allows you to change the damage player gets.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Player Tweak", true)]
+        public bool DamageToPlayerTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Damage to Player Tweak Multiplier", 0.1f, 5.0f, "Native values are: Very Easy: 0.3, Easy: 0.67, Realistic: 1. This value will be used to calculate the damage player gets.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Player Tweak")]
+        public float DamageToPlayerMultiplier { get; set; } = 1.0f;
+        [XmlElement]
+        [SettingProperty("Enable amage to Friends Tweak", "Allows you to change the damage player friends get.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Friends Tweak", true)]
+        public bool DamageToFriendsTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Damage to Friends Tweak Multiplier", 0.1f, 5.0f, "Native values are: Very Easy: 0.3, Easy: 0.67, Realistic: 1. This value will be used to calculate the damage friends get.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Friends Tweak")]
+        public float DamageToFriendsMultiplier { get; set; } = 1.0f;
+        [XmlElement]
+        [SettingProperty("Enable Damage to Troops Tweak", "Allows you to change the damage player troops get.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Troops Tweak", true)]
+        public bool DamageToTroopsTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Damage to Troops Tweak Multiplier", 0.1f, 5.0f, "Native values are: Very Easy: 0.3, Easy: 0.67, Realistic: 1. This value will be used to calculate the damage player troops get.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Damage to Troops Tweak")]
+        public float DamageToTroopsMultiplier { get; set; } = 1.0f;
+        [XmlElement]
+        [SettingProperty("Enable Combat AI Difficulty Tweak", "Allows you to change the AI combat difficulty.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Combat AI Difficulty Tweak", true)]
+        public bool CombatAIDifficultyTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Combat AI Difficulty Tweak Multiplier", 0.1f, 1.0f, "Native values are: Very Easy: 0.1, Easy: 0.32, Realistic: 0.96. This value will be used to calculate AI combat difficulty.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Combat AI Difficulty Tweak")]
+        public float CombatAIDifficultyMultiplier { get; set; } = 0.96f;
+        [XmlElement]
+        [SettingProperty("Enable Player Map Movement Speed Tweak", "Allows you to change the bonus map movement speed multiplier player gets.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Player Map Movement Speed Bonus Tweak", true)]
+        public bool PlayerMapMovementSpeedBonusTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Player Map Movement Tweak Multiplier", 0.0f, 1.0f, "Native values are: Very Easy: 0.1, Easy: 0.05, Realistic: 0. This value will be used to calculate player's map movement speed.")]
+        [SettingPropertyGroup("Difficulty Tweaks/Player Map Movement Speed Bonus Tweak")]
+        public float PlayerMapMovementSpeedBonusMultiplier { get; set; } = 0.0f;
+        #endregion
     }
 }
