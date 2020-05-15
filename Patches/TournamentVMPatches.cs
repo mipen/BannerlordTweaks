@@ -1,13 +1,13 @@
-﻿using ModLib;
-using HarmonyLib;
+﻿using HarmonyLib;
+using ModLib;
 using SandBox.ViewModelCollection.Tournament;
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
 using TaleWorlds.Core;
-using System.Reflection;
 
 namespace BannerlordTweaks.Patches
 {

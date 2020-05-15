@@ -24,16 +24,9 @@ namespace BannerlordTweaks.Patches
 
                 var stat = new ExplainedNumber((renownValueOfBattle * contributionShare) * battleRenownMultiplier, explanation);
 
-                if (party.IsMobile)
+                if (party.IsMobile && party.MobileParty.HasPerk(DefaultPerks.Charm.ShowYourScars))
                 {
-                    if (party.MobileParty.HasPerk(DefaultPerks.TwoHanded.Notorious))
-                    {
-                        PerkHelper.AddPerkBonusForParty(DefaultPerks.TwoHanded.Notorious, party.MobileParty, ref stat);
-                    }
-                    if (party.MobileParty.HasPerk(DefaultPerks.Charm.ShowYourScars))
-                    {
                         PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, ref stat);
-                    }
                 }
                 __result = stat.ResultNumber;
                 patched = true;

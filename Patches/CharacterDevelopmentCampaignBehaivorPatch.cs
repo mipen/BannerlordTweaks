@@ -15,6 +15,7 @@ namespace BannerlordTweaks.Patches
          * This is a fix for a native bug where the weight function causes MBRandom.ChooseWeight to return null, which means
          * that there is no skillObject passed to HeroDeveloper.AddFocus
          */
+         //TODO:: Remove this once the fix has been applied to the actual game.
         static bool Prefix(Hero hero)
         {
             List<SkillObject> list = (from x in SkillObject.All
