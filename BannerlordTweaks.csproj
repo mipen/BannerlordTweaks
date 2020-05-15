@@ -137,6 +137,7 @@
     <Compile Include="TweakedWorkshopModel.cs" />
     <Compile Include="PrisonerImprisonmentTweak.cs" />
     <Compile Include="Patches\WeaponComponentDataPatch.cs" />
+	<Compile Include="TweakedDifficultyModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Contributions.txt" />
