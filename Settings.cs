@@ -21,8 +21,8 @@ namespace BannerlordTweaks
             }
         }
 
-        //[SettingProperty("","")
-        //[SettingPropertyGroup("")
+        //[SettingProperty("","")]
+        //[SettingPropertyGroup("")]
 
         #region Miscellaneous
         [XmlElement]
@@ -31,7 +31,9 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Show Number of Days of Food", "Changes the number showing how much food you have to instead show how many days' worth of food you have. (Bottom right of campaign map UI).")]
         public bool ShowFoodDaysRemaining { get; set; } = false;
-
+        [XmlElement]
+        [SettingProperty("All Two-Handed Weapons Slice Through", "Allows all two-handed weapon types to slice through and hit multiple people.")]
+        public bool TwoHandedWeaponsSliceThroughEnabled { get; set; } = false;
         #endregion
 
         #region Crafting stamina Settings
@@ -200,11 +202,11 @@ namespace BannerlordTweaks
         public float TroopBattleExperienceMultiplier { get; set; } = 1.0f;
         [XmlElement]
         [SettingProperty("Enable Troop Battle Simulation Experience Multiplier", "Provides a multiplier to experience gained from simulated battles. This is applied to all fights (including NPC fights) on the campaign map.")]
-        [SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        [SettingPropertyGroup("Troop Battle Experience Tweaks/Simulation Experience Tweak", true)]
         public bool TroopBattleSimulationExperienceMultiplierEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Troop Battle Simulation Experience Multiplier", 0.5f, 8f, 0f, 100f, "Native value is 1.0. Provides a multiplier to experience gained from simulated battles. This is applied to all simulated fights on the campaign map.")]
-        [SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        [SettingPropertyGroup("Troop Battle Experience Tweaks/Simulation Experience Tweak")]
         public float TroopBattleSimulationExperienceMultiplier { get; set; } = 1.0f;
         #endregion
 
@@ -300,71 +302,141 @@ namespace BannerlordTweaks
         #region Castle buildings bonuses
         [XmlElement]
         [SettingProperty("Enable Castle Training Fields Tweak", "Changes the amount of experience the training fields provides for each level.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Training Fields Tweak", true)]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak", true)]
         public bool CastleTrainingFieldsBonusEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Castle Training Fields Level 1 Experience", 1, 150, 1, 1000, "Native value is 1. Changes the amount of experience the training fields provides at level 1.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Training Fields Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
         public int CastleTrainingFieldsXpAmountLevel1 { get; set; } = 30;
         [XmlElement]
         [SettingProperty("Castle Training Fields Level 2 Experience", 2, 200, 2, 1000, "Native value is 2. Changes the amount of experience the training fields provides at level 2.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Training Fields Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
         public int CastleTrainingFieldsXpAmountLevel2 { get; set; } = 70;
         [XmlElement]
         [SettingProperty("Castle Training Fields Level 3 Experience", 3, 250, 3, 1000, "Native value is 3. Changes the amount of experience the training fields provides at level 3.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Training Fields Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
         public int CastleTrainingFieldsXpAmountLevel3 { get; set; } = 150;
 
         [XmlElement]
         [SettingProperty("Enable Castle Granary Tweak", "Changes the amount of food storage the castle granary provides per level.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Granary Tweak", true)]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak", true)]
         public bool CastleGranaryBonusEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Castle Granary Food Storage Level 1", 10, 90, 10, 1000, "Native value is 10. Changes the amount of food storage the castle granary provides at level 1.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Granary Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
         public int CastleGranaryStorageAmountLevel1 { get; set; } = 30;
         [XmlElement]
         [SettingProperty("Castle Granary Food Storage Level 2", 20, 180, 20, 1000, "Native value is 20. Changes the amount of food storage the castle granary provides at level 2.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Granary Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
         public int CastleGranaryStorageAmountLevel2 { get; set; } = 45;
         [XmlElement]
         [SettingProperty("Castle Granary Food Storage Level 3", 30, 270, 30, 1000, "Native value is 30. Changes the amount of food storage the castle granary provides at level 3.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Granary Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
         public int CastleGranaryStorageAmountLevel3 { get; set; } = 60;
 
         [XmlElement]
         [SettingProperty("Enable Castle Gardens Tweak", "Changes the amount of food the castle gardens produce per level.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Gardens Tweak", true)]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak", true)]
         public bool CastleGardensBonusEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Castle Garden Food Production Level 1", 1, 10, 1, 1000, "Native value is 1. Changes the amount of food the castle gardens produce at level 1.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Gardens Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
         public int CastleGardensFoodProductionAmountLevel1 { get; set; } = 3;
         [XmlElement]
         [SettingProperty("Castle Garden Food Production Level 2", 2, 20, 2, 1000, "Native value is 2. Changes the amount of food the castle gardens produce at level 2.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Gardens Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
         public int CastleGardensFoodProductionAmountLevel2 { get; set; } = 6;
         [XmlElement]
         [SettingProperty("Castle Garden Food Production Level 3", 3, 30, 3, 1000, "Native value is 3. Changes the amount of food the castle gardens produce at level 3.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Gardens Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
         public int CastleGardensFoodProductionAmountLevel3 { get; set; } = 9;
 
         [XmlElement]
         [SettingProperty("Enable Castle Militia Barracks Tweak", "Changes the militia production that the castle militia barracks provides per level.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Militia Barracks Tweak", true)]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak", true)]
         public bool CastleMilitiaBarracksBonusEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Castle Militia Barracks Production Level 1", 1, 10, 1, 1000, "Native value is 1. Changes the militia production that the castle militia barracks provides at level 1.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
         public int CastleMilitiaBarracksAmountLevel1 { get; set; } = 2;
         [XmlElement]
         [SettingProperty("Castle Militia Barracks Production Level 2", 1, 14, 1, 1000, "Native value is 2. Changes the militia production that the castle militia barracks provides at level 2.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
         public int CastleMilitiaBarracksAmountLevel2 { get; set; } = 4;
         [XmlElement]
         [SettingProperty("Castle Militia Barracks Production Level 3", 1, 16, 1, 1000, "Native value is 4. Changes the militia production that the castle militia barracks provides at level 3.")]
-        [SettingPropertyGroup("Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
         public int CastleMilitiaBarracksAmountLevel3 { get; set; } = 8;
+        #endregion
+
+        #region Town buildings bonuses
+        [XmlElement]
+        [SettingProperty("Enable Town Training Fields Tweak", "Changes the amount of experience the training fields provides for each level.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak", true)]
+        public bool TownTrainingFieldsBonusEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Town Training Fields Level 1 Experience", 1, 150, 1, 1000, "Native value is 1. Changes the amount of experience the training fields provides at level 1.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
+        public int TownTrainingFieldsXpAmountLevel1 { get; set; } = 30;
+        [XmlElement]
+        [SettingProperty("Town Training Fields Level 2 Experience", 2, 200, 2, 1000, "Native value is 2. Changes the amount of experience the training fields provides at level 2.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
+        public int TownTrainingFieldsXpAmountLevel2 { get; set; } = 70;
+        [XmlElement]
+        [SettingProperty("Town Training Fields Level 3 Experience", 3, 300, 3, 1000, "Native value is 3. Changes the amount of experience the training fields provides at level 3.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
+        public int TownTrainingFieldsXpAmountLevel3 { get; set; } = 150;
+
+        [XmlElement]
+        [SettingProperty("Enable Town Granary Tweak", "Changes the amount of food storage the town granary provides per level.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak", true)]
+        public bool TownGranaryBonusEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Town Granary Food Storage Level 1", 10, 900, 10, 1000, "Native value is 200. Changes the amount of food storage the town granary provides at level 1.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
+        public int TownGranaryStorageAmountLevel1 { get; set; } = 400;
+        [XmlElement]
+        [SettingProperty("Town Granary Food Storage Level 2", 20, 1800, 20, 1000, "Native value is 400. Changes the amount of food storage the town granary provides at level 2.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
+        public int TownGranaryStorageAmountLevel2 { get; set; } = 600;
+        [XmlElement]
+        [SettingProperty("Town Granary Food Storage Level 3", 30, 2700, 30, 1000, "Native value is 600. Changes the amount of food storage the town granary provides at level 3.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
+        public int TownGranaryStorageAmountLevel3 { get; set; } = 900;
+
+        [XmlElement]
+        [SettingProperty("Enable Town Orchards Tweak", "Changes the amount of food the town orchards produce per level.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Orchards Tweak", true)]
+        public bool TownOrchardsBonusEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Town Orchard Food Production Level 1", 10, 100, 1, 1000, "Native value is 10. Changes the amount of food the town orchards produce at level 1.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Orchards Tweak")]
+        public int TownOrchardsFoodProductionAmountLevel1 { get; set; } = 45;
+        [XmlElement]
+        [SettingProperty("Town Orchard Food Production Level 2", 20, 200, 2, 1000, "Native value is 20. Changes the amount of food the town orchards produce at level 2.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Orchards Tweak")]
+        public int TownOrchardsFoodProductionAmountLevel2 { get; set; } = 60;
+        [XmlElement]
+        [SettingProperty("Town Orchard Food Production Level 3", 30, 300, 3, 1000, "Native value is 30. Changes the amount of food the town orchards produce at level 3.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Orchards Tweak")]
+        public int TownOrchardsFoodProductionAmountLevel3 { get; set; } = 75;
+
+        [XmlElement]
+        [SettingProperty("Enable Town Militia Barracks Tweak", "Changes the militia production that the town militia barracks provides per level.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak", true)]
+        public bool TownMilitiaBarracksBonusEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Town Militia Barracks Production Level 1", 1, 15, 1, 1000, "Native value is 1. Changes the militia production that the town militia barracks provides at level 1.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
+        public int TownMilitiaBarracksAmountLevel1 { get; set; } = 2;
+        [XmlElement]
+        [SettingProperty("Town Militia Barracks Production Level 2", 1, 20, 1, 1000, "Native value is 2. Changes the militia production that the town militia barracks provides at level 2.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
+        public int TownMilitiaBarracksAmountLevel2 { get; set; } = 4;
+        [XmlElement]
+        [SettingProperty("Town Militia Barracks Production Level 3", 1, 30, 1, 1000, "Native value is 3. Changes the militia production that the town militia barracks provides at level 3.")]
+        [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
+        public int TownMilitiaBarracksAmountLevel3 { get; set; } = 9;
         #endregion
 
         #region Siege Changes
@@ -448,28 +520,28 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Pregnancy Tweaks/Fertility Probability Tweak")]
         public float CharacterFertilityProbability { get; set; } = 0.95f;
         [XmlElement]
-        [SettingProperty("Enable Daily Chance Pregnancy Tweak", "Enabling this will completely override the daily pregnancy check. All settings below will be applied!")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak", true)]
+        [SettingProperty("Enable Pregnancy Chance Tweaks", "Enabling this will completely override the daily pregnancy check. All settings below will be applied!")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks", true)]
         public bool DailyChancePregnancyTweakEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Enable Player Character Fertility", "Is the player character (you) fertile? Native: true")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        [SettingProperty("Player is Fertile", "Native: true. If set to false, the player will not be able to have children.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks")]
         public bool PlayerCharacterFertileEnabled { get; set; } = true;
         [XmlElement]
-        [SettingProperty("Min Pregnancy Age", 0, 999, "Minimum Age the Hero can get pregnant. Native: 18")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        [SettingProperty("Min Pregnancy Age", 0, 999, "Native: 18. Minimum age that someone can get pregnant.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks")]
         public int MinPregnancyAge { get; set; } = 18;
         [XmlElement]
-        [SettingProperty("Max Pregnancy Age", 0, 999, "Maximum Age the Hero can get pregnant. Native: 45")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        [SettingProperty("Max Pregnancy Age", 0, 999, "Native: 45. Maximum age that someone can get pregnant.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks")]
         public int MaxPregnancyAge { get; set; } = 45;
         [XmlElement]
-        [SettingProperty("Enable Max Children Tweak", "Allows to set the maximum number of children that you can get")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        [SettingProperty("Enable Max Children Tweak", "Native: false. Sets the maximum number of children that someone can have.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Max Children Tweak", true)]
         public bool MaxChildrenTweakEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Max Children", 0, 999, "Maximum number of children anyone can have. Default: 5")]
-        [SettingPropertyGroup("Pregnancy Tweaks/Daily Chance Pregnancy Tweak")]
+        [SettingProperty("Max Children", 0, 999, "Default: 5. Maximum number of children that someone can have.")]
+        [SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Max Children Tweak")]
         public int MaxChildren { get; set; } = 5;
         #endregion
 
@@ -532,6 +604,42 @@ namespace BannerlordTweaks
         public int PlayerCaravanPartySize { get; set; } = 30;
         #endregion
 
+        #region Prisoner Tweaks
+        [XmlElement]
+        [SettingProperty("Enable Imprisonment Period Tweak", "Adds a minimum amount of time before lords can attempt to escape imprisonment.")]
+        [SettingPropertyGroup("Imprisonment Period Tweak", true)]
+        public bool PrisonerImprisonmentTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Player Prisoners Only", "Whether the tweak should be applied only to prisoners held by the player.")]
+        [SettingPropertyGroup("Imprisonment Period Tweak")]
+        public bool PrisonerImprisonmentPlayerOnly { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("Minimum Days of Imprisonment", 0, 180, "The minimum number of days a lord will remain imprisoned before they can attempt to escape.")]
+        [SettingPropertyGroup("Imprisonment Period Tweak")]
+        public int MinimumDaysOfImprisonment { get; set; } = 10;
+        #endregion
+
+        #region Daily Troop Experience Tweak
+        [SettingProperty("Enable Daily Troop Experience Gain", "Gives troops in a party an amount of experience each day based upon the leader's Leadership skill. By default only applies to the player.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak", true)]
+        public bool DailyTroopExperienceTweakEnabled { get; set; } = false;
+        [SettingProperty("Percentage of Leadership", 0.01f, 2f, "The percentage of the leader's Leadership skill to be given as experience to their troops.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public float LeadershipPercentageForDailyExperienceGain { get; set; } = 0.5f;
+        [SettingProperty("Apply to Player's Clan Members", "Applies the daily troop experience gain to members of the player's clan also.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public bool DailyTroopExperienceApplyToPlayerClanMembers { get; set; } = false;
+        [SettingProperty("Apply to all NPC Lords", "Applies the daily troop experience gain to all NPC lords.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public bool DailyTroopExperienceApplyToAllNPC { get; set; } = false;
+        [SettingProperty("Display Message", "Displays a message showing the amount of experience granted.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public bool DisplayMessageDailyExperienceGain { get; set; } = false;
+        [SettingProperty("Required Leadership Level", 1, 200, "The Leadership level required to start giving experience to troops.")]
+        [SettingPropertyGroup("Daily Troop Experience Tweak")]
+        public int DailyTroopExperienceRequiredLeadershipLevel { get; set; } = 30;
+        #endregion
+        
         #region Difficulty Settings
         [XmlElement]
         [SettingProperty("Enable Difficulty Tweaks", "Allows you to change the difficulty settings")]

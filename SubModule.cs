@@ -23,6 +23,7 @@ namespace BannerlordTweaks
 
                 var harmony = new Harmony("mod.bannerlord.mipen");
                 harmony.PatchAll();
+
             }
             catch (Exception ex)
             {
@@ -84,5 +85,18 @@ namespace BannerlordTweaks
                     gameStarter.AddModel(new TweakedDifficultyModel());
             }
         }
+
+        public override bool DoLoading(Game game)
+        {
+            if (Campaign.Current != null)
+            {
+                if (Settings.Instance.PrisonerImprisonmentTweakEnabled)
+                    PrisonerImprisonmentTweak.Apply(Campaign.Current);
+                if (Settings.Instance.DailyTroopExperienceTweakEnabled)
+                    DailyTroopExperienceTweak.Apply(Campaign.Current);
+            }
+            return base.DoLoading(game);
+        }
     }
 }
+

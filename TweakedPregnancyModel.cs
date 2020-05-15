@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Helpers;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
@@ -33,11 +34,14 @@ namespace BannerlordTweaks
 
         public override float GetDailyChanceOfPregnancyForHero(Hero hero)
         {
+            if (hero == null) throw new ArgumentNullException(nameof(hero));
+
             if (!Settings.Instance.DailyChancePregnancyTweakEnabled)
                 return base.GetDailyChanceOfPregnancyForHero(hero);
 
             float num = 0.0f;
-            if (!Settings.Instance.PlayerCharacterFertileEnabled && CheckIfHeroIsMainOrSpouseIsMarriedToPlayerHero(hero))
+
+            if (!Settings.Instance.PlayerCharacterFertileEnabled && HeroIsMainOrSpouseOfMain(hero))
             {
                 return num;
             }
@@ -51,7 +55,7 @@ namespace BannerlordTweaks
             {
                 ExplainedNumber bonuses = new ExplainedNumber(1f, null);
                 PerkHelper.AddPerkBonusForCharacter(DefaultPerks.Medicine.PerfectHealth, hero.Clan.Leader.CharacterObject, ref bonuses);
-                num = (float)((6.5 - ((double)hero.Age - Settings.Instance.MinPregnancyAge) * 0.230000004172325) * 0.0199999995529652) * bonuses.ResultNumber;
+                num = (float)((6.5 - ((double)hero.Age - Settings.Instance.MinPregnancyAge) * 0.23) * 0.02) * bonuses.ResultNumber;
             }
 
             if (hero.Children == null || !hero.Children.Any())
@@ -64,12 +68,13 @@ namespace BannerlordTweaks
 
         private bool IsHeroAgeSuitableForPregnancy(Hero hero)
         {
-            if ((double)hero.Age >= Settings.Instance.MinPregnancyAge)
-                return (double)hero.Age <= Settings.Instance.MaxPregnancyAge;
-            return false;
+            if (!hero.IsFemale)
+                return true;
+
+            return (double)hero.Age >= Settings.Instance.MinPregnancyAge && (double)hero.Age <= Settings.Instance.MaxPregnancyAge;
         }
 
-        private bool CheckIfHeroIsMainOrSpouseIsMarriedToPlayerHero(Hero hero)
+        private bool HeroIsMainOrSpouseOfMain(Hero hero)
         {
             if (hero == Hero.MainHero)
                 return true;
