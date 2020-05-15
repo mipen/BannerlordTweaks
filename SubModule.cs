@@ -81,6 +81,8 @@ namespace BannerlordTweaks
                 }
                 if (Settings.Instance.AttributeFocusPointTweakEnabled)
                     gameStarter.AddModel(new TweakedCharacterDevelopmentModel());
+                if (Settings.Instance.DifficultyTweaksEnabled)
+                    gameStarter.AddModel(new TweakedDifficultyModel());
             }
         }
 
