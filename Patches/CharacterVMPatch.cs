@@ -6,7 +6,7 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(CharacterVM), "CanAddFocusToSkillWithFocusAmount")]
     public class CharacterVMPatch
     {
-        static bool Prefix(int ____unspentCharacterPoints, int currentFocusAmount, bool __result)
+        static bool Prefix(int ____unspentCharacterPoints, int currentFocusAmount, ref bool __result)
         {
             __result = currentFocusAmount < 5 && ____unspentCharacterPoints > 0;
             return false;
