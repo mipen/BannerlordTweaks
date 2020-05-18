@@ -213,23 +213,23 @@ namespace BannerlordTweaks
         #region Workshop tweaks
         [XmlElement]
         [SettingProperty("Enable Max Workshop Limit Tweak", "Sets the base maximum number of workshops you can have and the limit increase gained per clan tier.")]
-        [SettingPropertyGroup("Workshop Tweaks")]
+        [SettingPropertyGroup("Workshop Tweaks/Workshop Limit Tweak", true)]
         public bool MaxWorkshopCountTweakEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Base Workshop Limit", 0, 10, 0, 100, "Native value is 1. Sets the base maximum number of workshops you can have.")]
-        [SettingPropertyGroup("Workshop Tweaks")]
+        [SettingPropertyGroup("Workshop Tweaks/Workshop Limit Tweak")]
         public int BaseWorkshopCount { get; set; } = 2;
         [XmlElement]
         [SettingProperty("Bonus Workshops Per Clan Tier", 0, 3, 0, 20, "Sets the base maximum number of workshops you can have and the limit increase gained per clan tier.")]
-        [SettingPropertyGroup("Workshop Tweaks")]
+        [SettingPropertyGroup("Workshop Tweaks/Workshop Limit Tweak")]
         public int BonusWorkshopsPerClanTier { get; set; } = 1;
         [XmlElement]
         [SettingProperty("Enable Workshop Cost Tweak", "Sets the base value used to calculate the cost of workshops. Reduce to reduce cost of workshops.")]
-        [SettingPropertyGroup("Workshop Tweaks")]
+        [SettingPropertyGroup("Workshop Tweaks/Workshop Cost Tweak", true)]
         public bool WorkshopBuyingCostTweakEnabled { get; set; } = false;
         [XmlElement]
         [SettingProperty("Workshop Base Cost", 0, 15000, "Native value is 10,000. Sets the base value used to calculate the cost of workshops. Reduce to reduce cost of workshops.")]
-        [SettingPropertyGroup("Workshop Tweaks")]
+        [SettingPropertyGroup("Workshop Tweaks/Workshop Cost Tweak")]
         public int WorkshopBaseCost { get; set; } = 10000;
         #endregion
 
@@ -442,24 +442,24 @@ namespace BannerlordTweaks
         #region Siege Changes
         [XmlElement]
         [SettingProperty("Enable Siege Construction Progress Tweak", "Adds a multiplier to the construction progress per day for sieges.")]
-        [SettingPropertyGroup("Siege Constructon Progress Tweak", true)]
+        [SettingPropertyGroup("Siege Tweaks/Construction Progress Tweak", true)]
         public bool SiegeConstructionProgressPerDayMultiplierEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Siege Construction Progress Per Day Multiplier", 0.5f, 1.5f, "Native value is 1.0. Adds a multiplier to the construction progress per day for sieges. A smaller number results in longer siege times.")]
-        [SettingPropertyGroup("Siege Constructon Progress Tweak")]
+        [SettingPropertyGroup("Siege Tweaks/Construction Progress Tweak")]
         public float SiegeConstructionProgressPerDayMultiplier { get; set; } = 0.8f;
 
         [XmlElement]
         [SettingProperty("Enable Siege Casualties Tweaks", "Changes the values used to calculate casualties during the siege stage on the campaign map.")]
-        [SettingPropertyGroup("Siege Casualties Tweaks", true)]
+        [SettingPropertyGroup("Siege Tweaks/Casualties Tweaks", true)]
         public bool SiegeCasualtiesTweakEnabled { get; set; } = true;
         [XmlElement]
         [SettingProperty("Siege Collateral Damage Casualties", 1, 3, "Native value is 2.0. Changes the value used to calculate collateral casualties during the campaign map siege stage.")]
-        [SettingPropertyGroup("Siege Casualties Tweaks")]
+        [SettingPropertyGroup("Siege Tweaks/Casualties Tweaks")]
         public int SiegeCollateralDamageCasualties { get; set; } = 1;
         [XmlElement]
         [SettingProperty("Siege Destruction Casualties", 3, 7, "Native value is 5.0. Changes the value used to calculate desctruction casualties during the campaign map siege stage.")]
-        [SettingPropertyGroup("Siege Casualties Tweaks")]
+        [SettingPropertyGroup("Siege Tweaks/Casualties Tweaks")]
         public int SiegeDestructionCasualties { get; set; } = 4;
         #endregion
 
