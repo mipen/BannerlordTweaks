@@ -113,7 +113,7 @@ namespace BannerlordTweaks
         public float StewardPartySizeBonus { get; set; } = 0.3f;
         #endregion
 
-        # region Tournament patches
+        # region Tournament Tweaks
         [XmlElement]
         [SettingProperty("Enable Tournament Renown Tweak", "Sets the amount of renown awarded when you win a tournament.")]
         [SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak", true)]
@@ -155,6 +155,15 @@ namespace BannerlordTweaks
         [SettingProperty("Arena Hero Experience Multiplier", 0.07f, 1f, "Native value is 0.06. Overrides the native multiplier for experience gain in arena fights for hero characters.")]
         [SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier")]
         public float ArenaHeroExperienceMultiplier { get; set; } = 0.07f;
+
+        [XmlElement]
+        [SettingProperty("Enabled Minimum Betting Odds Tweak", "Allows you to set the minimum betting odds in tournaments.")]
+        [SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds", true)]
+        public bool MinimumBettingOddsTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Minimum Betting Odds",1.1f,5f,"Native: 1.1. The minimum odds for tournament bets.")]
+        [SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds")]
+        public float MinimumBettingOdds { get; set; } = 2f;
         #endregion
 
         #region Hero skill multiplier patch
@@ -696,6 +705,17 @@ namespace BannerlordTweaks
         [SettingProperty("All One-Handed Weapons Cut Through", "Allows all single-handed weapon types to cut through and hit multiple people.")]
         [SettingPropertyGroup("Weapon Cut Through Tweaks")]
         public bool SingleHandedWeaponsSliceThroughEnabled { get; set; } = false;
+        #endregion
+
+        #region Battle Size Tweak
+        [XmlElement]
+        [SettingProperty("Battle Size Tweak", "Allows you to set the battle size limit outside of native values. WARNING: Setting this above 1000 can cause performance degradation and crashes.")]
+        [SettingPropertyGroup("Battle Size Tweak", true)]
+        public bool BattleSizeTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Battle Size Limit", 2, 1300, "Sets the limit for number of troops on a battlefield. WARNING: Setting this above 1000 can cause performance degradation and crashes.")]
+        [SettingPropertyGroup("Battle Size Tweak")]
+        public int BattleSize { get; set; } = 1000;
         #endregion
     }
 }

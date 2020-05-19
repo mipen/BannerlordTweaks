@@ -13,4 +13,5 @@ An up-to-date description can be found on the [nexusmods page](https://www.nexus
 * All Two-Handed Weapons Cut Through People, Optional all one-handed weapons cut through also.
 * Manage companions' skills when they are not in your party.
 * Difficulty Options Tweaks
+* Added battle size tweak
 
