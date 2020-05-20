@@ -6,3 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "<Pending>", Scope = "member", Target = "~M:BannerlordTweaks.SubModule.OnGameStart(TaleWorlds.Core.Game,TaleWorlds.Core.IGameStarter)")]
+[assembly: SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "<Pending>", Scope = "member", Target = "~M:BannerlordTweaks.DismembermentMissionBehaviour.OnRegisterBlow(TaleWorlds.MountAndBlade.Agent,TaleWorlds.MountAndBlade.Agent,TaleWorlds.Engine.GameEntity,TaleWorlds.MountAndBlade.Blow,TaleWorlds.MountAndBlade.AttackCollisionData@)")]

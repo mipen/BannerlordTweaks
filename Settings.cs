@@ -161,7 +161,7 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds", true)]
         public bool MinimumBettingOddsTweakEnabled { get; set; } = false;
         [XmlElement]
-        [SettingProperty("Minimum Betting Odds",1.1f,5f,"Native: 1.1. The minimum odds for tournament bets.")]
+        [SettingProperty("Minimum Betting Odds", 1.1f, 5f, "Native: 1.1. The minimum odds for tournament bets.")]
         [SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds")]
         public float MinimumBettingOdds { get; set; } = 2f;
         #endregion
@@ -717,5 +717,18 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Battle Size Tweak")]
         public int BattleSize { get; set; } = 1000;
         #endregion
+
+        [XmlElement]
+        [SettingProperty("Decapitation Enabled", "Allows the decapitation of people.")]
+        [SettingPropertyGroup("Decapitation", true)]
+        public bool DecapitationEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Report When the Player Decapitates Someone", "Will display a message when the player decapitates someone.")]
+        [SettingPropertyGroup("Decapitation")]
+        public bool ReportPlayerDecapitatedSomeoneEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("AI Can Decapitate", "Allows AI characters to decapitate people. Note: This can cause performance loss in big battles.")]
+        [SettingPropertyGroup("Decapitation")]
+        public bool AICanDecapitate { get; set; } = false;
     }
 }
