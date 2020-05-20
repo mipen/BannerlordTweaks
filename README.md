@@ -15,4 +15,5 @@ An up-to-date description can be found on the [nexusmods page](https://www.nexus
 * Difficulty Options Tweaks
 * Added battle size tweak
 * Added minimum tournament betting odds.
+* Added ability to decapitate people.
 
