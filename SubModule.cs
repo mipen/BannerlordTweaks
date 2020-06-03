@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using ModLib;
+using SandBox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace BannerlordTweaks
                 var harmony = new Harmony("mod.bannerlord.mipen");
                 harmony.PatchAll();
 
+                if (Settings.Instance.BattleSizeTweakEnabled)
+                    BannerlordConfig.BattleSize = Settings.Instance.BattleSize;
             }
             catch (Exception ex)
             {
@@ -96,6 +99,15 @@ namespace BannerlordTweaks
                     DailyTroopExperienceTweak.Apply(Campaign.Current);
             }
             return base.DoLoading(game);
+        }
+
+        public override void OnMissionBehaviourInitialize(Mission mission)
+        {
+            if (mission == null) return;
+            base.OnMissionBehaviourInitialize(mission);
+
+            if (Settings.Instance.DecapitationEnabled && !mission.HasMissionBehaviour<TournamentFightMissionController>() && !mission.HasMissionBehaviour<ArenaPracticeFightMissionController>())
+                mission?.AddMissionBehaviour(new DismembermentMissionBehaviour());
         }
     }
 }

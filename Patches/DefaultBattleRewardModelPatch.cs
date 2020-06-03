@@ -24,10 +24,14 @@ namespace BannerlordTweaks.Patches
 
                 var stat = new ExplainedNumber((renownValueOfBattle * contributionShare) * battleRenownMultiplier, explanation);
 
-                if (party.IsMobile && party.MobileParty.HasPerk(DefaultPerks.Charm.ShowYourScars))
-                {
-                        PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, ref stat);
-                }
+                //TODO:: Implement this the same as native in next game update
+                //if (party.IsMobile && party.MobileParty.HasPerk(DefaultPerks.Charm.ShowYourScars))
+                //{
+                //        PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, ref stat);
+                //}
+                if (party.IsMobile && party.Leader != null && party.Leader.HeroObject != null && party.LeaderHero.GetPerkValue(DefaultPerks.Charm.ShowYourScars))
+                    PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, ref stat);
+
                 __result = stat.ResultNumber;
                 patched = true;
             }

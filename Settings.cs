@@ -113,7 +113,7 @@ namespace BannerlordTweaks
         public float StewardPartySizeBonus { get; set; } = 0.3f;
         #endregion
 
-        # region Tournament patches
+        # region Tournament Tweaks
         [XmlElement]
         [SettingProperty("Enable Tournament Renown Tweak", "Sets the amount of renown awarded when you win a tournament.")]
         [SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak", true)]
@@ -155,6 +155,15 @@ namespace BannerlordTweaks
         [SettingProperty("Arena Hero Experience Multiplier", 0.07f, 1f, "Native value is 0.06. Overrides the native multiplier for experience gain in arena fights for hero characters.")]
         [SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier")]
         public float ArenaHeroExperienceMultiplier { get; set; } = 0.07f;
+
+        [XmlElement]
+        [SettingProperty("Enabled Minimum Betting Odds Tweak", "Allows you to set the minimum betting odds in tournaments.")]
+        [SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds", true)]
+        public bool MinimumBettingOddsTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Minimum Betting Odds", 1.1f, 5f, "Native: 1.1. The minimum odds for tournament bets.")]
+        [SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds")]
+        public float MinimumBettingOdds { get; set; } = 2f;
         #endregion
 
         #region Hero skill multiplier patch
@@ -307,15 +316,15 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Castle Training Fields Level 1 Experience", 1, 150, 1, 1000, "Native value is 1. Changes the amount of experience the training fields provides at level 1.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
-        public int CastleTrainingFieldsXpAmountLevel1 { get; set; } = 30;
+        public float CastleTrainingFieldsXpAmountLevel1 { get; set; } = 30;
         [XmlElement]
         [SettingProperty("Castle Training Fields Level 2 Experience", 2, 200, 2, 1000, "Native value is 2. Changes the amount of experience the training fields provides at level 2.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
-        public int CastleTrainingFieldsXpAmountLevel2 { get; set; } = 70;
+        public float CastleTrainingFieldsXpAmountLevel2 { get; set; } = 70;
         [XmlElement]
         [SettingProperty("Castle Training Fields Level 3 Experience", 3, 250, 3, 1000, "Native value is 3. Changes the amount of experience the training fields provides at level 3.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
-        public int CastleTrainingFieldsXpAmountLevel3 { get; set; } = 150;
+        public float CastleTrainingFieldsXpAmountLevel3 { get; set; } = 150;
 
         [XmlElement]
         [SettingProperty("Enable Castle Granary Tweak", "Changes the amount of food storage the castle granary provides per level.")]
@@ -324,15 +333,15 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Castle Granary Food Storage Level 1", 10, 90, 10, 1000, "Native value is 10. Changes the amount of food storage the castle granary provides at level 1.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
-        public int CastleGranaryStorageAmountLevel1 { get; set; } = 30;
+        public float CastleGranaryStorageAmountLevel1 { get; set; } = 30;
         [XmlElement]
         [SettingProperty("Castle Granary Food Storage Level 2", 20, 180, 20, 1000, "Native value is 20. Changes the amount of food storage the castle granary provides at level 2.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
-        public int CastleGranaryStorageAmountLevel2 { get; set; } = 45;
+        public float CastleGranaryStorageAmountLevel2 { get; set; } = 45;
         [XmlElement]
         [SettingProperty("Castle Granary Food Storage Level 3", 30, 270, 30, 1000, "Native value is 30. Changes the amount of food storage the castle granary provides at level 3.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
-        public int CastleGranaryStorageAmountLevel3 { get; set; } = 60;
+        public float CastleGranaryStorageAmountLevel3 { get; set; } = 60;
 
         [XmlElement]
         [SettingProperty("Enable Castle Gardens Tweak", "Changes the amount of food the castle gardens produce per level.")]
@@ -341,15 +350,15 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Castle Garden Food Production Level 1", 1, 10, 1, 1000, "Native value is 1. Changes the amount of food the castle gardens produce at level 1.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
-        public int CastleGardensFoodProductionAmountLevel1 { get; set; } = 3;
+        public float CastleGardensFoodProductionAmountLevel1 { get; set; } = 3;
         [XmlElement]
         [SettingProperty("Castle Garden Food Production Level 2", 2, 20, 2, 1000, "Native value is 2. Changes the amount of food the castle gardens produce at level 2.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
-        public int CastleGardensFoodProductionAmountLevel2 { get; set; } = 6;
+        public float CastleGardensFoodProductionAmountLevel2 { get; set; } = 6;
         [XmlElement]
         [SettingProperty("Castle Garden Food Production Level 3", 3, 30, 3, 1000, "Native value is 3. Changes the amount of food the castle gardens produce at level 3.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
-        public int CastleGardensFoodProductionAmountLevel3 { get; set; } = 9;
+        public float CastleGardensFoodProductionAmountLevel3 { get; set; } = 9;
 
         [XmlElement]
         [SettingProperty("Enable Castle Militia Barracks Tweak", "Changes the militia production that the castle militia barracks provides per level.")]
@@ -358,15 +367,15 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Castle Militia Barracks Production Level 1", 1, 10, 1, 1000, "Native value is 1. Changes the militia production that the castle militia barracks provides at level 1.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
-        public int CastleMilitiaBarracksAmountLevel1 { get; set; } = 2;
+        public float CastleMilitiaBarracksAmountLevel1 { get; set; } = 2;
         [XmlElement]
         [SettingProperty("Castle Militia Barracks Production Level 2", 1, 14, 1, 1000, "Native value is 2. Changes the militia production that the castle militia barracks provides at level 2.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
-        public int CastleMilitiaBarracksAmountLevel2 { get; set; } = 4;
+        public float CastleMilitiaBarracksAmountLevel2 { get; set; } = 4;
         [XmlElement]
         [SettingProperty("Castle Militia Barracks Production Level 3", 1, 16, 1, 1000, "Native value is 4. Changes the militia production that the castle militia barracks provides at level 3.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
-        public int CastleMilitiaBarracksAmountLevel3 { get; set; } = 8;
+        public float CastleMilitiaBarracksAmountLevel3 { get; set; } = 8;
         #endregion
 
         #region Town buildings bonuses
@@ -377,15 +386,15 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Town Training Fields Level 1 Experience", 1, 150, 1, 1000, "Native value is 1. Changes the amount of experience the training fields provides at level 1.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
-        public int TownTrainingFieldsXpAmountLevel1 { get; set; } = 30;
+        public float TownTrainingFieldsXpAmountLevel1 { get; set; } = 30;
         [XmlElement]
         [SettingProperty("Town Training Fields Level 2 Experience", 2, 200, 2, 1000, "Native value is 2. Changes the amount of experience the training fields provides at level 2.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
-        public int TownTrainingFieldsXpAmountLevel2 { get; set; } = 70;
+        public float TownTrainingFieldsXpAmountLevel2 { get; set; } = 70;
         [XmlElement]
         [SettingProperty("Town Training Fields Level 3 Experience", 3, 300, 3, 1000, "Native value is 3. Changes the amount of experience the training fields provides at level 3.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
-        public int TownTrainingFieldsXpAmountLevel3 { get; set; } = 150;
+        public float TownTrainingFieldsXpAmountLevel3 { get; set; } = 150;
 
         [XmlElement]
         [SettingProperty("Enable Town Granary Tweak", "Changes the amount of food storage the town granary provides per level.")]
@@ -394,15 +403,15 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Town Granary Food Storage Level 1", 10, 900, 10, 1000, "Native value is 200. Changes the amount of food storage the town granary provides at level 1.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
-        public int TownGranaryStorageAmountLevel1 { get; set; } = 400;
+        public float TownGranaryStorageAmountLevel1 { get; set; } = 400;
         [XmlElement]
         [SettingProperty("Town Granary Food Storage Level 2", 20, 1800, 20, 1000, "Native value is 400. Changes the amount of food storage the town granary provides at level 2.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
-        public int TownGranaryStorageAmountLevel2 { get; set; } = 600;
+        public float TownGranaryStorageAmountLevel2 { get; set; } = 600;
         [XmlElement]
         [SettingProperty("Town Granary Food Storage Level 3", 30, 2700, 30, 1000, "Native value is 600. Changes the amount of food storage the town granary provides at level 3.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
-        public int TownGranaryStorageAmountLevel3 { get; set; } = 900;
+        public float TownGranaryStorageAmountLevel3 { get; set; } = 900;
 
         [XmlElement]
         [SettingProperty("Enable Town Orchards Tweak", "Changes the amount of food the town orchards produce per level.")]
@@ -411,15 +420,15 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Town Orchard Food Production Level 1", 10, 100, 1, 1000, "Native value is 10. Changes the amount of food the town orchards produce at level 1.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Orchards Tweak")]
-        public int TownOrchardsFoodProductionAmountLevel1 { get; set; } = 45;
+        public float TownOrchardsFoodProductionAmountLevel1 { get; set; } = 45;
         [XmlElement]
         [SettingProperty("Town Orchard Food Production Level 2", 20, 200, 2, 1000, "Native value is 20. Changes the amount of food the town orchards produce at level 2.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Orchards Tweak")]
-        public int TownOrchardsFoodProductionAmountLevel2 { get; set; } = 60;
+        public float TownOrchardsFoodProductionAmountLevel2 { get; set; } = 60;
         [XmlElement]
         [SettingProperty("Town Orchard Food Production Level 3", 30, 300, 3, 1000, "Native value is 30. Changes the amount of food the town orchards produce at level 3.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Orchards Tweak")]
-        public int TownOrchardsFoodProductionAmountLevel3 { get; set; } = 75;
+        public float TownOrchardsFoodProductionAmountLevel3 { get; set; } = 75;
 
         [XmlElement]
         [SettingProperty("Enable Town Militia Barracks Tweak", "Changes the militia production that the town militia barracks provides per level.")]
@@ -428,15 +437,15 @@ namespace BannerlordTweaks
         [XmlElement]
         [SettingProperty("Town Militia Barracks Production Level 1", 1, 15, 1, 1000, "Native value is 1. Changes the militia production that the town militia barracks provides at level 1.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
-        public int TownMilitiaBarracksAmountLevel1 { get; set; } = 2;
+        public float TownMilitiaBarracksAmountLevel1 { get; set; } = 2;
         [XmlElement]
         [SettingProperty("Town Militia Barracks Production Level 2", 1, 20, 1, 1000, "Native value is 2. Changes the militia production that the town militia barracks provides at level 2.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
-        public int TownMilitiaBarracksAmountLevel2 { get; set; } = 4;
+        public float TownMilitiaBarracksAmountLevel2 { get; set; } = 4;
         [XmlElement]
         [SettingProperty("Town Militia Barracks Production Level 3", 1, 30, 1, 1000, "Native value is 3. Changes the militia production that the town militia barracks provides at level 3.")]
         [SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
-        public int TownMilitiaBarracksAmountLevel3 { get; set; } = 9;
+        public float TownMilitiaBarracksAmountLevel3 { get; set; } = 9;
         #endregion
 
         #region Siege Changes
@@ -697,5 +706,29 @@ namespace BannerlordTweaks
         [SettingPropertyGroup("Weapon Cut Through Tweaks")]
         public bool SingleHandedWeaponsSliceThroughEnabled { get; set; } = false;
         #endregion
+
+        #region Battle Size Tweak
+        [XmlElement]
+        [SettingProperty("Battle Size Tweak", "Allows you to set the battle size limit outside of native values. WARNING: Setting this above 1000 can cause performance degradation and crashes.")]
+        [SettingPropertyGroup("Battle Size Tweak", true)]
+        public bool BattleSizeTweakEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Battle Size Limit", 2, 1300, "Sets the limit for number of troops on a battlefield. WARNING: Setting this above 1000 can cause performance degradation and crashes.")]
+        [SettingPropertyGroup("Battle Size Tweak")]
+        public int BattleSize { get; set; } = 1000;
+        #endregion
+
+        [XmlElement]
+        [SettingProperty("Decapitation Enabled", "Allows the decapitation of people.")]
+        [SettingPropertyGroup("Decapitation", true)]
+        public bool DecapitationEnabled { get; set; } = false;
+        [XmlElement]
+        [SettingProperty("Report When the Player Decapitates Someone", "Will display a message when the player decapitates someone.")]
+        [SettingPropertyGroup("Decapitation")]
+        public bool ReportPlayerDecapitatedSomeoneEnabled { get; set; } = true;
+        [XmlElement]
+        [SettingProperty("AI Can Decapitate", "Allows AI characters to decapitate people. Note: This can cause performance loss in big battles.")]
+        [SettingPropertyGroup("Decapitation")]
+        public bool AICanDecapitate { get; set; } = false;
     }
 }
