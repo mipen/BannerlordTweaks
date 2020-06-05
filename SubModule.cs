@@ -106,8 +106,8 @@ namespace BannerlordTweaks
             if (mission == null) return;
             base.OnMissionBehaviourInitialize(mission);
 
-            if (Settings.Instance.DecapitationEnabled && !mission.HasMissionBehaviour<TournamentFightMissionController>() && !mission.HasMissionBehaviour<ArenaPracticeFightMissionController>())
-                mission?.AddMissionBehaviour(new DismembermentMissionBehaviour());
+            //if (Settings.Instance.DecapitationEnabled && !mission.HasMissionBehaviour<TournamentFightMissionController>() && !mission.HasMissionBehaviour<ArenaPracticeFightMissionController>())
+            //    mission?.AddMissionBehaviour(new DismembermentMissionBehaviour());
         }
     }
 }
