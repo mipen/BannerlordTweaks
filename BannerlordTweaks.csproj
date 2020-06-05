@@ -110,7 +110,6 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Patches\CampaignUIHelperPatch.cs" />
     <Compile Include="Patches\CharacterAttributeItemVMPatch.cs" />
-    <Compile Include="Patches\CharacterDevelopmentCampaignBehaivorPatch.cs" />
     <Compile Include="Patches\CharacterVMPatch.cs" />
     <Compile Include="Patches\CraftingCampaignBehaviourPatches.cs" />
     <Compile Include="Patches\CraftingVMPatch.cs" />
