@@ -718,17 +718,19 @@ namespace BannerlordTweaks
         public int BattleSize { get; set; } = 1000;
         #endregion
 
-        [XmlElement]
-        [SettingProperty("Decapitation Enabled", "Allows the decapitation of people.")]
-        [SettingPropertyGroup("Decapitation", true)]
-        public bool DecapitationEnabled { get; set; } = false;
-        [XmlElement]
-        [SettingProperty("Report When the Player Decapitates Someone", "Will display a message when the player decapitates someone.")]
-        [SettingPropertyGroup("Decapitation")]
-        public bool ReportPlayerDecapitatedSomeoneEnabled { get; set; } = true;
-        [XmlElement]
-        [SettingProperty("AI Can Decapitate", "Allows AI characters to decapitate people. Note: This can cause performance loss in big battles.")]
-        [SettingPropertyGroup("Decapitation")]
-        public bool AICanDecapitate { get; set; } = false;
+        #region Decapitation
+        //[XmlElement]
+        //[SettingProperty("Decapitation Enabled", "Allows the decapitation of people.")]
+        //[SettingPropertyGroup("Decapitation", true)]
+        //public bool DecapitationEnabled { get; set; } = false;
+        //[XmlElement]
+        //[SettingProperty("Report When the Player Decapitates Someone", "Will display a message when the player decapitates someone.")]
+        //[SettingPropertyGroup("Decapitation")]
+        //public bool ReportPlayerDecapitatedSomeoneEnabled { get; set; } = true;
+        //[XmlElement]
+        //[SettingProperty("AI Can Decapitate", "Allows AI characters to decapitate people. Note: This can cause performance loss in big battles.")]
+        //[SettingPropertyGroup("Decapitation")]
+        //public bool AICanDecapitate { get; set; } = false;
+        #endregion
     }
 }
