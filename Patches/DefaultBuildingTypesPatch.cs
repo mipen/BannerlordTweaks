@@ -19,9 +19,9 @@ namespace BannerlordTweaks.Patches
                 ____buildingCastleTrainingFields?.Initialize(new TextObject("{=BkTiRPT4}Training Fields"),
                     new TextObject("{=otWlERkc}A field for military drills that increase the daily experience gain of all garrisoned units."),
                     new int[3] { 39, 52, 65 }, BuildingLocation.Castle,
-                    new Tuple<BuildingEffectEnum, int, int, int>[]
+                    new Tuple<BuildingEffectEnum, float, float, float>[]
                     {
-                        new Tuple<BuildingEffectEnum, int, int, int>(
+                        new Tuple<BuildingEffectEnum, float, float, float>(
                             BuildingEffectEnum.Experience,
                             Settings.Instance.CastleTrainingFieldsXpAmountLevel1,
                             Settings.Instance.CastleTrainingFieldsXpAmountLevel2,
@@ -36,9 +36,9 @@ namespace BannerlordTweaks.Patches
                 ____buildingCastleGranary?.Initialize(new TextObject("{=PstO2f5I}Granary"),
                     new TextObject("{=iazij7fO}Keeps stockpiles of food so that the settlement has more food supply. Increases the local food supply."),
                     new int[3] { 39, 65, 91 }, BuildingLocation.Castle,
-                    new Tuple<BuildingEffectEnum, int, int, int>[]
+                    new Tuple<BuildingEffectEnum, float, float, float>[]
                     {
-                        new Tuple<BuildingEffectEnum, int, int, int>(
+                        new Tuple<BuildingEffectEnum, float, float, float>(
                             BuildingEffectEnum.Foodstock,
                             Settings.Instance.CastleGranaryStorageAmountLevel1,
                             Settings.Instance.CastleGranaryStorageAmountLevel2,
@@ -53,8 +53,8 @@ namespace BannerlordTweaks.Patches
                 ____buildingCastleGardens?.Initialize(new TextObject("{=yT6XN4Mr}Gardens"),
                     new TextObject("{=ZCLVOXgM}Castles contained fruit trees, bakeries, chicken coups to be used in emergencies. While it is not enough for a full contingency of troops any small amount of fresh foods are a big help while in the sieges."),
                     new int[3] { 25, 39, 52 }, BuildingLocation.Castle,
-                    new Tuple<BuildingEffectEnum, int, int, int>[] {
-                        new Tuple<BuildingEffectEnum, int, int, int>(
+                    new Tuple<BuildingEffectEnum, float, float, float>[] {
+                        new Tuple<BuildingEffectEnum, float, float, float>(
                             BuildingEffectEnum.FoodProduction,
                             Settings.Instance.CastleGardensFoodProductionAmountLevel1,
                             Settings.Instance.CastleGardensFoodProductionAmountLevel2,
@@ -69,8 +69,8 @@ namespace BannerlordTweaks.Patches
                 ____buildingCastleMilitiaBarracks?.Initialize(new TextObject("{=l91xAgmU}Militia Barracks"),
                     new TextObject("{=YRrx8bAK}Provides battle training for citizens and recruit them into militia, each level increases daily militia recruitment."),
                     new int[3] { 46, 59, 72 }, BuildingLocation.Castle,
-                    new Tuple<BuildingEffectEnum, int, int, int>[] {
-                        new Tuple<BuildingEffectEnum, int, int, int>(
+                    new Tuple<BuildingEffectEnum, float, float, float>[] {
+                        new Tuple<BuildingEffectEnum, float, float, float>(
                             BuildingEffectEnum.Militia,
                             Settings.Instance.CastleMilitiaBarracksAmountLevel1,
                             Settings.Instance.CastleMilitiaBarracksAmountLevel2,
@@ -87,9 +87,9 @@ namespace BannerlordTweaks.Patches
                 ____buildingSettlementTrainingFields?.Initialize(new TextObject("{=BkTiRPT4}Training Fields"),
                     new TextObject("{=otWlERkc}A field for military drills that increase the daily experience gain of all garrisoned units."),
                     new int[3] { 600, 800, 1000 }, BuildingLocation.Settlement,
-                    new Tuple<BuildingEffectEnum, int, int, int>[]
+                    new Tuple<BuildingEffectEnum, float, float, float>[]
                     {
-                        new Tuple<BuildingEffectEnum, int, int, int>(
+                        new Tuple<BuildingEffectEnum, float, float, float>(
                         BuildingEffectEnum.Experience,
                         Settings.Instance.TownTrainingFieldsXpAmountLevel1,
                         Settings.Instance.TownTrainingFieldsXpAmountLevel2,
@@ -103,9 +103,9 @@ namespace BannerlordTweaks.Patches
                 ____buildingSettlementGranary?.Initialize(new TextObject("{=PstO2f5I}Granary"),
                     new TextObject("{=aK23T43P}Keeps stockpiles of food so that the settlement has more food supply. Each level increases the local food supply."),
                     new int[3] { 500, 700, 1000 }, BuildingLocation.Settlement,
-                    new Tuple<BuildingEffectEnum, int, int, int>[]
+                    new Tuple<BuildingEffectEnum, float, float, float>[]
                     {
-                        new Tuple<BuildingEffectEnum,int,int,int>(
+                        new Tuple<BuildingEffectEnum,float,float,float>(
                             BuildingEffectEnum.Foodstock,
                             Settings.Instance.TownGranaryStorageAmountLevel1,
                             Settings.Instance.TownGranaryStorageAmountLevel2,
@@ -119,9 +119,9 @@ namespace BannerlordTweaks.Patches
                 ____buildingSettlementOrchard?.Initialize(new TextObject("{=AkbiPIij}Orchards"),
                     new TextObject("{=ZCLVOXgM}Fruit trees and vegetable gardens outside the walls provide food as long as there is no siege."),
                     new int[3] { 800, 1300, 1800 }, BuildingLocation.Settlement,
-                    new Tuple<BuildingEffectEnum, int, int, int>[]
+                    new Tuple<BuildingEffectEnum, float, float, float>[]
                     {
-                    new Tuple<BuildingEffectEnum,int,int,int>(
+                    new Tuple<BuildingEffectEnum,float,float,float>(
                         BuildingEffectEnum.FoodProduction,
                         Settings.Instance.TownOrchardsFoodProductionAmountLevel1,
                         Settings.Instance.TownOrchardsFoodProductionAmountLevel2,
@@ -135,9 +135,9 @@ namespace BannerlordTweaks.Patches
                 ____buildingSettlementMilitiaBarracks?.Initialize(new TextObject("{=l91xAgmU}Militia Barracks"),
                     new TextObject("{=RliyRJKl}Provides battle training for citizens and recruit them into militia. Increases daily militia recruitment."),
                     new int[3] { 600, 800, 1500 }, BuildingLocation.Settlement,
-                    new Tuple<BuildingEffectEnum, int, int, int>[]
+                    new Tuple<BuildingEffectEnum, float, float, float>[]
                     {
-                        new Tuple<BuildingEffectEnum, int, int, int>(
+                        new Tuple<BuildingEffectEnum, float, float, float>(
                             BuildingEffectEnum.Militia,
                             Settings.Instance.TownMilitiaBarracksAmountLevel1,
                             Settings.Instance.TownMilitiaBarracksAmountLevel2,
