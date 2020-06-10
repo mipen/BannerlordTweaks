@@ -15,22 +15,25 @@ namespace BannerlordTweaks
     public class SubModule : MBSubModuleBase
     {
         public static readonly string ModuleFolderName = "zzBannerlordTweaks";
+        private static Harmony harmony = null;
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
-            try
+            if (harmony == null)
             {
-                FileDatabase.Initialise(ModuleFolderName);
+                try
+                {
+                    FileDatabase.Initialise(ModuleFolderName);
+                    harmony = new Harmony("mod.bannerlord.mipen");
+                    harmony.PatchAll();
 
-                var harmony = new Harmony("mod.bannerlord.mipen");
-                harmony.PatchAll();
-
-                if (Settings.Instance.BattleSizeTweakEnabled)
-                    BannerlordConfig.BattleSize = Settings.Instance.BattleSize;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error Initialising Bannerlord Tweaks:\n\n{ex.ToStringFull()}");
+                    if (Settings.Instance.BattleSizeTweakEnabled)
+                        BannerlordConfig.BattleSize = Settings.Instance.BattleSize;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error Initialising Bannerlord Tweaks:\n\n{ex.ToStringFull()}");
+                }
             }
         }
 
