@@ -7,7 +7,7 @@ namespace BannerlordTweaks
 {
     public class TweakedCombatXpModel : DefaultCombatXpModel
     {
-        public override void GetXpFromHit(CharacterObject attackerTroop, CharacterObject attackedTroop, int damage, bool isFatal, MissionTypeEnum missionType, out int xpAmount)
+        public override void GetXpFromHit(CharacterObject attackerTroop, CharacterObject attackedTroop, PartyBase party, int damage, bool isFatal, MissionTypeEnum missionType, out int xpAmount)
         {
             if (attackerTroop == null || attackedTroop == null)
             {

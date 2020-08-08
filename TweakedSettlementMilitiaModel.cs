@@ -1,10 +1,9 @@
-﻿using TaleWorlds.CampaignSystem;
+﻿using ModLib;
+using System;
+using System.Windows.Forms;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Localization;
-using System.Linq;
-using System.Windows.Forms;
-using System;
-using ModLib;
 
 namespace BannerlordTweaks
 {

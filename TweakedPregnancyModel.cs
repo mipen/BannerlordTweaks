@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Helpers;
+using System;
 using System.Linq;
-using Helpers;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 

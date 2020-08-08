@@ -20,7 +20,9 @@ namespace BannerlordTweaks.Patches
             // This appears to be how the game works out if an item is locked
             // From TaleWorlds.CampaignSystem.ViewModelCollection.SPInventoryVM.InitializeInventory()
             IEnumerable<EquipmentElement> locks = Campaign.Current.GetCampaignBehavior<TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.IInventoryLockTracker>().GetLocks();
-            EquipmentElement[] locked_items = locks?.ToArray<EquipmentElement>();
+            // Replaced below line with Line 25 which seems to be updated in InitializeInventory()
+            // EquipmentElement[] locked_items = locks?.ToArray<EquipmentElement>();
+            EquipmentElement[] locked_items = (locks != null) ? locks.ToArray<EquipmentElement>() : null;
 
             bool isLocked(EquipmentElement test_item)
             {
