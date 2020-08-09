@@ -1,5 +1,5 @@
-﻿using System;
-using HarmonyLib;
+﻿using HarmonyLib;
+using System;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Localization;
 
