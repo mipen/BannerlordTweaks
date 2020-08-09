@@ -1,5 +1,5 @@
-﻿using ModLib.Definitions.Attributes;
-using ModLib.Definitions;
+﻿using ModLib.Definitions;
+using ModLib.Definitions.Attributes;
 using System.Xml.Serialization;
 
 namespace BannerlordTweaks
