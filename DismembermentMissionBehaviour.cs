@@ -15,8 +15,7 @@ namespace BannerlordTweaks
             if (attacker == null || victim == null) return;
             if (attacker == victim) return;
 
-            bool isPlayerAttacker;
-            if (IsValidAttacker(attacker, out isPlayerAttacker) && IsValidVictim(victim))
+            if (IsValidAttacker(attacker, out bool isPlayerAttacker) && IsValidVictim(victim))
             {
                 var attackDir = attacker.AttackDirection;
                 //Wanted to do arms as well, but currently not possible. Will have to wait until we can add custom meshes and skeletons
@@ -116,7 +115,7 @@ namespace BannerlordTweaks
                 return true;
             }
             //if (Settings.Instance.AICanDecapitate)
-                return true;
+            return true;
             //return false;
         }
 
