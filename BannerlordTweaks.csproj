@@ -42,7 +42,7 @@
       <HintPath>$(MODLIB_PATH)</HintPath>
     </Reference>
     <Reference Include="TaleWorlds.ObjectSystem">
-      <HintPath>$(MOUNT_AND_BLADE_DIR)bin\Win64_Shipping_Client\TaleWorlds.ObjectSystem.dll</HintPath>
+      <HintPath>$(MOUNT_AND_BLADE_DIR)\bin\Win64_Shipping_Client\TaleWorlds.ObjectSystem.dll</HintPath>
     </Reference>
     <Reference Include="SandBox">
       <HintPath>$(MOUNT_AND_BLADE_DIR)Modules\SandBox\bin\Win64_Shipping_Client\SandBox.dll</HintPath>
