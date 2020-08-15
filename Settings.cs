@@ -183,7 +183,7 @@ namespace BannerlordTweaks
 
         #region Hideout battle tweaks
         [XmlElement]
-        [SettingProperty("Enable Hideout Battle Troop Limit Tweak", "Changes the maximum troop limit to the set value inside hideout battles.")]
+        [SettingProperty("Enable Hideout Battle Behavior", "Changes game behavior inside hideout battles.")]
         [SettingPropertyGroup("Hideout Battle Tweaks", true)]
         public bool HideoutBattleTroopLimitTweakEnabled { get; set; } = true;
         [XmlElement]
@@ -632,7 +632,7 @@ namespace BannerlordTweaks
         [SettingProperty("Enable Daily Troop Experience Gain", "Gives troops in a party an amount of experience each day based upon the leader's Leadership skill. By default only applies to the player.")]
         [SettingPropertyGroup("Daily Troop Experience Tweak", true)]
         public bool DailyTroopExperienceTweakEnabled { get; set; } = false;
-        [SettingProperty("Percentage of Leadership", 0.01f, 2f, "The percentage of the leader's Leadership skill to be given as experience to their troops.")]
+        [SettingProperty("Percentage of Leadership", 0.01f, 5f, "The percentage of the leader's Leadership skill to be given as experience to their troops.")]
         [SettingPropertyGroup("Daily Troop Experience Tweak")]
         public float LeadershipPercentageForDailyExperienceGain { get; set; } = 0.5f;
         [SettingProperty("Apply to Player's Clan Members", "Applies the daily troop experience gain to members of the player's clan also.")]

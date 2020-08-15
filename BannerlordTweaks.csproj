@@ -97,7 +97,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Lib.Harmony" Version="2.0.0.9" />
+    <PackageReference Include="Lib.Harmony" Version="2.0.2" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
       <Version>2.9.6</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -119,6 +119,7 @@
     <Compile Include="Patches\DefaultPartySizeLimitModelPatch.cs" />
     <Compile Include="Patches\DefaultCaravanPartySizeLimitModelPatch.cs" />
     <Compile Include="Patches\DefaultTournamentModelPatch.cs" />
+    <Compile Include="Patches\DefaultBanditDensityModelPatch.cs" />
     <Compile Include="Patches\HeroPatches.cs" />
     <Compile Include="Patches\HideoutMissionControllerPatches.cs" />
     <Compile Include="Patches\MapInfoVMPatch.cs" />
