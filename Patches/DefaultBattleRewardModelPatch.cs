@@ -23,6 +23,12 @@ namespace BannerlordTweaks.Patches
                 }
 
                 var stat = new ExplainedNumber((renownValueOfBattle * contributionShare) * battleRenownMultiplier, explanation);
+                /* Debug to test complaint of Battle Renown multiplier not being calculated right.
+                if (party.LeaderHero == Hero.MainHero)
+                {
+                    MessageBox.Show($"DefaultBattleRewardModelRenownPatch. renownValueOfBattle is: "+ renownValueOfBattle+"\nbattleRenownMultiplier is:" + battleRenownMultiplier + "\nexplanation:"+ explanation+"\n");
+                }
+                */
 
                 //TODO:: Implement this the same as native in next game update
                 //if (party.IsMobile && party.MobileParty.HasPerk(DefaultPerks.Charm.ShowYourScars))
@@ -30,7 +36,7 @@ namespace BannerlordTweaks.Patches
                 //        PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, ref stat);
                 //}
                 if (party.IsMobile && party.Leader != null && party.Leader.HeroObject != null && party.LeaderHero.GetPerkValue(DefaultPerks.Charm.ShowYourScars))
-                    PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, ref stat);
+                    PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, true, ref stat);
 
                 __result = stat.ResultNumber;
                 patched = true;
