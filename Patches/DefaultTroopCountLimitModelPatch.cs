@@ -2,6 +2,8 @@
 using System;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 
+// Replaced by DefaultBanditDensityModelPatch in 1.4.3 due to change to allow you to select troops for hideout battles.
+
 namespace BannerlordTweaks.Patches
 {
     [HarmonyPatch(typeof(DefaultTroopCountLimitModel), "GetHideoutBattlePlayerMaxTroopCount")]
