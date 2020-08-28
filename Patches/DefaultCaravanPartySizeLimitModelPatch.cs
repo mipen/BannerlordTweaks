@@ -11,13 +11,13 @@ namespace BannerlordTweaks.Patches
         {
             if (party.IsCaravan && party.Party?.Owner != null && party.Party.Owner == Hero.MainHero)
             {
-                __result = Settings.Instance.PlayerCaravanPartySize;
+                __result = BannerlordTweaksSettings.Instance.PlayerCaravanPartySize;
             }
         }
 
         static bool Prepare()
         {
-            return Settings.Instance.PlayerCaravanPartySizeTweakEnabled;
+            return BannerlordTweaksSettings.Instance.PlayerCaravanPartySizeTweakEnabled;
         }
     }
 }

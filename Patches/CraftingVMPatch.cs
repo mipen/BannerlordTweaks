@@ -14,7 +14,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.IgnoreCraftingStamina;
+            return BannerlordTweaksSettings.Instance.IgnoreCraftingStamina;
         }
     }
 }

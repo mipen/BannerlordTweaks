@@ -28,7 +28,7 @@ namespace BannerlordTweaks.Patches
                         //If the player died during the boss fight
                         if (____hideoutMissionState == 5 || ____hideoutMissionState == 6)
                         {
-                            if (Settings.Instance.ContinueHideoutBattleOnPlayerLoseDuel)
+                            if (BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerLoseDuel)
                             {
                                 if (!Notified)
                                 {
@@ -53,7 +53,7 @@ namespace BannerlordTweaks.Patches
                         else
                         {
                             //The player died during the initial battle phase
-                            if (Settings.Instance.ContinueHideoutBattleOnPlayerDeath && !Dueled)
+                            if (BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerDeath && !Dueled)
                             {
                                 if (!Notified)
                                 {
@@ -79,7 +79,7 @@ namespace BannerlordTweaks.Patches
         static bool Prepare()
         {
             //Patch if it is set to not lose on player death
-            return Settings.Instance.ContinueHideoutBattleOnPlayerDeath || Settings.Instance.ContinueHideoutBattleOnPlayerLoseDuel;
+            return BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerDeath || BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerLoseDuel;
         }
 
         private static bool HasTroopsRemaining(HideoutMissionController controller, BattleSideEnum side)
@@ -188,7 +188,7 @@ namespace BannerlordTweaks.Patches
         static bool Prepare()
         {
             //Patch if it is set to not lose on player death
-            return Settings.Instance.ContinueHideoutBattleOnPlayerDeath || Settings.Instance.ContinueHideoutBattleOnPlayerLoseDuel;
+            return BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerDeath || BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerLoseDuel;
         }
     }
 }

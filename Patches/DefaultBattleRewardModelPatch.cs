@@ -18,9 +18,9 @@ namespace BannerlordTweaks.Patches
             {
                 var battleRenownMultiplier = 1f;
 
-                if (Settings.Instance.BattleRewardApplyToAI || party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
+                if (BannerlordTweaksSettings.Instance.BattleRewardApplyToAI || party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
                 {
-                    battleRenownMultiplier = Settings.Instance.BattleRenownMultiplier;
+                    battleRenownMultiplier = BannerlordTweaksSettings.Instance.BattleRenownMultiplier;
                 }
 
                 var stat = new ExplainedNumber((renownValueOfBattle * contributionShare) * battleRenownMultiplier, explanation);
@@ -56,7 +56,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.BattleRewardTweaksEnabled;
+            return BannerlordTweaksSettings.Instance.BattleRewardTweaksEnabled;
         }
     }
 
@@ -70,9 +70,9 @@ namespace BannerlordTweaks.Patches
             {
                 var battleInfluenceMultiplier = 1f;
 
-                if (Settings.Instance.BattleRewardApplyToAI || party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
+                if (BannerlordTweaksSettings.Instance.BattleRewardApplyToAI || party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
                 {
-                    battleInfluenceMultiplier = Settings.Instance.BattleInfluenceMultiplier;
+                    battleInfluenceMultiplier = BannerlordTweaksSettings.Instance.BattleInfluenceMultiplier;
                 }
 
                 var stat = new ExplainedNumber(party.MapFaction.IsKingdomFaction ? (influenceValueOfBattle * contributionShare * battleInfluenceMultiplier) : 0f, explanation, null);
@@ -90,7 +90,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.BattleRewardTweaksEnabled;
+            return BannerlordTweaksSettings.Instance.BattleRewardTweaksEnabled;
         }
     }
 }

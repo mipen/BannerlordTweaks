@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using ModLib;
 using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
@@ -61,7 +60,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.PreventSmeltingLockedItems;
+            return BannerlordTweaksSettings.Instance.PreventSmeltingLockedItems;
         }
     }
 
@@ -84,7 +83,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.AutoLearnSmeltedParts;
+            return BannerlordTweaksSettings.Instance.AutoLearnSmeltedParts;
         }
     }
 }

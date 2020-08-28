@@ -7,14 +7,8 @@
 
     <!-- Path to mod folder-->
     <MOD_FOLDER>$(MOUNT_AND_BLADE_DIR)Modules\zzBannerlordTweaks\</MOD_FOLDER>
-	
-	<!-- Path to ModLib assembly-->
-	<MODLIB_PATH>E:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\ModLib\bin\Win64_Shipping_Client\ModLib.dll</MODLIB_PATH>
-	
-	<!-- Path to ModLib definitions assembly-->
-	<MODLIB_DEFINITIONS_PATH>E:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\ModLib\bin\Win64_Shipping_Client\ModLib.Definitions.dll</MODLIB_DEFINITIONS_PATH>
-	
-	<!-- Output to Modules Folder --> 
+
+	<!-- Output to Modules Folder -->
 	<OUT_PATH>$(MOUNT_AND_BLADE_DIR)Modules\zzBannerlordTweaks\bin\Win64_Shipping_Client\</OUT_PATH>
   </PropertyGroup>
 </Project>

@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using ModLib;
 using System;
 using System.Collections;
 using System.Reflection;
@@ -29,9 +28,9 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            if (Settings.Instance.AutoLearnSmeltedParts)
+            if (BannerlordTweaksSettings.Instance.AutoLearnSmeltedParts)
                 GetMethodInfo();
-            return Settings.Instance.AutoLearnSmeltedParts;
+            return BannerlordTweaksSettings.Instance.AutoLearnSmeltedParts;
         }
 
         private static void GetMethodInfo()
@@ -45,13 +44,13 @@ namespace BannerlordTweaks.Patches
     {
         static bool Prefix(CraftingCampaignBehavior __instance, ref int __result)
         {
-            __result = Settings.Instance.MaxCraftingStamina;
+            __result = BannerlordTweaksSettings.Instance.MaxCraftingStamina;
             return false;
         }
 
         static bool Prepare()
         {
-            return Settings.Instance.CraftingStaminaTweakEnabled;
+            return BannerlordTweaksSettings.Instance.CraftingStaminaTweakEnabled;
         }
     }
 
@@ -71,18 +70,18 @@ namespace BannerlordTweaks.Patches
             {
                 int curCraftingStamina = __instance.GetHeroCraftingStamina(hero);
 
-                if (curCraftingStamina < Settings.Instance.MaxCraftingStamina)
+                if (curCraftingStamina < BannerlordTweaksSettings.Instance.MaxCraftingStamina)
                 {
-                    int staminaGainAmount = Settings.Instance.CraftingStaminaGainAmount;
+                    int staminaGainAmount = BannerlordTweaksSettings.Instance.CraftingStaminaGainAmount;
 
-                    if (Settings.Instance.CraftingStaminaGainOutsideSettlementMultiplier < 1 && hero.PartyBelongedTo?.CurrentSettlement == null)
-                        staminaGainAmount = (int)Math.Ceiling(staminaGainAmount * Settings.Instance.CraftingStaminaGainOutsideSettlementMultiplier);
+                    if (BannerlordTweaksSettings.Instance.CraftingStaminaGainOutsideSettlementMultiplier < 1 && hero.PartyBelongedTo?.CurrentSettlement == null)
+                        staminaGainAmount = (int)Math.Ceiling(staminaGainAmount * BannerlordTweaksSettings.Instance.CraftingStaminaGainOutsideSettlementMultiplier);
 
-                    int diff = Settings.Instance.MaxCraftingStamina - curCraftingStamina;
+                    int diff = BannerlordTweaksSettings.Instance.MaxCraftingStamina - curCraftingStamina;
                     if (diff < staminaGainAmount)
                         staminaGainAmount = diff;
 
-                    __instance.SetHeroCraftingStamina(hero, Math.Min(Settings.Instance.MaxCraftingStamina, curCraftingStamina + staminaGainAmount));
+                    __instance.SetHeroCraftingStamina(hero, Math.Min(BannerlordTweaksSettings.Instance.MaxCraftingStamina, curCraftingStamina + staminaGainAmount));
                 }
             }
             return false;
@@ -90,9 +89,9 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            if (Settings.Instance.CraftingStaminaTweakEnabled)
+            if (BannerlordTweaksSettings.Instance.CraftingStaminaTweakEnabled)
                 GetRecordsInfo();
-            return Settings.Instance.CraftingStaminaTweakEnabled;
+            return BannerlordTweaksSettings.Instance.CraftingStaminaTweakEnabled;
         }
 
         private static void GetRecordsInfo()
