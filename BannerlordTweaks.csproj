@@ -47,17 +47,12 @@
     <StartWorkingDirectory>$(MOUNT_AND_BLADE_DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>packages\Lib.Harmony.2.0.2\lib\net472\0Harmony.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Bannerlord.ButterLib, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>packages\Bannerlord.ButterLib.1.0.3\lib\net472\Bannerlord.ButterLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="MCMv4, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>packages\Bannerlord.MCM.4.0.2\lib\net472\MCMv4.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="MCMv4">
+      <HintPath>packages\Bannerlord.MCM.4.0.3\lib\net472\MCMv4.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
       <HintPath>packages\Microsoft.Bcl.HashCode.1.1.0\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
@@ -370,10 +365,18 @@
     <Compile Include="TweakedDifficultyModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Contributions.txt" />
-    <Content Include="SubModule.xml" />
-    <Content Include="README.md" />
-    <Content Include="LICENSE" />
+    <Content Include="Contributions.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SubModule.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LICENSE">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
