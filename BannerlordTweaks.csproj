@@ -36,10 +36,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ModLib.Definitions">
-      <HintPath>$(MODLIB_DEFINITIONS_PATH)</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\Save\ModLib.Definitions.dll</HintPath>
     </Reference>
     <Reference Include="ModLib">
-      <HintPath>$(MODLIB_PATH)</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\Save\ModLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ModLib.Patches">
+      <HintPath>E:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\Save\ModLib.Patches.dll</HintPath>
     </Reference>
     <Reference Include="TaleWorlds.ObjectSystem">
       <HintPath>$(MOUNT_AND_BLADE_DIR)\bin\Win64_Shipping_Client\TaleWorlds.ObjectSystem.dll</HintPath>

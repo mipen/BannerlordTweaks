@@ -14,12 +14,12 @@ namespace BannerlordTweaks
                 return base.GetConstructionProgressPerHour(type, siegeEvent, side, explanation);
         }
 
-        public override float GetColleteralDamageCasualties(SiegeEngineType siegeEngineType)
+        public override float GetColleteralDamageCasualties(SiegeEngineType siegeEngineType, MobileParty party)
         {
             if (Settings.Instance.SiegeCasualtiesTweakEnabled)
                 return Settings.Instance.SiegeCollateralDamageCasualties;
             else
-                return base.GetColleteralDamageCasualties(siegeEngineType);
+                return base.GetColleteralDamageCasualties(siegeEngineType, party);
         }
 
         public override float GetDestructionCasualties(SiegeEngineType destroyedSiegeEngine)

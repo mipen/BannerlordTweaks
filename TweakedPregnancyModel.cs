@@ -34,7 +34,7 @@ namespace BannerlordTweaks
 
         public override float GetDailyChanceOfPregnancyForHero(Hero hero)
         {
-            if (hero == null) throw new ArgumentNullException(nameof(hero));
+            if (hero == null || hero != Hero.MainHero ) throw new ArgumentNullException(nameof(hero));
 
             if (!Settings.Instance.DailyChancePregnancyTweakEnabled)
                 return base.GetDailyChanceOfPregnancyForHero(hero);
@@ -54,7 +54,7 @@ namespace BannerlordTweaks
             if (hero.Spouse != null && hero.IsFertile && IsHeroAgeSuitableForPregnancy(hero))
             {
                 ExplainedNumber bonuses = new ExplainedNumber(1f, null);
-                PerkHelper.AddPerkBonusForCharacter(DefaultPerks.Medicine.PerfectHealth, hero.Clan.Leader.CharacterObject, ref bonuses);
+                PerkHelper.AddPerkBonusForCharacter(DefaultPerks.Medicine.PerfectHealth, hero.Clan.Leader.CharacterObject, false, ref bonuses);
                 num = (float)((6.5 - ((double)hero.Age - Settings.Instance.MinPregnancyAge) * 0.23) * 0.02) * bonuses.ResultNumber;
             }
 
