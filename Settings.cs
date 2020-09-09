@@ -418,11 +418,13 @@ namespace BannerlordTweaks {
         [SettingPropertyFloatingInteger("Probability to deliver twins", -1.0f, 1.0f, HintText = "Native value is 0.03. Determines the chance of giving birth to twins."), SettingPropertyGroup("Pregnancy Tweaks/Twins Probability Tweak")]
         public float TwinsProbability { get; set; } = 0.03f;
 
+        /* Looks like CharacterFertilityProbability was removed in 1.5.2
         [SettingPropertyBool("Enable Character Fertility Probability Tweak", Order = 1, RequireRestart = false, HintText = "Allows for adjusting for the probability to get pregnant, this will apply to everyone.", IsToggle = true), SettingPropertyGroup("Pregnancy Tweaks/Fertility Probability Tweak")]
         public bool CharacterFertilityProbabilityTweakEnabled { get; set; } = false;
-
+                
         [SettingPropertyFloatingInteger("Character Fertility Probability", 0f, 1.0f, HintText = "Native value is 0.95. Determines the chance of getting pregnant"), SettingPropertyGroup("Pregnancy Tweaks/Fertility Probability Tweak")]
         public float CharacterFertilityProbability { get; set; } = 0.95f;
+        */
 
         [SettingPropertyBool("Enable Pregnancy Chance Tweaks", Order = 1, RequireRestart = false, HintText = "Enabling this will completely override the daily pregnancy check. All settings below will be applied!", IsToggle = true), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks")]
         public bool DailyChancePregnancyTweakEnabled { get; set; } = false;
