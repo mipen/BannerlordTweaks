@@ -3,7 +3,7 @@
   <PropertyGroup Label="UserMacros">
 
     <!-- Path to Mount and Blade folder -->
-    <MOUNT_AND_BLADE_DIR>E:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\</MOUNT_AND_BLADE_DIR>
+    <MOUNT_AND_BLADE_DIR>D:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\</MOUNT_AND_BLADE_DIR>
 
     <!-- Path to mod folder-->
     <MOD_FOLDER>$(MOUNT_AND_BLADE_DIR)Modules\zzBannerlordTweaks\</MOD_FOLDER>
