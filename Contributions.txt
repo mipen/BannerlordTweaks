@@ -8,3 +8,6 @@ ajvr:
 
 OctaviusMods:
 -Item Comparison Colours Fix
+
+Jiros:
+-Maintenance as of v1.4.3+
