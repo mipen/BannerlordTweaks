@@ -3,12 +3,12 @@
   <PropertyGroup Label="UserMacros">
 
     <!-- Path to Mount and Blade folder -->
-    <MOUNT_AND_BLADE_DIR>E:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\</MOUNT_AND_BLADE_DIR>
+    <MNB2DIR>D:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord</MNB2DIR>
 
     <!-- Path to mod folder-->
-    <MOD_FOLDER>$(MOUNT_AND_BLADE_DIR)Modules\zzBannerlordTweaks\</MOD_FOLDER>
-
-	<!-- Output to Modules Folder -->
-	<OUT_PATH>$(MOUNT_AND_BLADE_DIR)Modules\zzBannerlordTweaks\bin\Win64_Shipping_Client\</OUT_PATH>
+    <MOD_FOLDER>$(MNB2DIR)\Modules\zzBannerlordTweaks\</MOD_FOLDER>
+	
+	<!-- Output to Modules Folder --> 
+	<OUT_PATH>$(MNB2DIR)\Modules\zzBannerlordTweaks\bin\Win64_Shipping_Client\</OUT_PATH>
   </PropertyGroup>
 </Project>

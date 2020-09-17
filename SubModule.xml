@@ -2,7 +2,7 @@
 <Module>
 	<Name value="Bannerlord Tweaks"/>
 	<Id value="zzBannerlordTweaks"/>
-	<Version value="v1.5.1.0"/>
+	<Version value="v1.5.0.3"/>
 	<DefaultModule value="false"/>
 	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="false"/>
@@ -14,9 +14,6 @@
 		<DependedModule Id="CustomBattle"/>
 		<DependedModule Id="StoryMode"/>
 		<DependedModule Id="Bannerlord.Harmony" />
-		<DependedModule Id="Bannerlord.UIExtenderEx" />
-		<DependedModule Id="Bannerlord.ButterLib" />
-		<DependedModule Id="Bannerlord.MBOptionScreen" />
 		<DependedModule Id="Bannerlord.MBOptionScreen.MCMv3" />
 	</DependedModules>
 	<SubModules>
