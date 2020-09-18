@@ -179,10 +179,10 @@ namespace BannerlordTweaks {
         [SettingPropertyBool("Enable Max Workshop Limit Tweak", Order = 0, RequireRestart = false, HintText = "Sets the base maximum number of workshops you can have and the limit increase gained per clan tier."), SettingPropertyGroup("Workshop Tweaks/Workshop Limit Tweak", IsMainToggle = true)]
         public bool MaxWorkshopCountTweakEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Base Workshop Limit", 0, 10, HintText = "Native value is 1. Sets the base maximum number of workshops you can have."), SettingPropertyGroup("Workshop Tweaks/Workshop Limit Tweak")]
+        [SettingPropertyInteger("Base Workshop Limit", 0, 20, HintText = "Native value is 1. Sets the base maximum number of workshops you can have."), SettingPropertyGroup("Workshop Tweaks/Workshop Limit Tweak")]
         public int BaseWorkshopCount { get; set; } = 2;
 
-        [SettingPropertyInteger("Bonus Workshops Per Clan Tier", 0, 3, HintText = "Sets the base maximum number of workshops you can have and the limit increase gained per clan tier."), SettingPropertyGroup("Workshop Tweaks/Workshop Limit Tweak")]
+        [SettingPropertyInteger("Bonus Workshops Per Clan Tier", 0, 5, HintText = "Sets the base maximum number of workshops you can have and the limit increase gained per clan tier."), SettingPropertyGroup("Workshop Tweaks/Workshop Limit Tweak")]
         public int BonusWorkshopsPerClanTier { get; set; } = 1;
 
         [SettingPropertyBool("Enable Workshop Cost Tweak", Order = 1, RequireRestart = false, HintText = "Sets the base value used to calculate the cost of workshops. Reduce to reduce cost of workshops."), SettingPropertyGroup("Workshop Tweaks/Workshop Cost Tweak", IsMainToggle = true)]
@@ -198,10 +198,10 @@ namespace BannerlordTweaks {
         [SettingPropertyBool("Enable Companion Limit Tweak", Order = 1, RequireRestart = false, HintText = "Sets the base companion limit and the bonus gained per clan tier."), SettingPropertyGroup("Companion Limit Tweak", IsMainToggle = true)]
         public bool CompanionLimitTweakEnabled { get; set; } = false;
 
-        [SettingPropertyInteger("Base Companion Limit", 1, 10, HintText = "Native value is 3. Sets the base companion limit."), SettingPropertyGroup("Companion Limit Tweak")]
+        [SettingPropertyInteger("Base Companion Limit", 1, 20, HintText = "Native value is 3. Sets the base companion limit."), SettingPropertyGroup("Companion Limit Tweak")]
         public int CompanionBaseLimit { get; set; } = 3;
 
-        [SettingPropertyInteger("Companion Limit Bonus Per Clan Tier", 0, 5, HintText = "Native value is 1. Sets the bonus to companion limit per clan tier. This value is multiplied by your clan tier."), SettingPropertyGroup("Companion Limit Tweak")]
+        [SettingPropertyInteger("Companion Limit Bonus Per Clan Tier", 0, 10, HintText = "Native value is 1. Sets the bonus to companion limit per clan tier. This value is multiplied by your clan tier."), SettingPropertyGroup("Companion Limit Tweak")]
         public int CompanionLimitBonusPerClanTier { get; set; } = 3;
 
         #endregion
@@ -562,7 +562,7 @@ namespace BannerlordTweaks {
         [SettingPropertyBool("Enable Player Map Movement Speed Tweak", Order = 1, RequireRestart = false, HintText = "Allows you to change the bonus map movement speed multiplier the player receives."), SettingPropertyGroup("Difficulty Tweaks/Player Map Movement Speed Bonus Tweak", IsMainToggle = true)]
         public bool PlayerMapMovementSpeedBonusTweakEnabled { get; set; } = false;
 
-        [SettingPropertyFloatingInteger("Player Map Movement Tweak Multiplier", 0.0f, 1.0f, HintText = "Native values: Very Easy: 0.1, Easy: 0.05, Realistic: 0. This value is used to calculate player's map movement speed."), SettingPropertyGroup("Difficulty Tweaks/Player Map Movement Speed Bonus Tweak")]
+        [SettingPropertyFloatingInteger("Player Map Movement Tweak Multiplier", 0.0f, 2.0f, HintText = "Native values: Very Easy: 0.1, Easy: 0.05, Realistic: 0. This value is used to calculate player's map movement speed."), SettingPropertyGroup("Difficulty Tweaks/Player Map Movement Speed Bonus Tweak")]
         public float PlayerMapMovementSpeedBonusMultiplier { get; set; } = 0.0f;
 
         #endregion
