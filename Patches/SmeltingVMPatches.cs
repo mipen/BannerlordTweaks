@@ -43,7 +43,10 @@ namespace BannerlordTweaks.Patches
             foreach (SmeltingItemVM sItem in __instance.SmeltableItemList)
             {
                 if (!____playerItemRoster.Any(rItem =>
-                    sItem.Item == rItem.EquipmentElement.Item && isLocked(rItem.EquipmentElement)
+                    // SmeltinItemVM ItemObject (item) was removed in 1.5.3 beta
+                    // sItem.Item == rItem.EquipmentElement.Item && isLocked(rItem.EquipmentElement)
+                    // sItem.EquipmentElement.Equals(rItem.EquipmentElement) && isLocked(rItem.EquipmentElement)
+                    sItem.EquipmentElement.Item == rItem.EquipmentElement.Item && isLocked(rItem.EquipmentElement)
                 ))
                 {
                     filteredList.Add(sItem);
@@ -72,7 +75,9 @@ namespace BannerlordTweaks.Patches
         {
             foreach (SmeltingItemVM item in __instance.SmeltableItemList)
             {
-                int count = SmeltingHelper.GetNewPartsFromSmelting(item.Item).Count();
+                // SmeltinItemVM ItemObject (item) was removed in 1.5.3 beta
+                // int count = SmeltingHelper.GetNewPartsFromSmelting(item.Item).Count();
+                int count = item.NumOfItems;
                 if (count > 0)
                 {
                     string parts = count == 1 ? "part" : "parts";
