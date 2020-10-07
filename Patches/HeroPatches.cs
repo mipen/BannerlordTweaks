@@ -38,14 +38,14 @@ namespace BannerlordTweaks.Patches
                         {
                             float newXpAmount = (int)Math.Ceiling(xpAmount * BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplier);
                             hd.AddSkillXp(skill, newXpAmount, true, true);
-                            DebugHelpers.Message("HeroSkillXPPatch: Player: " + hd.Hero.Name+ "\nSkill is: " + skill.Name + "\nXPAmount = " + xpAmount + "\nNewXPAmount = " + newXpAmount);
+                            DebugHelpers.DebugMessage("HeroSkillXPPatch: Player: " + hd.Hero.Name+ "\nSkill is: " + skill.Name + "\nXPAmount = " + xpAmount + "\nNewXPAmount = " + newXpAmount);
                         }
                         if (BannerlordTweaksSettings.Instance.CompanionSkillExperienceMultiplierEnabled && !hd.Hero.IsHumanPlayerCharacter && 
                             ( ( hd.Hero.IsPlayerCompanion == true && hd.Hero.Clan == Hero.MainHero.Clan ) || hd.Hero.Spouse == Hero.MainHero || hd.Hero.Father == Hero.MainHero.Father ) )
                         {
                             float newXpAmount = (int)Math.Ceiling(xpAmount * BannerlordTweaksSettings.Instance.CompanionSkillExperienceMultiplier);
                             hd.AddSkillXp(skill, newXpAmount, true, true);
-                            DebugHelpers.Message("HeroSkillXPPatch: Companion: " + hd.Hero.Name + "\nSkill is: " + skill.Name + "\nXPAmount = " + xpAmount + "\nNewXPAmount = " + newXpAmount);
+                            DebugHelpers.DebugMessage("HeroSkillXPPatch: Companion: " + hd.Hero.Name + "\nSkill is: " + skill.Name + "\nXPAmount = " + xpAmount + "\nNewXPAmount = " + newXpAmount);
                         }
                     }
                     else
