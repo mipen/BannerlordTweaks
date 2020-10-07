@@ -130,15 +130,22 @@ namespace BannerlordTweaks {
 
         #region Hero skill multiplier patch
 
-        [SettingPropertyBool("Enable Hero Skill Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        [SettingPropertyBool("Enable Hero Skill Experience Multiplier", Order = 0, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
         public bool HeroSkillExperienceMultiplierEnabled { get; set; } = false;
+
+        [SettingPropertyBool("Enable Companion Skill Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        public bool CompanionSkillExperienceMultiplierEnabled { get; set; } = false;
+
         //
         // [SettingProperty("Enable Flat Experience Multiplier Override", "If enabled, overrides the mod's experience curve multiplier calculation and replaces it with the override multiplier. This means that experience will be multiplied by the same value, independant of the skill level.")]
         // [SettingPropertyGroup("Hero Skill Experience Tweak")]
         //public bool HeroSkillExperienceOverrideMultiplierEnabled { get; set; } = false;
 
-        [SettingPropertyFloatingInteger("Hero Skill Experience Multiplier", 1f, 5f, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        [SettingPropertyFloatingInteger("Hero Skill Experience Multiplier", 1f, 5f, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
         public float HeroSkillExperienceMultiplier { get; set; } = 1f;
+
+        [SettingPropertyFloatingInteger("Companion Skill Experience Multiplier", 1f, 20f, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the Companion only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        public float CompanionSkillExperienceMultiplier { get; set; } = 1f;
 
         #endregion
 
