@@ -9,6 +9,14 @@ ajvr:
 OctaviusMods:
 -Item Comparison Colours Fix
 
+Jiros
+- Maintenance as of 1.4.3+
+- Wage adjustments
+- Add companion XP bonus options to hero XP bonus in HeroPatches/Skill Exp Bonus
+
 AtomicTim:
 - Conversion to ButterLib & MCMv4
 - Helpful cleanup and streamlining of dependencies.
+
+Hsifles
+- Idea and testing for adding companion XP bonus.
