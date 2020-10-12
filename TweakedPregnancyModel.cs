@@ -41,15 +41,16 @@ namespace BannerlordTweaks
             if (!BannerlordTweaksSettings.Instance.DailyChancePregnancyTweakEnabled)
                 return base.GetDailyChanceOfPregnancyForHero(hero);
 
-            float num = 0.0f;
-
+            float num = 0f;
             if (!BannerlordTweaksSettings.Instance.PlayerCharacterFertileEnabled && HeroIsMainOrSpouseOfMain(hero))
             {
+                DebugHelpers.Message("Hero: " + hero.Name + "PlayerCharacterFertileEnabled Check - num = " + num);
                 return num;
             }
 
             if (BannerlordTweaksSettings.Instance.MaxChildrenTweakEnabled && hero.Children != null && hero.Children.Any() && hero.Children.Count >= BannerlordTweaksSettings.Instance.MaxChildren)
             {
+                DebugHelpers.Message("Hero: " + hero.Name + "MaxChildrenTweakEnabled Check - num = " + num);
                 return num;
             }
 
@@ -57,13 +58,19 @@ namespace BannerlordTweaks
             {
                 ExplainedNumber bonuses = new ExplainedNumber(1f, null);
                 PerkHelper.AddPerkBonusForCharacter(DefaultPerks.Medicine.PerfectHealth, hero.Clan.Leader.CharacterObject, true, ref bonuses);
-                num = (float)((6.5 - ((double)hero.Age - BannerlordTweaksSettings.Instance.MinPregnancyAge) * 0.23) * 0.02) * bonuses.ResultNumber;
-            }
+                //num = (float)((6.5 - ((double)hero.Age - BannerlordTweaksSettings.Instance.MinPregnancyAge) * 0.23) * 0.02) * bonuses.ResultNumber;
+                //num = (float)((6.7 - ((double)hero.Age - BannerlordTweaksSettings.Instance.MinPregnancyAge) * 0.2) * 0.02 / ((hero.Children.Count + (1 ^ 2)) * 0.3f)) * bonuses.ResultNumber;
+                num = (float)((6.9 - ((double)hero.Age - BannerlordTweaksSettings.Instance.MinPregnancyAge) * 0.2) * 0.02) / ((hero.Children.Count + 1) * 0.2f) * bonuses.ResultNumber;
+                //num = (float)((6.9 - ((double)hero.Age - BannerlordTweaksSettings.Instance.MinPregnancyAge) * 0.2) * 0.02);
+                //double num2 = hero.Children.Count + 1;
+                //num2 *= 0.2;
+                //num /= (float)num2;
+                //num = (1.2f - (hero.Age - 18f) * 0.04f) / (float)(hero.Children.Count + 1 ^ 2) * 0.2f * bonuses.ResultNumber;
+             }
 
-            if (hero.Children == null || !hero.Children.Any())
-                num *= 3f;
-            else if (hero.Children.Count > 1)
-                num *= 2f;
+            if (BannerlordTweaksSettings.Instance.ClanFertilityBonusEnabled && hero.Clan == Hero.MainHero.Clan)
+                //num *= 1.25f;
+                num *= BannerlordTweaksSettings.Instance.ClanFertilityBonus;
 
             return num;
         }
@@ -86,5 +93,7 @@ namespace BannerlordTweaks
 
             return false;
         }
+
+
     }
 }
