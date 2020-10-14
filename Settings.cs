@@ -130,15 +130,22 @@ namespace BannerlordTweaks {
 
         #region Hero skill multiplier patch
 
-        [SettingPropertyBool("Enable Hero Skill Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        [SettingPropertyBool("Enable Hero Skill Experience Multiplier", Order = 0, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
         public bool HeroSkillExperienceMultiplierEnabled { get; set; } = false;
+
+        [SettingPropertyBool("Enable Companion Skill Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        public bool CompanionSkillExperienceMultiplierEnabled { get; set; } = false;
+
         //
         // [SettingProperty("Enable Flat Experience Multiplier Override", "If enabled, overrides the mod's experience curve multiplier calculation and replaces it with the override multiplier. This means that experience will be multiplied by the same value, independant of the skill level.")]
         // [SettingPropertyGroup("Hero Skill Experience Tweak")]
         //public bool HeroSkillExperienceOverrideMultiplierEnabled { get; set; } = false;
 
-        [SettingPropertyFloatingInteger("Hero Skill Experience Multiplier", 1f, 5f, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        [SettingPropertyFloatingInteger("Hero Skill Experience Multiplier", 1f, 5f, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
         public float HeroSkillExperienceMultiplier { get; set; } = 1f;
+
+        [SettingPropertyFloatingInteger("Companion Skill Experience Multiplier", 1f, 20f, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the Companion only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        public float CompanionSkillExperienceMultiplier { get; set; } = 1f;
 
         #endregion
 
@@ -437,13 +444,19 @@ namespace BannerlordTweaks {
         [SettingPropertyInteger("Max Pregnancy Age", 0, 999, HintText = "Native: 45. Maximum age that someone can get pregnant.", RequireRestart = false), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks")]
         public int MaxPregnancyAge { get; set; } = 45;
 
+        [SettingPropertyBool("Enable Clan Fertility Bonus", Order = 1, RequireRestart = false, HintText = "Enable a bonus to your clan members to become pregnant."), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Clan Fertility Bonus", IsMainToggle = true)]
+        public bool ClanFertilityBonusEnabled { get; set; } = true;
+
+        [SettingPropertyFloatingInteger("Clan Fertility Bonus", 1f, 5f, RequireRestart = false, HintText = "Adds a % bonus to your clan members to become pregnant. 1 = No Bonus, 2 = 2x chance, 5 = 5x chance. Note: May not do much after ~6-8 kids due to the base pregnancy calculations."), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Clan Fertility Bonus")]
+        public float ClanFertilityBonus { get; set; } = 1.1f;
+
         [SettingPropertyBool("Enable Max Children Tweak", Order = 1, RequireRestart = false, HintText = "Native: false. Sets the maximum number of children that someone can have."), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Max Children Tweak", IsMainToggle = true)]
         public bool MaxChildrenTweakEnabled { get; set; } = false;
 
         [SettingPropertyInteger("Max Children", 0, 999, HintText = "Default: 5. Maximum number of children that someone can have.", RequireRestart = false), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Max Children Tweak")]
         public int MaxChildren { get; set; } = 5;
 
-        #endregion
+                #endregion
 
         #region Age tweak
 

@@ -11,18 +11,21 @@ namespace BannerlordTweaks.Patches
     {
         private static FieldInfo hdFieldInfo = null;
 
-        //private static float GetMultiplier()
-        //{
-        // if (BannerlordTweaksSettings.Instance.HeroSkillExperienceOverrideMultiplierEnabled)
-        //return BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplier;
-        //else
-        //    return Math.Max(1, 0.0315769 * Math.Pow(skillLevel, 1.020743));
-        //}
+        /*
+        private static float GetMultiplier()
+        {
+            if (BannerlordTweaksSettings.Instance.HeroSkillExperienceOverrideMultiplierEnabled)
+                return BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplier;
+            else
+                return Math.Max(1, 0.0315769 * Math.Pow(skillLevel, 1.020743));
+        }
+        */
 
         static bool Prefix(Hero __instance, SkillObject skill, float xpAmount)
         {
             try
             {
+                
                 if (hdFieldInfo == null) GetFieldInfo();
 
                 HeroDeveloper hd = (HeroDeveloper)hdFieldInfo.GetValue(__instance);
@@ -31,8 +34,19 @@ namespace BannerlordTweaks.Patches
                 {
                     if (xpAmount > 0)
                     {
-                        float newXpAmount = (int)Math.Ceiling(xpAmount * BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplier);
-                        hd.AddSkillXp(skill, newXpAmount, true, true);
+                        if (BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplierEnabled && hd.Hero.IsHumanPlayerCharacter)
+                        {
+                            float newXpAmount = (int)Math.Ceiling(xpAmount * BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplier);
+                            hd.AddSkillXp(skill, newXpAmount, true, true);
+                            //DebugHelpers.DebugMessage("HeroSkillXPPatch: Player: " + hd.Hero.Name+ "\nSkill is: " + skill.Name + "\nXPAmount = " + xpAmount + "\nNewXPAmount = " + newXpAmount);
+                        }
+                        if (BannerlordTweaksSettings.Instance.CompanionSkillExperienceMultiplierEnabled && !hd.Hero.IsHumanPlayerCharacter && 
+                            ( ( hd.Hero.IsPlayerCompanion == true && hd.Hero.Clan == Hero.MainHero.Clan ) || hd.Hero.Spouse == Hero.MainHero || hd.Hero.Father == Hero.MainHero.Father ) )
+                        {
+                            float newXpAmount = (int)Math.Ceiling(xpAmount * BannerlordTweaksSettings.Instance.CompanionSkillExperienceMultiplier);
+                            hd.AddSkillXp(skill, newXpAmount, true, true);
+                           //DebugHelpers.DebugMessage("HeroSkillXPPatch: Companion: " + hd.Hero.Name + "\nSkill is: " + skill.Name + "\nXPAmount = " + xpAmount + "\nNewXPAmount = " + newXpAmount);
+                        }
                     }
                     else
                         hd.AddSkillXp(skill, xpAmount, true, true);
