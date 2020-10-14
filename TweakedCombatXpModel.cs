@@ -22,25 +22,25 @@ namespace BannerlordTweaks
             {
                 if (missionType == MissionTypeEnum.Tournament)
                 {
-                    if (Settings.Instance.TournamentHeroExperienceMultiplierEnabled)
-                        xpAmount = (int)MathF.Round(Settings.Instance.TournamentHeroExperienceMultiplier * (float)xpAmount);
+                    if (BannerlordTweaksSettings.Instance.TournamentHeroExperienceMultiplierEnabled)
+                        xpAmount = (int)MathF.Round(BannerlordTweaksSettings.Instance.TournamentHeroExperienceMultiplier * (float)xpAmount);
                     else
                         xpAmount = MathF.Round((float)xpAmount * 0.25f);
                 }
                 else if (missionType == MissionTypeEnum.PracticeFight)
                 {
-                    if (Settings.Instance.ArenaHeroExperienceMultiplierEnabled)
-                        xpAmount = (int)MathF.Round(Settings.Instance.ArenaHeroExperienceMultiplier * (float)xpAmount);
+                    if (BannerlordTweaksSettings.Instance.ArenaHeroExperienceMultiplierEnabled)
+                        xpAmount = (int)MathF.Round(BannerlordTweaksSettings.Instance.ArenaHeroExperienceMultiplier * (float)xpAmount);
                     else
                         xpAmount = MathF.Round((float)xpAmount * 0.0625f);
                 }
             }
             else if ((missionType == MissionTypeEnum.Battle || missionType == MissionTypeEnum.SimulationBattle))
             {
-                if (Settings.Instance.TroopBattleSimulationExperienceMultiplierEnabled && missionType == MissionTypeEnum.SimulationBattle)
-                    xpAmount = (int)MathF.Round(xpAmount * Settings.Instance.TroopBattleSimulationExperienceMultiplier);
-                else if (Settings.Instance.TroopBattleExperienceMultiplierEnabled && missionType == MissionTypeEnum.Battle)
-                    xpAmount = (int)MathF.Round(xpAmount * Settings.Instance.TroopBattleExperienceMultiplier);
+                if (BannerlordTweaksSettings.Instance.TroopBattleSimulationExperienceMultiplierEnabled && missionType == MissionTypeEnum.SimulationBattle)
+                    xpAmount = (int)MathF.Round(xpAmount * BannerlordTweaksSettings.Instance.TroopBattleSimulationExperienceMultiplier);
+                else if (BannerlordTweaksSettings.Instance.TroopBattleExperienceMultiplierEnabled && missionType == MissionTypeEnum.Battle)
+                    xpAmount = (int)MathF.Round(xpAmount * BannerlordTweaksSettings.Instance.TroopBattleExperienceMultiplier);
             }
         }
     }

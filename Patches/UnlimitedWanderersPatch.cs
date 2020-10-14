@@ -3,6 +3,8 @@ using System.Linq;
 using HarmonyLib;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 
+
+// In progress: To incorporate into BT
 /* Credit to Bleinz for his Unlimited Wanderers Mod */
 namespace BannerlordTweaks.Patches
 {

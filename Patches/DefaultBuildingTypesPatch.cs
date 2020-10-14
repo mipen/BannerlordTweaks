@@ -14,7 +14,7 @@ namespace BannerlordTweaks.Patches
         {
             //Castle
             #region Training Fields
-            if (Settings.Instance.CastleTrainingFieldsBonusEnabled)
+            if (BannerlordTweaksSettings.Instance.CastleTrainingFieldsBonusEnabled)
             {
                 ____buildingCastleTrainingFields?.Initialize(new TextObject("{=BkTiRPT4}Training Fields"),
                     new TextObject("{=otWlERkc}A field for military drills that increase the daily experience gain of all garrisoned units."),
@@ -23,15 +23,15 @@ namespace BannerlordTweaks.Patches
                     {
                         new Tuple<BuildingEffectEnum, float, float, float>(
                             BuildingEffectEnum.Experience,
-                            Settings.Instance.CastleTrainingFieldsXpAmountLevel1,
-                            Settings.Instance.CastleTrainingFieldsXpAmountLevel2,
-                            Settings.Instance.CastleTrainingFieldsXpAmountLevel3
+                            BannerlordTweaksSettings.Instance.CastleTrainingFieldsXpAmountLevel1,
+                            BannerlordTweaksSettings.Instance.CastleTrainingFieldsXpAmountLevel2,
+                            BannerlordTweaksSettings.Instance.CastleTrainingFieldsXpAmountLevel3
                         )
                     });
             }
             #endregion
             #region Granary
-            if (Settings.Instance.CastleGranaryBonusEnabled)
+            if (BannerlordTweaksSettings.Instance.CastleGranaryBonusEnabled)
             {
                 ____buildingCastleGranary?.Initialize(new TextObject("{=PstO2f5I}Granary"),
                     new TextObject("{=iazij7fO}Keeps stockpiles of food so that the settlement has more food supply. Increases the local food supply."),
@@ -40,15 +40,15 @@ namespace BannerlordTweaks.Patches
                     {
                         new Tuple<BuildingEffectEnum, float, float, float>(
                             BuildingEffectEnum.Foodstock,
-                            Settings.Instance.CastleGranaryStorageAmountLevel1,
-                            Settings.Instance.CastleGranaryStorageAmountLevel2,
-                            Settings.Instance.CastleGranaryStorageAmountLevel3
+                            BannerlordTweaksSettings.Instance.CastleGranaryStorageAmountLevel1,
+                            BannerlordTweaksSettings.Instance.CastleGranaryStorageAmountLevel2,
+                            BannerlordTweaksSettings.Instance.CastleGranaryStorageAmountLevel3
                         )
                     });
             }
             #endregion
             #region Gardens
-            if (Settings.Instance.CastleGardensBonusEnabled)
+            if (BannerlordTweaksSettings.Instance.CastleGardensBonusEnabled)
             {
                 ____buildingCastleGardens?.Initialize(new TextObject("{=yT6XN4Mr}Gardens"),
                     new TextObject("{=ZCLVOXgM}Castles contained fruit trees, bakeries, chicken coups to be used in emergencies. While it is not enough for a full contingency of troops any small amount of fresh foods are a big help while in the sieges."),
@@ -56,15 +56,15 @@ namespace BannerlordTweaks.Patches
                     new Tuple<BuildingEffectEnum, float, float, float>[] {
                         new Tuple<BuildingEffectEnum, float, float, float>(
                             BuildingEffectEnum.FoodProduction,
-                            Settings.Instance.CastleGardensFoodProductionAmountLevel1,
-                            Settings.Instance.CastleGardensFoodProductionAmountLevel2,
-                            Settings.Instance.CastleGardensFoodProductionAmountLevel3
+                            BannerlordTweaksSettings.Instance.CastleGardensFoodProductionAmountLevel1,
+                            BannerlordTweaksSettings.Instance.CastleGardensFoodProductionAmountLevel2,
+                            BannerlordTweaksSettings.Instance.CastleGardensFoodProductionAmountLevel3
                         )
                     });
             }
             #endregion
             #region Militia Barracks
-            if (Settings.Instance.CastleMilitiaBarracksBonusEnabled)
+            if (BannerlordTweaksSettings.Instance.CastleMilitiaBarracksBonusEnabled)
             {
                 ____buildingCastleMilitiaBarracks?.Initialize(new TextObject("{=l91xAgmU}Militia Barracks"),
                     new TextObject("{=YRrx8bAK}Provides battle training for citizens and recruit them into militia, each level increases daily militia recruitment."),
@@ -72,9 +72,9 @@ namespace BannerlordTweaks.Patches
                     new Tuple<BuildingEffectEnum, float, float, float>[] {
                         new Tuple<BuildingEffectEnum, float, float, float>(
                             BuildingEffectEnum.Militia,
-                            Settings.Instance.CastleMilitiaBarracksAmountLevel1,
-                            Settings.Instance.CastleMilitiaBarracksAmountLevel2,
-                            Settings.Instance.CastleMilitiaBarracksAmountLevel3
+                            BannerlordTweaksSettings.Instance.CastleMilitiaBarracksAmountLevel1,
+                            BannerlordTweaksSettings.Instance.CastleMilitiaBarracksAmountLevel2,
+                            BannerlordTweaksSettings.Instance.CastleMilitiaBarracksAmountLevel3
                         )
                     });
             }
@@ -82,7 +82,7 @@ namespace BannerlordTweaks.Patches
 
             //Town
             #region Training Fields
-            if (Settings.Instance.TownTrainingFieldsBonusEnabled)
+            if (BannerlordTweaksSettings.Instance.TownTrainingFieldsBonusEnabled)
             {
                 ____buildingSettlementTrainingFields?.Initialize(new TextObject("{=BkTiRPT4}Training Fields"),
                     new TextObject("{=otWlERkc}A field for military drills that increase the daily experience gain of all garrisoned units."),
@@ -91,14 +91,14 @@ namespace BannerlordTweaks.Patches
                     {
                         new Tuple<BuildingEffectEnum, float, float, float>(
                         BuildingEffectEnum.Experience,
-                        Settings.Instance.TownTrainingFieldsXpAmountLevel1,
-                        Settings.Instance.TownTrainingFieldsXpAmountLevel2,
-                        Settings.Instance.TownTrainingFieldsXpAmountLevel3)
+                        BannerlordTweaksSettings.Instance.TownTrainingFieldsXpAmountLevel1,
+                        BannerlordTweaksSettings.Instance.TownTrainingFieldsXpAmountLevel2,
+                        BannerlordTweaksSettings.Instance.TownTrainingFieldsXpAmountLevel3)
                     });
             }
             #endregion
             #region Granary
-            if (Settings.Instance.TownGranaryBonusEnabled)
+            if (BannerlordTweaksSettings.Instance.TownGranaryBonusEnabled)
             {
                 ____buildingSettlementGranary?.Initialize(new TextObject("{=PstO2f5I}Granary"),
                     new TextObject("{=aK23T43P}Keeps stockpiles of food so that the settlement has more food supply. Each level increases the local food supply."),
@@ -107,14 +107,14 @@ namespace BannerlordTweaks.Patches
                     {
                         new Tuple<BuildingEffectEnum,float,float,float>(
                             BuildingEffectEnum.Foodstock,
-                            Settings.Instance.TownGranaryStorageAmountLevel1,
-                            Settings.Instance.TownGranaryStorageAmountLevel2,
-                            Settings.Instance.TownGranaryStorageAmountLevel3)
+                            BannerlordTweaksSettings.Instance.TownGranaryStorageAmountLevel1,
+                            BannerlordTweaksSettings.Instance.TownGranaryStorageAmountLevel2,
+                            BannerlordTweaksSettings.Instance.TownGranaryStorageAmountLevel3)
                     });
             }
             #endregion
             #region Orchards
-            if (Settings.Instance.TownOrchardsBonusEnabled)
+            if (BannerlordTweaksSettings.Instance.TownOrchardsBonusEnabled)
             {
                 ____buildingSettlementOrchard?.Initialize(new TextObject("{=AkbiPIij}Orchards"),
                     new TextObject("{=ZCLVOXgM}Fruit trees and vegetable gardens outside the walls provide food as long as there is no siege."),
@@ -123,14 +123,14 @@ namespace BannerlordTweaks.Patches
                     {
                     new Tuple<BuildingEffectEnum,float,float,float>(
                         BuildingEffectEnum.FoodProduction,
-                        Settings.Instance.TownOrchardsFoodProductionAmountLevel1,
-                        Settings.Instance.TownOrchardsFoodProductionAmountLevel2,
-                        Settings.Instance.TownOrchardsFoodProductionAmountLevel3)
+                        BannerlordTweaksSettings.Instance.TownOrchardsFoodProductionAmountLevel1,
+                        BannerlordTweaksSettings.Instance.TownOrchardsFoodProductionAmountLevel2,
+                        BannerlordTweaksSettings.Instance.TownOrchardsFoodProductionAmountLevel3)
                     });
             }
             #endregion
             #region Militia Barracks
-            if (Settings.Instance.TownMilitiaBarracksBonusEnabled)
+            if (BannerlordTweaksSettings.Instance.TownMilitiaBarracksBonusEnabled)
             {
                 ____buildingSettlementMilitiaBarracks?.Initialize(new TextObject("{=l91xAgmU}Militia Barracks"),
                     new TextObject("{=RliyRJKl}Provides battle training for citizens and recruit them into militia. Increases daily militia recruitment."),
@@ -139,9 +139,9 @@ namespace BannerlordTweaks.Patches
                     {
                         new Tuple<BuildingEffectEnum, float, float, float>(
                             BuildingEffectEnum.Militia,
-                            Settings.Instance.TownMilitiaBarracksAmountLevel1,
-                            Settings.Instance.TownMilitiaBarracksAmountLevel2,
-                            Settings.Instance.TownMilitiaBarracksAmountLevel3)
+                            BannerlordTweaksSettings.Instance.TownMilitiaBarracksAmountLevel1,
+                            BannerlordTweaksSettings.Instance.TownMilitiaBarracksAmountLevel2,
+                            BannerlordTweaksSettings.Instance.TownMilitiaBarracksAmountLevel3)
                     });
             }
             #endregion
@@ -149,10 +149,10 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.CastleGranaryBonusEnabled || Settings.Instance.CastleGardensBonusEnabled ||
-                Settings.Instance.CastleTrainingFieldsBonusEnabled || Settings.Instance.CastleMilitiaBarracksBonusEnabled ||
-                Settings.Instance.TownGranaryBonusEnabled || Settings.Instance.TownOrchardsBonusEnabled ||
-                Settings.Instance.TownTrainingFieldsBonusEnabled || Settings.Instance.TownMilitiaBarracksBonusEnabled;
+            return BannerlordTweaksSettings.Instance.CastleGranaryBonusEnabled || BannerlordTweaksSettings.Instance.CastleGardensBonusEnabled ||
+                BannerlordTweaksSettings.Instance.CastleTrainingFieldsBonusEnabled || BannerlordTweaksSettings.Instance.CastleMilitiaBarracksBonusEnabled ||
+                BannerlordTweaksSettings.Instance.TownGranaryBonusEnabled || BannerlordTweaksSettings.Instance.TownOrchardsBonusEnabled ||
+                BannerlordTweaksSettings.Instance.TownTrainingFieldsBonusEnabled || BannerlordTweaksSettings.Instance.TownMilitiaBarracksBonusEnabled;
         }
     }
 }

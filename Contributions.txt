@@ -8,3 +8,7 @@ ajvr:
 
 OctaviusMods:
 -Item Comparison Colours Fix
+
+AtomicTim:
+- Conversion to ButterLib & MCMv4
+- Helpful cleanup and streamlining of dependencies.

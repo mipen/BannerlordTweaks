@@ -17,8 +17,8 @@ namespace BannerlordTweaks
             if (party.LeaderHero != null)
             {
                 int count = party.MemberRoster.Troops.Count();
-                if (party.LeaderHero == Hero.MainHero || Settings.Instance.DailyTroopExperienceApplyToAllNPC ||
-                    Settings.Instance.DailyTroopExperienceApplyToPlayerClanMembers && party.LeaderHero.Clan == Clan.PlayerClan)
+                if (party.LeaderHero == Hero.MainHero || BannerlordTweaksSettings.Instance.DailyTroopExperienceApplyToAllNPC ||
+                    BannerlordTweaksSettings.Instance.DailyTroopExperienceApplyToPlayerClanMembers && party.LeaderHero.Clan == Clan.PlayerClan)
                 {
                     int experienceAmount = ExperienceAmount(party.LeaderHero);
                     if (experienceAmount > 0)
@@ -28,7 +28,7 @@ namespace BannerlordTweaks
                             party.MemberRoster.AddXpToTroop(experienceAmount, troop);
                         }
 
-                        if (Settings.Instance.DisplayMessageDailyExperienceGain)
+                        if (BannerlordTweaksSettings.Instance.DisplayMessageDailyExperienceGain)
                         {
                             string troops = count == 1 ? "soldier" : "troops";
                             //Debug
@@ -44,8 +44,8 @@ namespace BannerlordTweaks
         private static int ExperienceAmount(Hero h)
         {
             int leadership = h.GetSkillValue(DefaultSkills.Leadership);
-            if (leadership >= Settings.Instance.DailyTroopExperienceRequiredLeadershipLevel)
-                return (int)(Settings.Instance.LeadershipPercentageForDailyExperienceGain * leadership);
+            if (leadership >= BannerlordTweaksSettings.Instance.DailyTroopExperienceRequiredLeadershipLevel)
+                return (int)(BannerlordTweaksSettings.Instance.LeadershipPercentageForDailyExperienceGain * leadership);
             return 0;
         }
     }

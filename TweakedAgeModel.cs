@@ -5,28 +5,28 @@ namespace BannerlordTweaks
 {
     public class TweakedAgeModel : DefaultAgeModel
     {
-        public override int BecomeInfantAge => Settings.Instance.AgeTweaksEnabled
-            ? Settings.Instance.BecomeInfantAge
+        public override int BecomeInfantAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
+            ? BannerlordTweaksSettings.Instance.BecomeInfantAge
             : base.BecomeInfantAge;
 
-        public override int BecomeChildAge => Settings.Instance.AgeTweaksEnabled
-            ? Settings.Instance.BecomeChildAge
+        public override int BecomeChildAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
+            ? BannerlordTweaksSettings.Instance.BecomeChildAge
             : base.BecomeChildAge;
 
-        public override int BecomeTeenagerAge => Settings.Instance.AgeTweaksEnabled
-            ? Settings.Instance.BecomeTeenagerAge
+        public override int BecomeTeenagerAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
+            ? BannerlordTweaksSettings.Instance.BecomeTeenagerAge
             : base.BecomeTeenagerAge;
 
-        public override int HeroComesOfAge => Settings.Instance.AgeTweaksEnabled
-            ? Settings.Instance.HeroComesOfAge
+        public override int HeroComesOfAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
+            ? BannerlordTweaksSettings.Instance.HeroComesOfAge
             : base.HeroComesOfAge;
 
-        public override int BecomeOldAge => Settings.Instance.AgeTweaksEnabled
-            ? Settings.Instance.BecomeOldAge
+        public override int BecomeOldAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
+            ? BannerlordTweaksSettings.Instance.BecomeOldAge
             : base.BecomeOldAge;
 
-        public override int MaxAge => Settings.Instance.AgeTweaksEnabled
-            ? Settings.Instance.MaxAge
+        public override int MaxAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
+            ? BannerlordTweaksSettings.Instance.MaxAge
             : base.MaxAge;
 
         public IEnumerable<string> GetConfigErrors()

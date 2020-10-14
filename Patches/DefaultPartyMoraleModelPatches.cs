@@ -51,7 +51,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.QuestCharactersIgnorePartySize;
+            return BannerlordTweaksSettings.Instance.QuestCharactersIgnorePartySize;
         }
     }
 
@@ -72,7 +72,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.QuestCharactersIgnorePartySize;
+            return BannerlordTweaksSettings.Instance.QuestCharactersIgnorePartySize;
         }
     }
 }

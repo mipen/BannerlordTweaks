@@ -13,7 +13,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.RemoteCompanionSkillManagementEnabled;
+            return BannerlordTweaksSettings.Instance.RemoteCompanionSkillManagementEnabled;
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using HarmonyLib;
 using SandBox.Source.Missions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Linq;
 using System.Reflection;
 using TaleWorlds.Core;
@@ -21,57 +23,64 @@ namespace BannerlordTweaks.Patches
             //Only do something if the side was reported as being depleted and it is the attacker side
             if (__result && side == BattleSideEnum.Attacker)
             {
-                if (HasTroopsRemaining(__instance, side))
+                try
                 {
-                    if (PlayerIsDead())
+                    if (HasTroopsRemaining(__instance, side))
                     {
-                        //If the player died during the boss fight
-                        if (____hideoutMissionState == 5 || ____hideoutMissionState == 6)
+                        if (PlayerIsDead())
                         {
-                            if (Settings.Instance.ContinueHideoutBattleOnPlayerLoseDuel)
+                            //If the player died during the boss fight
+                            if (____hideoutMissionState == 5 || ____hideoutMissionState == 6)
                             {
-                                if (!Notified)
+                                if (BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerLoseDuel)
                                 {
-                                    //Tell troops to charge on both sides
-                                    SetTeamsHostile(__instance, ____enemyTeam);
-                                    FreeAgentsToMove(__instance);
-                                    TryAlarmAgents(__instance);
-                                    MakeAgentsYell(__instance);
-                                    TrySetFormationsCharge(__instance, BattleSideEnum.Attacker);
-                                    TrySetFormationsCharge(__instance, BattleSideEnum.Defender);
-                                    InformationManager.DisplayMessage(new InformationMessage("You have lost the duel! Your men are avenging your defeat!"));
-                                    Notified = true;
-                                    Dueled = true;
+                                    if (!Notified)
+                                    {
+                                        //Tell troops to charge on both sides
+                                        SetTeamsHostile(__instance, ____enemyTeam);
+                                        FreeAgentsToMove(__instance);
+                                        TryAlarmAgents(__instance);
+                                        MakeAgentsYell(__instance);
+                                        TrySetFormationsCharge(__instance, BattleSideEnum.Attacker);
+                                        TrySetFormationsCharge(__instance, BattleSideEnum.Defender);
+                                        InformationManager.DisplayMessage(new InformationMessage("You have lost the duel! Your men are avenging your defeat!"));
+                                        Notified = true;
+                                        Dueled = true;
+                                    }
+
+                                    if (____hideoutMissionState != 6)
+                                        ____hideoutMissionState = 6;
+
+                                    __result = false;
                                 }
-
-                                if (____hideoutMissionState != 6)
-                                    ____hideoutMissionState = 6;
-
-                                __result = false;
                             }
-                        }
-                        else
-                        {
-                            //The player died during the initial battle phase
-                            if (Settings.Instance.ContinueHideoutBattleOnPlayerDeath && !Dueled)
+                            else
                             {
-                                if (!Notified)
+                                //The player died during the initial battle phase
+                                if (BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerDeath && !Dueled)
                                 {
-                                    //The player is dead, but has troops remaining. We need to tell all remaining troops to charge, then report side is not depleted.
-                                    TrySetFormationsCharge(__instance, BattleSideEnum.Attacker);
-                                    MakeAgentsYell(__instance, BattleSideEnum.Attacker);
-                                    InformationManager.DisplayMessage(new InformationMessage("You have fallen in the attack. Your troops are charging to avenge you!"));
-                                    Notified = true;
+                                    if (!Notified)
+                                    {
+                                        //The player is dead, but has troops remaining. We need to tell all remaining troops to charge, then report side is not depleted.
+                                        TrySetFormationsCharge(__instance, BattleSideEnum.Attacker);
+                                        MakeAgentsYell(__instance, BattleSideEnum.Attacker);
+                                        InformationManager.DisplayMessage(new InformationMessage("You have fallen in the attack. Your troops are charging to avenge you!"));
+                                        Notified = true;
+                                    }
+
+                                    //Disable the boss fight
+                                    if (____hideoutMissionState != 1 && ____hideoutMissionState != 6)
+                                        ____hideoutMissionState = 1;
+
+                                    __result = false;
                                 }
-
-                                //Disable the boss fight
-                                if (____hideoutMissionState != 1 && ____hideoutMissionState != 6)
-                                    ____hideoutMissionState = 1;
-
-                                __result = false;
                             }
                         }
                     }
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message + "\n" + exception.StackTrace + "\n" + exception.InnerException);
                 }
             }
         }
@@ -79,7 +88,7 @@ namespace BannerlordTweaks.Patches
         static bool Prepare()
         {
             //Patch if it is set to not lose on player death
-            return Settings.Instance.ContinueHideoutBattleOnPlayerDeath || Settings.Instance.ContinueHideoutBattleOnPlayerLoseDuel;
+            return BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerDeath || BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerLoseDuel;
         }
 
         private static bool HasTroopsRemaining(HideoutMissionController controller, BattleSideEnum side)
@@ -188,7 +197,7 @@ namespace BannerlordTweaks.Patches
         static bool Prepare()
         {
             //Patch if it is set to not lose on player death
-            return Settings.Instance.ContinueHideoutBattleOnPlayerDeath || Settings.Instance.ContinueHideoutBattleOnPlayerLoseDuel;
+            return BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerDeath || BannerlordTweaksSettings.Instance.ContinueHideoutBattleOnPlayerLoseDuel;
         }
     }
 }

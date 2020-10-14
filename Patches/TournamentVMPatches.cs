@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using ModLib;
 using SandBox.ViewModelCollection.Tournament;
 using System;
 using System.Linq;
@@ -20,14 +19,14 @@ namespace BannerlordTweaks.Patches
         {
             if (bettedAmountFieldInfo == null) GetFieldInfo();
             int thisRoundBettedAmount = (int)bettedAmountFieldInfo.GetValue(__instance);
-            __instance.MaximumBetValue = Math.Min(Settings.Instance.TournamentMaxBetAmount - thisRoundBettedAmount, Hero.MainHero.Gold);
+            __instance.MaximumBetValue = Math.Min(BannerlordTweaksSettings.Instance.TournamentMaxBetAmount - thisRoundBettedAmount, Hero.MainHero.Gold);
         }
 
         static bool Prepare()
         {
-            if (Settings.Instance.TournamentMaxBetAmountTweakEnabled)
+            if (BannerlordTweaksSettings.Instance.TournamentMaxBetAmountTweakEnabled)
                 GetFieldInfo();
-            return Settings.Instance.TournamentMaxBetAmountTweakEnabled;
+            return BannerlordTweaksSettings.Instance.TournamentMaxBetAmountTweakEnabled;
         }
 
         private static void GetFieldInfo()
@@ -41,13 +40,13 @@ namespace BannerlordTweaks.Patches
     {
         static void Postfix(TournamentVM __instance)
         {
-            GameTexts.SetVariable("MAX_AMOUNT", Settings.Instance.TournamentMaxBetAmount);
+            GameTexts.SetVariable("MAX_AMOUNT", BannerlordTweaksSettings.Instance.TournamentMaxBetAmount);
             __instance.BetDescriptionText = GameTexts.FindText("str_tournament_bet_description").ToString();
         }
 
         static bool Prepare()
         {
-            return Settings.Instance.TournamentMaxBetAmountTweakEnabled;
+            return BannerlordTweaksSettings.Instance.TournamentMaxBetAmountTweakEnabled;
         }
     }
 
@@ -67,7 +66,7 @@ namespace BannerlordTweaks.Patches
                 {
                     int thisRoundBettedAmount = (int)bettedAmountFieldInfo.GetValue(__instance);
                     bool flag = __instance.Tournament.CurrentMatch.Participants.Any((TournamentParticipant x) => x.Character == CharacterObject.PlayerCharacter);
-                    if (flag && thisRoundBettedAmount < Settings.Instance.TournamentMaxBetAmount)
+                    if (flag && thisRoundBettedAmount < BannerlordTweaksSettings.Instance.TournamentMaxBetAmount)
                         result = Hero.MainHero.Gold > 0;
                 }
                 __result = result;
@@ -82,9 +81,9 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            if (Settings.Instance.TournamentMaxBetAmountTweakEnabled)
+            if (BannerlordTweaksSettings.Instance.TournamentMaxBetAmountTweakEnabled)
                 GetFieldInfo();
-            return Settings.Instance.TournamentMaxBetAmountTweakEnabled;
+            return BannerlordTweaksSettings.Instance.TournamentMaxBetAmountTweakEnabled;
         }
 
         private static void GetFieldInfo()

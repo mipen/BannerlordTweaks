@@ -48,7 +48,7 @@ namespace BannerlordTweaks
             MakeDead(bodyPartAgent, attacker);
             bodyPartAgent.AgentVisuals.GetEntity().ActivateRagdoll();
             //TODO:: Add blood spurt
-            //if (isPlayerAttacker && Settings.Instance.ReportPlayerDecapitatedSomeoneEnabled)
+            //if (isPlayerAttacker && BannerlordTweaksSettings.Instance.ReportPlayerDecapitatedSomeoneEnabled)
             //    ReportDismemberment(victim, bodyPart);
         }
 
@@ -114,7 +114,7 @@ namespace BannerlordTweaks
                 isPlayerAttacker = true;
                 return true;
             }
-            //if (Settings.Instance.AICanDecapitate)
+            //if (BannerlordTweaksSettings.Instance.AICanDecapitate)
             return true;
             //return false;
         }
