@@ -4,6 +4,7 @@
 
     <!-- Path to Mount and Blade folder -->
     <MNB2DIR>D:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord</MNB2DIR>
+
     <!-- Path to mod folder-->
     <MOD_FOLDER>$(MNB2DIR)\Modules\zzBannerlordTweaks\</MOD_FOLDER>
 	

@@ -130,21 +130,28 @@ namespace BannerlordTweaks {
 
         #region Hero skill multiplier patch
 
-        [SettingPropertyBool("Enable Hero Skill Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        [SettingPropertyBool("Enable Player Hero Skill Experience Multiplier", Order = 0, RequireRestart = false, HintText = "Enable applying a multiplier to the amount of experience recieved for skills, increasing the rate at which skills are learned. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
         public bool HeroSkillExperienceMultiplierEnabled { get; set; } = false;
+
+        [SettingPropertyBool("Enable Companion Skill Experience Multiplier", Order = 2, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Native is 1. 10 = 10x faster skill learning."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        public bool CompanionSkillExperienceMultiplierEnabled { get; set; } = false;
+
         //
         // [SettingProperty("Enable Flat Experience Multiplier Override", "If enabled, overrides the mod's experience curve multiplier calculation and replaces it with the override multiplier. This means that experience will be multiplied by the same value, independant of the skill level.")]
         // [SettingPropertyGroup("Hero Skill Experience Tweak")]
         //public bool HeroSkillExperienceOverrideMultiplierEnabled { get; set; } = false;
 
-        [SettingPropertyFloatingInteger("Hero Skill Experience Multiplier", 1f, 5f, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        [SettingPropertyFloatingInteger("Player Hero Skill Experience Multiplier", 1f, 10f, Order = 1, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills, increasing the rate at which skills are learned. Affects companions, spouse, and family members both in party and away."), SettingPropertyGroup("Hero Skill Experience Multiplier")]
         public float HeroSkillExperienceMultiplier { get; set; } = 1f;
+
+        [SettingPropertyFloatingInteger("Companion Skill Experience Multiplier", 1f, 10f, Order = 3, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Native is 1. 10 = 10x faster skill learning"), SettingPropertyGroup("Hero Skill Experience Multiplier")]
+        public float CompanionSkillExperienceMultiplier { get; set; } = 1f;
 
         #endregion
 
         #region Hideout battle tweaks
 
-        [SettingPropertyBool("Enable Hideout Battle Behavior", Order = 1, RequireRestart = false, HintText = "Changes game behavior inside hideout battles."), SettingPropertyGroup("Hideout Battle Tweaks")]
+        [SettingPropertyBool("Enable Hideout Battle Behavior", Order = 1, RequireRestart = false, HintText = "Changes game behavior inside hideout battles."), SettingPropertyGroup("Hideout Battle Tweaks", IsMainToggle = true)]
         public bool HideoutBattleTroopLimitTweakEnabled { get; set; } = true;
 
         [SettingPropertyInteger("Hideout Battle Troop Limit", 5, 90, HintText = "Native value is 9 or 10. Changes the maximum troop limit to the set value inside hideout battles. Cannot be higher than 90 because it causes bugs."), SettingPropertyGroup("Hideout Battle Tweaks")]
@@ -367,7 +374,7 @@ namespace BannerlordTweaks {
         public float SiegeConstructionProgressPerDayMultiplier { get; set; } = 0.8f;
 
 
-        [SettingPropertyBool("Enable Siege Casualties Tweaks", Order = 1, RequireRestart = false, HintText = "Changes the values used to calculate casualties during the siege stage on the campaign map."), SettingPropertyGroup("Siege Tweaks/Casualties Tweaks")]
+        [SettingPropertyBool("Enable Siege Casualties Tweaks", Order = 1, RequireRestart = false, HintText = "Changes the values used to calculate casualties during the siege stage on the campaign map."), SettingPropertyGroup("Siege Tweaks/Casualties Tweaks", IsMainToggle = true)]
         public bool SiegeCasualtiesTweakEnabled { get; set; } = true;
 
         [SettingPropertyInteger("Siege Collateral Damage Casualties", 1, 3, HintText = "Native value is 2.0. Changes the value used to calculate collateral casualties during the campaign map siege stage."), SettingPropertyGroup("Siege Tweaks/Casualties Tweaks")]
@@ -579,7 +586,7 @@ namespace BannerlordTweaks {
 
         #region Battle Size Tweak
 
-        [SettingPropertyBool("Battle Size Tweak", Order = 1, RequireRestart = false, HintText = "Allows you to set the battle size limit outside of native values. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Battle Size Tweak")]
+        [SettingPropertyBool("Battle Size Tweak", Order = 1, RequireRestart = false, HintText = "Allows you to set the battle size limit outside of native values. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Battle Size Tweak", IsMainToggle = true)]
         public bool BattleSizeTweakEnabled { get; set; } = false;
 
         [SettingPropertyInteger("Battle Size Limit", 2, 1300, HintText = "Sets the limit for number of troops on a battlefield. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Battle Size Tweak")]
