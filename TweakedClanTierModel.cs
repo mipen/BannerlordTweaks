@@ -8,16 +8,16 @@ namespace BannerlordTweaks
     {
         public override int GetCompanionLimitForTier(int clanTier)
         {
-            if (Settings.Instance.CompanionLimitTweakEnabled)
-                return Settings.Instance.CompanionBaseLimit + clanTier * Settings.Instance.CompanionLimitBonusPerClanTier;
+            if (BannerlordTweaksSettings.Instance.CompanionLimitTweakEnabled)
+                return BannerlordTweaksSettings.Instance.CompanionBaseLimit + clanTier * BannerlordTweaksSettings.Instance.CompanionLimitBonusPerClanTier;
             else
                 return base.GetCompanionLimitForTier(clanTier);
         }
 
         public override int GetPartyLimitForTier(Clan clan, int clanTierToCheck)
         {
-            if (Settings.Instance.ClanPartiesLimitTweakEnabled && clan == Clan.PlayerClan)
-                return Settings.Instance.BaseClanPartiesLimit + (int)Math.Floor(clanTierToCheck * Settings.Instance.ClanPartiesBonusPerClanTier);
+            if (BannerlordTweaksSettings.Instance.ClanPartiesLimitTweakEnabled && clan == Clan.PlayerClan)
+                return BannerlordTweaksSettings.Instance.BaseClanPartiesLimit + (int)Math.Floor(clanTierToCheck * BannerlordTweaksSettings.Instance.ClanPartiesBonusPerClanTier);
             else
                 return base.GetPartyLimitForTier(clan, clanTierToCheck);
         }

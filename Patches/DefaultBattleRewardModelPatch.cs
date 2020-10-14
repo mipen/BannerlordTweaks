@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
+using TaleWorlds.Core;
 
 namespace BannerlordTweaks.Patches
 {
@@ -17,9 +18,9 @@ namespace BannerlordTweaks.Patches
             {
                 var battleRenownMultiplier = 1f;
 
-                if (Settings.Instance.BattleRewardApplyToAI || party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
+                if (BannerlordTweaksSettings.Instance.BattleRewardApplyToAI || party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
                 {
-                    battleRenownMultiplier = Settings.Instance.BattleRenownMultiplier;
+                    battleRenownMultiplier = BannerlordTweaksSettings.Instance.BattleRenownMultiplier;
                 }
 
                 var stat = new ExplainedNumber((renownValueOfBattle * contributionShare) * battleRenownMultiplier, explanation);
@@ -31,12 +32,16 @@ namespace BannerlordTweaks.Patches
                 */
 
                 //TODO:: Implement this the same as native in next game update
-                //if (party.IsMobile && party.MobileParty.HasPerk(DefaultPerks.Charm.ShowYourScars))
-                //{
-                //        PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, ref stat);
-                //}
-                if (party.IsMobile && party.Leader != null && party.Leader.HeroObject != null && party.LeaderHero.GetPerkValue(DefaultPerks.Charm.ShowYourScars))
+                if (party.IsMobile && party.MobileParty.HasPerk(DefaultPerks.Charm.ShowYourScars, false))
+                {
                     PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, true, ref stat);
+                    // Debug
+                    // InformationManager.DisplayMessage(new InformationMessage($"DefaultBattleRewardModelRenownPatch. Show Your Scars Bonus\nHero is:"+party.LeaderHero.Name+"\nrenownValueOfBattle is: " + renownValueOfBattle + "\nbattleRenownMultiplier is:" + battleRenownMultiplier + "\nexplanation:" + explanation + "\n"));
+                }
+
+                // Replaced with L34 'todo' method for v1.5.0
+                //if (party.IsMobile && party.Leader != null && party.Leader.HeroObject != null && party.LeaderHero.GetPerkValue(DefaultPerks.Charm.ShowYourScars))
+                //    PerkHelper.AddPerkBonusForParty(DefaultPerks.Charm.ShowYourScars, party.MobileParty, true, ref stat);
 
                 __result = stat.ResultNumber;
                 patched = true;
@@ -51,7 +56,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.BattleRewardTweaksEnabled;
+            return BannerlordTweaksSettings.Instance.BattleRewardTweaksEnabled;
         }
     }
 
@@ -65,9 +70,9 @@ namespace BannerlordTweaks.Patches
             {
                 var battleInfluenceMultiplier = 1f;
 
-                if (Settings.Instance.BattleRewardApplyToAI || party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
+                if (BannerlordTweaksSettings.Instance.BattleRewardApplyToAI || party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
                 {
-                    battleInfluenceMultiplier = Settings.Instance.BattleInfluenceMultiplier;
+                    battleInfluenceMultiplier = BannerlordTweaksSettings.Instance.BattleInfluenceMultiplier;
                 }
 
                 var stat = new ExplainedNumber(party.MapFaction.IsKingdomFaction ? (influenceValueOfBattle * contributionShare * battleInfluenceMultiplier) : 0f, explanation, null);
@@ -85,7 +90,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.BattleRewardTweaksEnabled;
+            return BannerlordTweaksSettings.Instance.BattleRewardTweaksEnabled;
         }
     }
 }

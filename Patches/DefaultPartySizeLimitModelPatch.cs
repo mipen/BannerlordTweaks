@@ -14,16 +14,16 @@ namespace BannerlordTweaks.Patches
             if (party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
             {
                 int num;
-                if (Settings.Instance.LeadershipPartySizeBonusEnabled)
+                if (BannerlordTweaksSettings.Instance.LeadershipPartySizeBonusEnabled)
                 {
-                    num = (int)Math.Ceiling(party.LeaderHero.GetSkillValue(DefaultSkills.Leadership) * Settings.Instance.LeadershipPartySizeBonus);
+                    num = (int)Math.Ceiling(party.LeaderHero.GetSkillValue(DefaultSkills.Leadership) * BannerlordTweaksSettings.Instance.LeadershipPartySizeBonus);
                     __result += num;
                     explanation?.AddLine("Leadership bonus", num);
                 }
 
-                if (Settings.Instance.StewardPartySizeBonusEnabled)
+                if (BannerlordTweaksSettings.Instance.StewardPartySizeBonusEnabled)
                 {
-                    num = (int)Math.Ceiling(party.LeaderHero.GetSkillValue(DefaultSkills.Steward) * Settings.Instance.StewardPartySizeBonus);
+                    num = (int)Math.Ceiling(party.LeaderHero.GetSkillValue(DefaultSkills.Steward) * BannerlordTweaksSettings.Instance.StewardPartySizeBonus);
                     __result += num;
                     explanation?.AddLine("Steward bonus", num);
                 }
@@ -32,7 +32,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            return Settings.Instance.PartySizeTweakEnabled;
+            return BannerlordTweaksSettings.Instance.PartySizeTweakEnabled;
         }
     }
 }

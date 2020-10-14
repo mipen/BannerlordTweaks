@@ -9,5 +9,6 @@ ajvr:
 OctaviusMods:
 -Item Comparison Colours Fix
 
-Jiros:
--Maintenance as of v1.4.3+
+AtomicTim:
+- Conversion to ButterLib & MCMv4
+- Helpful cleanup and streamlining of dependencies.

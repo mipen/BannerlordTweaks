@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using ModLib.Debugging;
 using System;
 using System.Reflection;
 using TaleWorlds.CampaignSystem;
@@ -14,8 +13,8 @@ namespace BannerlordTweaks.Patches
 
         //private static float GetMultiplier()
         //{
-        // if (Settings.Instance.HeroSkillExperienceOverrideMultiplierEnabled)
-        //return Settings.Instance.HeroSkillExperienceMultiplier;
+        // if (BannerlordTweaksSettings.Instance.HeroSkillExperienceOverrideMultiplierEnabled)
+        //return BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplier;
         //else
         //    return Math.Max(1, 0.0315769 * Math.Pow(skillLevel, 1.020743));
         //}
@@ -32,7 +31,7 @@ namespace BannerlordTweaks.Patches
                 {
                     if (xpAmount > 0)
                     {
-                        float newXpAmount = (int)Math.Ceiling(xpAmount * Settings.Instance.HeroSkillExperienceMultiplier);
+                        float newXpAmount = (int)Math.Ceiling(xpAmount * BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplier);
                         hd.AddSkillXp(skill, newXpAmount, true, true);
                     }
                     else
@@ -41,16 +40,16 @@ namespace BannerlordTweaks.Patches
             }
             catch (Exception ex)
             {
-                ModDebug.ShowError($"An exception occurred whilst trying to apply the hero xp multiplier.", "", ex);
+                DebugHelpers.ShowError("An exception occurred whilst trying to apply the hero xp multiplier.", "", ex);
             }
             return false;
         }
 
         static bool Prepare()
         {
-            if (Settings.Instance.HeroSkillExperienceMultiplierEnabled)
+            if (BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplierEnabled)
                 GetFieldInfo();
-            return Settings.Instance.HeroSkillExperienceMultiplierEnabled;
+            return BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplierEnabled;
         }
 
         private static void GetFieldInfo()

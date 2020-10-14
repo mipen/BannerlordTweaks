@@ -25,7 +25,7 @@ namespace BannerlordTweaks
             if (hero.IsPrisoner && hero.PartyBelongedToAsPrisoner != null && hero.PartyBelongedToAsPrisoner.MapFaction != null)
             {
                 bool flag = hero.PartyBelongedToAsPrisoner.MapFaction == Hero.MainHero.MapFaction || (hero.PartyBelongedToAsPrisoner.IsSettlement && hero.PartyBelongedToAsPrisoner.Settlement.OwnerClan == Clan.PlayerClan);
-                if (!Settings.Instance.PrisonerImprisonmentPlayerOnly)
+                if (!BannerlordTweaksSettings.Instance.PrisonerImprisonmentPlayerOnly)
                     flag = flag || Kingdom.All.Contains(hero.PartyBelongedToAsPrisoner.MapFaction) || (hero.PartyBelongedToAsPrisoner.IsSettlement);
 
                 if (flag)
@@ -34,7 +34,7 @@ namespace BannerlordTweaks
                     if (hero.PartyBelongedToAsPrisoner.NumberOfHealthyMembers < hero.PartyBelongedToAsPrisoner.NumberOfPrisoners ||
                         hero.PartyBelongedToAsPrisoner.IsStarving ||
                         (hero.MapFaction != null && FactionManager.IsNeutralWithFaction(hero.MapFaction, hero.PartyBelongedToAsPrisoner.MapFaction)) ||
-                        (int)hero.CaptivityStartTime.ElapsedDaysUntilNow > Settings.Instance.MinimumDaysOfImprisonment)
+                        (int)hero.CaptivityStartTime.ElapsedDaysUntilNow > BannerlordTweaksSettings.Instance.MinimumDaysOfImprisonment)
                     {
                         escapeBehaviour.DailyHeroTick(hero);
                     }
