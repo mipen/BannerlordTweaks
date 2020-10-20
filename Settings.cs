@@ -42,8 +42,8 @@ namespace BannerlordTweaks {
 
         #region Smelting patches
 
-        [SettingPropertyBool("Hide Locked Weapons in Smelting Menu", Order = 1, RequireRestart = false, HintText = "Native value is false. Prevent weapons that you have locked in your inventory from showing up in the smelting list to prevent accidental smelting."), SettingPropertyGroup("Smelting Tweaks", IsMainToggle = true)]
-        public bool PreventSmeltingLockedItems { get; set; } = true;
+        [SettingPropertyBool("Hide Locked Weapons in Smelting Menu", Order = 1, RequireRestart = false, HintText = "Native value is false. Prevent weapons that you have locked in your inventory from showing up in the smelting list to prevent accidental smelting."), SettingPropertyGroup("Smelting Tweaks", IsMainToggle = false)]
+        public bool PreventSmeltingLockedItems { get; set; } = false;
 
 
         [SettingPropertyBool("Enable Unlocking Parts From Smelted Weapons", Order = 1, RequireRestart = false, HintText = "Native value is false. Unlock the parts that a weapon is made of when you smelt it."), SettingPropertyGroup("Smelting Tweaks")]
