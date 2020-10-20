@@ -444,13 +444,19 @@ namespace BannerlordTweaks {
         [SettingPropertyInteger("Max Pregnancy Age", 0, 999, HintText = "Native: 45. Maximum age that someone can get pregnant.", RequireRestart = false), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks")]
         public int MaxPregnancyAge { get; set; } = 45;
 
+        [SettingPropertyBool("Enable Clan Fertility Bonus", Order = 1, RequireRestart = false, HintText = "Enable a bonus to your clan members to become pregnant."), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Clan Fertility Bonus", IsMainToggle = true)]
+        public bool ClanFertilityBonusEnabled { get; set; } = true;
+
+        [SettingPropertyFloatingInteger("Clan Fertility Bonus", 1f, 5f, RequireRestart = false, HintText = "Adds a % bonus to your clan members to become pregnant. 1 = No Bonus, 2 = 2x chance, 5 = 5x chance. Note: May not do much after ~6-8 kids due to the base pregnancy calculations."), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Clan Fertility Bonus")]
+        public float ClanFertilityBonus { get; set; } = 1.1f;
+
         [SettingPropertyBool("Enable Max Children Tweak", Order = 1, RequireRestart = false, HintText = "Native: false. Sets the maximum number of children that someone can have."), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Max Children Tweak", IsMainToggle = true)]
         public bool MaxChildrenTweakEnabled { get; set; } = false;
 
         [SettingPropertyInteger("Max Children", 0, 999, HintText = "Default: 5. Maximum number of children that someone can have.", RequireRestart = false), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Max Children Tweak")]
         public int MaxChildren { get; set; } = 5;
 
-        #endregion
+                #endregion
 
         #region Age tweak
 
