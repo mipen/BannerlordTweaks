@@ -91,40 +91,40 @@ namespace BannerlordTweaks {
         [SettingPropertyBool("Enable Tournament Renown Tweak", Order = 1, RequireRestart = false, HintText = "Sets the amount of renown awarded when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak", IsMainToggle = true)]
         public bool TournamentRenownIncreaseEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Tournament Renown Reward", 1, 20, HintText = "Native value is 3. Increases the amount of renown awarded when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak")]
-        public int TournamentRenownAmount { get; set; } = 8;
+        [SettingPropertyInteger("Tournament Renown Reward", 1, 50, HintText = "Native value is 3. Increases the amount of renown awarded when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak")]
+        public int TournamentRenownAmount { get; set; } = 3;
 
         [SettingPropertyBool("Enable Tournament Gold Reward Tweak", Order = 1, RequireRestart = false, HintText = "Adds the set amount of gold to the rewards when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Gold Reward Tweak", IsMainToggle = true)]
         public bool TournamentGoldRewardEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Tournament Gold Reward", 150, 1000, HintText = "Native value is 0. Adds the set amount of gold to the rewards when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Gold Reward Tweak")]
+        [SettingPropertyInteger("Tournament Gold Reward", 0, 2000, HintText = "Native value is 0. Adds the set amount of gold to the rewards when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Gold Reward Tweak")]
         public int TournamentGoldRewardAmount { get; set; } = 500;
 
         [SettingPropertyBool("Enable Tournament Max Bet Tweak", Order = 1, RequireRestart = false, HintText = "Sets the maximum amount of gold that you can bet per round in tournaments."), SettingPropertyGroup("Tournament Tweaks/Maximum Bet Amount Tweak", IsMainToggle = true)]
         public bool TournamentMaxBetAmountTweakEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Tournament Maximum Bet Amount", 150, 2000, HintText = "Native value is 150. Sets the maximum amount of gold that you can bet per round in tournaments."), SettingPropertyGroup("Tournament Tweaks/Maximum Bet Amount Tweak")]
+        [SettingPropertyInteger("Tournament Maximum Bet Amount", 0, 4000, HintText = "Native value is 150. Sets the maximum amount of gold that you can bet per round in tournaments."), SettingPropertyGroup("Tournament Tweaks/Maximum Bet Amount Tweak")]
         public int TournamentMaxBetAmount { get; set; } = 500;
 
 
         [SettingPropertyBool("Enable Tournament Hero Experience Multiplier Override", Order = 1, RequireRestart = false, HintText = "Overrides the native multiplier value for experience gain in tournaments for hero characters."), SettingPropertyGroup("Tournament Tweaks/Tournament Hero Experience Multiplier", IsMainToggle = true)]
         public bool TournamentHeroExperienceMultiplierEnabled { get; set; } = false;
 
-        [SettingPropertyFloatingInteger("Tournament Hero Experience Multiplier", 0.25f, 1f, HintText = "Native value is 0.25. Sets the multiplier applied to experience gained in tournaments by hero characters."), SettingPropertyGroup("Tournament Tweaks/Tournament Hero Experience Multiplier")]
+        [SettingPropertyFloatingInteger("Tournament Hero Experience Multiplier", 0.25f, 2f, HintText = "Native value is 0.25. Sets the multiplier applied to experience gained in tournaments by hero characters. .25 = 1/4 normal experience, 1 = full real-world experience, 2 = 2x real-world experience."), SettingPropertyGroup("Tournament Tweaks/Tournament Hero Experience Multiplier")]
         public float TournamentHeroExperienceMultiplier { get; set; } = 0.25f;
 
-        [SettingPropertyBool("Enable Arena Hero Experience Multiplier Override", Order = 1, RequireRestart = false, HintText = "Overrides the native multiplier value for experience gain in arena fights for hero characters."), SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier", IsMainToggle = true)]
+        [SettingPropertyBool("Enable Arena Hero Experience Multiplier Override", Order = 1, RequireRestart = false, HintText = "Overrides the native multiplier value for experience gain in arena fights for hero characters. .25 = 1/4 normal experience, 1 = full real-world experience, 2 = 2x real-world experience."), SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier", IsMainToggle = true)]
         public bool ArenaHeroExperienceMultiplierEnabled { get; set; } = false;
 
-        [SettingPropertyFloatingInteger("Arena Hero Experience Multiplier", 0.07f, 1f, HintText = "Native value is 0.06. Overrides the native multiplier for experience gain in arena fights for hero characters."), SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier")]
-        public float ArenaHeroExperienceMultiplier { get; set; } = 0.07f;
+        [SettingPropertyFloatingInteger("Arena Hero Experience Multiplier", 0.06f, 2f, HintText = "Native value is 0.06. Overrides the native multiplier for experience gain in arena fights for hero characters."), SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier")]
+        public float ArenaHeroExperienceMultiplier { get; set; } = 0.06f;
 
 
         [SettingPropertyBool("Enabled Minimum Betting Odds Tweak", Order = 1, RequireRestart = false, HintText = "Allows you to set the minimum betting odds in tournaments."), SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds", IsMainToggle = true)]
         public bool MinimumBettingOddsTweakEnabled { get; set; } = false;
 
-        [SettingPropertyFloatingInteger("Minimum Betting Odds", 1.1f, 5f, HintText = "Native: 1.1. The minimum odds for tournament bets."), SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds")]
-        public float MinimumBettingOdds { get; set; } = 2f;
+        [SettingPropertyFloatingInteger("Minimum Betting Odds", 1.1f, 10f, HintText = "Native: 1.1. The minimum odds for tournament bets."), SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds")]
+        public float MinimumBettingOdds { get; set; } = 1.1f;
 
         #endregion
 
