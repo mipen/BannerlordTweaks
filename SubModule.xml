@@ -2,7 +2,7 @@
 <Module>
 	<Name value="Bannerlord Tweaks"/>
 	<Id value="zzBannerlordTweaks"/>
-	<Version value="v1.5.3.2"/>
+	<Version value="v1.5.4.0"/>
 	<DefaultModule value="false"/>
 	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="false"/>

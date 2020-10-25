@@ -4,7 +4,7 @@
   <Import Project="$(SolutionDir)\BannerlordTweaks.props" />
   <PropertyGroup>
     <!-- Get this from Props file or define here <MNB2DIR>[path]</MNB2DIR> -->
-    <MNB2DIR>D:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord</MNB2DIR>
+    <MNB2DIR>E:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord</MNB2DIR>
     <MOD_ID>BannerlordTweaks</MOD_ID>
     <MOD_FOLDER>$(MNB2DIR)\Modules\zz$(MOD_ID)\</MOD_FOLDER>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -32,7 +32,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>\bin\release\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\bin\debug\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -40,6 +40,8 @@
     <LangVersion>8</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>s</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <StartAction>Program</StartAction>
