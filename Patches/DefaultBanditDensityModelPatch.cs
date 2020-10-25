@@ -5,7 +5,7 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 // Replaces DefaultTroopCoundLimitModelPatch as the method was removed in 1.4.3.
 namespace BannerlordTweaks.Patches
 {
-    [HarmonyPatch(typeof(DefaultBanditDensityModel), "get_PlayerMaximumTroopCountForHideoutMission")]
+    [HarmonyPatch(typeof(DefaultBanditDensityModel), "GetPlayerMaximumTroopCountForHideoutMission")]
     public class DefaultBanditDensityModelPatch
     {
         static bool Prefix(ref int __result)
