@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.ViewModelCollection.Craft.Smelting;
+using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 
@@ -18,8 +20,14 @@ namespace BannerlordTweaks.Patches
         {
             // This appears to be how the game works out if an item is locked
             // From TaleWorlds.CampaignSystem.ViewModelCollection.SPInventoryVM.InitializeInventory()
-            IEnumerable<EquipmentElement> locks = Campaign.Current.GetCampaignBehavior<TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.IInventoryLockTracker>().GetLocks();
-            EquipmentElement[] locked_items = (locks != null) ? locks.ToArray<EquipmentElement>() : null;
+
+            //IEnumerable<EquipmentElement> locks = Campaign.Current.GetCampaignBehavior<TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.IInventoryLockTracker>().GetLocks();
+            IInventoryLockTracker locks = (IInventoryLockTracker)Campaign.Current.GetCampaignBehavior<IInventoryLockTracker>().GetLocks().ToList<string>();
+
+
+            // Updated line 24 to Line 25 which seems to be the updated way game works out item locks in v1.4.3 InitializeInventory()
+            EquipmentElement[] locked_items = locks?.ToArray<EquipmentElement>();
+            //EquipmentElement[] locked_items = (locks != null) ? locks.ToArray<EquipmentElement>() : null;
 
             bool isLocked(EquipmentElement test_item)
             {
