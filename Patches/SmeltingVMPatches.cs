@@ -95,7 +95,11 @@ namespace BannerlordTweaks.Patches
         {
             foreach (SmeltingItemVM item in __instance.SmeltableItemList)
             {
+                // SmeltinItemVM ItemObject (item) was removed in 1.5.3 beta
+                // int count = SmeltingHelper.GetNewPartsFromSmelting(item.Item).Count();
+
                 int count = SmeltingHelper.GetNewPartsFromSmelting(item.EquipmentElement.Item).Count();
+                //int count = item.NumOfItems; - Changed in 1.5.3
                 if (count > 0)
                 {
                     string parts = count == 1 ? "part" : "parts";
