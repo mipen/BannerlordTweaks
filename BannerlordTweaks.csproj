@@ -35,11 +35,12 @@
     <OutputPath>\bin\release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <LangVersion>8</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
     <StartAction>Program</StartAction>
@@ -300,6 +301,7 @@
     <Compile Include="Patches\SkillVMPatch.cs" />
     <Compile Include="Patches\SmeltingVMPatches.cs" />
     <Compile Include="Patches\TournamentVMPatches.cs" />
+    <Compile Include="Patches\UnlimitedWanderersPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SmeltingHelper.cs" />

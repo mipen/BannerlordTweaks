@@ -211,6 +211,10 @@ namespace BannerlordTweaks {
         [SettingPropertyInteger("Companion Limit Bonus Per Clan Tier", 0, 10, HintText = "Native value is 1. Sets the bonus to companion limit per clan tier. This value is multiplied by your clan tier."), SettingPropertyGroup("Companion Limit Tweak")]
         public int CompanionLimitBonusPerClanTier { get; set; } = 3;
 
+        [SettingPropertyBool("Enable Unlimited Wanderers Patch", Order = 1, RequireRestart = false, HintText = "Removes the soft cap on the maximum number of potential companions who can spawn. Native limits the # of wanderers to ~25. This will remove that limit. Note: Requires a new campaign to take effect, as the cap is set when a new game is generated. Credit to Bleinz for his UnlimitedWanderers mod."), SettingPropertyGroup("Companion Limit Tweak")]
+        public bool UnlimitedWanderersPatch { get; set; } = false;
+
+
         #endregion
 
         #region Settlement militia bonus tweak
@@ -632,5 +636,19 @@ namespace BannerlordTweaks {
         //public bool AICanDecapitate { get; set; } = false;
 
         #endregion
+
+
+        /* Disabled until I can get the CreateArmy issue worked out.
+        #region Army Gathering Tweaks
+
+        [SettingPropertyBool("Gather Army Tweaks Enabled", Order = 1, RequireRestart = false, HintText = "Allows you to modify ability to gather armies before establishing player kingdom."), SettingPropertyGroup("Gather Army Tweak")]
+        public bool GatherArmyTweakEnabled { get; set; } = false;
+
+        [SettingPropertyBool("Create Army As Mercenary", Order = 1, RequireRestart = false, HintText = "Allows you to create armies as a mercenary and pay in gold."), SettingPropertyGroup("Gather Army Tweak")]
+        public bool AllowCreateArmyAsMerc { get; set; } = false;
+        
+        #endregion
+        */
+
     }
 }
