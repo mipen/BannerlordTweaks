@@ -12,3 +12,6 @@ OctaviusMods:
 AtomicTim:
 - Conversion to ButterLib & MCMv4
 - Helpful cleanup and streamlining of dependencies.
+
+Bleinz
+- For his permission to fold in his Unlimited Wanderers code.

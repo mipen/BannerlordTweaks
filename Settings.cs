@@ -2,8 +2,10 @@
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Settings.Base.Global;
 
-namespace BannerlordTweaks {
-    public class BannerlordTweaksSettings : AttributeGlobalSettings<BannerlordTweaksSettings> {
+namespace BannerlordTweaks
+{
+    public class BannerlordTweaksSettings : AttributeGlobalSettings<BannerlordTweaksSettings>
+    {
         public override string Id => "BannerlordTweaksSettings";
         public override string DisplayName => "Bannerlord Tweaks Settings";
         public override string FolderName => "BannerlordTweaksSettings";
@@ -167,13 +169,13 @@ namespace BannerlordTweaks {
 
         #region Troop experience multiplier
 
-        [SettingPropertyBool("Enable Troop Battle Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Multiplies the amount of experience that ALL troops receive during battles (Note: Only troops, not heroes)."), SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        [SettingPropertyBool("Enable Troop Battle Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Multiplies the amount of experience that ALL troops receive during battles (Note: Only troops, not heroes)."), SettingPropertyGroup("Troop Battle Experience Tweaks", IsMainToggle = true)]
         public bool TroopBattleExperienceMultiplierEnabled { get; set; } = false;
 
         [SettingPropertyFloatingInteger("Troop Battle Experience Modifier", 1f, 6f, HintText = "Native value is 1.0. Multiplies the amount of experience that ALL troops receive during fought battles (Note: Only troops, not heroes. Does not apply to simulated battles.)."), SettingPropertyGroup("Troop Battle Experience Tweaks")]
         public float TroopBattleExperienceMultiplier { get; set; } = 1.0f;
 
-        [SettingPropertyBool("Enable Troop Battle Simulation Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Provides a multiplier to experience gained from simulated battles. This is applied to all fights (including NPC fights) on the campaign map."), SettingPropertyGroup("Troop Battle Experience Tweaks/Simulation Experience Tweak")]
+        [SettingPropertyBool("Enable Troop Battle Simulation Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Provides a multiplier to experience gained from simulated battles. This is applied to all fights (including NPC fights) on the campaign map."), SettingPropertyGroup("Troop Battle Experience Tweaks/Simulation Experience Tweak", IsMainToggle = true)]
         public bool TroopBattleSimulationExperienceMultiplierEnabled { get; set; } = false;
 
         [SettingPropertyFloatingInteger("Troop Battle Simulation Experience Multiplier", 0.5f, 8f, HintText = "Native value is 1.0. Provides a multiplier to experience gained from simulated battles. This is applied to all simulated fights on the campaign map."), SettingPropertyGroup("Troop Battle Experience Tweaks/Simulation Experience Tweak")]
@@ -260,7 +262,7 @@ namespace BannerlordTweaks {
         #endregion
 
         #region Castle buildings bonuses
-        
+
         [SettingPropertyBool("Enable Castle Training Fields Tweak", Order = 1, RequireRestart = false, HintText = "Changes the amount of experience the training fields provides for each level."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak", IsMainToggle = true)]
         public bool CastleTrainingFieldsBonusEnabled { get; set; } = true;
 
@@ -378,7 +380,7 @@ namespace BannerlordTweaks {
         public float SiegeConstructionProgressPerDayMultiplier { get; set; } = 0.8f;
 
 
-        [SettingPropertyBool("Enable Siege Casualties Tweaks", Order = 1, RequireRestart = false, HintText = "Changes the values used to calculate casualties during the siege stage on the campaign map."), SettingPropertyGroup("Siege Tweaks/Casualties Tweaks")]
+        [SettingPropertyBool("Enable Siege Casualties Tweaks", Order = 1, RequireRestart = false, HintText = "Changes the values used to calculate casualties during the siege stage on the campaign map."), SettingPropertyGroup("Siege Tweaks/Casualties Tweaks", IsMainToggle = true)]
         public bool SiegeCasualtiesTweakEnabled { get; set; } = true;
 
         [SettingPropertyInteger("Siege Collateral Damage Casualties", 1, 3, HintText = "Native value is 2.0. Changes the value used to calculate collateral casualties during the campaign map siege stage."), SettingPropertyGroup("Siege Tweaks/Casualties Tweaks")]
@@ -460,13 +462,13 @@ namespace BannerlordTweaks {
         [SettingPropertyInteger("Max Children", 0, 999, HintText = "Default: 5. Maximum number of children that someone can have.", RequireRestart = false), SettingPropertyGroup("Pregnancy Tweaks/Pregnancy Chance Tweaks/Max Children Tweak")]
         public int MaxChildren { get; set; } = 5;
 
-                #endregion
+        #endregion
 
         #region Age tweak
 
         [SettingPropertyBool("Enable Age Tweaks", RequireRestart = false, HintText = "Enables the tweaking of character age behaviour."), SettingPropertyGroup("Age Tweaks", IsMainToggle = true)]
         public bool AgeTweaksEnabled { get; set; } = false;
-        
+
         [SettingPropertyInteger("Become Infant Age", 0, 125, HintText = "Native: 3. Must be less than Become Child Age.", Order = 0), SettingPropertyGroup("Age Tweaks")]
         public int BecomeInfantAge { get; set; } = 3;
 
@@ -596,7 +598,7 @@ namespace BannerlordTweaks {
 
         #region Battle Size Tweak
 
-        [SettingPropertyBool("Battle Size Tweak", Order = 1, RequireRestart = false, HintText = "Allows you to set the battle size limit outside of native values. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Battle Size Tweak")]
+        [SettingPropertyBool("Battle Size Tweak", Order = 1, RequireRestart = false, HintText = "Allows you to set the battle size limit outside of native values. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Battle Size Tweak", IsMainToggle = true)]
         public bool BattleSizeTweakEnabled { get; set; } = false;
 
         [SettingPropertyInteger("Battle Size Limit", 2, 1300, HintText = "Sets the limit for number of troops on a battlefield. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Battle Size Tweak")]
