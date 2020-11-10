@@ -97,6 +97,8 @@ namespace BannerlordTweaks
                     PrisonerImprisonmentTweak.Apply(Campaign.Current);
                 if (BannerlordTweaksSettings.Instance.DailyTroopExperienceTweakEnabled)
                     DailyTroopExperienceTweak.Apply(Campaign.Current);
+                if (BannerlordTweaksSettings.Instance.TweakedConspiracyQuestTimerEnabled)
+                    ConspiracyQuestTimerTweak.Apply(Campaign.Current);
             }
             return base.DoLoading(game);
         }
