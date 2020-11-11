@@ -290,6 +290,7 @@
     <Compile Include="Patches\DefaultBattleRewardModelPatch.cs" />
     <Compile Include="Patches\DefaultBuildingTypesPatch.cs" />
     <Compile Include="Patches\DefaultPartyWageModelPatch.cs" />
+    <Compile Include="Patches\BarterablePatches.cs" />
     <Compile Include="Patches\DefaultPartyMoraleModelPatches.cs" />
     <Compile Include="Patches\DefaultPartySizeLimitModelPatch.cs" />
     <Compile Include="Patches\DefaultCaravanPartySizeLimitModelPatch.cs" />

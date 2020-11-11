@@ -27,6 +27,20 @@ namespace BannerlordTweaks
 
         #endregion
 
+        #region Barterables
+
+        [SettingPropertyBool("Bartering Tweaks", Order = 1, RequireRestart = false, HintText = "Enables tweaks which affect bartering (Marriage, Factions Joining You, etc.)"), SettingPropertyGroup("Bartering Tweaks", IsMainToggle = true)]
+        public bool BarterablesTweaksEnabled { get; set; } = true;
+
+        [SettingPropertyInteger("Faction Joining Barter Adjustment", 1, 200, Order = 0, RequireRestart = false, HintText = "Adjust the % cost of swaying a fatcion to join your kingdom. Native value is 100% (no change). 50 = 50% reduction in cost. 150 = 50% increase in cost, etc."), SettingPropertyGroup("Bartering Tweaks")]
+        public int BarterablesJoinKingdomAsClanAdjustment { get; set; } = 100;
+
+        [SettingPropertyBool("Use Alternate Formula for Faction Joining Barter", Order = 1, RequireRestart = false, HintText = "Applies alternate formula for calculating cost of swaying a faction to join your kingdom, with more emphasis on relationsip. See mod main page for details."), SettingPropertyGroup("Bartering Tweaks")]
+        public bool BarterablesJoinKingdomAsClanAltFormulaEnabled { get; set; } = false;
+
+
+        #endregion
+
         #region Crafting stamina Settings
         [SettingPropertyBool("Crafting Stamina Tweaks", Order = 1, RequireRestart = false, HintText = "Enables tweaks which affect crafting stamina."), SettingPropertyGroup("Crafting Stamina Tweaks", IsMainToggle = true)]
         public bool CraftingStaminaTweakEnabled { get; set; } = true;
