@@ -18,6 +18,12 @@ namespace BannerlordTweaks.Patches
 
         static void Postfix(ref int __result, IFaction factionForEvaluation)
         {
+
+            Hero leader = factionForEvaluation.Leader;
+
+            // Don't let Faction Leaders Defect from their Own Factions
+            if (leader == null || leader.IsFactionLeader) return;
+
             int num = BannerlordTweaksSettings.Instance.BarterablesJoinKingdomAsClanAdjustment;
             if (BannerlordTweaksSettings.Instance.BarterablesTweaksEnabled)
             {
@@ -25,24 +31,19 @@ namespace BannerlordTweaks.Patches
             }
             if (BannerlordTweaksSettings.Instance.BarterablesJoinKingdomAsClanAltFormulaEnabled)
             {
-                //int old = __result;
+                //int original_result = __result;
                 __result /= 10;
 
-                Hero leader = factionForEvaluation.Leader;
-
-                if (leader == null) return;
-                
                 int relations = Hero.MainHero.GetRelation(leader);
+                if (relations > 100) relations = 99;
+
                 double percent = Math.Abs(((double)(relations) / 100) - 1);
 
                 // Make it very expensive to try to lure a Lord w/ negative relations.
                 double num2 = (relations > -1) ? (__result * percent) : (__result * percent) * 100;
 
-                // Don't let Faction Leaders Defect from their Own Factions
-                if (leader.MapFaction.Leader == leader) num2 *= 1000000;
-
                 __result = (int)(Math.Round(num2));
-                //DebugHelpers.DebugMessage("Relations = " + relations + " | Old = " + old + " | adjusted = " + percent + " | num2 =" + num2 + " | Result = " + __result);
+                //DebugHelpers.DebugMessage("Relations = " + relations + " | Original = " + original_result + " | adjusted = " + percent + " | num2 =" + num2 + " | Result = " + __result);
                 //DebugHelpers.DebugMessage("Leader: "+leader.Name+" | MapFaction: "+leader.MapFaction.Name+" | MapFaction Leader: "+leader.MapFaction.Leader.Name);
             }
         }
