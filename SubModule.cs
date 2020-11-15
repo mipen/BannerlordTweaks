@@ -111,6 +111,25 @@ namespace BannerlordTweaks
             //if (BannerlordTweaksSettings.Instance.DecapitationEnabled && !mission.HasMissionBehaviour<TournamentFightMissionController>() && !mission.HasMissionBehaviour<ArenaPracticeFightMissionController>())
             //    mission?.AddMissionBehaviour(new DismembermentMissionBehaviour());
         }
+
+        public override void OnGameInitializationFinished(Game game)
+        {
+            base.OnGameInitializationFinished(game);
+            if (Campaign.Current != null && BannerlordTweaksSettings.Instance.EnableMissingHeroFix)
+            {
+                try
+                {
+                    CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, delegate
+                    {
+                        PrisonerImprisonmentTweak.DailyTick();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error Initialising Missing Hero Fix:\n\n{ex.ToStringFull()}");
+                }
+            }
+        }
     }
 }
 
