@@ -58,13 +58,14 @@ namespace BannerlordTweaks
                     Hero.CharacterStates heroState = hero.HeroState;
 
                     float days = hero.CaptivityStartTime.ElapsedDaysUntilNow;
-                    if (days > BannerlordTweaksSettings.Instance.MinimumDaysOfImprisonment)
+                    if (days > (BannerlordTweaksSettings.Instance.MinimumDaysOfImprisonment + 3))
                     {
-                        DebugHelpers.Message("Releasing " + hero.Name + " due to Missing Hero Bug. (" + (int)days + " days)");
+                        DebugHelpers.ColorGreenMessage("Releasing " + hero.Name + " due to Missing Hero Bug. (" + (int)days + " days)");
+                        DebugHelpers.QuickInformationMessage("Releasing " + hero.Name + " due to Missing Hero Bug. (" + (int)days + " days)");
                         EndCaptivityAction.ApplyByReleasedFromPartyScreen(hero);
                     }
 
-                    DebugHelpers.DebugMessage("Tracking Hero for possible bug: " + hero.Name + " | State: " + heroState + " | Loc: " + hero.LastSeenPlace + " | Captivity time: " + (int)days);
+                    DebugHelpers.DebugMessage("Tracking Hero for possible bug: " + hero.Name + " | State: " + heroState + " | Loc: " + hero.LastSeenPlace + " | Captivity days: " + (int)days);
                 }
             }
         }

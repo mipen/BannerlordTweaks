@@ -539,10 +539,10 @@ namespace BannerlordTweaks
         [SettingPropertyBool("Player Prisoners Only", Order = 1, RequireRestart = false, HintText = "Whether the tweak should be applied only to prisoners held by the player."), SettingPropertyGroup("Imprisonment Period Tweak")]
         public bool PrisonerImprisonmentPlayerOnly { get; set; } = true;
 
-        [SettingPropertyInteger("Minimum Days of Imprisonment", 0, 180, HintText = "The minimum number of days a lord will remain imprisoned before they can attempt to escape."), SettingPropertyGroup("Imprisonment Period Tweak")]
+        [SettingPropertyInteger("Minimum Days of Imprisonment", 0, 180, RequireRestart = false, HintText = "The minimum number of days a lord will remain imprisoned before they can attempt to escape."), SettingPropertyGroup("Imprisonment Period Tweak")]
         public int MinimumDaysOfImprisonment { get; set; } = 10;
 
-        [SettingPropertyBool("Enable Missing Prisoner Hero Fix", Order = 2, RequireRestart = false, HintText = "Will attempt to detect and release prisoner Heroes who may be bugged and do not respawn. Will trigger after the Minimum Days of Imprisonment setting."), SettingPropertyGroup("Imprisonment Period Tweak")]
+        [SettingPropertyBool("Enable Missing Prisoner Hero Fix", Order = 2, HintText = "Will attempt to detect and release prisoner Heroes who may be bugged and do not respawn. Will trigger 3 days after the Minimum Days of Imprisonment setting."), SettingPropertyGroup("Imprisonment Period Tweak")]
         public bool EnableMissingHeroFix { get; set; } = true;
 
 

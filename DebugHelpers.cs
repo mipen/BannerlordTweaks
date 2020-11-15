@@ -3,6 +3,9 @@ using System.Diagnostics;
 using System.Text;
 using System.Windows.Forms;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
+using TaleWorlds.Localization;
+
 
 namespace BannerlordTweaks {
     public static class DebugHelpers {
@@ -14,6 +17,27 @@ namespace BannerlordTweaks {
         public static void Message(string message) {
             InformationManager.DisplayMessage(new InformationMessage(message));
         }
+
+        public static void ColorRedMessage(string message)
+        {
+            InformationManager.DisplayMessage(new InformationMessage(message, Color.ConvertStringToColor("#FF0042FF")));
+        }
+
+        public static void ColorGreenMessage(string message)
+        {
+            InformationManager.DisplayMessage(new InformationMessage(message, Color.ConvertStringToColor("#42FF00FF")));
+        }
+
+        public static void ColorBlueMessage(string message)
+        {
+            InformationManager.DisplayMessage(new InformationMessage(message, Color.ConvertStringToColor("#0042FFFF")));
+        }
+
+        public static void QuickInformationMessage(string message)
+        {
+            InformationManager.AddQuickInformation(new TextObject(message, null), 0, null, "");
+        }
+        
 
         // From Modlib---
         public static void ShowError(string message, string title = "", Exception exception = null) {
