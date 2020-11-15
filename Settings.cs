@@ -22,7 +22,7 @@ namespace BannerlordTweaks
         [SettingPropertyBool("Enable Remote Companion Skill Management", Order = 3, RequireRestart = false, HintText = "Allows you to manage your companions' skills when they are not in your party.")]
         public bool RemoteCompanionSkillManagementEnabled { get; set; } = true;
 
-        [SettingPropertyBool("Enable Auto-Extenson of Stop the Conspiracy Quest Timer", Order = 3, RequireRestart = false, HintText = "Automatically extends the timer of the 'Stop the Conspiracy' quest as TW hasn't finished it yet.")]
+        [SettingPropertyBool("Enable Auto-Extenson of 'Stop the Conspiracy' Quest Timer", Order = 4, RequireRestart = false, HintText = "Automatically extends the timer of the 'Stop the Conspiracy' quest as TW hasn't finished it yet.")]
         public bool TweakedConspiracyQuestTimerEnabled { get; set; } = true;
 
         #endregion
