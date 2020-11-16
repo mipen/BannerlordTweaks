@@ -21,7 +21,7 @@ namespace BannerlordTweaks
             {
                 try
                 {
-                    harmony = new Harmony("mod.bannerlord.mipen");
+                    harmony = new Harmony("mod.bannerlord.tweaks");
                     harmony.PatchAll();
 
                     if (BannerlordTweaksSettings.Instance.BattleSizeTweakEnabled)
