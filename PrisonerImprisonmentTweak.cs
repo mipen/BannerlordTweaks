@@ -62,7 +62,7 @@ namespace BannerlordTweaks
                     {
                         DebugHelpers.ColorGreenMessage("Releasing " + hero.Name + " due to Missing Hero Bug. (" + (int)days + " days)");
                         DebugHelpers.QuickInformationMessage("Releasing " + hero.Name + " due to Missing Hero Bug. (" + (int)days + " days)");
-                        EndCaptivityAction.ApplyByReleasedFromPartyScreen(hero);
+                        EndCaptivityAction.ApplyByReleasing(hero);
                     }
 
                     DebugHelpers.DebugMessage("Tracking Hero for possible bug: " + hero.Name + " | State: " + heroState + " | Loc: " + hero.LastSeenPlace + " | Captivity days: " + (int)days);
