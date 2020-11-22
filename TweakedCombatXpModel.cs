@@ -7,8 +7,10 @@ namespace BannerlordTweaks
 {
     public class TweakedCombatXpModel : DefaultCombatXpModel
     {
-        // They added PartyBase in v1.4.3. Updated method to address build error.
-        public override void GetXpFromHit(CharacterObject attackerTroop, CharacterObject attackedTroop, PartyBase party, int damage, bool isFatal, MissionTypeEnum missionType, out int xpAmount)
+        // v1.4.3 - They added PartyBase param. Updated method to address build error.
+        // v1.5.5 - They added Captain param.
+        // ToDo: Update formula based on new code in DefaultCombatXpModel
+        public override void GetXpFromHit(CharacterObject attackerTroop, CharacterObject captain, CharacterObject attackedTroop, PartyBase party, int damage, bool isFatal, MissionTypeEnum missionType, out int xpAmount)
         {
             if (attackerTroop == null || attackedTroop == null)
             {
@@ -25,7 +27,7 @@ namespace BannerlordTweaks
                     if (BannerlordTweaksSettings.Instance.TournamentHeroExperienceMultiplierEnabled)
                         xpAmount = (int)MathF.Round(BannerlordTweaksSettings.Instance.TournamentHeroExperienceMultiplier * (float)xpAmount);
                     else
-                        xpAmount = MathF.Round((float)xpAmount * 0.25f);
+                        xpAmount = MathF.Round((float)xpAmount * 0.33f);
                 }
                 else if (missionType == MissionTypeEnum.PracticeFight)
                 {
