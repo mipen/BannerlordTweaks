@@ -227,7 +227,7 @@ namespace BannerlordTweaks
         [SettingPropertyInteger("Base Companion Limit", 1, 20, HintText = "Native value is 3. Sets the base companion limit."), SettingPropertyGroup("Companion Limit Tweak")]
         public int CompanionBaseLimit { get; set; } = 3;
 
-        [SettingPropertyInteger("Companion Limit Bonus Per Clan Tier", 0, 10, HintText = "Native value is 1. Sets the bonus to companion limit per clan tier. This value is multiplied by your clan tier."), SettingPropertyGroup("Companion Limit Tweak")]
+        [SettingPropertyInteger("Companion Limit Bonus Per Clan Tier", 0, 10, HintText = "Native value is 1. Sets the bonus to companion limit per clan tier. This value is multiplied by your clan tier. Note that Leadership 'We Pledge Our Swords' perk will also increae this number by 1."), SettingPropertyGroup("Companion Limit Tweak")]
         public int CompanionLimitBonusPerClanTier { get; set; } = 3;
 
         [SettingPropertyBool("Enable Unlimited Wanderers Patch", Order = 1, RequireRestart = false, HintText = "Removes the soft cap on the maximum number of potential companions who can spawn. Native limits the # of wanderers to ~25. This will remove that limit. Note: Requires a new campaign to take effect, as the cap is set when a new game is generated. Credit to Bleinz for his UnlimitedWanderers mod."), SettingPropertyGroup("Companion Limit Tweak")]
