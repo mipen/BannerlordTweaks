@@ -51,8 +51,8 @@ namespace BannerlordTweaks.Patches
             if (BannerlordTweaksSettings.Instance.CastleGardensBonusEnabled)
             {
                 ____buildingCastleGardens?.Initialize(new TextObject("{=yT6XN4Mr}Gardens"),
-                    new TextObject("{=ZCLVOXgM}Castles contained fruit trees, bakeries, chicken coups to be used in emergencies. While it is not enough for a full contingency of troops any small amount of fresh foods are a big help while in the sieges."),
-                    new int[3] { 25, 39, 52 }, BuildingLocation.Castle,
+                    new TextObject("{=ZCLVOXgM}Fruit trees and vegetable gardens outside the walls provide food as long as there is no siege.", null),
+                    new int[] { 500, 750, 1000 }, BuildingLocation.Castle,
                     new Tuple<BuildingEffectEnum, float, float, float>[] {
                         new Tuple<BuildingEffectEnum, float, float, float>(
                             BuildingEffectEnum.FoodProduction,

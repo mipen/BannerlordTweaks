@@ -309,14 +309,14 @@ namespace BannerlordTweaks
         [SettingPropertyBool("Enable Castle Gardens Tweak", Order = 1, RequireRestart = false, HintText = "Changes the amount of food the castle gardens produce per level."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak", IsMainToggle = true)]
         public bool CastleGardensBonusEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Castle Garden Food Production Level 1", 1, 10, HintText = "Native value is 1. Changes the amount of food the castle gardens produce at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
-        public int CastleGardensFoodProductionAmountLevel1 { get; set; } = 3;
+        [SettingPropertyInteger("Castle Garden Food Production Level 1", 5, 50, HintText = "Native value is 5. Changes the amount of food the castle gardens produce at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
+        public int CastleGardensFoodProductionAmountLevel1 { get; set; } = 5;
 
-        [SettingPropertyInteger("Castle Garden Food Production Level 2", 2, 20, HintText = "Native value is 2. Changes the amount of food the castle gardens produce at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
-        public int CastleGardensFoodProductionAmountLevel2 { get; set; } = 6;
+        [SettingPropertyInteger("Castle Garden Food Production Level 2", 10, 100, HintText = "Native value is 10. Changes the amount of food the castle gardens produce at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
+        public int CastleGardensFoodProductionAmountLevel2 { get; set; } = 10;
 
-        [SettingPropertyInteger("Castle Garden Food Production Level 3", 3, 30, HintText = "Native value is 3. Changes the amount of food the castle gardens produce at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
-        public int CastleGardensFoodProductionAmountLevel3 { get; set; } = 9;
+        [SettingPropertyInteger("Castle Garden Food Production Level 3", 15, 150, HintText = "Native value is 15. Changes the amount of food the castle gardens produce at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak")]
+        public int CastleGardensFoodProductionAmountLevel3 { get; set; } = 15;
 
 
         [SettingPropertyBool("Enable Castle Militia Barracks Tweak", Order = 1, RequireRestart = false, HintText = "Changes the militia production that the castle militia barracks provides per level."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak", IsMainToggle = true)]
@@ -393,7 +393,7 @@ namespace BannerlordTweaks
         [SettingPropertyBool("Enable Siege Construction Progress Tweak", Order = 1, RequireRestart = false, HintText = "Adds a multiplier to the construction progress per day for sieges."), SettingPropertyGroup("Siege Tweaks/Construction Progress Tweak", IsMainToggle = true)]
         public bool SiegeConstructionProgressPerDayMultiplierEnabled { get; set; } = true;
 
-        [SettingPropertyFloatingInteger("Siege Construction Progress Per Day Multiplier", 0.5f, 1.5f, HintText = "Native value is 1.0. Adds a multiplier to the construction progress per day for sieges. A smaller number results in longer siege times."), SettingPropertyGroup("Siege Tweaks/Construction Progress Tweak")]
+        [SettingPropertyFloatingInteger("Siege Construction Progress Per Day Multiplier", 0.5f, 10.0f, HintText = "Native value is 1.0. Adds a multiplier to the construction progress per day for sieges. A smaller number results in longer siege times."), SettingPropertyGroup("Siege Tweaks/Construction Progress Tweak")]
         public float SiegeConstructionProgressPerDayMultiplier { get; set; } = 0.8f;
 
 
