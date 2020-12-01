@@ -86,8 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DailyTroopExperienceTweak.cs" />
-    <Compile Include="DismembermentMissionBehaviour.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="DebugHelpers.cs" />
     <Compile Include="Patches\CampaignUIHelperPatch.cs" />
     <Compile Include="Patches\CharacterAttributeItemVMPatch.cs" />
