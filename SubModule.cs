@@ -26,6 +26,7 @@ namespace BannerlordTweaks
 
                     if (BannerlordTweaksSettings.Instance.BattleSizeTweakEnabled)
                         BannerlordConfig.BattleSize = BannerlordTweaksSettings.Instance.BattleSize;
+                    DebugHelpers.ColorBlueMessage("Bannerlord Tweaks Loaded");
                 }
                 catch (Exception ex)
                 {

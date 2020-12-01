@@ -2,11 +2,12 @@
 <Module>
 	<Name value="Bannerlord Tweaks"/>
 	<Id value="zzBannerlordTweaks"/>
-	<Version value="v1.5.5.0"/>
+	<Version value="v1.5.5.1"/>
 	<DefaultModule value="false"/>
 	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="false"/>
   	<Official value="false"/>
+	<Url value="https://www.nexusmods.com/mountandblade2bannerlord/mods/2036" />
 	<DependedModules>
 		<DependedModule Id="Native"/>
 		<DependedModule Id="SandBoxCore"/>

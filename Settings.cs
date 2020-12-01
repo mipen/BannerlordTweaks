@@ -283,27 +283,27 @@ namespace BannerlordTweaks
         [SettingPropertyBool("Enable Castle Training Fields Tweak", Order = 1, RequireRestart = false, HintText = "Changes the amount of experience the training fields provides for each level."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak", IsMainToggle = true)]
         public bool CastleTrainingFieldsBonusEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Castle Training Fields Level 1 Experience", 1, 150, HintText = "Native value is 1. Changes the amount of experience the training fields provides at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
-        public int CastleTrainingFieldsXpAmountLevel1 { get; set; } = 30;
+        [SettingPropertyInteger("Castle Training Fields Level 1 Experience", 1, 100, HintText = "Native value is 1. Changes the amount of experience the training fields provides at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
+        public int CastleTrainingFieldsXpAmountLevel1 { get; set; } = 1;
 
         [SettingPropertyInteger("Castle Training Fields Level 2 Experience", 2, 200, HintText = "Native value is 2. Changes the amount of experience the training fields provides at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
-        public int CastleTrainingFieldsXpAmountLevel2 { get; set; } = 70;
+        public int CastleTrainingFieldsXpAmountLevel2 { get; set; } = 2;
 
-        [SettingPropertyInteger("Castle Training Fields Level 3 Experience", 3, 250, HintText = "Native value is 3. Changes the amount of experience the training fields provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
-        public int CastleTrainingFieldsXpAmountLevel3 { get; set; } = 150;
+        [SettingPropertyInteger("Castle Training Fields Level 3 Experience", 3, 300, HintText = "Native value is 3. Changes the amount of experience the training fields provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
+        public int CastleTrainingFieldsXpAmountLevel3 { get; set; } = 3;
 
 
         [SettingPropertyBool("Enable Castle Granary Tweak", Order = 1, RequireRestart = false, HintText = "Changes the amount of food storage the castle granary provides per level."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak", IsMainToggle = true)]
         public bool CastleGranaryBonusEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Castle Granary Food Storage Level 1", 10, 90, HintText = "Native value is 10. Changes the amount of food storage the castle granary provides at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
-        public int CastleGranaryStorageAmountLevel1 { get; set; } = 30;
+        [SettingPropertyInteger("Castle Granary Food Storage Level 1", 100, 1000, HintText = "Native value is 100. Changes the amount of food storage the castle granary provides at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
+        public int CastleGranaryStorageAmountLevel1 { get; set; } = 100;
 
-        [SettingPropertyInteger("Castle Granary Food Storage Level 2", 20, 180, HintText = "Native value is 20. Changes the amount of food storage the castle granary provides at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
-        public int CastleGranaryStorageAmountLevel2 { get; set; } = 45;
+        [SettingPropertyInteger("Castle Granary Food Storage Level 2", 200, 2000, HintText = "Native value is 200. Changes the amount of food storage the castle granary provides at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
+        public int CastleGranaryStorageAmountLevel2 { get; set; } = 200;
 
-        [SettingPropertyInteger("Castle Granary Food Storage Level 3", 30, 270, HintText = "Native value is 30. Changes the amount of food storage the castle granary provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
-        public int CastleGranaryStorageAmountLevel3 { get; set; } = 60;
+        [SettingPropertyInteger("Castle Granary Food Storage Level 3", 300, 3000, HintText = "Native value is 300. Changes the amount of food storage the castle granary provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Granary Tweak")]
+        public int CastleGranaryStorageAmountLevel3 { get; set; } = 300;
 
 
         [SettingPropertyBool("Enable Castle Gardens Tweak", Order = 1, RequireRestart = false, HintText = "Changes the amount of food the castle gardens produce per level."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Gardens Tweak", IsMainToggle = true)]
@@ -323,13 +323,13 @@ namespace BannerlordTweaks
         public bool CastleMilitiaBarracksBonusEnabled { get; set; } = true;
 
         [SettingPropertyInteger("Castle Militia Barracks Production Level 1", 1, 10, HintText = "Native value is 1. Changes the militia production that the castle militia barracks provides at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
-        public int CastleMilitiaBarracksAmountLevel1 { get; set; } = 2;
+        public int CastleMilitiaBarracksAmountLevel1 { get; set; } = 1;
 
-        [SettingPropertyInteger("Castle Militia Barracks Production Level 2", 1, 14, HintText = "Native value is 2. Changes the militia production that the castle militia barracks provides at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
-        public int CastleMilitiaBarracksAmountLevel2 { get; set; } = 4;
+        [SettingPropertyInteger("Castle Militia Barracks Production Level 2", 2, 20, HintText = "Native value is 2. Changes the militia production that the castle militia barracks provides at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
+        public int CastleMilitiaBarracksAmountLevel2 { get; set; } = 2;
 
-        [SettingPropertyInteger("Castle Militia Barracks Production Level 3", 1, 16, HintText = "Native value is 4. Changes the militia production that the castle militia barracks provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
-        public int CastleMilitiaBarracksAmountLevel3 { get; set; } = 8;
+        [SettingPropertyInteger("Castle Militia Barracks Production Level 3", 3, 30, HintText = "Native value is 3. Changes the militia production that the castle militia barracks provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Militia Barracks Tweak")]
+        public int CastleMilitiaBarracksAmountLevel3 { get; set; } = 3;
 
         #endregion
 
@@ -338,53 +338,53 @@ namespace BannerlordTweaks
         [SettingPropertyBool("Enable Town Training Fields Tweak", Order = 1, RequireRestart = false, HintText = "Changes the amount of experience the training fields provides for each level."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak", IsMainToggle = true)]
         public bool TownTrainingFieldsBonusEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Town Training Fields Level 1 Experience", 1, 150, HintText = "Native value is 1. Changes the amount of experience the training fields provides at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
+        [SettingPropertyInteger("Town Training Fields Level 1 Experience", 30, 300, HintText = "Native value is 30. Changes the amount of experience the training fields provides at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
         public int TownTrainingFieldsXpAmountLevel1 { get; set; } = 30;
 
-        [SettingPropertyInteger("Town Training Fields Level 2 Experience", 2, 200, HintText = "Native value is 2. Changes the amount of experience the training fields provides at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
-        public int TownTrainingFieldsXpAmountLevel2 { get; set; } = 70;
+        [SettingPropertyInteger("Town Training Fields Level 2 Experience", 60, 600, HintText = "Native value is 60. Changes the amount of experience the training fields provides at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
+        public int TownTrainingFieldsXpAmountLevel2 { get; set; } = 60;
 
-        [SettingPropertyInteger("Town Training Fields Level 3 Experience", 3, 300, HintText = "Native value is 3. Changes the amount of experience the training fields provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
-        public int TownTrainingFieldsXpAmountLevel3 { get; set; } = 150;
+        [SettingPropertyInteger("Town Training Fields Level 3 Experience", 100, 1000, HintText = "Native value is 100. Changes the amount of experience the training fields provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
+        public int TownTrainingFieldsXpAmountLevel3 { get; set; } = 100;
 
 
         [SettingPropertyBool("Enable Town Granary Tweak", Order = 1, RequireRestart = false, HintText = "Changes the amount of food storage the town granary provides per level."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak", IsMainToggle = true)]
         public bool TownGranaryBonusEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Town Granary Food Storage Level 1", 10, 900, HintText = "Native value is 200. Changes the amount of food storage the town granary provides at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
-        public int TownGranaryStorageAmountLevel1 { get; set; } = 400;
+        [SettingPropertyInteger("Town Granary Food Storage Level 1", 200, 2000, HintText = "Native value is 200. Changes the amount of food storage the town granary provides at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
+        public int TownGranaryStorageAmountLevel1 { get; set; } = 200;
 
-        [SettingPropertyInteger("Town Granary Food Storage Level 2", 20, 1800, HintText = "Native value is 400. Changes the amount of food storage the town granary provides at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
-        public int TownGranaryStorageAmountLevel2 { get; set; } = 600;
+        [SettingPropertyInteger("Town Granary Food Storage Level 2", 400, 4000, HintText = "Native value is 400. Changes the amount of food storage the town granary provides at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
+        public int TownGranaryStorageAmountLevel2 { get; set; } = 400;
 
-        [SettingPropertyInteger("Town Granary Food Storage Level 3", 30, 2700, HintText = "Native value is 600. Changes the amount of food storage the town granary provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
-        public int TownGranaryStorageAmountLevel3 { get; set; } = 900;
+        [SettingPropertyInteger("Town Granary Food Storage Level 3", 600, 6000, HintText = "Native value is 600. Changes the amount of food storage the town granary provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Granary Tweak")]
+        public int TownGranaryStorageAmountLevel3 { get; set; } = 600;
 
 
         [SettingPropertyBool("Enable Town Orchards Tweak", Order = 1, RequireRestart = false, HintText = "Changes the amount of food the town orchards produce per level."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Orchards Tweak", IsMainToggle = true)]
         public bool TownOrchardsBonusEnabled { get; set; } = true;
 
         [SettingPropertyInteger("Town Orchard Food Production Level 1", 10, 100, HintText = "Native value is 10. Changes the amount of food the town orchards produce at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Orchards Tweak")]
-        public int TownOrchardsFoodProductionAmountLevel1 { get; set; } = 45;
+        public int TownOrchardsFoodProductionAmountLevel1 { get; set; } = 10;
 
         [SettingPropertyInteger("Town Orchard Food Production Level 2", 20, 200, HintText = "Native value is 20. Changes the amount of food the town orchards produce at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Orchards Tweak")]
-        public int TownOrchardsFoodProductionAmountLevel2 { get; set; } = 60;
+        public int TownOrchardsFoodProductionAmountLevel2 { get; set; } = 20;
 
         [SettingPropertyInteger("Town Orchard Food Production Level 3", 30, 300, HintText = "Native value is 30. Changes the amount of food the town orchards produce at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Orchards Tweak")]
-        public int TownOrchardsFoodProductionAmountLevel3 { get; set; } = 75;
+        public int TownOrchardsFoodProductionAmountLevel3 { get; set; } = 30;
 
 
         [SettingPropertyBool("Enable Town Militia Barracks Tweak", Order = 1, RequireRestart = false, HintText = "Changes the militia production that the town militia barracks provides per level."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak", IsMainToggle = true)]
         public bool TownMilitiaBarracksBonusEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Town Militia Barracks Production Level 1", 1, 15, HintText = "Native value is 1. Changes the militia production that the town militia barracks provides at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
-        public int TownMilitiaBarracksAmountLevel1 { get; set; } = 2;
+        [SettingPropertyFloatingInteger("Town Militia Barracks Production Level 1", .5f, 15, HintText = "Native value is .5. Changes the militia production that the town militia barracks provides at level 1."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
+        public float TownMilitiaBarracksAmountLevel1 { get; set; } = 0.5f;
 
-        [SettingPropertyInteger("Town Militia Barracks Production Level 2", 1, 20, HintText = "Native value is 2. Changes the militia production that the town militia barracks provides at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
-        public int TownMilitiaBarracksAmountLevel2 { get; set; } = 4;
+        [SettingPropertyFloatingInteger("Town Militia Barracks Production Level 2", 1f, 20f, HintText = "Native value is 1. Changes the militia production that the town militia barracks provides at level 2."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
+        public float TownMilitiaBarracksAmountLevel2 { get; set; } = 1.0f;
 
-        [SettingPropertyInteger("Town Militia Barracks Production Level 3", 1, 30, HintText = "Native value is 3. Changes the militia production that the town militia barracks provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
-        public int TownMilitiaBarracksAmountLevel3 { get; set; } = 9;
+        [SettingPropertyFloatingInteger("Town Militia Barracks Production Level 3", 1.5f, 30f, HintText = "Native value is 1.5. Changes the militia production that the town militia barracks provides at level 3."), SettingPropertyGroup("Settlement Buildings Tweaks/Town Buildings Tweaks/Town Militia Barracks Tweak")]
+        public float TownMilitiaBarracksAmountLevel3 { get; set; } = 1.5f;
 
         #endregion
 
@@ -533,18 +533,23 @@ namespace BannerlordTweaks
 
         #region Prisoner Tweaks
 
-        [SettingPropertyBool("Enable Imprisonment Period Tweak", Order = 1, RequireRestart = false, HintText = "Adds a minimum amount of time before lords can attempt to escape imprisonment."), SettingPropertyGroup("Imprisonment Period Tweak", IsMainToggle = true)]
+        [SettingPropertyBool("Enable Imprisonment Period Tweak", Order = 1, RequireRestart = false, HintText = "Adds a minimum amount of time before lords can attempt to escape imprisonment."), SettingPropertyGroup("Prisoner Tweaks", IsMainToggle = true)]
         public bool PrisonerImprisonmentTweakEnabled { get; set; } = false;
 
-        [SettingPropertyBool("Player Prisoners Only", Order = 1, RequireRestart = false, HintText = "Whether the tweak should be applied only to prisoners held by the player."), SettingPropertyGroup("Imprisonment Period Tweak")]
+        [SettingPropertyBool("Player Prisoners Only", Order = 1, RequireRestart = false, HintText = "Whether the tweak should be applied only to prisoners held by the player."), SettingPropertyGroup("Prisoner Tweaks")]
         public bool PrisonerImprisonmentPlayerOnly { get; set; } = true;
 
-        [SettingPropertyInteger("Minimum Days of Imprisonment", 0, 180, RequireRestart = false, HintText = "The minimum number of days a lord will remain imprisoned before they can attempt to escape."), SettingPropertyGroup("Imprisonment Period Tweak")]
+        [SettingPropertyInteger("Minimum Days of Imprisonment", 0, 180, RequireRestart = false, HintText = "The minimum number of days a lord will remain imprisoned before they can attempt to escape."), SettingPropertyGroup("Prisoner Tweaks")]
         public int MinimumDaysOfImprisonment { get; set; } = 10;
 
-        [SettingPropertyBool("Enable Missing Prisoner Hero Fix", Order = 2, HintText = "Will attempt to detect and release prisoner Heroes who may be bugged and do not respawn. Will trigger 3 days after the Minimum Days of Imprisonment setting."), SettingPropertyGroup("Imprisonment Period Tweak")]
+        [SettingPropertyBool("Enable Missing Prisoner Hero Fix", Order = 2, HintText = "Will attempt to detect and release prisoner Heroes who may be bugged and do not respawn. Will trigger 3 days after the Minimum Days of Imprisonment setting."), SettingPropertyGroup("Prisoner Tweaks")]
         public bool EnableMissingHeroFix { get; set; } = true;
 
+        [SettingPropertyBool("Enable Prisoner Size Bonus", Order = 1, RequireRestart = false, HintText = "Enables a flat % bonus to your party's maximum prisoner size."), SettingPropertyGroup("Prisoner Tweaks/Prisoner Size Tweak", IsMainToggle = true)]
+        public bool PrisonerSizeTweakEnabled { get; set; } = false;
+
+        [SettingPropertyInteger("Prisoner Size Bonus", 0, 500, Order = 0, RequireRestart = false, HintText = "Adds a flat % bonues to your party's maximum prisoner size. 10% = 10, +50% = 50, etc. [Native is 0]"), SettingPropertyGroup("Prisoner Tweaks/Prisoner Size Tweak")]
+        public float PrisonerSizeTweakPercent { get; set; } = 0;
 
         #endregion
 
@@ -619,7 +624,7 @@ namespace BannerlordTweaks
 
         #region Battle Size Tweak
 
-        [SettingPropertyBool("Battle Size Tweak", Order = 1, RequireRestart = false, HintText = "Allows you to set the battle size limit outside of native values. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Battle Size Tweak", IsMainToggle = true)]
+        [SettingPropertyBool("Battle Size Tweak", Order = 1, HintText = "Allows you to set the battle size limit outside of native values. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Battle Size Tweak", IsMainToggle = true)]
         public bool BattleSizeTweakEnabled { get; set; } = false;
 
         [SettingPropertyInteger("Battle Size Limit", 2, 1300, HintText = "Sets the limit for number of troops on a battlefield. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Battle Size Tweak")]
