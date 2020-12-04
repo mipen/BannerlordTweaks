@@ -414,10 +414,25 @@ namespace BannerlordTweaks
         public bool ClanPartiesLimitTweakEnabled { get; set; } = false;
 
         [SettingPropertyInteger("Base Clan Parties Limit", 1, 10, HintText = "Native value is 1. This is the base number of parties you can field."), SettingPropertyGroup("Clan Parties Tweak")]
-        public int BaseClanPartiesLimit { get; set; } = 2;
+        public int BaseClanPartiesLimit { get; set; } = 1;
 
-        [SettingPropertyFloatingInteger("Clan Parties Bonus Per Clan Tier", 0.0f, 3f, HintText = "Native has a calculation for this: 1 party for under tier 3, 2 parties for under tier 5, 3 parties for over tier 5. This setting is multiplied by your clan tier. A value of 0.5 will equate to 1 extra party per 2 clan tiers, which eqautes to the same as native."), SettingPropertyGroup("Clan Parties Tweak")]
+        [SettingPropertyFloatingInteger("Clan Parties Bonus Per Clan Tier", 0.0f, 6f, HintText = "Native has a calculation for this: 1 party for under tier 3, 2 parties for under tier 5, 3 parties for over tier 5. This setting is multiplied by your clan tier. A value of 0.5 will equate to 1 extra party per 2 clan tiers, which eqautes to the same as native."), SettingPropertyGroup("Clan Parties Tweak")]
         public float ClanPartiesBonusPerClanTier { get; set; } = 0.5f;
+
+        [SettingPropertyBool("Enable AI Clan Parties Tweak", Order = 1, RequireRestart = false, HintText = "Changes the base number of parties AI Lords can field."), SettingPropertyGroup("Clan Parties Tweak/AI Lord Parties Tweak", IsMainToggle = true)]
+        public bool AIClanPartiesLimitTweakEnabled { get; set; } = false;
+
+        [SettingPropertyBool("Also Adjust Minor Factions", Order = 1, RequireRestart = false, HintText = "Changes the base number of parties AI Minor Factiopn Lords can field. [Native is 1-4, depending on Clan tier.]"), SettingPropertyGroup("Clan Parties Tweak/AI Lord Parties Tweak")]
+        public bool AIMinorClanPartiesLimitTweakEnabled { get; set; } = false;
+
+        [SettingPropertyInteger("Add to AI Clan Parties Limit", 1, 10, Order = 0, RequireRestart = false, HintText = "This adds to the the base number of parties AI Lords can field. [Native is 1 for Tier 3 and below, 2 at T4, 3 at T5 and up.] Minor Factions are not included unless the option below is also enabled."), SettingPropertyGroup("Clan Parties Tweak/AI Lord Parties Tweak")]
+        public int BaseAIClanPartiesLimit { get; set; } = 0;
+
+        [SettingPropertyBool("Adjust Custom Spawn Parties", Order = 1, RequireRestart = false, HintText = "Changes the base number of parties Custom Spawn lords can field. [Native is 1-4, depending on Clan tier.]"), SettingPropertyGroup("Clan Parties Tweak/Custom Spawn Parties Tweak")]
+        public bool AICustomSpawnPartiesLimitTweakEnabled { get; set; } = false;
+
+        [SettingPropertyInteger("Add to Custom Spawn Parties Limit", 1, 10, Order = 0, RequireRestart = false, HintText = "This adds to the the base number of parties Custom Lords can field. [Native is 1 for Tier 3 and below, 2 at T4, 3 at T5 and up.] Minor Factions are not included unless the option below is also enabled."), SettingPropertyGroup("Clan Parties Tweak/Custom Spawn Parties Tweak")]
+        public int BaseAICustomSpawnPartiesLimit { get; set; } = 0;
 
         #endregion
 
@@ -558,7 +573,7 @@ namespace BannerlordTweaks
         [SettingPropertyBool("Enable Daily Troop Experience Gain", Order = 1, RequireRestart = false, HintText = "Gives troops in a party an amount of experience each day based upon the leader's Leadership skill. By default only applies to the player."), SettingPropertyGroup("Daily Troop Experience Tweak", IsMainToggle = true)]
         public bool DailyTroopExperienceTweakEnabled { get; set; } = false;
 
-        [SettingPropertyFloatingInteger("Percentage of Leadership", 0.01f, 5f, HintText = "The percentage of the leader's Leadership skill to be given as experience to their troops."), SettingPropertyGroup("Daily Troop Experience Tweak")]
+        [SettingPropertyFloatingInteger("Percentage of Leadership", 0.01f, 5f, RequireRestart = false, HintText = "The percentage of the leader's Leadership skill to be given as experience to their troops."), SettingPropertyGroup("Daily Troop Experience Tweak")]
         public float LeadershipPercentageForDailyExperienceGain { get; set; } = 0.5f;
 
         [SettingPropertyBool("Apply to Player's Clan Members", Order = 1, RequireRestart = false, HintText = "Applies the daily troop experience gain to members of the player's clan also."), SettingPropertyGroup("Daily Troop Experience Tweak")]
@@ -570,7 +585,7 @@ namespace BannerlordTweaks
         [SettingPropertyBool("Display Message", Order = 1, RequireRestart = false, HintText = "Displays a message showing the amount of experience granted."), SettingPropertyGroup("Daily Troop Experience Tweak")]
         public bool DisplayMessageDailyExperienceGain { get; set; } = false;
 
-        [SettingPropertyInteger("Required Leadership Level", 1, 200, HintText = "The Leadership level required to start giving experience to troops."), SettingPropertyGroup("Daily Troop Experience Tweak")]
+        [SettingPropertyInteger("Required Leadership Level", 1, 200, RequireRestart = false, HintText = "The Leadership level required to start giving experience to troops."), SettingPropertyGroup("Daily Troop Experience Tweak")]
         public int DailyTroopExperienceRequiredLeadershipLevel { get; set; } = 30;
 
         #endregion
