@@ -11,7 +11,7 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(CraftingCampaignBehavior), "DoSmelting")]
     public class DoSmeltingPatch
     {
-        private static MethodInfo openPartMethodInfo;
+        private static MethodInfo? openPartMethodInfo;
 
         static void Postfix(CraftingCampaignBehavior __instance, EquipmentElement equipmentElement)
         {
@@ -57,7 +57,7 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(CraftingCampaignBehavior), "HourlyTick")]
     public class HourlyTickPatch
     {
-        private static FieldInfo recordsInfo;
+        private static FieldInfo? recordsInfo;
 
         static bool Prefix(CraftingCampaignBehavior __instance)
         {

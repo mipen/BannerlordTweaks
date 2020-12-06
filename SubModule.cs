@@ -39,7 +39,9 @@ namespace BannerlordTweaks
         {
             base.OnGameStart(game, gameStarterObject);
 
-            AddModels(gameStarterObject as CampaignGameStarter);
+            #pragma warning disable CS8604 // Possible null reference argument.
+            AddModels(gameStarter: gameStarterObject as CampaignGameStarter);
+            #pragma warning restore CS8604 // Possible null reference argument.
         }
 
         private void AddModels(CampaignGameStarter gameStarter)
