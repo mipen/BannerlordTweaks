@@ -32,7 +32,7 @@ namespace BannerlordTweaks
                         {
                             string troops = count == 1 ? "soldier" : "troops";
                             //Debug
-                            //InformationManager.DisplayMessage(new InformationMessage($"{party.LeaderHero.Name}'s party granted {experienceAmount} experience to {count} {troops}."));
+                            //DebugHelpers.DebugMessage($"{party.LeaderHero.Name}'s party granted {experienceAmount} experience to {count} {troops}."));
                             if (party.LeaderHero == Hero.MainHero)
                                 InformationManager.DisplayMessage(new InformationMessage($"Granted {experienceAmount} experience to {count} {troops}."));
                         }

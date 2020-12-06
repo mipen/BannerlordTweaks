@@ -9,7 +9,7 @@ namespace BannerlordTweaks
 {
     public class TweakedSettlementFoodModel : DefaultSettlementFoodModel
     {
-        public override float CalculateTownFoodStocksChange(Town town, StatExplainer explanation = null)
+        public override float CalculateTownFoodStocksChange(Town town, StatExplainer? explanation = null)
         {
             if (town == null) throw new ArgumentNullException(nameof(town));
             float baseVal = base.CalculateTownFoodStocksChange(town, explanation);

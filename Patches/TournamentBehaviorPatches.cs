@@ -23,7 +23,7 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(TournamentBehavior), "CalculateBet")]
     public class CalculateBetPatch
     {
-        private static PropertyInfo betOddInfo = null;
+        private static PropertyInfo? betOddInfo = null;
 
         static void Postfix(TournamentBehavior __instance)
         {

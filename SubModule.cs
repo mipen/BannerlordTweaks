@@ -12,8 +12,8 @@ namespace BannerlordTweaks
 {
     public class SubModule : MBSubModuleBase
     {
-        public static readonly string ModuleFolderName = "zzBannerlordTweaks";
-        private static Harmony harmony = null;
+        public static readonly string ModuleFolderName = "BannerlordTweaks";
+        private static Harmony? harmony = null;
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
@@ -26,7 +26,7 @@ namespace BannerlordTweaks
 
                     if (BannerlordTweaksSettings.Instance.BattleSizeTweakEnabled)
                         BannerlordConfig.BattleSize = BannerlordTweaksSettings.Instance.BattleSize;
-                    DebugHelpers.ColorBlueMessage("Bannerlord Tweaks Loaded");
+                    DebugHelpers.ColorOrangeMessage("Bannerlord Tweaks Loaded");
                 }
                 catch (Exception ex)
                 {
@@ -108,9 +108,6 @@ namespace BannerlordTweaks
         {
             if (mission == null) return;
             base.OnMissionBehaviourInitialize(mission);
-
-            //if (BannerlordTweaksSettings.Instance.DecapitationEnabled && !mission.HasMissionBehaviour<TournamentFightMissionController>() && !mission.HasMissionBehaviour<ArenaPracticeFightMissionController>())
-            //    mission?.AddMissionBehaviour(new DismembermentMissionBehaviour());
         }
 
         public override void OnGameInitializationFinished(Game game)

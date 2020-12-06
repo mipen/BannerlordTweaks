@@ -8,7 +8,7 @@ namespace BannerlordTweaks
 {
     public class TweakedSettlementMilitiaModel : DefaultSettlementMilitiaModel
     {
-        public override float CalculateMilitiaChange(Settlement settlement, StatExplainer explanation = null)
+        public override float CalculateMilitiaChange(Settlement settlement, StatExplainer? explanation = null)
         {
             if (settlement == null) throw new ArgumentNullException(nameof(settlement));
             float baseVal = base.CalculateMilitiaChange(settlement, explanation);

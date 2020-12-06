@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Module>
 	<Name value="Bannerlord Tweaks"/>
-	<Id value="zzBannerlordTweaks"/>
-	<Version value="v1.5.5.1"/>
+	<Id value="BannerlordTweaks"/>
+	<Version value="v1.5.5.2"/>
 	<DefaultModule value="false"/>
 	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="false"/>

@@ -10,7 +10,7 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(Hero), "AddSkillXp")]
     public class AddSkillXpPatch
     {
-        private static FieldInfo hdFieldInfo = null;
+        private static FieldInfo? hdFieldInfo = null;
 
         /*
         private static float GetMultiplier()

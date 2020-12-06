@@ -13,7 +13,7 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(TournamentVM), "RefreshBetProperties")]
     public class RefreshBetPropertiesPatch
     {
-        private static FieldInfo bettedAmountFieldInfo = null;
+        private static FieldInfo? bettedAmountFieldInfo = null;
 
         static void Postfix(TournamentVM __instance)
         {
@@ -53,7 +53,7 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(TournamentVM), "get_IsBetButtonEnabled")]
     public class IsBetButtonEnabledPatch
     {
-        private static FieldInfo bettedAmountFieldInfo = null;
+        private static FieldInfo? bettedAmountFieldInfo = null;
 
         static bool Prefix(TournamentVM __instance, ref bool __result)
         {

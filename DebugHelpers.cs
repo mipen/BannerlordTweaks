@@ -33,6 +33,11 @@ namespace BannerlordTweaks {
             InformationManager.DisplayMessage(new InformationMessage(message, Color.ConvertStringToColor("#0042FFFF")));
         }
 
+        public static void ColorOrangeMessage(string message)
+        {
+            InformationManager.DisplayMessage(new InformationMessage(message, Color.FromUint(0x00F16D26)));
+        }
+
         public static void QuickInformationMessage(string message)
         {
             InformationManager.AddQuickInformation(new TextObject(message, null), 0, null, "");
@@ -40,7 +45,7 @@ namespace BannerlordTweaks {
         
 
         // From Modlib---
-        public static void ShowError(string message, string title = "", Exception exception = null) {
+        public static void ShowError(string message, string title = "", Exception? exception = null) {
             if (string.IsNullOrWhiteSpace(title)) {
                 title = "";
             }
