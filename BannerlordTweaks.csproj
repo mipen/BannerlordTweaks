@@ -1,12 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <Version>1.5.5.2</Version>
     <TargetFramework>net472</TargetFramework>
     <Platforms>x64</Platforms>
     <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
-    <ModuleName>$(MSBuildProjectName)</ModuleName>
+    <ModuleName>zz$(AssemblyName)</ModuleName>
 	<!-- Set as Machine Env Variable, or define in line below -->
 	<!-- <BL_GAME_DIR>Define Path Here</BL_GAME_DIR> -->
     <GameFolder>$(BL_GAME_DIR)</GameFolder>
@@ -15,8 +14,10 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <NoWarn>1701;1702;CS8602</NoWarn>
+    <NoWarn>1701;1702</NoWarn>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
@@ -52,13 +53,20 @@
 
   <ItemGroup>
     <Compile Remove="DismembermentMissionBehaviour.cs" />
+    <Compile Remove="Patches\DefaultArmyManagementCalculationModel.cs" />
     <Compile Remove="Patches\DefaultTroopCountLimitModelPatch.cs" />
+    <Compile Remove="Patches\HearthLevelPatch-WIP.cs" />
     <Compile Remove="Patches\MapVMPatches.cs" />
     <Compile Remove="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="packages.config" />
+    <None Remove="_Module\arm_armors.xml" />
+    <None Remove="_Module\body_armors.xml" />
+    <None Remove="_Module\head_armors.xml" />
+    <None Remove="_Module\leg_armors.xml" />
+    <None Remove="_Module\weapons.xml" />
   </ItemGroup>
   
   <ItemGroup>
@@ -73,142 +81,5 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" PrivateAssets="All" />
   </ItemGroup>
 
-<!--
-  <ItemGroup>
-    <Compile Include="DailyTroopExperienceTweak.cs" />
-    <Compile Include="DebugHelpers.cs" />
-    <Compile Include="Patches\CampaignUIHelperPatch.cs" />
-    <Compile Include="Patches\CharacterAttributeItemVMPatch.cs" />
-    <Compile Include="Patches\CharacterVMPatch.cs" />
-    <Compile Include="Patches\CraftingCampaignBehaviourPatches.cs" />
-    <Compile Include="Patches\CraftingVMPatch.cs" />
-    <Compile Include="Patches\DefaultBattleRewardModelPatch.cs" />
-    <Compile Include="Patches\DefaultBuildingTypesPatch.cs" />
-    <Compile Include="Patches\DefaultPartyWageModelPatch.cs" />
-    <Compile Include="Patches\BarterablePatches.cs" />
-    <Compile Include="Patches\DefaultPartyMoraleModelPatches.cs" />
-    <Compile Include="Patches\DefaultPartySizeLimitModelPatch.cs" />
-    <Compile Include="Patches\DefaultCaravanPartySizeLimitModelPatch.cs" />
-    <Compile Include="Patches\DefaultTournamentModelPatch.cs" />
-    <Compile Include="Patches\DefaultBanditDensityModelPatch.cs" />
-    <Compile Include="Patches\HeroPatches.cs" />
-    <Compile Include="Patches\HideoutMissionControllerPatches.cs" />
-    <Compile Include="Patches\MapInfoVMPatch.cs" />
-    <Compile Include="Patches\SkillVMPatch.cs" />
-    <Compile Include="Patches\SmeltingVMPatches.cs" />
-    <Compile Include="Patches\TournamentVMPatches.cs" />
-    <Compile Include="Patches\UnlimitedWanderersPatch.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="SmeltingHelper.cs" />
-    <Compile Include="SubModule.cs" />
-    <Compile Include="Patches\TournamentBehaviorPatches.cs" />
-    <Compile Include="TweakedCharacterDevelopmentModel.cs" />
-    <Compile Include="TweakedClanTierModel.cs" />
-    <Compile Include="TweakedCombatXpModel.cs" />
-    <Compile Include="TweakedAgeModel.cs" />
-    <Compile Include="TweakedConspiracyBehavrior.cs" />
-    <Compile Include="TweakedPregnancyModel.cs" />
-    <Compile Include="TweakedSettlementFoodModel.cs" />
-    <Compile Include="TweakedSettlementMilitiaModel.cs" />
-    <Compile Include="TweakedSiegeEventModel.cs" />
-    <Compile Include="TweakedWorkshopModel.cs" />
-    <Compile Include="PrisonerImprisonmentTweak.cs" />
-    <Compile Include="Patches\WeaponComponentDataPatch.cs" />
-    <Compile Include="TweakedDifficultyModel.cs" />
-  </ItemGroup>
--->
 
-<!--
-  <ItemGroup>
-    <Reference Include="0Harmony, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Lib.Harmony.2.0.2\lib\net472\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="MCMv3, Version=3.1.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Bannerlord.MCM.3.1.9\lib\net472\MCMv3.dll</HintPath>
-    </Reference>
-    <Reference Include="mscorlib" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="DailyTroopExperienceTweak.cs" />
-    <Compile Include="DebugHelpers.cs" />
-    <Compile Include="Patches\CampaignUIHelperPatch.cs" />
-    <Compile Include="Patches\CharacterAttributeItemVMPatch.cs" />
-    <Compile Include="Patches\CharacterVMPatch.cs" />
-    <Compile Include="Patches\CraftingCampaignBehaviourPatches.cs" />
-    <Compile Include="Patches\CraftingVMPatch.cs" />
-    <Compile Include="Patches\DefaultBattleRewardModelPatch.cs" />
-    <Compile Include="Patches\DefaultBuildingTypesPatch.cs" />
-    <Compile Include="Patches\DefaultPartyWageModelPatch.cs" />
-    <Compile Include="Patches\BarterablePatches.cs" />
-    <Compile Include="Patches\DefaultPartyMoraleModelPatches.cs" />
-    <Compile Include="Patches\DefaultPartySizeLimitModelPatch.cs" />
-    <Compile Include="Patches\DefaultCaravanPartySizeLimitModelPatch.cs" />
-    <Compile Include="Patches\DefaultTournamentModelPatch.cs" />
-    <Compile Include="Patches\DefaultBanditDensityModelPatch.cs" />
-    <Compile Include="Patches\HeroPatches.cs" />
-    <Compile Include="Patches\HideoutMissionControllerPatches.cs" />
-    <Compile Include="Patches\MapInfoVMPatch.cs" />
-    <Compile Include="Patches\SkillVMPatch.cs" />
-    <Compile Include="Patches\SmeltingVMPatches.cs" />
-    <Compile Include="Patches\TournamentVMPatches.cs" />
-    <Compile Include="Patches\UnlimitedWanderersPatch.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="SmeltingHelper.cs" />
-    <Compile Include="SubModule.cs" />
-    <Compile Include="Patches\TournamentBehaviorPatches.cs" />
-    <Compile Include="TweakedCharacterDevelopmentModel.cs" />
-    <Compile Include="TweakedClanTierModel.cs" />
-    <Compile Include="TweakedCombatXpModel.cs" />
-    <Compile Include="TweakedAgeModel.cs" />
-    <Compile Include="TweakedConspiracyBehavrior.cs" />
-    <Compile Include="TweakedPregnancyModel.cs" />
-    <Compile Include="TweakedSettlementFoodModel.cs" />
-    <Compile Include="TweakedSettlementMilitiaModel.cs" />
-    <Compile Include="TweakedSiegeEventModel.cs" />
-    <Compile Include="TweakedWorkshopModel.cs" />
-    <Compile Include="PrisonerImprisonmentTweak.cs" />
-    <Compile Include="Patches\WeaponComponentDataPatch.cs" />
-    <Compile Include="TweakedDifficultyModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include=".editorconfig" />
-    <None Include="packages.config" />
-  </ItemGroup>
--->
-<!--
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="AfterBuild">
-    <ItemGroup>
-      <_ReadMe Include="$(ProjectDir)README.md" />
-      <_LICENSE Include="$(ProjectDir)LICENSE" />
-      <_CONTRIB Include="$(ProjectDir)Contributions.txt" />
-    </ItemGroup>
-    <Copy SourceFiles="@(_ReadMe)" DestinationFolder="$(MOD_FOLDER)" />
-    <Copy SourceFiles="@(_LICENSE)" DestinationFolder="$(MOD_FOLDER)" />
-    <Copy SourceFiles="@(_CONTRIB)" DestinationFolder="$(MOD_FOLDER)" /> -->
-    <!-- <Copy SourceFiles="$(TargetDir)\0Harmony.dll" DestinationFolder="$(MOD_FOLDER)\bin\Win64_Shipping_Client\" /> -->
-    <!-- <Copy SourceFiles="$(TargetDir)\ModLib.Definitions.dll" DestinationFolder="$(MOD_FOLDER)\bin\Win64_Shipping_Client\" /> -->
-<!--	
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(MOD_FOLDER)\bin\Win64_Shipping_Client\" />
-    <Copy SourceFiles="$(ProjectDir)\SubModule.xml" DestinationFolder="$(MOD_FOLDER)" />
-  </Target> -->
-  <!-- 
-  <PropertyGroup>
-    <PostBuildEvent>mkdir "$(TargetDir)bin\Win64_Shipping_Client\"
-      move "$(TargetDir)$(ProjectName).*" "$(TargetDir)bin\Win64_Shipping_Client\"
-      del "$(TargetDir)0Harmony.xml"
-      del "$(TargetDir)*.dll"
-      del "$(TargetDir)*.pdb"
-    </PostBuildEvent>
-  </PropertyGroup>
--->
 </Project>

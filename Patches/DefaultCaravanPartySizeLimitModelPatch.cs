@@ -9,15 +9,12 @@ namespace BannerlordTweaks.Patches
     {
         static void Postfix(MobileParty party, StatExplainer explanation, ref int __result)
         {
-            if (party.IsCaravan && party.Party?.Owner != null && party.Party.Owner == Hero.MainHero)
+            if (party.IsCaravan && party.Party?.Owner != null && party.Party.Owner == Hero.MainHero && BannerlordTweaksSettings.Instance is not null)
             {
                 __result = BannerlordTweaksSettings.Instance.PlayerCaravanPartySize;
             }
         }
 
-        static bool Prepare()
-        {
-            return BannerlordTweaksSettings.Instance.PlayerCaravanPartySizeTweakEnabled;
-        }
+        static bool Prepare() => BannerlordTweaksSettings.Instance is { } settings && settings.PlayerCaravanPartySizeTweakEnabled;
     }
 }

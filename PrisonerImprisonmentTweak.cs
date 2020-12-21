@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
+
+// 1.5.5 Update - DailyHeroTick is now private, and escape behaviors have changed. The Tweak needs to be reviewed.
 
 namespace BannerlordTweaks
 {
@@ -21,12 +24,13 @@ namespace BannerlordTweaks
 
         private static void Check(PrisonerEscapeCampaignBehavior escapeBehaviour, Hero hero)
         {
-            if (escapeBehaviour == null) return;
+            if (escapeBehaviour == null || !(BannerlordTweaksSettings.Instance is { } settings)) return;
+
 
             if (hero.IsPrisoner && hero.PartyBelongedToAsPrisoner != null && hero.PartyBelongedToAsPrisoner.MapFaction != null)
             {
                 bool flag = hero.PartyBelongedToAsPrisoner.MapFaction == Hero.MainHero.MapFaction || (hero.PartyBelongedToAsPrisoner.IsSettlement && hero.PartyBelongedToAsPrisoner.Settlement.OwnerClan == Clan.PlayerClan);
-                if (!BannerlordTweaksSettings.Instance.PrisonerImprisonmentPlayerOnly)
+                if (settings.PrisonerImprisonmentPlayerOnly)
                     flag = flag || Kingdom.All.Contains(hero.PartyBelongedToAsPrisoner.MapFaction) || (hero.PartyBelongedToAsPrisoner.IsSettlement);
 
                 if (flag)
@@ -35,16 +39,19 @@ namespace BannerlordTweaks
                     if (hero.PartyBelongedToAsPrisoner.NumberOfHealthyMembers < hero.PartyBelongedToAsPrisoner.NumberOfPrisoners ||
                         hero.PartyBelongedToAsPrisoner.IsStarving ||
                         (hero.MapFaction != null && FactionManager.IsNeutralWithFaction(hero.MapFaction, hero.PartyBelongedToAsPrisoner.MapFaction)) ||
-                        (int)hero.CaptivityStartTime.ElapsedDaysUntilNow > BannerlordTweaksSettings.Instance.MinimumDaysOfImprisonment)
+                        (int)hero.CaptivityStartTime.ElapsedDaysUntilNow > settings.MinimumDaysOfImprisonment)
                     {
-                        escapeBehaviour.DailyHeroTick(hero);
+                        typeof(PrisonerEscapeCampaignBehavior).GetMethod("DailyHeroTick", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(escapeBehaviour, new object[] { hero });
+                        //escapeBehaviour.DailyHeroTick(hero);
                     }
                 }
                 else
-                    escapeBehaviour.DailyHeroTick(hero);
+                    typeof(PrisonerEscapeCampaignBehavior).GetMethod("DailyHeroTick", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(escapeBehaviour, new object[] { hero });
+                    //escapeBehaviour.DailyHeroTick(hero);
             }
             else
-                escapeBehaviour.DailyHeroTick(hero);
+                typeof(PrisonerEscapeCampaignBehavior).GetMethod("DailyHeroTick", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(escapeBehaviour, new object[] { hero });
+                //escapeBehaviour.DailyHeroTick(hero);
         }
 
         public static void DailyTick()
@@ -58,7 +65,7 @@ namespace BannerlordTweaks
                     Hero.CharacterStates heroState = hero.HeroState;
 
                     float days = hero.CaptivityStartTime.ElapsedDaysUntilNow;
-                    if (days > (BannerlordTweaksSettings.Instance.MinimumDaysOfImprisonment + 3))
+                    if ( BannerlordTweaksSettings.Instance is { } settings && (days > (settings.MinimumDaysOfImprisonment + 3)) )
                     {
                         DebugHelpers.ColorGreenMessage("Releasing " + hero.Name + " due to Missing Hero Bug. (" + (int)days + " days)");
                         DebugHelpers.QuickInformationMessage("Releasing " + hero.Name + " due to Missing Hero Bug. (" + (int)days + " days)");

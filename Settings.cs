@@ -9,7 +9,7 @@ namespace BannerlordTweaks
         public override string Id => "BannerlordTweaksSettings";
         public override string DisplayName => "Bannerlord Tweaks Settings";
         public override string FolderName => "BannerlordTweaksSettings";
-        public override string FormatType => "json";
+        public override string FormatType => "json2";
 
         #region Miscellaneous
 
@@ -69,7 +69,7 @@ namespace BannerlordTweaks
         [SettingPropertyBool("Battle Size Tweak", Order = 1, IsToggle = true, HintText = "Allows you to set the battle size limit outside of native values. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Campaign Tweaks/Battle Size Tweak")]
         public bool BattleSizeTweakEnabled { get; set; } = false;
 
-        [SettingPropertyInteger("Battle Size Limit", 2, 1300, HintText = "Sets the limit for number of troops on a battlefield. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Campaign Tweaks/Battle Size Tweak")]
+        [SettingPropertyInteger("Battle Size Limit", 2, 1500, HintText = "Sets the limit for number of troops on a battlefield. WARNING: Setting this above 1000 can cause performance degradation and crashes."), SettingPropertyGroup("Campaign Tweaks/Battle Size Tweak")]
         public int BattleSize { get; set; } = 1000;
 
         #endregion
@@ -198,10 +198,10 @@ namespace BannerlordTweaks
 
         #region Character Tweaks - Hero Skill Multiplier Tweaks
 
-        [SettingPropertyBool("Enable Hero Skill Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier")]
+        [SettingPropertyBool("Enable Hero Skill Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only. 1.0 = No Bonus. 1.1 = 10%, etc."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier")]
         public bool HeroSkillExperienceMultiplierEnabled { get; set; } = false;
 
-        [SettingPropertyBool("Enable Companion Skill Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier")]
+        [SettingPropertyBool("Enable Companion Skill Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects Compaions only. 1.0 = No Bonus. 1.1 = 10%, etc."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier")]
         public bool CompanionSkillExperienceMultiplierEnabled { get; set; } = false;
 
         [SettingPropertyFloatingInteger("Hero Skill Experience Multiplier", 1f, 5f, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier")]
@@ -352,6 +352,15 @@ namespace BannerlordTweaks
 
         #endregion
 
+        #region Party Tweaks - Army Tweaks
+
+        /*
+        [SettingPropertyBool("All-Clan Armies Lose No Coehsion", Order = 1, RequireRestart = false, HintText = "Armies composed of only clan parties lose no coehsion."), SettingPropertyGroup("Party Tweaks/Army Tweaks")]
+        public bool ClanArmyLosesNoCohesionEnabled { get; set; } = false;
+        */
+
+        #endregion
+
         #region Party Tweaks - Caravan Tweaks
 
         [SettingPropertyBool("Enable Player Caravan Party Size Tweak", Order = 1, RequireRestart = false, IsToggle = true, HintText = "Applies a configured value to your caravan party size"), SettingPropertyGroup("Party Tweaks/Caravan Party Size Tweak")]
@@ -441,7 +450,17 @@ namespace BannerlordTweaks
 
         #endregion
 
-        #region Settlement Buildings Tweaks - Castle Buildings Tweaks
+        #region Settlement Tweaks - Disable Troop Donations
+
+        [SettingPropertyBool("Disable Troop Donations", Order = 1, RequireRestart = false, IsToggle = true, HintText = "Disables your clan (and optionally kingdom) parties from donating troops to owned settlements."), SettingPropertyGroup("Settlement Tweaks/Disable Troop Donation Tweak")]
+        public bool DisableTroopDonationPatchEnabled { get; set; } = false;
+
+        [SettingPropertyBool("Disable Troop Donations - Apply to Faction", Order = 1, RequireRestart = false, HintText = "Extends disabling of troop donations to owned settlements to your entire kingdom."), SettingPropertyGroup("Settlement Tweaks/Disable Troop Donation Tweak")]
+        public bool DisableTroopDonationFactionWideEnabled { get; set; } = false;
+
+        #endregion
+
+        #region Settlement Tweaks - Settlement Buildings Tweaks - Castle Buildings Tweaks
 
         [SettingPropertyBool("Enable Castle Training Fields Tweak", Order = 1, RequireRestart = false, IsToggle = true, HintText = "Changes the amount of experience the training fields provides for each level."), SettingPropertyGroup("Settlement Tweaks/Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak")]
         public bool CastleTrainingFieldsBonusEnabled { get; set; } = true;
@@ -496,7 +515,7 @@ namespace BannerlordTweaks
 
         #endregion
 
-        #region Settlement Buildings Tweaks - Town Buildings Tweaks
+        #region Settlement Tweaks - Settlement Buildings Tweaks - Town Buildings Tweaks
 
         [SettingPropertyBool("Enable Town Training Fields Tweak", Order = 1, RequireRestart = false, IsToggle = true, HintText = "Changes the amount of experience the training fields provides for each level."), SettingPropertyGroup("Settlement Tweaks/Buildings Tweaks/Town Buildings Tweaks/Town Training Fields Tweak")]
         public bool TownTrainingFieldsBonusEnabled { get; set; } = true;

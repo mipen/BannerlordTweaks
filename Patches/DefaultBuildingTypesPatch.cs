@@ -12,6 +12,7 @@ namespace BannerlordTweaks.Patches
             BuildingType ____buildingCastleMilitiaBarracks, BuildingType ____buildingSettlementTrainingFields, BuildingType ____buildingSettlementGranary,
             BuildingType ____buildingSettlementOrchard, BuildingType ____buildingSettlementMilitiaBarracks)
         {
+            if (BannerlordTweaksSettings.Instance is null) { return; }
             //Castle
             #region Training Fields
             if (BannerlordTweaksSettings.Instance.CastleTrainingFieldsBonusEnabled)
@@ -151,6 +152,7 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
+            if (BannerlordTweaksSettings.Instance == null) { return false; }
             return BannerlordTweaksSettings.Instance.CastleGranaryBonusEnabled || BannerlordTweaksSettings.Instance.CastleGardensBonusEnabled ||
                 BannerlordTweaksSettings.Instance.CastleTrainingFieldsBonusEnabled || BannerlordTweaksSettings.Instance.CastleMilitiaBarracksBonusEnabled ||
                 BannerlordTweaksSettings.Instance.TownGranaryBonusEnabled || BannerlordTweaksSettings.Instance.TownOrchardsBonusEnabled ||

@@ -35,20 +35,21 @@ namespace BannerlordTweaks.Patches
                 {
                     if (xpAmount > 0)
                     {
-                        if (BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplierEnabled && hd.Hero.IsHumanPlayerCharacter)
+                        if (BannerlordTweaksSettings.Instance is { } settings && settings.HeroSkillExperienceMultiplierEnabled && hd.Hero.IsHumanPlayerCharacter)
                         {
                             float newXpAmount = (int)Math.Ceiling(xpAmount * BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplier);
                             hd.AddSkillXp(skill, newXpAmount, true, true);
                             //DebugHelpers.DebugMessage("HeroSkillXPPatch: Player: " + hd.Hero.Name+ "\nSkill is: " + skill.Name + "\nXPAmount = " + xpAmount + "\nNewXPAmount = " + newXpAmount);
                         }
-                        if (BannerlordTweaksSettings.Instance.CompanionSkillExperienceMultiplierEnabled && !hd.Hero.IsHumanPlayerCharacter &&
-                           //((hd.Hero.IsPlayerCompanion == true || hd.Hero.Clan == Hero.MainHero.Clan) || hd.Hero.Clan == Hero.MainHero.Clan || hd.Hero.Spouse == Hero.MainHero || Hero.MainHero.Siblings.Contains(hd.Hero) || (Hero.MainHero.Siblings.Contains(hd.Hero.Spouse) && (hd.Hero.MapFaction == Hero.MainHero.MapFaction))))
+                        else if (BannerlordTweaksSettings.Instance is { } settings2 && settings2.CompanionSkillExperienceMultiplierEnabled && !hd.Hero.IsHumanPlayerCharacter &&
                            ( hd.Hero.Clan == Hero.MainHero.Clan) )
                         {
                             float newXpAmount = (int)Math.Ceiling(xpAmount * BannerlordTweaksSettings.Instance.CompanionSkillExperienceMultiplier);
                             hd.AddSkillXp(skill, newXpAmount, true, true);
                            //DebugHelpers.DebugMessage("HeroSkillXPPatch: Companion: " + hd.Hero.Name + " - Clan: "+ hd.Hero.Clan.Name + " - Skill is: " + skill.Name + " - XPAmount = " + xpAmount + " - NewXPAmount = " + newXpAmount);
                         }
+                        else 
+                            hd.AddSkillXp(skill, xpAmount, true, true);
                     }
                     else
                         hd.AddSkillXp(skill, xpAmount, true, true);
@@ -63,9 +64,13 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            if (BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplierEnabled)
-                GetFieldInfo();
-            return BannerlordTweaksSettings.Instance.HeroSkillExperienceMultiplierEnabled;
+            if (BannerlordTweaksSettings.Instance is { } settings)
+            {
+                if (settings.HeroSkillExperienceMultiplierEnabled)
+                    GetFieldInfo();
+                return settings.HeroSkillExperienceMultiplierEnabled;
+            }
+            else return false;
         }
 
         private static void GetFieldInfo()

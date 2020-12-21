@@ -10,13 +10,11 @@ namespace BannerlordTweaks.Patches
     {
         static bool Prefix(ref int __result)
         {
+            if (BannerlordTweaksSettings.Instance is null) return true;
             __result = Math.Min(BannerlordTweaksSettings.Instance.HideoutBattleTroopLimit, 90);
             return false;
         }
 
-        static bool Prepare()
-        {
-            return BannerlordTweaksSettings.Instance.HideoutBattleTroopLimitTweakEnabled;
-        }
+        static bool Prepare() => BannerlordTweaksSettings.Instance is { } settings && settings.HideoutBattleTroopLimitTweakEnabled; 
     }
 }

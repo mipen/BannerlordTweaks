@@ -12,7 +12,7 @@ namespace BannerlordTweaks
 {
     public class SubModule : MBSubModuleBase
     {
-        public static readonly string ModuleFolderName = "BannerlordTweaks";
+        public static readonly string ModuleFolderName = "zzBannerlordTweaks";
         private static Harmony? harmony = null;
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()

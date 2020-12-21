@@ -15,3 +15,6 @@ AtomicTim:
 
 Bleinz
 - For his permission to fold in his Unlimited Wanderers code.
+
+Aragas, Zijistark, Chyron:
+- For helping me learn to code my way out of a wet paper bag. ;)

@@ -12,7 +12,7 @@ namespace BannerlordTweaks.Patches
     {
         static void Postfix(MobileParty party, StatExplainer explanation, ref int __result)
         {
-            if (party.LeaderHero != null && party.LeaderHero == Hero.MainHero)
+            if (party.LeaderHero != null && party.LeaderHero == Hero.MainHero && BannerlordTweaksSettings.Instance is not null)
             {
                 int num;
                 if (BannerlordTweaksSettings.Instance.LeadershipPartySizeBonusEnabled)

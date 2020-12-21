@@ -12,9 +12,6 @@ namespace BannerlordTweaks.Patches
             __instance.TotalFood = MobileParty.MainParty.GetNumDaysForFoodToLast() + 1;
         }
 
-        static bool Prepare()
-        {
-            return BannerlordTweaksSettings.Instance.ShowFoodDaysRemaining;
-        }
+        static bool Prepare() => BannerlordTweaksSettings.Instance is { } settings && settings.ShowFoodDaysRemaining;
     }
 }

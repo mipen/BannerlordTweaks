@@ -21,16 +21,20 @@ namespace BannerlordTweaks.Patches
             if (openPartMethodInfo == null) GetMethodInfo();
             foreach (CraftingPiece piece in SmeltingHelper.GetNewPartsFromSmelting(item))
             {
-                if (piece != null && piece.Name != null)
+                if (piece != null && piece.Name != null && openPartMethodInfo != null)
                     openPartMethodInfo.Invoke(__instance, new object[] { piece });
             }
         }
 
         static bool Prepare()
         {
-            if (BannerlordTweaksSettings.Instance.AutoLearnSmeltedParts)
-                GetMethodInfo();
-            return BannerlordTweaksSettings.Instance.AutoLearnSmeltedParts;
+            if (BannerlordTweaksSettings.Instance is { } settings)
+            {
+                if (settings.AutoLearnSmeltedParts)
+                    GetMethodInfo();
+                return settings.AutoLearnSmeltedParts;
+            }
+            else return false;
         }
 
         private static void GetMethodInfo()
@@ -44,14 +48,13 @@ namespace BannerlordTweaks.Patches
     {
         static bool Prefix(CraftingCampaignBehavior __instance, ref int __result)
         {
-            __result = BannerlordTweaksSettings.Instance.MaxCraftingStamina;
+
+            //__result = BannerlordTweaksSettings.Instance.MaxCraftingStamina;
+            __result = BannerlordTweaksSettings.Instance is { } settings ? settings.MaxCraftingStamina : 100;
             return false;
         }
 
-        static bool Prepare()
-        {
-            return BannerlordTweaksSettings.Instance.CraftingStaminaTweakEnabled;
-        }
+        static bool Prepare() => BannerlordTweaksSettings.Instance is { } settings && settings.CraftingStaminaTweakEnabled;
     }
 
     [HarmonyPatch(typeof(CraftingCampaignBehavior), "HourlyTick")]
@@ -64,13 +67,15 @@ namespace BannerlordTweaks.Patches
             if (recordsInfo == null)
                 GetRecordsInfo();
             //Get the list of hero records
+            if (recordsInfo == null || __instance == null) throw new ArgumentNullException(nameof(__instance), $"Tried to run postfix for {nameof(CraftingCampaignBehavior)}.HourlyTickPatch but the recordsInfo or __instance was null.");
+
             IDictionary records = (IDictionary)recordsInfo.GetValue(__instance);
 
             foreach (Hero hero in records.Keys)
             {
                 int curCraftingStamina = __instance.GetHeroCraftingStamina(hero);
 
-                if (curCraftingStamina < BannerlordTweaksSettings.Instance.MaxCraftingStamina)
+                if (BannerlordTweaksSettings.Instance is not null && curCraftingStamina < BannerlordTweaksSettings.Instance.MaxCraftingStamina)
                 {
                     int staminaGainAmount = BannerlordTweaksSettings.Instance.CraftingStaminaGainAmount;
 
@@ -89,11 +94,15 @@ namespace BannerlordTweaks.Patches
 
         static bool Prepare()
         {
-            if (BannerlordTweaksSettings.Instance.CraftingStaminaTweakEnabled)
-                GetRecordsInfo();
-            return BannerlordTweaksSettings.Instance.CraftingStaminaTweakEnabled;
+            if (BannerlordTweaksSettings.Instance is { } settings)
+            {
+                if (settings.CraftingStaminaTweakEnabled)
+                    GetRecordsInfo();
+                return settings.CraftingStaminaTweakEnabled;
+            }
+            else return false;
         }
-
+ 
         private static void GetRecordsInfo()
         {
             recordsInfo = typeof(CraftingCampaignBehavior).GetField("_heroCraftingRecords", BindingFlags.Instance | BindingFlags.NonPublic);

@@ -21,7 +21,7 @@ namespace BannerlordTweaks
 
         public override int GetCompanionLimit(Clan clan)
         {
-            if (BannerlordTweaksSettings.Instance.CompanionLimitTweakEnabled)
+            if (BannerlordTweaksSettings.Instance is { } settings && settings.CompanionLimitTweakEnabled)
             {
                 int clanTier = clan.Tier;
 
@@ -50,12 +50,12 @@ namespace BannerlordTweaks
                 result.Add(DefaultPerks.Leadership.TalentMagnet.SecondaryBonus, DefaultPerks.Leadership.TalentMagnet.Name, null);
             }
 
-            if (BannerlordTweaksSettings.Instance.ClanPartiesLimitTweakEnabled && clan == Clan.PlayerClan)
+            if (BannerlordTweaksSettings.Instance is { } settings && settings.ClanPartiesLimitTweakEnabled && clan == Clan.PlayerClan)
             {
                 result.Add((float)(BannerlordTweaksSettings.Instance.BaseClanPartiesLimit + Math.Floor(clanTierToCheck * BannerlordTweaksSettings.Instance.ClanPartiesBonusPerClanTier)), null);
             }
 
-            else if (BannerlordTweaksSettings.Instance.AIClanPartiesLimitTweakEnabled && clan.IsClan && !clan.StringId.Contains("_deserters"))
+            else if (BannerlordTweaksSettings.Instance is { } settings2 && settings2.AIClanPartiesLimitTweakEnabled && clan.IsClan && !clan.StringId.Contains("_deserters"))
             {
                 if (BannerlordTweaksSettings.Instance.AICustomSpawnPartiesLimitTweakEnabled && clan.StringId.StartsWith("cs_"))
                 {

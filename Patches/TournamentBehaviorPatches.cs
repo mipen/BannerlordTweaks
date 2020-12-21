@@ -14,10 +14,7 @@ namespace BannerlordTweaks.Patches
             return true;
         }
 
-        static bool Prepare()
-        {
-            return BannerlordTweaksSettings.Instance.TournamentGoldRewardEnabled;
-        }
+        static bool Prepare() => BannerlordTweaksSettings.Instance is { } settings && settings.TournamentGoldRewardEnabled;
     }
 
     [HarmonyPatch(typeof(TournamentBehavior), "CalculateBet")]
@@ -27,12 +24,16 @@ namespace BannerlordTweaks.Patches
 
         static void Postfix(TournamentBehavior __instance)
         {
-            betOddInfo?.SetValue(__instance, MathF.Max((float)betOddInfo.GetValue(__instance), BannerlordTweaksSettings.Instance.MinimumBettingOdds, 0));
+            if (BannerlordTweaksSettings.Instance is not null)
+            {
+                betOddInfo?.SetValue(__instance, MathF.Max((float)betOddInfo.GetValue(__instance), BannerlordTweaksSettings.Instance.MinimumBettingOdds, 0));
+            }
+            
         }
 
         static bool Prepare()
         {
-            if (BannerlordTweaksSettings.Instance.MinimumBettingOddsTweakEnabled)
+            if (BannerlordTweaksSettings.Instance is not null && BannerlordTweaksSettings.Instance.MinimumBettingOddsTweakEnabled)
             {
                 betOddInfo = typeof(TournamentBehavior).GetProperty(nameof(TournamentBehavior.BetOdd), BindingFlags.Public | BindingFlags.Instance);
                 return true;
