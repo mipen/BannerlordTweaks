@@ -23,35 +23,45 @@ namespace BannerlordTweaks
         }
 
         private static void Check(PrisonerEscapeCampaignBehavior escapeBehaviour, Hero hero)
-        {
-            if (escapeBehaviour == null || !(BannerlordTweaksSettings.Instance is { } settings)) return;
+         {
+            if (escapeBehaviour == null || !(BannerlordTweaksSettings.Instance is { } settings) || !hero.IsPrisoner) return;
 
-
-            if (hero.IsPrisoner && hero.PartyBelongedToAsPrisoner != null && hero.PartyBelongedToAsPrisoner.MapFaction != null)
+            if (hero.PartyBelongedToAsPrisoner != null && hero.PartyBelongedToAsPrisoner.MapFaction != null)
             {
                 bool flag = hero.PartyBelongedToAsPrisoner.MapFaction == Hero.MainHero.MapFaction || (hero.PartyBelongedToAsPrisoner.IsSettlement && hero.PartyBelongedToAsPrisoner.Settlement.OwnerClan == Clan.PlayerClan);
-                if (settings.PrisonerImprisonmentPlayerOnly)
-                    flag = flag || Kingdom.All.Contains(hero.PartyBelongedToAsPrisoner.MapFaction) || (hero.PartyBelongedToAsPrisoner.IsSettlement);
+                
+                if ((settings.PrisonerImprisonmentPlayerOnly && flag) || (settings.PrisonerImprisonmentPlayerOnly == false && (Kingdom.All.Contains(hero.PartyBelongedToAsPrisoner.MapFaction) || hero.PartyBelongedToAsPrisoner.IsSettlement)) )
+                    flag = true;
 
-                if (flag)
+                if (flag == true)
                 {
-                    //If the party doesn't have enough healthy soldiers or is starving or is at peace with prisoners faction, allow to attempt to escape.
-                    if (hero.PartyBelongedToAsPrisoner.NumberOfHealthyMembers < hero.PartyBelongedToAsPrisoner.NumberOfPrisoners ||
+                    //If the party doesn't have enough healthy soldiers, is starving, is at peace with prisoners faction, or if imprisoned long enough, allow to attempt to escape.
+                    if ( (hero.PartyBelongedToAsPrisoner.NumberOfHealthyMembers < hero.PartyBelongedToAsPrisoner.NumberOfPrisoners && !hero.PartyBelongedToAsPrisoner.IsSettlement) ||
                         hero.PartyBelongedToAsPrisoner.IsStarving ||
                         (hero.MapFaction != null && FactionManager.IsNeutralWithFaction(hero.MapFaction, hero.PartyBelongedToAsPrisoner.MapFaction)) ||
                         (int)hero.CaptivityStartTime.ElapsedDaysUntilNow > settings.MinimumDaysOfImprisonment)
                     {
+                        //DebugHelpers.DebugMessage("Prisoner Tweak DailyHeroTick: [" + hero.Name + "] Escape Conditions met. Allow Escape Attempt.");
                         typeof(PrisonerEscapeCampaignBehavior).GetMethod("DailyHeroTick", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(escapeBehaviour, new object[] { hero });
-                        //escapeBehaviour.DailyHeroTick(hero);
+                        return;
                     }
+                    //DebugHelpers.DebugMessage("Prisoner Tweak DailyHeroTick: [" + hero.Name + "] Escape conditions not met. No Escape attempt.");
+                    return;
                 }
+                
                 else
+                {
+                    //DebugHelpers.DebugMessage("Prisoner Tweak DailyHeroTick: [" + hero.Name + "] Tweak Flag is false. Allow Escape Attmpt.");
                     typeof(PrisonerEscapeCampaignBehavior).GetMethod("DailyHeroTick", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(escapeBehaviour, new object[] { hero });
-                    //escapeBehaviour.DailyHeroTick(hero);
+                }                
+                return;
+
             }
             else
+            {
+                //DebugHelpers.DebugMessage("Prisoner Tweak DailyHeroTick: [" + hero.Name + "] Else Condition met. Operate as normal, allow escape attempt.");
                 typeof(PrisonerEscapeCampaignBehavior).GetMethod("DailyHeroTick", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(escapeBehaviour, new object[] { hero });
-                //escapeBehaviour.DailyHeroTick(hero);
+            }
         }
 
         public static void DailyTick()
