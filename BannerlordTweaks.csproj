@@ -8,9 +8,9 @@
     <ModuleName>zz$(AssemblyName)</ModuleName>
 	<!-- Set as Machine Env Variable, or define in line below -->
 	<!-- <BL_GAME_DIR>Define Path Here</BL_GAME_DIR> -->
-    <GameFolder>$(BL_GAME_DIR)</GameFolder>
+    <!-- <GameFolder>$(BL_GAME_DIR)</GameFolder> -->
+	<GameFolder>$(BL_GAME_DIR_GOG)</GameFolder>
     <Authors>Jiros</Authors>
-	<!-- <GameFolder>$(BL_GAME_DIR_GOG)</GameFolder> -->	
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -53,7 +53,6 @@
 
   <ItemGroup>
     <Compile Remove="DismembermentMissionBehaviour.cs" />
-    <Compile Remove="Patches\DefaultArmyManagementCalculationModel.cs" />
     <Compile Remove="Patches\DefaultTroopCountLimitModelPatch.cs" />
     <Compile Remove="Patches\HearthLevelPatch-WIP.cs" />
     <Compile Remove="Patches\MapVMPatches.cs" />

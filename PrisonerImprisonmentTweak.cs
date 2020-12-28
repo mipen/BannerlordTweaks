@@ -5,7 +5,6 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 
-// 1.5.5 Update - DailyHeroTick is now private, and escape behaviors have changed. The Tweak needs to be reviewed.
 
 namespace BannerlordTweaks
 {
