@@ -354,10 +354,8 @@ namespace BannerlordTweaks
 
         #region Party Tweaks - Army Tweaks
 
-        /*
         [SettingPropertyBool("All-Clan Armies Lose No Coehsion", Order = 1, RequireRestart = false, HintText = "Armies composed of only clan parties lose no coehsion."), SettingPropertyGroup("Party Tweaks/Army Tweaks")]
         public bool ClanArmyLosesNoCohesionEnabled { get; set; } = false;
-        */
 
         #endregion
 
@@ -379,13 +377,13 @@ namespace BannerlordTweaks
         [SettingPropertyBool("Enable Leadership Bonus", Order = 1, RequireRestart = false, HintText = "Applies a bonus equal to the set percentage of your leadership skill to your party size."), SettingPropertyGroup("Party Tweaks/Party Size Bonus")]
         public bool LeadershipPartySizeBonusEnabled { get; set; } = true;
 
-        [SettingPropertyFloatingInteger("Leadership Percentage Bonus", 0f, 1f, HintText = "Applies a bonus equal to the set percentage of your leadership skill to your party size."), SettingPropertyGroup("Party Tweaks/Party Size Bonus")]
+        [SettingPropertyFloatingInteger("Leadership Percentage Bonus", 0f, 1f, RequireRestart = false, HintText = "Applies a bonus equal to the set percentage of your leadership skill to your party size."), SettingPropertyGroup("Party Tweaks/Party Size Bonus")]
         public float LeadershipPartySizeBonus { get; set; } = 0.3f;
 
         [SettingPropertyBool("Enable Steward Bonus", Order = 1, RequireRestart = false, HintText = "Applies a bonus equal to the set percentage of your steward skill to your party size."), SettingPropertyGroup("Party Tweaks/Party Size Bonus")]
         public bool StewardPartySizeBonusEnabled { get; set; } = true;
 
-        [SettingPropertyFloatingInteger("Steward Percentage Bonus", 0f, 1f, HintText = "Applies a bonus equal to the set percentage of your leadership skill to your party size."), SettingPropertyGroup("Party Tweaks/Party Size Bonus")]
+        [SettingPropertyFloatingInteger("Steward Percentage Bonus", 0f, 1f, RequireRestart = false, HintText = "Applies a bonus equal to the set percentage of your leadership skill to your party size."), SettingPropertyGroup("Party Tweaks/Party Size Bonus")]
         public float StewardPartySizeBonus { get; set; } = 0.3f;
 
         #endregion
