@@ -198,6 +198,9 @@ namespace BannerlordTweaks
 
         #region Character Tweaks - Hero Skill Multiplier Tweaks
 
+        [SettingPropertyBool("Enable Skill Experience Multipliers", Order = 1, IsToggle = true, HintText = "Enable bonuses to the skill experience your hero & companions members gain."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier")]
+        public bool SkillExperienceMultipliersEnabled { get; set; } = false;
+
         [SettingPropertyBool("Enable Hero Skill Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the player only. 1.0 = No Bonus. 1.1 = 10%, etc."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier")]
         public bool HeroSkillExperienceMultiplierEnabled { get; set; } = false;
 
@@ -210,7 +213,32 @@ namespace BannerlordTweaks
         [SettingPropertyFloatingInteger("Companion Skill Experience Multiplier", 1f, 20f, RequireRestart = false, HintText = "Applies a multiplier to the amount of experience recieved for skills. Affects the Companion only."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier")]
         public float CompanionSkillExperienceMultiplier { get; set; } = 1f;
 
+        [SettingPropertyBool("Enable Per Skill Bonuses", Order = 1, RequireRestart = false, IsToggle = true, HintText = "Applies a multiplier to the amount of experience recieved for specific skills. Affects the player only. 1.0 = No Bonus. 1.1 = 10%, etc."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier/Enable Per-Skill Bonuses")]
+        public bool PerSkillBonusEnabled { get; set; } = false;
+
+        [SettingPropertyFloatingInteger("Per-Skill Experience Multiplier: Engineering", 1f, 10f, RequireRestart = false, HintText = "Applies a multiplier to the amount of Engineering experience recieved."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier/Enable Per-Skill Bonuses")]
+        public float SkillBonusEngineering { get; set; } = 1f;
+
+        [SettingPropertyFloatingInteger("Per-Skill Experience Multiplier: Leadership", 1f, 10f, RequireRestart = false, HintText = "Applies a multiplier to the amount of Leadership experience recieved."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier/Enable Per-Skill Bonuses")]
+        public float SkillBonusLeadership { get; set; } = 1f;
+
+        [SettingPropertyFloatingInteger("Per-Skill Experience Multiplier: Medicine", 1f, 10f, RequireRestart = false, HintText = "Applies a multiplier to the amount of Medicine experience recieved."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier/Enable Per-Skill Bonuses")]
+        public float SkillBonusMedicine { get; set; } = 1f;
+
+        [SettingPropertyFloatingInteger("Per-Skill Experience Multiplier: Riding", 1f, 10f, RequireRestart = false, HintText = "Applies a multiplier to the amount of Riding experience recieved."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier/Enable Per-Skill Bonuses")]
+        public float SkillBonusRiding { get; set; } = 1f;
+
+        [SettingPropertyFloatingInteger("Per-Skill Experience Multiplier: Roguery", 1f, 10f, RequireRestart = false, HintText = "Applies a multiplier to the amount of Roguery experience recieved."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier/Enable Per-Skill Bonuses")]
+        public float SkillBonusRoguery { get; set; } = 1f;
+
+        [SettingPropertyFloatingInteger("Per-Skill Experience Multiplier: Scouting", 1f, 10f, RequireRestart = false, HintText = "Applies a multiplier to the amount of Scouting experience recieved."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier/Enable Per-Skill Bonuses")]
+        public float SkillBonusScouting { get; set; } = 1f;
+
+        [SettingPropertyFloatingInteger("Per-Skill Experience Multiplier: Trade", 1f, 10f, RequireRestart = false, HintText = "Applies a multiplier to the amount of Trade experience recieved."), SettingPropertyGroup("Character Tweaks/Hero Skill Experience Multiplier/Enable Per-Skill Bonuses")]
+        public float SkillBonusTrade { get; set; } = 1f;
+
         #endregion
+
 
         #region Character Tweaks - Pregnancy Tweaks
 
