@@ -1,10 +1,14 @@
 ﻿using HarmonyLib;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
+using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.CampaignSystem.ViewModelCollection.Craft.Smelting;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 
 namespace BannerlordTweaks.Patches
 {
@@ -18,12 +22,21 @@ namespace BannerlordTweaks.Patches
         {
             // This appears to be how the game works out if an item is locked
             // From TaleWorlds.CampaignSystem.ViewModelCollection.SPInventoryVM.InitializeInventory()
-            IEnumerable<EquipmentElement> locks = Campaign.Current.GetCampaignBehavior<TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.IInventoryLockTracker>().GetLocks();
-            EquipmentElement[] locked_items = (locks != null) ? locks.ToArray<EquipmentElement>() : null;
+            //IEnumerable<EquipmentElement> locks = Campaign.Current.GetCampaignBehavior<IInventoryLockTracker>().GetLocks();
 
+            // 1.5.4 - Method Changed again. Simplified based on new version ofSPInventoryVM.InitializeInventory()
+            //IEnumerable<EquipmentElement> locks = (IEnumerable<EquipmentElement>)Campaign.Current.GetCampaignBehavior<IInventoryLockTracker>().GetLocks();
+            List<string> locked_items = Campaign.Current.GetCampaignBehavior<IInventoryLockTracker>().GetLocks().ToList<string>();
+
+            // Updated line 24 to Line 25 which seems to be the updated way game works out item locks in v1.4.3 InitializeInventory()
+            //EquipmentElement[] locked_items = locks?.ToArray<EquipmentElement>();
+
+
+            // 1.5.4 - Had to replace previous isLocked with version from SPInventoryVM's IsItemLocked fun.
+            /* 
             bool isLocked(EquipmentElement test_item)
             {
-                return locked_items != null && locked_items.Any(delegate (EquipmentElement x)
+                return !(locked_items == null || !locked_items.Any(delegate (EquipmentElement x)
                 {
                     ItemObject lock_item = x.Item;
                     if (lock_item.StringId == test_item.Item.StringId)
@@ -34,14 +47,26 @@ namespace BannerlordTweaks.Patches
                         return a == (itemModifier2?.StringId);
                     }
                     return false;
-                });
+                }));
             }
+            */
+
+            bool isLocked(ItemRosterElement item)
+            {
+                string text = item.EquipmentElement.Item.StringId;
+                if (item.EquipmentElement.ItemModifier != null)
+                {
+                    text += item.EquipmentElement.ItemModifier.StringId;
+                }
+                return locked_items.Contains(text);
+            }
+
             MBBindingList<SmeltingItemVM> filteredList = new MBBindingList<SmeltingItemVM>();
 
             foreach (SmeltingItemVM sItem in __instance.SmeltableItemList)
             {
                 if (!____playerItemRoster.Any(rItem =>
-                    sItem.EquipmentElement.Item == rItem.EquipmentElement.Item && isLocked(rItem.EquipmentElement)
+                    sItem.EquipmentElement.Item == rItem.EquipmentElement.Item && isLocked(rItem)
                 ))
                 {
                     filteredList.Add(sItem);
@@ -70,7 +95,11 @@ namespace BannerlordTweaks.Patches
         {
             foreach (SmeltingItemVM item in __instance.SmeltableItemList)
             {
+                // SmeltinItemVM ItemObject (item) was removed in 1.5.3 beta
+                // int count = SmeltingHelper.GetNewPartsFromSmelting(item.Item).Count();
+
                 int count = SmeltingHelper.GetNewPartsFromSmelting(item.EquipmentElement.Item).Count();
+                //int count = item.NumOfItems; - Changed in 1.5.3
                 if (count > 0)
                 {
                     string parts = count == 1 ? "part" : "parts";

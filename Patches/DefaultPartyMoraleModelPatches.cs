@@ -49,10 +49,8 @@ namespace BannerlordTweaks.Patches
             return true;
         }
 
-        static bool Prepare()
-        {
-            return BannerlordTweaksSettings.Instance.QuestCharactersIgnorePartySize;
-        }
+        static bool Prepare() => BannerlordTweaksSettings.Instance is { } settings && settings.QuestCharactersIgnorePartySize;
+
     }
 
     [HarmonyPatch(typeof(DefaultPartyMoraleModel), "NumberOfDesertersDueToPaymentRatio")]
@@ -70,9 +68,6 @@ namespace BannerlordTweaks.Patches
                 return true;
         }
 
-        static bool Prepare()
-        {
-            return BannerlordTweaksSettings.Instance.QuestCharactersIgnorePartySize;
-        }
+        static bool Prepare() => BannerlordTweaksSettings.Instance is { } settings && settings.QuestCharactersIgnorePartySize;
     }
 }

@@ -5,29 +5,17 @@ namespace BannerlordTweaks
 {
     public class TweakedAgeModel : DefaultAgeModel
     {
-        public override int BecomeInfantAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
-            ? BannerlordTweaksSettings.Instance.BecomeInfantAge
-            : base.BecomeInfantAge;
+        public override int BecomeInfantAge => BannerlordTweaksSettings.Instance is { } settings && settings.AgeTweaksEnabled ? settings.BecomeInfantAge : base.BecomeInfantAge;
 
-        public override int BecomeChildAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
-            ? BannerlordTweaksSettings.Instance.BecomeChildAge
-            : base.BecomeChildAge;
+        public override int BecomeChildAge => BannerlordTweaksSettings.Instance is { } settings && settings.AgeTweaksEnabled ? settings.BecomeChildAge : base.BecomeChildAge;
 
-        public override int BecomeTeenagerAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
-            ? BannerlordTweaksSettings.Instance.BecomeTeenagerAge
-            : base.BecomeTeenagerAge;
+        public override int BecomeTeenagerAge => BannerlordTweaksSettings.Instance is { } settings && settings.AgeTweaksEnabled ? settings.BecomeTeenagerAge : base.BecomeTeenagerAge;
 
-        public override int HeroComesOfAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
-            ? BannerlordTweaksSettings.Instance.HeroComesOfAge
-            : base.HeroComesOfAge;
+        public override int HeroComesOfAge => BannerlordTweaksSettings.Instance is { } settings && settings.AgeTweaksEnabled ? settings.HeroComesOfAge : base.HeroComesOfAge;
 
-        public override int BecomeOldAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
-            ? BannerlordTweaksSettings.Instance.BecomeOldAge
-            : base.BecomeOldAge;
+        public override int BecomeOldAge => BannerlordTweaksSettings.Instance is { } settings && settings.AgeTweaksEnabled ? settings.BecomeOldAge : base.BecomeOldAge;
 
-        public override int MaxAge => BannerlordTweaksSettings.Instance.AgeTweaksEnabled
-            ? BannerlordTweaksSettings.Instance.MaxAge
-            : base.MaxAge;
+        public override int MaxAge => BannerlordTweaksSettings.Instance is { } settings && settings.AgeTweaksEnabled ? settings.MaxAge : base.MaxAge;
 
         public IEnumerable<string> GetConfigErrors()
         {

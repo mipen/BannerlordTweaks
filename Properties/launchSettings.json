@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Bannerlord": {
+      "commandName": "Executable",
+      "executablePath": "$(GameFolder)\\bin\\Win64_Shipping_Client\\Bannerlord.exe",
+      "commandLineArgs": "/singleplayer _MODULES_*Bannerlord.Harmony*BetterExceptionWindow*Bannerlord.ButterLib*Bannerlord.UIExtenderEx*Bannerlord.MBOptionScreen*Bannerlord.MBOptionScreen.MCMv3*Native*SandBoxCore*CustomBattle*Sandbox*StoryMode*Aragas.AltSaveMissingModuleFix*InterestingCompanions*QuickStart*zzBannerlordTweaks*DeveloperConsole*csx*_MODULES_",
+      "workingDirectory": "$(GameFolder)\\bin\\Win64_Shipping_Client",
+      "sqlDebugging": false
+    }
+  }
+}

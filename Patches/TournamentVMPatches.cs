@@ -10,16 +10,22 @@ using TaleWorlds.Core;
 
 namespace BannerlordTweaks.Patches
 {
+
     [HarmonyPatch(typeof(TournamentVM), "RefreshBetProperties")]
     public class RefreshBetPropertiesPatch
     {
-        private static FieldInfo bettedAmountFieldInfo = null;
+        private static FieldInfo? bettedAmountFieldInfo = null;
 
         static void Postfix(TournamentVM __instance)
         {
             if (bettedAmountFieldInfo == null) GetFieldInfo();
             int thisRoundBettedAmount = (int)bettedAmountFieldInfo.GetValue(__instance);
-            __instance.MaximumBetValue = Math.Min(BannerlordTweaksSettings.Instance.TournamentMaxBetAmount - thisRoundBettedAmount, Hero.MainHero.Gold);
+            int num = BannerlordTweaksSettings.Instance.TournamentMaxBetAmount;
+            if (Hero.MainHero.GetPerkValue(DefaultPerks.Roguery.DeepPockets))
+            {
+                num *= (int)DefaultPerks.Roguery.DeepPockets.PrimaryBonus;
+            }
+            __instance.MaximumBetValue = Math.Min(num - thisRoundBettedAmount, Hero.MainHero.Gold);
         }
 
         static bool Prepare()
@@ -28,7 +34,6 @@ namespace BannerlordTweaks.Patches
                 GetFieldInfo();
             return BannerlordTweaksSettings.Instance.TournamentMaxBetAmountTweakEnabled;
         }
-
         private static void GetFieldInfo()
         {
             bettedAmountFieldInfo = typeof(TournamentVM).GetField("_thisRoundBettedAmount", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -40,7 +45,12 @@ namespace BannerlordTweaks.Patches
     {
         static void Postfix(TournamentVM __instance)
         {
-            GameTexts.SetVariable("MAX_AMOUNT", BannerlordTweaksSettings.Instance.TournamentMaxBetAmount);
+            int num = BannerlordTweaksSettings.Instance.TournamentMaxBetAmount;
+            if (Hero.MainHero.GetPerkValue(DefaultPerks.Roguery.DeepPockets))
+            {
+                num *= (int)DefaultPerks.Roguery.DeepPockets.PrimaryBonus;
+            }
+            GameTexts.SetVariable("MAX_AMOUNT", num);
             __instance.BetDescriptionText = GameTexts.FindText("str_tournament_bet_description").ToString();
         }
 
@@ -53,7 +63,7 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(TournamentVM), "get_IsBetButtonEnabled")]
     public class IsBetButtonEnabledPatch
     {
-        private static FieldInfo bettedAmountFieldInfo = null;
+        private static FieldInfo? bettedAmountFieldInfo = null;
 
         static bool Prefix(TournamentVM __instance, ref bool __result)
         {
@@ -66,7 +76,12 @@ namespace BannerlordTweaks.Patches
                 {
                     int thisRoundBettedAmount = (int)bettedAmountFieldInfo.GetValue(__instance);
                     bool flag = __instance.Tournament.CurrentMatch.Participants.Any((TournamentParticipant x) => x.Character == CharacterObject.PlayerCharacter);
-                    if (flag && thisRoundBettedAmount < BannerlordTweaksSettings.Instance.TournamentMaxBetAmount)
+                    int num = BannerlordTweaksSettings.Instance.TournamentMaxBetAmount;
+                    if (Hero.MainHero.GetPerkValue(DefaultPerks.Roguery.DeepPockets))
+                    {
+                        num *= (int)DefaultPerks.Roguery.DeepPockets.PrimaryBonus;
+                    }
+                    if (flag && thisRoundBettedAmount < num)
                         result = Hero.MainHero.Gold > 0;
                 }
                 __result = result;

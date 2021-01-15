@@ -2,11 +2,12 @@
 <Module>
 	<Name value="Bannerlord Tweaks"/>
 	<Id value="zzBannerlordTweaks"/>
-	<Version value="v1.5.3.6"/>
+	<Version value="v1.5.5.4"/>
 	<DefaultModule value="false"/>
 	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="false"/>
   	<Official value="false"/>
+	<Url value="https://www.nexusmods.com/mountandblade2bannerlord/mods/2036" />
 	<DependedModules>
 		<DependedModule Id="Native"/>
 		<DependedModule Id="SandBoxCore"/>
@@ -14,6 +15,9 @@
 		<DependedModule Id="CustomBattle"/>
 		<DependedModule Id="StoryMode"/>
 		<DependedModule Id="Bannerlord.Harmony" />
+		<DependedModule Id="Bannerlord.ButterLib" />
+		<DependedModule Id="Bannerlord.UIExtenderEx" />
+		<DependedModule Id="Bannerlord.MBOptionScreen" />
 	</DependedModules>
 	<SubModules>
 		<SubModule>

@@ -13,7 +13,7 @@ namespace BannerlordTweaks
     public class SubModule : MBSubModuleBase
     {
         public static readonly string ModuleFolderName = "zzBannerlordTweaks";
-        private static Harmony harmony = null;
+        private static Harmony? harmony = null;
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
@@ -24,8 +24,9 @@ namespace BannerlordTweaks
                     harmony = new Harmony("mod.bannerlord.tweaks");
                     harmony.PatchAll();
 
-                    if (BannerlordTweaksSettings.Instance.BattleSizeTweakEnabled)
-                        BannerlordConfig.BattleSize = BannerlordTweaksSettings.Instance.BattleSize;
+                    if (BannerlordTweaksSettings.Instance is { } settings && settings.BattleSizeTweakEnabled)
+                        BannerlordConfig.BattleSize = settings.BattleSize;
+                    DebugHelpers.ColorOrangeMessage("Bannerlord Tweaks Loaded");
                 }
                 catch (Exception ex)
                 {
@@ -38,30 +39,32 @@ namespace BannerlordTweaks
         {
             base.OnGameStart(game, gameStarterObject);
 
-            AddModels(gameStarterObject as CampaignGameStarter);
+            #pragma warning disable CS8604 // Possible null reference argument.
+            AddModels(gameStarter: gameStarterObject as CampaignGameStarter);
+            #pragma warning restore CS8604 // Possible null reference argument.
         }
 
         private void AddModels(CampaignGameStarter gameStarter)
         {
-            if (gameStarter != null)
+            if (gameStarter != null && BannerlordTweaksSettings.Instance is { } settings)
             {
-                if (BannerlordTweaksSettings.Instance.TroopBattleExperienceMultiplierEnabled || BannerlordTweaksSettings.Instance.ArenaHeroExperienceMultiplierEnabled || BannerlordTweaksSettings.Instance.TournamentHeroExperienceMultiplierEnabled)
+                if (settings.TroopBattleExperienceMultiplierEnabled || settings.ArenaHeroExperienceMultiplierEnabled || settings.TournamentHeroExperienceMultiplierEnabled)
                     gameStarter.AddModel(new TweakedCombatXpModel());
-                if (BannerlordTweaksSettings.Instance.MaxWorkshopCountTweakEnabled || BannerlordTweaksSettings.Instance.WorkshopBuyingCostTweakEnabled)
+                if (settings.MaxWorkshopCountTweakEnabled || settings.WorkshopBuyingCostTweakEnabled)
                     gameStarter.AddModel(new TweakedWorkshopModel());
-                if (BannerlordTweaksSettings.Instance.CompanionLimitTweakEnabled || BannerlordTweaksSettings.Instance.ClanPartiesLimitTweakEnabled)
+                if (settings.CompanionLimitTweakEnabled || settings.ClanPartiesLimitTweakEnabled)
                     gameStarter.AddModel(new TweakedClanTierModel());
-                if (BannerlordTweaksSettings.Instance.SettlementMilitiaBonusEnabled)
+                if (settings.SettlementMilitiaBonusEnabled)
                     gameStarter.AddModel(new TweakedSettlementMilitiaModel());
-                if (BannerlordTweaksSettings.Instance.SettlementFoodBonusEnabled)
+                if (settings.SettlementFoodBonusEnabled)
                     gameStarter.AddModel(new TweakedSettlementFoodModel());
-                if (BannerlordTweaksSettings.Instance.SiegeCasualtiesTweakEnabled || BannerlordTweaksSettings.Instance.SiegeConstructionProgressPerDayMultiplierEnabled)
+                if (settings.SiegeCasualtiesTweakEnabled || settings.SiegeConstructionProgressPerDayMultiplierEnabled)
                     gameStarter.AddModel(new TweakedSiegeEventModel());
-                if (BannerlordTweaksSettings.Instance.NoStillbirthsTweakEnabled || BannerlordTweaksSettings.Instance.NoMaternalMortalityTweakEnabled ||
-                        BannerlordTweaksSettings.Instance.PregnancyDurationTweakEnabled || BannerlordTweaksSettings.Instance.FemaleOffspringProbabilityTweakEnabled ||
-                        BannerlordTweaksSettings.Instance.TwinsProbabilityTweakEnabled)
+                if (settings.NoStillbirthsTweakEnabled || settings.NoMaternalMortalityTweakEnabled ||
+                        settings.PregnancyDurationTweakEnabled || settings.FemaleOffspringProbabilityTweakEnabled ||
+                        settings.TwinsProbabilityTweakEnabled)
                     gameStarter.AddModel(new TweakedPregnancyModel());
-                if (BannerlordTweaksSettings.Instance.AgeTweaksEnabled)
+                if (settings.AgeTweaksEnabled)
                 {
                     TweakedAgeModel model = new TweakedAgeModel();
                     List<string> configErrors = model.GetConfigErrors().ToList();
@@ -82,22 +85,24 @@ namespace BannerlordTweaks
                     else
                         gameStarter.AddModel(new TweakedAgeModel());
                 }
-                if (BannerlordTweaksSettings.Instance.AttributeFocusPointTweakEnabled)
+                if (settings.AttributeFocusPointTweakEnabled)
                     gameStarter.AddModel(new TweakedCharacterDevelopmentModel());
-                if (BannerlordTweaksSettings.Instance.DifficultyTweaksEnabled)
+                if (settings.DifficultyTweaksEnabled)
                     gameStarter.AddModel(new TweakedDifficultyModel());
+//                if (settings.AIClanPartiesLimitTweakEnabled)
+//                    gameStarter.AddModel(new TweakedDefaultArmyManagementCalculationModel());
             }
         }
 
         public override bool DoLoading(Game game)
         {
-            if (Campaign.Current != null)
+            if (Campaign.Current != null && BannerlordTweaksSettings.Instance is { } settings)
             {
-                if (BannerlordTweaksSettings.Instance.PrisonerImprisonmentTweakEnabled)
+                if (settings.PrisonerImprisonmentTweakEnabled)
                     PrisonerImprisonmentTweak.Apply(Campaign.Current);
-                if (BannerlordTweaksSettings.Instance.DailyTroopExperienceTweakEnabled)
+                if (settings.DailyTroopExperienceTweakEnabled)
                     DailyTroopExperienceTweak.Apply(Campaign.Current);
-                if (BannerlordTweaksSettings.Instance.TweakedConspiracyQuestTimerEnabled)
+                if (settings.TweakedConspiracyQuestTimerEnabled)
                     ConspiracyQuestTimerTweak.Apply(Campaign.Current);
             }
             return base.DoLoading(game);
@@ -107,15 +112,12 @@ namespace BannerlordTweaks
         {
             if (mission == null) return;
             base.OnMissionBehaviourInitialize(mission);
-
-            //if (BannerlordTweaksSettings.Instance.DecapitationEnabled && !mission.HasMissionBehaviour<TournamentFightMissionController>() && !mission.HasMissionBehaviour<ArenaPracticeFightMissionController>())
-            //    mission?.AddMissionBehaviour(new DismembermentMissionBehaviour());
         }
 
         public override void OnGameInitializationFinished(Game game)
         {
             base.OnGameInitializationFinished(game);
-            if (Campaign.Current != null && BannerlordTweaksSettings.Instance.EnableMissingHeroFix)
+            if (Campaign.Current != null && BannerlordTweaksSettings.Instance is { } settings && settings.EnableMissingHeroFix)
             {
                 try
                 {

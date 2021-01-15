@@ -6,7 +6,7 @@ namespace BannerlordTweaks
 {
     public class TweakedSiegeEventModel : DefaultSiegeEventModel
     {
-        public override float GetConstructionProgressPerHour(SiegeEngineType type, SiegeEvent siegeEvent, ISiegeEventSide side, StatExplainer explanation = null)
+        public override float GetConstructionProgressPerHour(SiegeEngineType type, SiegeEvent siegeEvent, ISiegeEventSide side, StatExplainer? explanation = null)
         {
             if (BannerlordTweaksSettings.Instance.SiegeConstructionProgressPerDayMultiplierEnabled)
                 return base.GetConstructionProgressPerHour(type, siegeEvent, side, explanation) * BannerlordTweaksSettings.Instance.SiegeConstructionProgressPerDayMultiplier;

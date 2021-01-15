@@ -15,9 +15,9 @@ namespace BannerlordTweaks.Patches
     [HarmonyPatch(typeof(JoinKingdomAsClanBarterable), "GetUnitValueForFaction")]
     public class BarterablePatches
     {
-
         static void Postfix(ref int __result, IFaction factionForEvaluation)
         {
+            if (BannerlordTweaksSettings.Instance is null) return;
 
             Hero leader = factionForEvaluation.Leader;
 
@@ -48,9 +48,6 @@ namespace BannerlordTweaks.Patches
             }
         }
 
-        static bool Prepare()
-        {
-            return BannerlordTweaksSettings.Instance.BarterablesTweaksEnabled;
-        }
+        static bool Prepare => BannerlordTweaksSettings.Instance is { } settings && settings.BarterablesTweaksEnabled;
     }
 }
