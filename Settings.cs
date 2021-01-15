@@ -2,8 +2,10 @@
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Settings.Base.Global;
 
-namespace BannerlordTweaks {
-    public class BannerlordTweaksSettings : AttributeGlobalSettings<BannerlordTweaksSettings> {
+namespace BannerlordTweaks
+{
+    public class BannerlordTweaksSettings : AttributeGlobalSettings<BannerlordTweaksSettings>
+    {
         public override string Id => "BannerlordTweaksSettings";
         public override string DisplayName => "Bannerlord Tweaks Settings";
         public override string FolderName => "BannerlordTweaksSettings";
@@ -19,6 +21,23 @@ namespace BannerlordTweaks {
 
         [SettingPropertyBool("Enable Remote Companion Skill Management", Order = 3, RequireRestart = false, HintText = "Allows you to manage your companions' skills when they are not in your party.")]
         public bool RemoteCompanionSkillManagementEnabled { get; set; } = true;
+
+        [SettingPropertyBool("Enable Auto-Extenson of 'Stop the Conspiracy' Quest Timer", Order = 4, RequireRestart = false, HintText = "Automatically extends the timer of the 'Stop the Conspiracy' quest as TW hasn't finished it yet.")]
+        public bool TweakedConspiracyQuestTimerEnabled { get; set; } = true;
+
+        #endregion
+
+        #region Barterables
+
+        [SettingPropertyBool("Bartering Tweaks", Order = 1, RequireRestart = false, HintText = "Enables tweaks which affect bartering (Marriage, Factions Joining You, etc.)"), SettingPropertyGroup("Bartering Tweaks", IsMainToggle = true)]
+        public bool BarterablesTweaksEnabled { get; set; } = true;
+
+        [SettingPropertyInteger("Faction Joining Barter Adjustment", 1, 200, Order = 0, RequireRestart = false, HintText = "Adjust the % cost of swaying a fatcion to join your kingdom. Native value is 100% (no change). 50 = 50% reduction in cost. 150 = 50% increase in cost, etc."), SettingPropertyGroup("Bartering Tweaks")]
+        public int BarterablesJoinKingdomAsClanAdjustment { get; set; } = 100;
+
+        [SettingPropertyBool("Use Alternate Formula for Faction Joining Barter", Order = 1, RequireRestart = false, HintText = "Applies alternate formula for calculating cost of swaying a faction to join your kingdom, with more emphasis on relationsip. [The higher your relationship to the lord, the cheaper the barter]."), SettingPropertyGroup("Bartering Tweaks")]
+        public bool BarterablesJoinKingdomAsClanAltFormulaEnabled { get; set; } = false;
+
 
         #endregion
 
@@ -42,8 +61,8 @@ namespace BannerlordTweaks {
 
         #region Smelting patches
 
-        [SettingPropertyBool("Hide Locked Weapons in Smelting Menu", Order = 1, RequireRestart = false, HintText = "Native value is false. Prevent weapons that you have locked in your inventory from showing up in the smelting list to prevent accidental smelting."), SettingPropertyGroup("Smelting Tweaks", IsMainToggle = true)]
-        public bool PreventSmeltingLockedItems { get; set; } = true;
+        [SettingPropertyBool("Hide Locked Weapons in Smelting Menu", Order = 1, RequireRestart = false, HintText = "Native value is false. Prevent weapons that you have locked in your inventory from showing up in the smelting list to prevent accidental smelting."), SettingPropertyGroup("Smelting Tweaks", IsMainToggle = false)]
+        public bool PreventSmeltingLockedItems { get; set; } = false;
 
 
         [SettingPropertyBool("Enable Unlocking Parts From Smelted Weapons", Order = 1, RequireRestart = false, HintText = "Native value is false. Unlock the parts that a weapon is made of when you smelt it."), SettingPropertyGroup("Smelting Tweaks")]
@@ -91,40 +110,40 @@ namespace BannerlordTweaks {
         [SettingPropertyBool("Enable Tournament Renown Tweak", Order = 1, RequireRestart = false, HintText = "Sets the amount of renown awarded when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak", IsMainToggle = true)]
         public bool TournamentRenownIncreaseEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Tournament Renown Reward", 1, 20, HintText = "Native value is 3. Increases the amount of renown awarded when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak")]
-        public int TournamentRenownAmount { get; set; } = 8;
+        [SettingPropertyInteger("Tournament Renown Reward", 1, 50, HintText = "Native value is 3. Increases the amount of renown awarded when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Renown Reward Tweak")]
+        public int TournamentRenownAmount { get; set; } = 3;
 
         [SettingPropertyBool("Enable Tournament Gold Reward Tweak", Order = 1, RequireRestart = false, HintText = "Adds the set amount of gold to the rewards when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Gold Reward Tweak", IsMainToggle = true)]
         public bool TournamentGoldRewardEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Tournament Gold Reward", 150, 1000, HintText = "Native value is 0. Adds the set amount of gold to the rewards when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Gold Reward Tweak")]
+        [SettingPropertyInteger("Tournament Gold Reward", 0, 2000, HintText = "Native value is 0. Adds the set amount of gold to the rewards when you win a tournament."), SettingPropertyGroup("Tournament Tweaks/Gold Reward Tweak")]
         public int TournamentGoldRewardAmount { get; set; } = 500;
 
         [SettingPropertyBool("Enable Tournament Max Bet Tweak", Order = 1, RequireRestart = false, HintText = "Sets the maximum amount of gold that you can bet per round in tournaments."), SettingPropertyGroup("Tournament Tweaks/Maximum Bet Amount Tweak", IsMainToggle = true)]
         public bool TournamentMaxBetAmountTweakEnabled { get; set; } = true;
 
-        [SettingPropertyInteger("Tournament Maximum Bet Amount", 150, 2000, HintText = "Native value is 150. Sets the maximum amount of gold that you can bet per round in tournaments."), SettingPropertyGroup("Tournament Tweaks/Maximum Bet Amount Tweak")]
+        [SettingPropertyInteger("Tournament Maximum Bet Amount", 0, 4000, HintText = "Native value is 150. Sets the maximum amount of gold that you can bet per round in tournaments."), SettingPropertyGroup("Tournament Tweaks/Maximum Bet Amount Tweak")]
         public int TournamentMaxBetAmount { get; set; } = 500;
 
 
         [SettingPropertyBool("Enable Tournament Hero Experience Multiplier Override", Order = 1, RequireRestart = false, HintText = "Overrides the native multiplier value for experience gain in tournaments for hero characters."), SettingPropertyGroup("Tournament Tweaks/Tournament Hero Experience Multiplier", IsMainToggle = true)]
         public bool TournamentHeroExperienceMultiplierEnabled { get; set; } = false;
 
-        [SettingPropertyFloatingInteger("Tournament Hero Experience Multiplier", 0.25f, 1f, HintText = "Native value is 0.25. Sets the multiplier applied to experience gained in tournaments by hero characters."), SettingPropertyGroup("Tournament Tweaks/Tournament Hero Experience Multiplier")]
+        [SettingPropertyFloatingInteger("Tournament Hero Experience Multiplier", 0.25f, 2f, HintText = "Native value is 0.25. Sets the multiplier applied to experience gained in tournaments by hero characters. .25 = 1/4 normal experience, 1 = full real-world experience, 2 = 2x real-world experience."), SettingPropertyGroup("Tournament Tweaks/Tournament Hero Experience Multiplier")]
         public float TournamentHeroExperienceMultiplier { get; set; } = 0.25f;
 
-        [SettingPropertyBool("Enable Arena Hero Experience Multiplier Override", Order = 1, RequireRestart = false, HintText = "Overrides the native multiplier value for experience gain in arena fights for hero characters."), SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier", IsMainToggle = true)]
+        [SettingPropertyBool("Enable Arena Hero Experience Multiplier Override", Order = 1, RequireRestart = false, HintText = "Overrides the native multiplier value for experience gain in arena fights for hero characters. .25 = 1/4 normal experience, 1 = full real-world experience, 2 = 2x real-world experience."), SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier", IsMainToggle = true)]
         public bool ArenaHeroExperienceMultiplierEnabled { get; set; } = false;
 
-        [SettingPropertyFloatingInteger("Arena Hero Experience Multiplier", 0.07f, 1f, HintText = "Native value is 0.06. Overrides the native multiplier for experience gain in arena fights for hero characters."), SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier")]
-        public float ArenaHeroExperienceMultiplier { get; set; } = 0.07f;
+        [SettingPropertyFloatingInteger("Arena Hero Experience Multiplier", 0.06f, 2f, HintText = "Native value is 0.06. Overrides the native multiplier for experience gain in arena fights for hero characters."), SettingPropertyGroup("Tournament Tweaks/Arena Hero Experience Multiplier")]
+        public float ArenaHeroExperienceMultiplier { get; set; } = 0.06f;
 
 
         [SettingPropertyBool("Enabled Minimum Betting Odds Tweak", Order = 1, RequireRestart = false, HintText = "Allows you to set the minimum betting odds in tournaments."), SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds", IsMainToggle = true)]
         public bool MinimumBettingOddsTweakEnabled { get; set; } = false;
 
-        [SettingPropertyFloatingInteger("Minimum Betting Odds", 1.1f, 5f, HintText = "Native: 1.1. The minimum odds for tournament bets."), SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds")]
-        public float MinimumBettingOdds { get; set; } = 2f;
+        [SettingPropertyFloatingInteger("Minimum Betting Odds", 1.1f, 10f, HintText = "Native: 1.1. The minimum odds for tournament bets."), SettingPropertyGroup("Tournament Tweaks/Minimum Betting Odds")]
+        public float MinimumBettingOdds { get; set; } = 1.1f;
 
         #endregion
 
@@ -167,13 +186,13 @@ namespace BannerlordTweaks {
 
         #region Troop experience multiplier
 
-        [SettingPropertyBool("Enable Troop Battle Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Multiplies the amount of experience that ALL troops receive during battles (Note: Only troops, not heroes)."), SettingPropertyGroup("Troop Battle Experience Tweaks")]
+        [SettingPropertyBool("Enable Troop Battle Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Multiplies the amount of experience that ALL troops receive during battles (Note: Only troops, not heroes)."), SettingPropertyGroup("Troop Battle Experience Tweaks", IsMainToggle = true)]
         public bool TroopBattleExperienceMultiplierEnabled { get; set; } = false;
 
         [SettingPropertyFloatingInteger("Troop Battle Experience Modifier", 1f, 6f, HintText = "Native value is 1.0. Multiplies the amount of experience that ALL troops receive during fought battles (Note: Only troops, not heroes. Does not apply to simulated battles.)."), SettingPropertyGroup("Troop Battle Experience Tweaks")]
         public float TroopBattleExperienceMultiplier { get; set; } = 1.0f;
 
-        [SettingPropertyBool("Enable Troop Battle Simulation Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Provides a multiplier to experience gained from simulated battles. This is applied to all fights (including NPC fights) on the campaign map."), SettingPropertyGroup("Troop Battle Experience Tweaks/Simulation Experience Tweak")]
+        [SettingPropertyBool("Enable Troop Battle Simulation Experience Multiplier", Order = 1, RequireRestart = false, HintText = "Provides a multiplier to experience gained from simulated battles. This is applied to all fights (including NPC fights) on the campaign map."), SettingPropertyGroup("Troop Battle Experience Tweaks/Simulation Experience Tweak", IsMainToggle = true)]
         public bool TroopBattleSimulationExperienceMultiplierEnabled { get; set; } = false;
 
         [SettingPropertyFloatingInteger("Troop Battle Simulation Experience Multiplier", 0.5f, 8f, HintText = "Native value is 1.0. Provides a multiplier to experience gained from simulated battles. This is applied to all simulated fights on the campaign map."), SettingPropertyGroup("Troop Battle Experience Tweaks/Simulation Experience Tweak")]
@@ -210,6 +229,10 @@ namespace BannerlordTweaks {
 
         [SettingPropertyInteger("Companion Limit Bonus Per Clan Tier", 0, 10, HintText = "Native value is 1. Sets the bonus to companion limit per clan tier. This value is multiplied by your clan tier."), SettingPropertyGroup("Companion Limit Tweak")]
         public int CompanionLimitBonusPerClanTier { get; set; } = 3;
+
+        [SettingPropertyBool("Enable Unlimited Wanderers Patch", Order = 1, RequireRestart = false, HintText = "Removes the soft cap on the maximum number of potential companions who can spawn. Native limits the # of wanderers to ~25. This will remove that limit. Note: Requires a new campaign to take effect, as the cap is set when a new game is generated. Credit to Bleinz for his UnlimitedWanderers mod."), SettingPropertyGroup("Companion Limit Tweak")]
+        public bool UnlimitedWanderersPatch { get; set; } = false;
+
 
         #endregion
 
@@ -256,7 +279,7 @@ namespace BannerlordTweaks {
         #endregion
 
         #region Castle buildings bonuses
-        
+
         [SettingPropertyBool("Enable Castle Training Fields Tweak", Order = 1, RequireRestart = false, HintText = "Changes the amount of experience the training fields provides for each level."), SettingPropertyGroup("Settlement Buildings Tweaks/Castle Buildings Tweaks/Castle Training Fields Tweak", IsMainToggle = true)]
         public bool CastleTrainingFieldsBonusEnabled { get; set; } = true;
 
@@ -462,7 +485,7 @@ namespace BannerlordTweaks {
 
         [SettingPropertyBool("Enable Age Tweaks", RequireRestart = false, HintText = "Enables the tweaking of character age behaviour."), SettingPropertyGroup("Age Tweaks", IsMainToggle = true)]
         public bool AgeTweaksEnabled { get; set; } = false;
-        
+
         [SettingPropertyInteger("Become Infant Age", 0, 125, HintText = "Native: 3. Must be less than Become Child Age.", Order = 0), SettingPropertyGroup("Age Tweaks")]
         public int BecomeInfantAge { get; set; } = 3;
 
@@ -516,8 +539,12 @@ namespace BannerlordTweaks {
         [SettingPropertyBool("Player Prisoners Only", Order = 1, RequireRestart = false, HintText = "Whether the tweak should be applied only to prisoners held by the player."), SettingPropertyGroup("Imprisonment Period Tweak")]
         public bool PrisonerImprisonmentPlayerOnly { get; set; } = true;
 
-        [SettingPropertyInteger("Minimum Days of Imprisonment", 0, 180, HintText = "The minimum number of days a lord will remain imprisoned before they can attempt to escape."), SettingPropertyGroup("Imprisonment Period Tweak")]
+        [SettingPropertyInteger("Minimum Days of Imprisonment", 0, 180, RequireRestart = false, HintText = "The minimum number of days a lord will remain imprisoned before they can attempt to escape."), SettingPropertyGroup("Imprisonment Period Tweak")]
         public int MinimumDaysOfImprisonment { get; set; } = 10;
+
+        [SettingPropertyBool("Enable Missing Prisoner Hero Fix", Order = 2, HintText = "Will attempt to detect and release prisoner Heroes who may be bugged and do not respawn. Will trigger 3 days after the Minimum Days of Imprisonment setting."), SettingPropertyGroup("Imprisonment Period Tweak")]
+        public bool EnableMissingHeroFix { get; set; } = true;
+
 
         #endregion
 
@@ -632,5 +659,19 @@ namespace BannerlordTweaks {
         //public bool AICanDecapitate { get; set; } = false;
 
         #endregion
+
+
+        /* Disabled until I can get the CreateArmy issue worked out.
+        #region Army Gathering Tweaks
+
+        [SettingPropertyBool("Gather Army Tweaks Enabled", Order = 1, RequireRestart = false, HintText = "Allows you to modify ability to gather armies before establishing player kingdom."), SettingPropertyGroup("Gather Army Tweak")]
+        public bool GatherArmyTweakEnabled { get; set; } = false;
+
+        [SettingPropertyBool("Create Army As Mercenary", Order = 1, RequireRestart = false, HintText = "Allows you to create armies as a mercenary and pay in gold."), SettingPropertyGroup("Gather Army Tweak")]
+        public bool AllowCreateArmyAsMerc { get; set; } = false;
+        
+        #endregion
+        */
+
     }
 }

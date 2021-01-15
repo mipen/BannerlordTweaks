@@ -19,8 +19,6 @@ namespace BannerlordTweaks.Patches
             // This appears to be how the game works out if an item is locked
             // From TaleWorlds.CampaignSystem.ViewModelCollection.SPInventoryVM.InitializeInventory()
             IEnumerable<EquipmentElement> locks = Campaign.Current.GetCampaignBehavior<TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.IInventoryLockTracker>().GetLocks();
-            // Updated line 24 to Line 25 which seems to be the updated way game works out item locks in v1.4.3 InitializeInventory()
-            // EquipmentElement[] locked_items = locks?.ToArray<EquipmentElement>();
             EquipmentElement[] locked_items = (locks != null) ? locks.ToArray<EquipmentElement>() : null;
 
             bool isLocked(EquipmentElement test_item)
@@ -43,7 +41,7 @@ namespace BannerlordTweaks.Patches
             foreach (SmeltingItemVM sItem in __instance.SmeltableItemList)
             {
                 if (!____playerItemRoster.Any(rItem =>
-                    sItem.Item == rItem.EquipmentElement.Item && isLocked(rItem.EquipmentElement)
+                    sItem.EquipmentElement.Item == rItem.EquipmentElement.Item && isLocked(rItem.EquipmentElement)
                 ))
                 {
                     filteredList.Add(sItem);
@@ -72,7 +70,7 @@ namespace BannerlordTweaks.Patches
         {
             foreach (SmeltingItemVM item in __instance.SmeltableItemList)
             {
-                int count = SmeltingHelper.GetNewPartsFromSmelting(item.Item).Count();
+                int count = SmeltingHelper.GetNewPartsFromSmelting(item.EquipmentElement.Item).Count();
                 if (count > 0)
                 {
                     string parts = count == 1 ? "part" : "parts";

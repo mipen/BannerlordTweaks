@@ -4,13 +4,14 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
+
 namespace BannerlordTweaks
 {
     public class DismembermentMissionBehaviour : MissionBehaviour
     {
         public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
 
-        public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow b, ref AttackCollisionData collisionData)
+        public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow b, ref AttackCollisionData collisionData, in MissionWeapon AttackerWeapon)
         {
             if (attacker == null || victim == null) return;
             if (attacker == victim) return;
@@ -63,7 +64,9 @@ namespace BannerlordTweaks
             blow.BaseMagnitude = 1000;
             blow.Position = victim.Position;
             blow.Position.z = victim.GetEyeGlobalHeight();
-            blow.WeaponRecord.FillWith(null, -1, -1);
+            // FillWith was changed in 1.5.3 to two functions: FillAsMeleeBlow and FillAsMissileBlow
+            // blow.WeaponRecord.FillWith(null, -1, -1);
+            blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, -1);
             blow.SwingDirection = new Vec3(attacker.MovementVelocity * -1, 0, -1);
             blow.SwingDirection.Normalize();
             blow.Direction = blow.SwingDirection;

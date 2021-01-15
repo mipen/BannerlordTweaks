@@ -18,5 +18,5 @@ AtomicTim:
 - Conversion to ButterLib & MCMv4
 - Helpful cleanup and streamlining of dependencies.
 
-Hsifles
-- Idea and testing for adding companion XP bonus.
+Bleinz
+- For his permission to fold in his Unlimited Wanderers code.

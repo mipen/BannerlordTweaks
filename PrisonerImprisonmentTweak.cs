@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 
 namespace BannerlordTweaks
@@ -44,6 +45,29 @@ namespace BannerlordTweaks
             }
             else
                 escapeBehaviour.DailyHeroTick(hero);
+        }
+
+        public static void DailyTick()
+        {
+            DebugHelpers.DebugMessage("Respawn Fix : Triggered Daily Tick");
+            foreach (Hero hero in Hero.All)
+            {
+                if (hero == null) return;
+                if (hero.PartyBelongedToAsPrisoner == null && hero.IsPrisoner && hero.IsAlive && !hero.IsActive && !hero.IsNotSpawned && !hero.IsReleased)
+                {
+                    Hero.CharacterStates heroState = hero.HeroState;
+
+                    float days = hero.CaptivityStartTime.ElapsedDaysUntilNow;
+                    if (days > (BannerlordTweaksSettings.Instance.MinimumDaysOfImprisonment + 3))
+                    {
+                        DebugHelpers.ColorGreenMessage("Releasing " + hero.Name + " due to Missing Hero Bug. (" + (int)days + " days)");
+                        DebugHelpers.QuickInformationMessage("Releasing " + hero.Name + " due to Missing Hero Bug. (" + (int)days + " days)");
+                        EndCaptivityAction.ApplyByReleasedFromPartyScreen(hero);
+                    }
+
+                    DebugHelpers.DebugMessage("Tracking Hero for possible bug: " + hero.Name + " | State: " + heroState + " | Loc: " + hero.LastSeenPlace + " | Captivity days: " + (int)days);
+                }
+            }
         }
     }
 }

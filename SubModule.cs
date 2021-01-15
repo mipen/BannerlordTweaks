@@ -21,7 +21,7 @@ namespace BannerlordTweaks
             {
                 try
                 {
-                    harmony = new Harmony("mod.bannerlord.mipen");
+                    harmony = new Harmony("mod.bannerlord.tweaks");
                     harmony.PatchAll();
 
                     if (BannerlordTweaksSettings.Instance.BattleSizeTweakEnabled)
@@ -97,6 +97,8 @@ namespace BannerlordTweaks
                     PrisonerImprisonmentTweak.Apply(Campaign.Current);
                 if (BannerlordTweaksSettings.Instance.DailyTroopExperienceTweakEnabled)
                     DailyTroopExperienceTweak.Apply(Campaign.Current);
+                if (BannerlordTweaksSettings.Instance.TweakedConspiracyQuestTimerEnabled)
+                    ConspiracyQuestTimerTweak.Apply(Campaign.Current);
             }
             return base.DoLoading(game);
         }
@@ -108,6 +110,25 @@ namespace BannerlordTweaks
 
             //if (BannerlordTweaksSettings.Instance.DecapitationEnabled && !mission.HasMissionBehaviour<TournamentFightMissionController>() && !mission.HasMissionBehaviour<ArenaPracticeFightMissionController>())
             //    mission?.AddMissionBehaviour(new DismembermentMissionBehaviour());
+        }
+
+        public override void OnGameInitializationFinished(Game game)
+        {
+            base.OnGameInitializationFinished(game);
+            if (Campaign.Current != null && BannerlordTweaksSettings.Instance.EnableMissingHeroFix)
+            {
+                try
+                {
+                    CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, delegate
+                    {
+                        PrisonerImprisonmentTweak.DailyTick();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error Initialising Missing Hero Fix:\n\n{ex.ToStringFull()}");
+                }
+            }
         }
     }
 }

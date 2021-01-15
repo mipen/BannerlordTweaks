@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using System;
+using System.Linq;
 using System.Reflection;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -40,12 +41,13 @@ namespace BannerlordTweaks.Patches
                             hd.AddSkillXp(skill, newXpAmount, true, true);
                             //DebugHelpers.DebugMessage("HeroSkillXPPatch: Player: " + hd.Hero.Name+ "\nSkill is: " + skill.Name + "\nXPAmount = " + xpAmount + "\nNewXPAmount = " + newXpAmount);
                         }
-                        if (BannerlordTweaksSettings.Instance.CompanionSkillExperienceMultiplierEnabled && !hd.Hero.IsHumanPlayerCharacter && 
-                            ( ( hd.Hero.IsPlayerCompanion == true && hd.Hero.Clan == Hero.MainHero.Clan ) || hd.Hero.Spouse == Hero.MainHero || hd.Hero.Father == Hero.MainHero.Father ) )
+                        if (BannerlordTweaksSettings.Instance.CompanionSkillExperienceMultiplierEnabled && !hd.Hero.IsHumanPlayerCharacter &&
+                           //((hd.Hero.IsPlayerCompanion == true || hd.Hero.Clan == Hero.MainHero.Clan) || hd.Hero.Clan == Hero.MainHero.Clan || hd.Hero.Spouse == Hero.MainHero || Hero.MainHero.Siblings.Contains(hd.Hero) || (Hero.MainHero.Siblings.Contains(hd.Hero.Spouse) && (hd.Hero.MapFaction == Hero.MainHero.MapFaction))))
+                           ( hd.Hero.Clan == Hero.MainHero.Clan) )
                         {
                             float newXpAmount = (int)Math.Ceiling(xpAmount * BannerlordTweaksSettings.Instance.CompanionSkillExperienceMultiplier);
                             hd.AddSkillXp(skill, newXpAmount, true, true);
-                           //DebugHelpers.DebugMessage("HeroSkillXPPatch: Companion: " + hd.Hero.Name + "\nSkill is: " + skill.Name + "\nXPAmount = " + xpAmount + "\nNewXPAmount = " + newXpAmount);
+                           //DebugHelpers.DebugMessage("HeroSkillXPPatch: Companion: " + hd.Hero.Name + " - Clan: "+ hd.Hero.Clan.Name + " - Skill is: " + skill.Name + " - XPAmount = " + xpAmount + " - NewXPAmount = " + newXpAmount);
                         }
                     }
                     else
@@ -54,7 +56,7 @@ namespace BannerlordTweaks.Patches
             }
             catch (Exception ex)
             {
-                DebugHelpers.ShowError("An exception occurred whilst trying to apply the hero xp multiplier.", "", ex);
+                DebugHelpers.ShowError("An exception occurred while trying to apply the hero xp multiplier.", "", ex);
             }
             return false;
         }
