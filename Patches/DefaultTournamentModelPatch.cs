@@ -8,13 +8,14 @@ namespace BannerlordTweaks.Patches
     {
         static bool Prefix(ref int __result)
         {
-            __result = Settings.Instance.TournamentRenownAmount;
-            return false;
+            if (BannerlordTweaksSettings.Instance is not null)
+            {
+                __result = BannerlordTweaksSettings.Instance.TournamentRenownAmount;
+                return false;
+            }
+            return true;
         }
 
-        static bool Prepare()
-        {
-            return Settings.Instance.TournamentRenownIncreaseEnabled;
-        }
+        static bool Prepare() => BannerlordTweaksSettings.Instance is { } settings && settings.TournamentRenownIncreaseEnabled;
     }
 }

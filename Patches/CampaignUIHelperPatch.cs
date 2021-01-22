@@ -11,9 +11,6 @@ namespace BannerlordTweaks.Patches
             isInSamePartyAsPlayer = true;
         }
 
-        static bool Prepare()
-        {
-            return Settings.Instance.RemoteCompanionSkillManagementEnabled;
-        }
+        static bool Prepare() => BannerlordTweaksSettings.Instance is { } settings && settings.RemoteCompanionSkillManagementEnabled;
     }
 }

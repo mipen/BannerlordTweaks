@@ -1,16 +1,14 @@
 ﻿using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Localization;
-using System.Linq;
 using System.Windows.Forms;
 using System;
-using ModLib;
 
 namespace BannerlordTweaks
 {
     public class TweakedSettlementMilitiaModel : DefaultSettlementMilitiaModel
     {
-        public override float CalculateMilitiaChange(Settlement settlement, StatExplainer explanation = null)
+        public override float CalculateMilitiaChange(Settlement settlement, StatExplainer? explanation = null)
         {
             if (settlement == null) throw new ArgumentNullException(nameof(settlement));
             float baseVal = base.CalculateMilitiaChange(settlement, explanation);
@@ -18,12 +16,12 @@ namespace BannerlordTweaks
             en.Add(baseVal);
             try
             {
-                if (Settings.Instance.SettlementMilitiaBonusEnabled)
+                if (BannerlordTweaksSettings.Instance.SettlementMilitiaBonusEnabled)
                 {
                     if (settlement.IsCastle)
-                        en.Add(Settings.Instance.CastleMilitiaBonus, new TextObject("Recruitment drive"));
+                        en.Add(BannerlordTweaksSettings.Instance.CastleMilitiaBonus, new TextObject("Recruitment drive"));
                     if (settlement.IsTown)
-                        en.Add(Settings.Instance.TownMilitiaBonus, new TextObject("Citizen militia"));
+                        en.Add(BannerlordTweaksSettings.Instance.TownMilitiaBonus, new TextObject("Citizen militia"));
                 }
 
             }
@@ -38,10 +36,10 @@ namespace BannerlordTweaks
         {
             base.CalculateMilitiaSpawnRate(settlement, out meleeTroopRate, out rangedTroopRate, out float _meleeEliteTroopRate, out float _rangedEliteTroopRate);
 
-            if (Settings.Instance.SettlementMilitiaEliteSpawnRateBonusEnabled)
+            if (BannerlordTweaksSettings.Instance.SettlementMilitiaEliteSpawnRateBonusEnabled)
             {
-                _meleeEliteTroopRate += Settings.Instance.SettlementEliteMeleeSpawnRateBonus;
-                _rangedEliteTroopRate += Settings.Instance.SettlementEliteRangedSpawnRateBonus;
+                _meleeEliteTroopRate += BannerlordTweaksSettings.Instance.SettlementEliteMeleeSpawnRateBonus;
+                _rangedEliteTroopRate += BannerlordTweaksSettings.Instance.SettlementEliteRangedSpawnRateBonus;
             }
             meleeEliteTroopRate = _meleeEliteTroopRate;
             rangedEliteTroopRate = _rangedEliteTroopRate;

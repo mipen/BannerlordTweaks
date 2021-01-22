@@ -8,17 +8,17 @@ namespace BannerlordTweaks
     {
         public override int GetMaxWorkshopCountForPlayer()
         {
-            if (!Settings.Instance.MaxWorkshopCountTweakEnabled)
+            if (!BannerlordTweaksSettings.Instance.MaxWorkshopCountTweakEnabled)
                 return base.GetMaxWorkshopCountForPlayer();
             else
-                return Settings.Instance.BaseWorkshopCount + Clan.PlayerClan.Tier * Settings.Instance.BonusWorkshopsPerClanTier;
+                return BannerlordTweaksSettings.Instance.BaseWorkshopCount + Clan.PlayerClan.Tier * BannerlordTweaksSettings.Instance.BonusWorkshopsPerClanTier;
         }
 
         public override int GetBuyingCostForPlayer(Workshop workshop)
         {
             if (workshop == null) throw new ArgumentNullException(nameof(workshop));
-            if (Settings.Instance.WorkshopBuyingCostTweakEnabled)
-                return workshop.WorkshopType.EquipmentCost + (int)workshop.Settlement.Prosperity / 2 + Settings.Instance.WorkshopBaseCost;
+            if (BannerlordTweaksSettings.Instance.WorkshopBuyingCostTweakEnabled)
+                return workshop.WorkshopType.EquipmentCost + (int)workshop.Settlement.Prosperity / 2 + BannerlordTweaksSettings.Instance.WorkshopBaseCost;
             else
                 return base.GetBuyingCostForPlayer(workshop);
         }

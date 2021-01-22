@@ -6,27 +6,27 @@ namespace BannerlordTweaks
     {
         public override float GetDamageToFriendsMultiplier()
         {
-            return Settings.Instance.DamageToFriendsTweakEnabled ? Settings.Instance.DamageToFriendsMultiplier : base.GetDamageToFriendsMultiplier();
+            return BannerlordTweaksSettings.Instance.DamageToFriendsTweakEnabled ? BannerlordTweaksSettings.Instance.DamageToFriendsMultiplier : base.GetDamageToFriendsMultiplier();
         }
 
         public override float GetDamageToPlayerMultiplier()
         {
-            return Settings.Instance.DamageToPlayerTweakEnabled ? Settings.Instance.DamageToPlayerMultiplier : base.GetDamageToPlayerMultiplier();
+            return BannerlordTweaksSettings.Instance.DamageToPlayerTweakEnabled ? BannerlordTweaksSettings.Instance.DamageToPlayerMultiplier : base.GetDamageToPlayerMultiplier();
         }
 
         public override float GetPlayerTroopsReceivedDamageMultiplier()
         {
-            return Settings.Instance.DamageToTroopsTweakEnabled ? Settings.Instance.DamageToTroopsMultiplier : base.GetPlayerTroopsReceivedDamageMultiplier();
+            return BannerlordTweaksSettings.Instance.DamageToTroopsTweakEnabled ? BannerlordTweaksSettings.Instance.DamageToTroopsMultiplier : base.GetPlayerTroopsReceivedDamageMultiplier();
         }
 
         public override float GetCombatAIDifficultyMultiplier()
         {
-            return Settings.Instance.CombatAIDifficultyTweakEnabled ? Settings.Instance.CombatAIDifficultyMultiplier : base.GetCombatAIDifficultyMultiplier();
+            return BannerlordTweaksSettings.Instance.CombatAIDifficultyTweakEnabled ? BannerlordTweaksSettings.Instance.CombatAIDifficultyMultiplier : base.GetCombatAIDifficultyMultiplier();
         }
 
         public override float GetPlayerMapMovementSpeedBonusMultiplier()
         {
-            return Settings.Instance.PlayerMapMovementSpeedBonusTweakEnabled ? Settings.Instance.PlayerMapMovementSpeedBonusMultiplier : base.GetPlayerMapMovementSpeedBonusMultiplier();
+            return BannerlordTweaksSettings.Instance.PlayerMapMovementSpeedBonusTweakEnabled ? BannerlordTweaksSettings.Instance.PlayerMapMovementSpeedBonusMultiplier : base.GetPlayerMapMovementSpeedBonusMultiplier();
         }
     }
 }

@@ -8,15 +8,15 @@ namespace BannerlordTweaks.Patches
     {
         static void Postfix(ref bool __result, WeaponComponentData __instance)
         {
-            __result = (Settings.Instance.TwoHandedWeaponsSliceThroughEnabled && __instance.WeaponClass == WeaponClass.TwoHandedAxe || __instance.WeaponClass == WeaponClass.TwoHandedMace ||
+            __result = (BannerlordTweaksSettings.Instance.TwoHandedWeaponsSliceThroughEnabled && __instance.WeaponClass == WeaponClass.TwoHandedAxe || __instance.WeaponClass == WeaponClass.TwoHandedMace ||
                 __instance.WeaponClass == WeaponClass.TwoHandedPolearm || __instance.WeaponClass == WeaponClass.TwoHandedSword) ||
-                (Settings.Instance.SingleHandedWeaponsSliceThroughEnabled && __instance.WeaponClass == WeaponClass.OneHandedSword ||
+                (BannerlordTweaksSettings.Instance.SingleHandedWeaponsSliceThroughEnabled && __instance.WeaponClass == WeaponClass.OneHandedSword ||
                 __instance.WeaponClass == WeaponClass.OneHandedPolearm || __instance.WeaponClass == WeaponClass.OneHandedAxe);
         }
 
         static bool Prepare()
         {
-            return Settings.Instance.TwoHandedWeaponsSliceThroughEnabled || Settings.Instance.SingleHandedWeaponsSliceThroughEnabled;
+            return BannerlordTweaksSettings.Instance.TwoHandedWeaponsSliceThroughEnabled || BannerlordTweaksSettings.Instance.SingleHandedWeaponsSliceThroughEnabled;
         }
     }
 }

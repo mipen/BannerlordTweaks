@@ -1,0 +1,28 @@
+﻿List of contributed changes and additions:
+
+ajvr:
+-Ignore quest troops in party morale calculation.
+-Learn weapon parts from weapons you smelt down.
+-Stop locked weapons in your inventory from showing in the smelting menu.
+-Show number of days worth of food remaining instead of food amount
+
+OctaviusMods:
+-Item Comparison Colours Fix
+
+Jiros
+- Maintenance as of 1.4.3+
+- Wage adjustments
+- Add companion XP bonus options to hero XP bonus in HeroPatches/Skill Exp Bonus
+
+AtomicTim:
+- Conversion to ButterLib & MCMv4
+- Helpful cleanup and streamlining of dependencies.
+
+Bleinz
+- For his permission to fold in his Unlimited Wanderers code.
+
+Aragas, Zijistark, Chyron:
+- For helping me learn to code my way out of a wet paper bag. ;)
+
+Ruihan (KZ14365)
+- All-Clan Armies do not suffer loss of cohesion.

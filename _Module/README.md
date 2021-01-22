@@ -1,8 +1,9 @@
-Mod for [Mount&Blade II Bannerlord](https://www.taleworlds.com/en/Games/Bannerlord) that seeks to provide the player to customise their game to achieve better balance, reduced grind and more enjoyment.
+Continuation of Mipn's Mod for [Mount&Blade II Bannerlord](https://www.taleworlds.com/en/Games/Bannerlord) that seeks to provide the player to customise their game to achieve better balance, reduced grind and more enjoyment. [Original version](https://www.nexusmods.com/mountandblade2bannerlord/mods/2036)
+
 
 This mod uses [ModLib](https://github.com/mipen/ModLib) to provide the user with an in-game configuration menu. 
 
-An up-to-date description can be found on the [nexusmods page](https://www.nexusmods.com/mountandblade2bannerlord/mods/49).
+An up-to-date description can be found on the [nexusmods page](https://www.nexusmods.com/mountandblade2bannerlord/mods/2036).
 
 ## **List of Tweaks:**
 
@@ -15,5 +16,5 @@ An up-to-date description can be found on the [nexusmods page](https://www.nexus
 * Difficulty Options Tweaks
 * Added battle size tweak
 * Added minimum tournament betting odds.
-* Added ability to decapitate people.
+* ~~Added ability to decapitate people.~~
 
